@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= @variable.name %></h1>
+
+<table>
+<% @variable.spec.keys.each do |key| %>
+  <tr>
+    <th><%= key %></th>
+    <td><%= @variable.spec[key] %></td>
+  </tr>
+<%end%>
+</table>
+
+<%= link_to 'Back', variables_path %> |
+<%= link_to 'API', @variable.href %> |
+<% @variable.spec['references'].each do |ref| %>
+ <%= link_to 'Reference', ref %>
+ |
+<% end %>
+
+<%= link_to 'Source',  @variable.spec['source'] %>
