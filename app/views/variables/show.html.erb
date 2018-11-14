@@ -2,6 +2,14 @@
 
 <h1><%= @variable.name %></h1>
 
+<% if @variable.has_formula? %>
+  <h2>Formulas</h2>
+  <%- @variable.spec['formulas'].each do |d, formula| %>
+    <h3><%= d %></h3>
+    <pre><%= display_formula formula['content'] %></pre>
+  <% end %>
+<% end %>
+
 <table>
 <% @variable.spec.keys.each do |key| %>
   <tr>
@@ -11,11 +19,13 @@
 <%end%>
 </table>
 
+
 <%= link_to 'Back', variables_path %> |
 <%= link_to 'API', @variable.href %> |
-<% @variable.spec['references'].each do |ref| %>
- <%= link_to 'Reference', ref %>
- |
+<% if @variable.spec['references'] %>
+  <% @variable.spec['references'].each do |ref| %>
+   <%= link_to 'Reference', ref %> |
+  <% end %>
 <% end %>
 
 <%= link_to 'Source',  @variable.spec['source'] %>

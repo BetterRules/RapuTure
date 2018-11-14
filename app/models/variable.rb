@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class Variable < ApplicationRecord
+  extend FriendlyId
+  friendly_id :name
+
+  def has_formula?
+    return spec['formulas'].present?
+  end
+
   def fetch_all!
     json_response = of_conn.get('variables')
 

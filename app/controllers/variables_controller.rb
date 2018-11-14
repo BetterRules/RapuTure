@@ -4,12 +4,11 @@ class VariablesController < ApplicationController
   before_action :set_variable, only: %i[show edit update destroy]
 
   def index
-    # Variable.new.fetch_all!
+    Variable.new.fetch_all!
     @variables = Variable.all.order(:description)
   end
 
   def show
-    # @variable.fetch!
   end
 
   def new
@@ -55,7 +54,8 @@ class VariablesController < ApplicationController
   private
 
   def set_variable
-    @variable = Variable.find(params[:id])
+    @variable = Variable.find_by(name: params[:id])
+    @variable.fetch! if @variable
   end
 
   def variable_params
