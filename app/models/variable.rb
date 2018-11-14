@@ -22,8 +22,8 @@ class Variable < ApplicationRecord
 
   def fetch_all!
     json_response = of_conn.get('variables')
-
     ActiveRecord::Base.transaction do
+      Variable.delete_all
       json_response.body.keys.each do |name|
         v = Variable.find_or_create_by(name: name, href: json_response.body[name]['href'])
         v.update(description: json_response.body[name]['description'])
