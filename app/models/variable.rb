@@ -34,12 +34,15 @@ class Variable < ApplicationRecord
   def fetch!
     json_response = of_conn.get("variable/#{name}")
     update!(spec: json_response.body)
-    variables.clear
 
-    if has_formula?
-      spec['formulas'].each do |d, formula|
-        Variable.all.each do |v|
-          variables << v if formula['content'].include?("'#{v.name}'") || formula['content'].include?("\"#{v.name}\"")
+    ActiveRecord::Base.transaction do
+      variables.clear
+
+      if has_formula?
+        spec['formulas'].each do |d, formula|
+          Variable.all.each do |v|
+            variables << v if formula['content'].include?("'#{v.name}'") || formula['content'].include?("\"#{v.name}\"")
+          end
         end
       end
     end
