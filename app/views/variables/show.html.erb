@@ -13,21 +13,17 @@
 <h2><%= @variable.description %></h2>
 
 <% if @variable.variables.size.positive? %>
-<h2>References</h2>
-<ul>
-  <%- @variable.variables.order(:name).each do |v| %>
-    <li><%= link_to v.name, v %></li>
-  <%end%>
-</ul>
+  <h2>References</h2>
+  <%= render 'references', variable: @variable %>
 <%end%>
 
 <% if @variable.reversed_variables.size.positive? %>
-<h2>Referenced by:</h2>
-<ul>
-  <%- @variable.reversed_variables.order(:name).each do |v| %>
-    <li><%= link_to v.name, v %></li>
-  <%end%>
-</ul>
+  <h2>Referenced by:</h2>
+  <ul>
+    <%- @variable.reversed_variables.order(:name).each do |v| %>
+      <li><%= link_to v.name, v %></li>
+    <%end%>
+  </ul>
 <%end%>
 
 <% if @variable.has_formula? %>
