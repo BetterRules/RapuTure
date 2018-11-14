@@ -20,6 +20,10 @@ class Variable < ApplicationRecord
     return spec['formulas'].present?
   end
 
+  def description
+    spec['description']
+  end
+
   def fetch_all!
     json_response = of_conn.get('variables')
     ActiveRecord::Base.transaction do
