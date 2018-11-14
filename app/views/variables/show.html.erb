@@ -1,6 +1,33 @@
+<%= link_to 'Back', variables_path %> |
+<%= link_to 'API', @variable.href %> |
+<% if @variable.spec['references'] %>
+  <% @variable.spec['references'].each do |ref| %>
+   <%= link_to 'Reference', ref %> |
+  <% end %>
+<% end %>
+<%= link_to 'Source',  @variable.spec['source'] %>
+
 <p id="notice"><%= notice %></p>
 
 <h1><%= @variable.name %></h1>
+
+<% if @variable.variables.size.positive? %>
+<h2>References</h2>
+<ul>
+  <%- @variable.variables.order(:name).each do |v| %>
+    <li><%= link_to v.name, v %></li>
+  <%end%>
+</ul>
+<%end%>
+
+<% if @variable.reversed_variables.size.positive? %>
+<h2>Referenced by:</h2>
+<ul>
+  <%- @variable.reversed_variables.order(:name).each do |v| %>
+    <li><%= link_to v.name, v %></li>
+  <%end%>
+</ul>
+<%end%>
 
 <% if @variable.has_formula? %>
   <h2>Formulas</h2>
@@ -20,12 +47,4 @@
 </table>
 
 
-<%= link_to 'Back', variables_path %> |
-<%= link_to 'API', @variable.href %> |
-<% if @variable.spec['references'] %>
-  <% @variable.spec['references'].each do |ref| %>
-   <%= link_to 'Reference', ref %> |
-  <% end %>
-<% end %>
 
-<%= link_to 'Source',  @variable.spec['source'] %>
