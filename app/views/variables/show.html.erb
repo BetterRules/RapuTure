@@ -1,6 +1,6 @@
 <%= link_to 'Back', variables_path %> |
 <%= link_to 'API', @variable.href %> |
-<% if @variable.spec['references'] %>
+<% if @variable.spec.present? && @variable.spec['references'].present? %>
   <% @variable.spec['references'].each do |ref| %>
    <%= link_to 'Reference', ref %> |
   <% end %>
