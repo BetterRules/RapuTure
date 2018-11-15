@@ -21,7 +21,7 @@ class Variable < ApplicationRecord
   end
 
   def description
-    spec['description']
+    spec['description'] if spec.present?
   end
 
   def fetch_all!
@@ -35,9 +35,13 @@ class Variable < ApplicationRecord
     end
   end
 
+  def parse_namespace
+    name.split('__')[0] if self.name.include? '__'
+  end
+
   def fetch!
     json_response = of_conn.get("variable/#{name}")
-    update!(spec: json_response.body)
+    update!(spec: json_response.body, namespace: parse_namespace)
 
     ActiveRecord::Base.transaction do
       variables.clear
