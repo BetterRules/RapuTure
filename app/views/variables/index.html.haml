@@ -1,0 +1,5 @@
+%p#notice= notice
+%h1 Variables
+%ul
+  - @variables.each do |variable|
+    %li= link_to variable.description, variable

@@ -1,0 +1,38 @@
+= link_to 'All Variables', variables_path
+|
+= link_to 'View API/json', @variable.href
+|
+- if @variable.spec.present? && @variable.spec['references'].present?
+  - @variable.spec['references'].each do |ref|
+    = link_to 'Reference', ref
+    |
+= link_to 'Source Code',  @variable.spec['source']
+%p#notice= notice
+%h1= @variable.name
+%p This is a variable within Aotearoa/New Zealand's Legislation as Code experiment
+%h2= @variable.description
+%p
+  %strong Value type:
+  = @variable.spec['valueType']
+  \.
+  %strong Default Value:
+  = @variable.spec['defaultValue']
+  %strong Entity:
+  = @variable.spec['entity']
+- if @variable.variables.size.positive?
+  %h2 References
+  %p To calculate this variable, the following input is used:
+  = render 'references', variable: @variable
+- if @variable.reversed_variables.size.positive?
+  %h2 Referenced by:
+  %p This variable is referred to by these other variables in their own calculations
+  %ul
+    - @variable.reversed_variables.order(:name).each do |v|
+      %li= link_to v.name, v
+- if @variable.has_formula?
+  %h2 Formulas
+  %p
+    This is the formula used to calculate the value of #{@variable.name}
+  - @variable.spec['formulas'].each do |d, formula|
+    %h3= d
+    %pre= display_formula formula['content']
