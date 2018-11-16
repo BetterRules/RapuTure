@@ -1,6 +1,5 @@
 ---
 en:
-  'Entity:': Entity
   all_variables: All variables
   default_value: Default value
   entity: Entity
