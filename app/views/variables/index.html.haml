@@ -1,18 +1,7 @@
 %p#notice= notice
 %h1= t :variables
 
-- filter = @search.filter(:namespace)
-%p
-  Filter by #{filter.name}
-  .filter-values
-    %ul.selected
-      - filter.selected.each do |namespace|
-        %li= link_to namespace, filter.remove(namespace).path
-    %ul.selectable
-      - filter.facet.reject(&:selected).each do |facet_value|
-        - namespace = facet_value.entity
-        = link_to namespace, filter.add(namespace).path
-        %span.count= "(#{facet_value.count})"
+= render 'filters'
 %p
   %ul
     - @variables.each do |variable|

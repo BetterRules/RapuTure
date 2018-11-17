@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Variable < ApplicationRecord
+  translates :description
   extend FriendlyId
   friendly_id :name
 
@@ -20,10 +21,6 @@ class Variable < ApplicationRecord
     return spec['formulas'].present?
   end
 
-  def description
-    spec['description'] if spec.present?
-  end
-
   def fetch_all!
     json_response = of_conn.get('variables')
     ActiveRecord::Base.transaction do
@@ -41,9 +38,12 @@ class Variable < ApplicationRecord
 
   def fetch!
     json_response = of_conn.get("variable/#{name}")
-    update!(spec: json_response.body, namespace: parse_namespace)
-
     ActiveRecord::Base.transaction do
+      update!(
+        spec: json_response.body,
+        description: json_response.body['description'],
+        namespace: parse_namespace)
+
       variables.clear
 
       if has_formula?

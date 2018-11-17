@@ -1,8 +1,0 @@
-<% if variable.variables.size.positive? %>
-  <ul>
-    <%- variable.variables.order(:name).each do |v| %>
-      <li><%= link_to v.name, v %></li>
-      <%= render 'references', variable: v %>
-    <%end%>
-  </ul>
-<%end%>

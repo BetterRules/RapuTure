@@ -19,7 +19,7 @@ class VariablesController < ApplicationController
   def index
     @search = VariableSearch.new(params) 
     @variables = @search.result.distinct(false)
-    @namespace_filter = @search.filter(:namespace)
+    @filters = @search.filter(:namespace)
   end
 
   def show

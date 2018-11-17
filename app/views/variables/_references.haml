@@ -1,0 +1,7 @@
+- if variable.variables.size.positive?
+  %ul
+    - variable.variables.order(:name).each do |v|
+      %li
+        = link_to v.name, v
+        = v.description
+      = render 'references', variable: v
