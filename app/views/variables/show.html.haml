@@ -1,15 +1,16 @@
 = link_to t(:all_variables), variables_path
 |
-= link_to t(:view_api), @variable.href
-|
 - if @variable.spec.present? && @variable.spec['references'].present?
   - @variable.spec['references'].each do |ref|
     = link_to t(:reference), ref
     |
-= link_to 'Source Code',  @variable.spec['source']
-%p#notice= notice
+- if @variable.spec.present?
+  = link_to 'Source Code',  @variable.spec['source']
+
+= link_to t(:view_api), @variable.href
+
 %h1= @variable.name
-%p= t :variable_explanation #"This is a variable within Aotearoa/New Zealand's Legislation as Code experiment"
+%p= t :variable_explanation
 %h2= @variable.description
 %p
   %strong= t :value_type
@@ -29,10 +30,12 @@
   %ul
     - @variable.reversed_variables.order(:name).each do |v|
       %li= link_to v.name, v
+
 - if @variable.has_formula?
+
   %h2=t :formulas
   %p
     = t :formula_explanation, name: @variable.name
-  - @variable.spec['formulas'].each do |d, formula|
-    %h3= d
-    %pre= display_formula formula['content']
+    - @variable.spec['formulas'].each do |d, formula|
+      %h3= d
+      %pre= display_formula formula['content']
