@@ -7,17 +7,21 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
+    %meta{content: "width=device-width, initial-scale=1, shrink-to-fit=no", name: "viewport"}/
+
   %body
-    %p.notice= notice
-    %p.alert= alert
-    = yield
-    %p
-      %span
-        Computations powered by
-        = succeed "," do
-          %a{href: "https://openfisca.org", rel: "noopener", target: "_blank"}
-            %img{alt: "OpenFisca", height: "24", src: "https://openfisca.org/img/logo-openfisca.svg"}/
-        %a{href: "https://github.com/openfisca/openfisca-core"} source code
-        is used under an
-        %a{href: "https://choosealicense.com/licenses/agpl-3.0/", rel: "noopener", target: "_blank"} AGPL
-        license.
+    .container
+      %p.notice= notice
+      %p.alert= alert
+      = yield
+
+    .container
+      %p
+        %span
+          Computations powered by
+          = succeed "," do
+            %a{href: "https://openfisca.org", rel: "noopener", target: "_blank"}
+              %img{alt: "OpenFisca", height: "24", src: "https://openfisca.org/img/logo-openfisca.svg"}/
+          %a{href: "https://github.com/openfisca/openfisca-core"} source code
+          is used under an
+          %a{href: "https://choosealicense.com/licenses/agpl-3.0/", rel: "noopener", target: "_blank"} AGPL license.

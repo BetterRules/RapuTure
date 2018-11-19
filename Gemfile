@@ -45,11 +45,22 @@ gem 'friendly_id'
 
 gem 'haml'
 
-gem 'webpacker'
 gem 'react-rails'
+gem 'webpacker'
+
+# logins
 gem 'devise'
+
+# faceted search
 gem 'forty_facets'
+
+# Translations of model data
 gem 'globalize'
+
+# css
+gem 'bootstrap', '~> 4.1.3'
+
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -61,10 +72,10 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'i18n-tasks', '~> 0.9.28'
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'i18n-tasks', '~> 0.9.28'
 end
 
 group :test do

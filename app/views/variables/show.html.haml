@@ -29,7 +29,7 @@
   %p=t :referenced_explanation
   %ul
     - @variable.reversed_variables.order(:name).each do |v|
-      %li= link_to v.name, v
+      %li= render 'link', variable: v
 
 - if @variable.has_formula?
 
