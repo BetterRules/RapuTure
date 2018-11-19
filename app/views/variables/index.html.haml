@@ -1,7 +1,11 @@
 %p#notice= notice
+
 %h1= t :variables
 
+%p= t :variables_explanation
+
 = render 'filters'
+
 %p
   %ul
     - @variables.each do |variable|

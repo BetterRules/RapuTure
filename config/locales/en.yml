@@ -11,5 +11,6 @@ en:
   references_explanation: To calculate this variable, the following input is used
   value_type: Value type
   variable_explanation: This is a variable within Aotearoa/New Zealand's Legislation as Code experiment
+  variables_explanation: Variables available (so far) in Aotearoa/New Zealand's Legislation as Code experiment
   variables: Variables
   view_api: View API
