@@ -1,17 +1,17 @@
-= link_to t(:all_variables), variables_path
-|
-- if @variable.spec.present? && @variable.spec['references'].present?
-  - @variable.spec['references'].each do |ref|
-    = link_to t(:reference), ref
-    |
-- if @variable.spec.present?
-  = link_to 'Source Code',  @variable.spec['source']
+%ul.nav
+  %li.nav-item
+    = link_to t(:all_variables), variables_path, class: 'nav-link active'
+  - if @variable.spec.present? && @variable.spec['references'].present?
+    - @variable.spec['references'].each do |ref|
+      %li= link_to t(:reference), ref, class: 'nav-link'
+  - if @variable.spec.present?
+    %li= link_to 'Source Code',  @variable.spec['source'], class: 'nav-link'
+  %li= link_to t(:view_api), @variable.href, class: 'nav-link'
 
-= link_to t(:view_api), @variable.href
 
 %h1= @variable.name
-%p= t :variable_explanation
 %h2= @variable.description
+%p= t :variable_explanation
 %p
   %strong= t :value_type
   = @variable.spec['valueType']
@@ -21,7 +21,7 @@
   %strong=t :entity
   = @variable.spec['entity']
 - if @variable.variables.size.positive?
-  %h2 References
+  %h2= t :references
   %p= t :references_explanation
   = render 'references', variable: @variable
 - if @variable.reversed_variables.size.positive?
@@ -38,5 +38,7 @@
     = t :formula_explanation, name: @variable.name
     - @variable.spec['formulas'].each do |d, formula|
       %h3= d
-      %p This formula is used for scenarios from the date #{d} onwards
+      %p
+        This formula is used for scenarios from the date #{d} onwards.
+        = link_to 'More info on formulas', 'https://openfisca.org/doc/coding-the-legislation/10_basic_example.html'
       %pre= display_formula formula['content']

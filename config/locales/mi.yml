@@ -8,8 +8,10 @@ mi:
   reference: Reference
   referenced_by: Referenced by
   referenced_explanation: This variable is referred to by these other variables in their own calculations
+  references: References
   references_explanation: To calculate this variable, the following input is used
   value_type: Value type
   variable_explanation: This is a variable within Aotearoa/New Zealand's Legislation as Code experiment
   variables: Variables
+  variables_explanation: Variables available (so far) in Aotearoa/New Zealand's Legislation as Code experiment
   view_api: View API

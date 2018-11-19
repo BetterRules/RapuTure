@@ -1,12 +1,18 @@
 %p#notice= notice
 
-%h1= t :variables
-
-%p= t :variables_explanation
+.jumbotron
+  %h1.display-4 Variables
+  %p.lead= t :variables_explanation
+  = link_to 'https://www.digital.govt.nz/blog/global-coverage-of-our-legislation-as-code-work/', class: 'btn btn-primary btn-lg', role: 'button' do
+    Learn more
 
 = render 'filters'
 
-%p
-  %ul
-    - @variables.each do |variable|
-      %li= link_to variable.description, variable
+.card-columns
+  - @variables.each do |variable|
+    .card
+      .card-body
+        %h5.card-title= link_to variable.name, variable
+        %p.card-text
+          =variable.description
+        %span.badge.badge-primary=variable.namespace
