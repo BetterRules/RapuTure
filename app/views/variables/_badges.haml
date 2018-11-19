@@ -1,0 +1,5 @@
+%span.badge.badge-primary=variable.namespace
+%span.badge.badge-secondary=variable.value_type
+%span.badge.badge-success=variable.entity
+- if variable.has_formula?
+  %span.badge.badge-info formula included

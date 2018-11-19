@@ -8,6 +8,7 @@
     %li= link_to 'Source Code',  @variable.spec['source'], class: 'nav-link'
   %li= link_to t(:view_api), @variable.href, class: 'nav-link'
 
+= render 'badges', variable: @variable
 
 %h1= @variable.name
 %h2= @variable.description

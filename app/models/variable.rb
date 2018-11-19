@@ -20,6 +20,10 @@ class Variable < ApplicationRecord
   def has_formula?
     spec['formulas'].present?
   end
+  
+  def entity
+    spec['entity']
+  end
 
   def value_type
     spec['valueType']

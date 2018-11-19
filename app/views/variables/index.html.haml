@@ -13,6 +13,5 @@
     .card
       .card-body
         %h5.card-title= link_to variable.name, variable
-        %p.card-text
-          =variable.description
-        %span.badge.badge-primary=variable.namespace
+        %p.card-text=variable.description
+        = render 'badges', variable: variable
