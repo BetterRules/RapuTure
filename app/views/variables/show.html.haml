@@ -38,4 +38,5 @@
     = t :formula_explanation, name: @variable.name
     - @variable.spec['formulas'].each do |d, formula|
       %h3= d
+      %p This formula is used for scenarios from the date #{d} onwards
       %pre= display_formula formula['content']
