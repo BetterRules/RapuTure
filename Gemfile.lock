@@ -100,6 +100,8 @@ GEM
     faraday_middleware (0.12.2)
       faraday (>= 0.7.4, < 1.0)
     ffi (1.9.25)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
     forty_facets (0.1.8)
     friendly_id (5.2.4)
       activerecord (>= 4.0.0)
@@ -295,6 +297,7 @@ DEPENDENCIES
   devise
   faraday
   faraday_middleware
+  font-awesome-rails
   forty_facets
   friendly_id
   globalize
@@ -321,4 +324,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.4
+   1.16.6
