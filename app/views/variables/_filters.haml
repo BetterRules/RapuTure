@@ -1,13 +1,14 @@
-- if @filters.selected.size.positive?
+- if @namespace_filter.selected.size.positive?
   %p
     Current filters
     %ul.selected
-      - @filters.selected.each do |namespace|
-        %li= link_to namespace, @filters.remove(namespace).path
+      - @namespace_filter.selected.each do |namespace|
+        %li
+          = link_to namespace, @namespace_filter.remove(namespace).path
 %p
-  Available filters for #{@filters.name}
+  Available filters for #{@namespace_filter.name}
   %ul.selectable
-    - @filters.facet.reject(&:selected).each do |facet_value|
+    - @namespace_filter.facet.reject(&:selected).each do |facet_value|
       - namespace = facet_value.entity
-      = link_to namespace.present? ? namespace : 'none', @filters.add(namespace).path
+      = link_to namespace.present? ? namespace : 'none', @namespace_filter.add(namespace).path
       %span.count= "(#{facet_value.count})"
