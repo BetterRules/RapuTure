@@ -1,0 +1,25 @@
+sudo: required
+language: ruby
+cache:
+  bundler: true
+before_install:
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+script:
+- RAILS_ENV=test bundle exec rake db:create db:migrate
+- bundle exec rspec
+after_script:
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT -t simplecov --id $CC_TEST_REPORTER_ID"
+# deploy:
+#   provider: heroku
+#   skip_cleanup: true
+#   on:
+#     repo: ServiceInnovationLab/PresenceChecker
+#   app:
+#     dev: rulesnz-staging
+#     master: rulesnz
+  run:
+  - bundle install
+  - bundle exec rake db:migrate
+  - bundle exec rake assets:precompile
+  - restart
