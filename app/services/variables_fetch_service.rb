@@ -1,26 +1,23 @@
 # frozen_string_literal: true
 
+
 class VariablesFetchService
   def self.fetch_all
     json_response = of_conn.get('variables').body
-    ActiveRecord::Base.transaction do
-      json_response.keys.each do |name|
-        variable = Variable.find_or_initialize_by(name: name)
-        fetch(variable)
-      end
+    json_response.keys.each do |name|
+      fetch(Variable.find_or_initialize_by(name: name))
     end
   end
 
   def self.fetch(variable)
     spec = of_conn.get("variable/#{variable.name}").body
     ActiveRecord::Base.transaction do
-      variable.update!(
-        spec: spec,
-        href: spec['href'],
-        description: spec['description'],
-        value_type: ValueType.find_or_create_by(name: spec['valueType']),
-        namespace: parse_namespace(variable.name)
-      )
+      variable.spec = spec
+      variable.href = spec['href']
+      variable.description = spec['description']
+      variable.value_type = ValueType.find_or_create_by(name: spec['valueType'])
+      variable.namespace = parse_namespace(variable.name)
+      variable.save!
 
       # variable.variables.clear
 
