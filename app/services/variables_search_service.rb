@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class VariablesSearchService < FortyFacets::FacetSearch
   model 'Variable' # which model to search for
   text :name # filter by a generic string entered by the user
