@@ -16,8 +16,4 @@ class VariablesController < ApplicationController
   def set_variable
     @variable = Variable.find_by(name: params[:id])
   end
-
-  def variable_params
-    params.fetch(:variable, {})
-  end
 end
