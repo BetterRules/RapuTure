@@ -4,7 +4,7 @@ class VariablesController < ApplicationController
   before_action :set_variable, only: %i[show edit update destroy]
   def index
     @search = VariablesSearchService.new(params)
-    @variables = @search.result.distinct(false).order(:name)
+    @variables = @search.result.distinct(false).includes(:variables, :value_type).order(:name)
     @namespace_filter = @search.filter(:namespace)
   end
 
