@@ -1,0 +1,16 @@
+= label_tag variable.name.to_sym
+
+- field_name = "answers[#{variable.name}]"
+
+- if variable.value_type.name == 'Boolean'
+  = radio_button_tag(field_name, :yes)
+  = label_tag(:yes, t("Yes"))
+  = radio_button_tag(field_name, :no)
+  = label_tag(:no, t("No"))
+- elsif variable.value_type.name == 'Float'
+  = number_field_tag(field_name)
+- elsif variable.value_type.name == 'Int'
+  = number_field_tag(field_name)
+- elsif variable.value_type.name == 'Date'
+  = date_field(field_name)
+%br/
