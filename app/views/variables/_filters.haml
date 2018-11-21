@@ -1,14 +1,14 @@
 - if @namespace_filter.selected.size.positive?
+  %h6 Current filters
   %p
-    Current filters
-    %ul.selected
-      - @namespace_filter.selected.each do |namespace|
-        %li
-          = link_to namespace, @namespace_filter.remove(namespace).path
+    - @namespace_filter.selected.each do |namespace|
+      = link_to @namespace_filter.remove(namespace).path do
+        = t(namespace.to_sym)
+        = fa_icon 'close'
+
+%h6 Available filters for #{@namespace_filter.name}
 %p
-  Available filters for #{@namespace_filter.name}
-  %ul.selectable
-    - @namespace_filter.facet.reject(&:selected).each do |facet_value|
-      - namespace = facet_value.entity
-      = link_to namespace.present? ? namespace : 'none', @namespace_filter.add(namespace).path
+  - @namespace_filter.facet.reject(&:selected).each do |facet_value|
+    - if facet_value.entity
+      = link_to t(facet_value.entity.to_sym), @namespace_filter.add(facet_value.entity).path
       %span.count= "(#{facet_value.count})"

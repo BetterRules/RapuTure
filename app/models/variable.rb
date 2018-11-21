@@ -5,6 +5,8 @@ class Variable < ApplicationRecord
   extend FriendlyId
   friendly_id :name
 
+  belongs_to :value_type
+
   has_and_belongs_to_many(:variables,
                           class_name: 'Variable',
                           join_table: 'links',
@@ -25,7 +27,7 @@ class Variable < ApplicationRecord
     spec['entity']
   end
 
-  def value_type
-    spec['valueType']
-  end
+  # def value_type
+  #   spec['valueType']
+  # end
 end

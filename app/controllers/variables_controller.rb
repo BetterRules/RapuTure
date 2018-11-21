@@ -8,7 +8,8 @@ class VariablesController < ApplicationController
     @namespace_filter = @search.filter(:namespace)
   end
 
-  def show; end
+  def show
+  end
 
   private
 

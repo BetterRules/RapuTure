@@ -2,22 +2,23 @@
 
 class VariablesFetchService
   def self.fetch_all
-    json_response = of_conn.get('variables')
+    json_response = of_conn.get('variables').body
     ActiveRecord::Base.transaction do
-      Variable.delete_all
-      json_response.body.keys.each do |name|
-        v = Variable.find_or_create_by(name: name, href: json_response.body[name]['href'])
-        v.update(description: json_response.body[name]['description'])
+      json_response.keys.each do |name|
+        variable = Variable.find_or_initialize_by(name: name)
+        fetch(variable)
       end
     end
   end
 
   def self.fetch(variable)
-    json_response = of_conn.get("variable/#{variable.name}")
+    spec = of_conn.get("variable/#{variable.name}").body
     ActiveRecord::Base.transaction do
       variable.update!(
-        spec: json_response.body,
-        description: json_response.body['description'],
+        spec: spec,
+        href: spec['href'],
+        description: spec['description'],
+        value_type: ValueType.find_or_create_by(name: spec['valueType']),
         namespace: parse_namespace(variable.name)
       )
 
@@ -45,7 +46,7 @@ class VariablesFetchService
   end
 
   def self.of_conn
-    Faraday.new 'http://api.rules.nz/' do |conn|
+    Faraday.new ENV['OPENFISCA_URL'] do |conn|
       conn.response :json, content_type: /\bjson$/
       conn.adapter Faraday.default_adapter
     end

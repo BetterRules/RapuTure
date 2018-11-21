@@ -1,10 +1,11 @@
 - if variable.namespace.present?
-  %span.badge.badge-primary=variable.namespace
-%span.badge.badge-secondary=variable.value_type
-%span.badge.badge-success=variable.entity
+  %span.badge.badge-primary= t variable.namespace.to_sym
+%span.badge.badge-secondary=variable.value_type.name
+- if variable.entity.present?
+  %span.badge.badge-success= t variable.entity.to_sym
 - if variable.has_formula?
-  %span.badge.badge-info formula included
+  %span.badge.badge-info= t :formula_included
 - if variable.reversed_variables.size.positive?
   %span.badge.badge-dark used #{pluralize variable.reversed_variables.size, 'time'}
 - elsif variable.variables.size == 0
-  %span.badge.badge-warning{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself'} orphaned
+  %span.badge.badge-warning{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself'}= t :orphaned
