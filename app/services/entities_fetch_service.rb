@@ -5,10 +5,11 @@ class EntitiesFetchService
   def self.fetch_all
     json_response = of_conn.get('entities').body
     json_response.keys.each do |name|
+      spec = json_response[name]
       entity = Entity.find_or_initialize_by(name: name)
-      entity.spec = json_response
-      entity.description = json_response['description']
-      entity.plural = json_response['plural']
+      entity.spec = spec
+      entity.description = spec['description']
+      entity.plural = spec['plural']
       entity.save!
       puts entity
     end

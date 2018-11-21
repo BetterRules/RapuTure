@@ -11,6 +11,17 @@ class VariablesController < ApplicationController
   def show
   end
 
+  def calculate
+    @query = {}
+    Entity.all.each do |entity|
+      @query[entity.plural] = {"named_#{entity.name}" => {}}
+    end
+    params.require(:answers).keys.each do |variable_name|
+      variable = Variable.find_by(name: variable_name)
+      @query[variable.entity.plural]["named_#{variable.entity.name}"][variable.name] = {}
+    end
+  end
+
   private
 
   def set_variable

@@ -10,5 +10,5 @@
 %p
   - @namespace_filter.facet.reject(&:selected).each do |facet_value|
     - if facet_value.entity
-      = link_to t(facet_value.entity.to_sym), @namespace_filter.add(facet_value.entity).path
+      = link_to t(facet_value.entity.name.to_sym), @namespace_filter.add(facet_value.entity).path
       %span.count= "(#{facet_value.count})"

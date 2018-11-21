@@ -2,7 +2,7 @@
   %span.badge.badge-primary= t variable.namespace.to_sym
 %span.badge.badge-secondary=variable.value_type.name
 - if variable.entity.present?
-  %span.badge.badge-success= t variable.entity.to_sym
+  %span.badge.badge-success= t variable.entity.name.to_sym
 - if variable.has_formula?
   %span.badge.badge-info= t :formula_included
 - if variable.reversed_variables.size.positive?

@@ -19,13 +19,17 @@ class Variable < ApplicationRecord
                           foreign_key: 'link_from',
                           association_foreign_key: 'link_to')
 
+  def entity
+    Entity.find_by(name: spec['entity'])
+  end
+  
   def has_formula?
     spec['formulas'].present?
   end
   
-  def entity
-    spec['entity']
-  end
+  # def entity
+  #   spec['entity']
+  # end
 
   # def value_type
   #   spec['valueType']

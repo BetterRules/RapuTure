@@ -24,13 +24,14 @@ class VariablesFetchService
       if variable.has_formula?
         variable.spec['formulas'].each do |_d, formula|
           Variable.all.each do |v|
-            # Is this variable refences
+            # Is this variable referenced?
             if formula['content'].include?("'#{v.name}'") || formula['content'].include?("\"#{v.name}\"")
               # Add it to .variables, if it's not there
               variable.variables << v unless variable.variables.include? v
-            else
+            elsif variable.variables.include? v
+              # It's not referenced, so we'll need to check if it's recorded previously and
               # remove it from from .varibles if it's there
-              variable.variables.delete(v) if variable.variables.include? v
+              variable.variables.delete(v) 
             end
           end
         end

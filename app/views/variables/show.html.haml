@@ -38,6 +38,15 @@
 
 - if @variable.has_formula?
   %hr/
+  %h3= t :calculate
+
+  = form_tag(controller: "variables", action: "calculate", method: "post") do
+    - @variable.variables.each do |v|
+      = render 'form', variable: v
+    = submit_tag "calculate"
+
+
+  %hr/
   %h3=t :formulas
   %p
     = t :formula_explanation, name: @variable.name
