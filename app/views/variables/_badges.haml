@@ -1,6 +1,7 @@
 - if variable.namespace.present?
   %span.badge.badge-primary= t variable.namespace.to_sym
 %span.badge.badge-secondary=variable.value_type.name
+%span.badge.badge-secondary=variable.spec['definitionPeriod']
 - if variable.entity.present?
   %span.badge.badge-success= t variable.entity.to_sym
 - if variable.has_formula?
