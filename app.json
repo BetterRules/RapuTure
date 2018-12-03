@@ -1,0 +1,50 @@
+{
+  "name": "RapuTure",
+  "scripts": {
+    "postdeploy": "rake db:migrate"
+  },
+  "env": {
+    "BONSAI_URL": {
+      "required": true
+    },
+    "LANG": {
+      "required": true
+    },
+    "OPENFISCA_URL": {
+      "required": true
+    },
+    "RACK_ENV": {
+      "required": true
+    },
+    "RAILS_ENV": {
+      "required": true
+    },
+    "RAILS_LOG_TO_STDOUT": {
+      "required": true
+    },
+    "RAILS_SERVE_STATIC_FILES": {
+      "required": true
+    },
+    "SECRET_KEY_BASE": {
+      "required": true
+    }
+  },
+  "formation": {
+    "fetch": {
+      "quantity": 1
+    },
+    "web": {
+      "quantity": 1
+    }
+  },
+  "addons": [
+    "bonsai",
+    "heroku-postgresql",
+    "scheduler"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/ruby"
+    }
+  ]
+}
