@@ -27,6 +27,12 @@ class Variable < ApplicationRecord
     spec['entity']
   end
 
+  def github_url
+   "#{ENV['GITHUB_URL']}#{spec['source'].gsub('//', '/tree/master/').gsub('blob', '').gsub('/app/', '/')}"
+ rescue
+   nil
+  end
+
   # def value_type
   #   spec['valueType']
   # end
