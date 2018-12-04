@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 class VariablesFetchService
   def self.fetch_all
     json_response = of_conn.get('variables').body
