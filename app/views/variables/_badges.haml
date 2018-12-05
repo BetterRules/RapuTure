@@ -1,21 +1,21 @@
-- if variable.namespace.present?
-  %span.badge.badge-primary= t variable.namespace.to_sym
+- cache variable do
+  - if variable.namespace.present?
+    %span.badge.badge-primary= t variable.namespace.to_sym
 
-%span.badge.badge-secondary=variable.value_type.name
+  %span.badge.badge-secondary=variable.value_type.name
 
-%span.badge.badge-secondary=variable.spec['definitionPeriod']
+  %span.badge.badge-secondary=variable.spec['definitionPeriod']
 
-- if variable.entity.present?
-  %span.badge.badge-success= t variable.entity.to_sym
+  - if variable.entity.present?
+    %span.badge.badge-success= t variable.entity.to_sym
 
-- if variable.has_formula?
-  %span.badge.badge-info= t :formula_included
+  - if variable.has_formula?
+    %span.badge.badge-info= t :formula_included
 
-- if variable.reversed_variables.size.positive?
-  %span.badge.badge-dark used #{pluralize variable.reversed_variables.size, 'time'}
-- elsif variable.variables.size == 0
-  %span.badge.badge-warning{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself'}= t :orphaned
+  - if variable.reversed_variables.size.positive?
+    %span.badge.badge-dark used #{pluralize variable.reversed_variables.size, 'time'}
+  - elsif variable.variables.size == 0
+    %span.badge.badge-warning{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself'}= t :orphaned
 
-- unless variable.description
-  %span.badge.badge-danger{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'No label defined for this variable'}= t :label_missing
-  
+  - unless variable.description
+    %span.badge.badge-danger{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'No label defined for this variable'}= t :label_missing

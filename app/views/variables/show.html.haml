@@ -1,3 +1,6 @@
+- content_for(:title) do
+  = @variable.name
+
 
 %nav{"aria-label" => "breadcrumb"}
   %ol.breadcrumb
@@ -29,37 +32,38 @@
   = @variable.spec['entity']
 
 
-- if @variable.variables.size.positive?
-  %hr/
-  %h3= t :references
-  %p= t :references_explanation
-  = render 'references', variable: @variable
-- if @variable.reversed_variables.size.positive?
-  %hr/
-  %h3=t :referenced_by
-  %p=t :referenced_explanation
-  %ul
-    - @variable.reversed_variables.order(:name).each do |v|
-      %li= render 'link', variable: v
+- cache @variable do
+  - if @variable.variables.size.positive?
+    %hr/
+    %h3= t :references
+    %p= t :references_explanation
+    = render 'references', variable: @variable
+  - if @variable.reversed_variables.size.positive?
+    %hr/
+    %h3=t :referenced_by
+    %p=t :referenced_explanation
+    %ul
+      - @variable.reversed_variables.order(:name).each do |v|
+        %li= render 'link', variable: v
 
-- if @variable.has_formula?
+  - if @variable.has_formula?
+    %hr/
+    %h3=t :formulas
+    %p
+      = t :formula_explanation, name: @variable.name
+      - @variable.spec['formulas'].each do |d, formula|
+        %h3= d
+        %p
+          This formula is used for scenarios from the date #{d} onwards.
+          = link_to 'More info on formulas', 'https://openfisca.org/doc/coding-the-legislation/10_basic_example.html'
+        %pre= display_formula formula['content']
+
+
   %hr/
-  %h3=t :formulas
-  %p
-    = t :formula_explanation, name: @variable.name
-    - @variable.spec['formulas'].each do |d, formula|
-      %h3= d
-      %p
-        This formula is used for scenarios from the date #{d} onwards.
-        = link_to 'More info on formulas', 'https://openfisca.org/doc/coding-the-legislation/10_basic_example.html'
-      %pre= display_formula formula['content']
-
-
-%hr/
-%ul.nav
-  - if @variable.spec.present? && @variable.spec['references'].present?
-    - @variable.spec['references'].each do |ref|
-      %li= link_to t(:reference), ref, class: 'nav-link'
-  - if @variable.spec.present?
-    %li= link_to 'Source Code',  @variable.github_url, class: 'nav-link'
-  %li= link_to t(:view_api), @variable.href, class: 'nav-link'
+  %ul.nav
+    - if @variable.spec.present? && @variable.spec['references'].present?
+      - @variable.spec['references'].each do |ref|
+        %li= link_to t(:reference), ref, class: 'nav-link'
+    - if @variable.spec.present?
+      %li= link_to 'Source Code',  @variable.github_url, class: 'nav-link'
+    %li= link_to t(:view_api), @variable.href, class: 'nav-link'
