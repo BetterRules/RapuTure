@@ -1,4 +1,5 @@
 %h1= @entity.description
+= render 'badges', entity: @entity
 
 %p
   = render_markdown(@entity.documentation) if @entity.documentation.present?
@@ -12,7 +13,6 @@
       .card{:style => "width: 18rem;"}
         .card-body
           %h5.card-title= role.name
-          = render 'badges', entity: @entity
           %p.card-text= role.description
 
 
