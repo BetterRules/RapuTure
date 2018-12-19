@@ -3,7 +3,7 @@
 class Entity < ApplicationRecord
   extend FriendlyId
   friendly_id :name
-  
+
   has_many :roles
   has_many :variables
 
