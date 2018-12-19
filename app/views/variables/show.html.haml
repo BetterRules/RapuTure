@@ -2,13 +2,11 @@
   = @variable.name
 
 
-%nav{"aria-label" => "breadcrumb"}
-  %ol.breadcrumb
-    %li.breadcrumb-item= link_to t(:all_variables), variables_path
-    - if @variable.namespace.present?
-      %li.breadcrumb-item
-        = t @variable.namespace.to_sym
-    %li.breadcrumb-item.active{"aria-current" => "page"}= @variable.name
+- content_for(:breadcrumbs) do
+  - if @variable.namespace.present?
+    %li.breadcrumb-item
+      = t @variable.namespace.to_sym
+  %li.breadcrumb-item.active{"aria-current" => "page"}= @variable.name
 
 
 %h3

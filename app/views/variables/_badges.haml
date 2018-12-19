@@ -7,7 +7,7 @@
   %span.badge.badge-secondary=variable.spec['definitionPeriod']
 
   - if variable.entity.present?
-    %span.badge.badge-success= t variable.entity.to_sym
+    %span.badge.badge-success= link_to variable.entity.name, variable.entity
 
   - if variable.has_formula?
     %span.badge.badge-info= t :formula_included

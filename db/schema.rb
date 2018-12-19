@@ -10,16 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_21_000516) do
+ActiveRecord::Schema.define(version: 2018_11_21_222908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "entities", force: :cascade do |t|
+    t.text "name"
+    t.text "description"
+    t.text "documentation"
+    t.text "plural"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "links", force: :cascade do |t|
     t.integer "link_to"
     t.integer "link_from"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.bigint "entity_id"
+    t.text "name"
+    t.text "plural"
+    t.text "description"
+    t.integer "max"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["entity_id"], name: "index_roles_on_entity_id"
   end
 
   create_table "value_types", force: :cascade do |t|
@@ -42,13 +62,16 @@ ActiveRecord::Schema.define(version: 2018_11_21_000516) do
     t.text "name", null: false
     t.text "description"
     t.text "href"
+    t.json "spec"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "namespace"
-    t.json "spec"
     t.bigint "value_type_id"
+    t.bigint "entity_id"
+    t.index ["entity_id"], name: "index_variables_on_entity_id"
     t.index ["value_type_id"], name: "index_variables_on_value_type_id"
   end
 
+  add_foreign_key "variables", "entities"
   add_foreign_key "variables", "value_types"
 end

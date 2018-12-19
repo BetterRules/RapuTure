@@ -1,0 +1,23 @@
+%h1= @entity.description
+
+%p
+  = render_markdown(@entity.documentation) if @entity.documentation.present?
+
+
+- if @entity.roles.size.positive?
+  %h2 Roles within #{@entity.description}
+
+  .card-columns
+    - @entity.roles.each do |role|
+      .card{:style => "width: 18rem;"}
+        .card-body
+          %h5.card-title= role.name
+          = render 'badges', entity: @entity
+          %p.card-text= role.description
+
+
+%h3 Variables than you can set for a #{@entity.description}
+
+- @entity.variables.order(:namespace, :name).each do |v|
+  %li{class: v.value_type.name}
+    = render 'variables/link', variable: v

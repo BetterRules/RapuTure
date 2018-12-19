@@ -48,9 +48,6 @@ gem 'haml'
 gem 'react-rails'
 gem 'webpacker'
 
-# logins
-gem 'devise'
-
 # faceted search
 gem 'forty_facets'
 
@@ -62,7 +59,10 @@ gem 'bootstrap', '~> 4.1.3'
 
 gem 'jquery-rails'
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
+
+# Markdown
+gem 'redcarpet'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

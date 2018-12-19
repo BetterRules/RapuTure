@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class Variable < ApplicationRecord
+  validates :name, presence: true
+  validates :entity, presence: true
   translates :description
   extend FriendlyId
   friendly_id :name
 
   belongs_to :value_type
+  belongs_to :entity
 
   has_and_belongs_to_many(:variables,
                           class_name: 'Variable',
@@ -23,17 +26,17 @@ class Variable < ApplicationRecord
     spec['formulas'].present?
   end
 
-  def entity
-    spec['entity']
-  end
-
   def github_url
-   "#{ENV['GITHUB_URL']}#{spec['source'].gsub('//', '/tree/master/').gsub('blob', '').gsub('/app/', '/')}"
- rescue
-   nil
+    "#{ENV['GITHUB_URL']}#{spec['source'].gsub('//', '/tree/master/').gsub('blob', '').gsub('/app/', '/')}"
+  rescue StandardError
+    nil
   end
 
   # def value_type
   #   spec['valueType']
-  # end
+  # endan
+
+  def to_s
+    name
+  end
 end

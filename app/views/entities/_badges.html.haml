@@ -1,0 +1,24 @@
+- if entity.variables.size.positive?
+  %span.badge.badge-dark #{pluralize entity.variables.size, 'variable'}
+
+- if entity.roles.size.positive?
+  %span.badge.badge-dark #{pluralize entity.roles.size, 'role'}
+
+
+-#   - if entity.namespace.present?
+-#     %span.badge.badge-primary= t entity.namespace.to_sym
+
+-#   %span.badge.badge-secondary=entity.value_type.name
+
+-#   %span.badge.badge-secondary=entity.spec['definitionPeriod']
+
+-#   - if entity.entity.present?
+-#     %span.badge.badge-success= t entity.entity.name.to_sym
+
+-#   - if entity.has_formula?
+-#     %span.badge.badge-info= t :formula_included
+-#   - elsif entity.entitys.size == 0
+-#     %span.badge.badge-warning{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself'}= t :orphaned
+
+-#   - unless entity.description
+-#     %span.badge.badge-danger{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'No label defined for this entity'}= t :label_missing

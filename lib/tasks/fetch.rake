@@ -11,4 +11,11 @@ namespace :fetch do
       VariablesFetchService.fetch(v)
     end
   end
+  task entities: :environment do
+    EntitiesFetchService.fetch_all
+    # Entity.all.each do |v|
+    #   puts v.name
+    #   EntitiesFetchService.fetch(v)
+    # end
+  end
 end
