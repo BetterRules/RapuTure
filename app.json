@@ -4,9 +4,6 @@
     "postdeploy": "rake db:migrate"
   },
   "env": {
-    "BONSAI_URL": {
-      "required": true
-    },
     "LANG": {
       "required": true
     },
