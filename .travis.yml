@@ -10,16 +10,22 @@ script:
 - bundle exec rspec
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT -t simplecov --id $CC_TEST_REPORTER_ID"
-# deploy:
-#   provider: heroku
-#   skip_cleanup: true
-#   on:
-#     repo: ServiceInnovationLab/PresenceChecker
-#   app:
-#     dev: rulesnz-staging
-#     master: rulesnz
+deploy:
+  provider: heroku
+  skip_cleanup: true
+  api_key:
+    secure: Uz6q19RTSuJ+pt2MgyHyEcQQSkQgg3FKlBXVR6A+dVxhUK2f+RSDCotS+fGp/KSxGXgWkP4955WznaJDcb9Khj2IKA79HdtIrA/ZeneiDqp+H47N0BpA8T3FkEj6URNqdulXBOLbvF8tAmQVzU+9nmnSXakjM4PSBxcfQuFj0EgvmHYqWuet7cjoJoZXSBMlgFG3hGWQOF7iJLL9nyGv1dkDfRXqINs2nwvLYfUa/2HinTTak3qDRJO9RPYSubDefhxntH9X7B0cAKBe5a4anLgq9XY2kJoCHXbno1VjVCe/IPwlhT+7yhCnSHcQpYG0hQuTSDkt6kM5GFYXHnjoGCKWNv/xzZRzYIIww1Bsmo96dnswALnfZV8YG+i+3ULd7xRyImivrNh5nqiQ8MiwsXYbXREev6JWlo2IbaLmCxF+HMPxp8mwK8Zl9i7uoF/iMQ+btjRRQC+ll/akIzy4474HV64cvH5HyNMla6iUWUYqxQ9/aHtu7QKEaWZIAMA3yrzOBnF2fQBGJFC7HF6lQl9d0FkDI3zCsxiGPBwYFG0cDTLNZxj+H3HR2ifFSJAb4DqgNIttLwFXeSbos+139tK2CpqCfNBsYzXTCez0JJmgYq0dua26IlVtlD+QP3WnSUBfkQmNs5LlcWklrx/FxQ3Y5r1teVR0dUXFAcueyn4=
+  on:
+    repo: ServiceInnovationLab/RapuTure
+  app:
+    dev: rulestestnz
+    master: raputure
+
   run:
   - bundle install
   - bundle exec rake db:migrate
   - bundle exec rake assets:precompile
   - restart
+env:
+  global:
+    secure: T7+npfKb6EW0G++OP4C91y2WMrMYyOrozeNT1WPCuedd5vKdILSskMz5LBav54F0J6OBbwozH82e0xclMTa23VuOrc9805tEcwtSRdDYb/mIb7F6gEyseqLIk/TZvDfmB5Yrrji0IVX9s5q0OKfVVb0rTrgh87pSRW2YnYAu41k6v2pK/OquixQX0sogblOLfKYprqh4h3Ay6+1IIDmC/lg0XSe+0xRFBZ5FJk0ycStu74xM+qbphIFgzd6q2kChFqRrOporeCgN3WSAFsQd7QneLITN3eucH9AR0OC9Udpuxr8tvAqTfy7Lo3ogj9PTYjD60ObQjcr212d/isSaZd6Zk2wHH35bzsZU3Y5f6vsILiZVJY2rDPkf7A6jMrWSPw8jd/CRizFjedveF9jCy3J2viwNI23y4Ce+sQkc5u0dAV3Z7n5Avy1R/UjyBpRoYb7VhfX1mZTKsVfLPoOxMuvChyOAL4MZGR83N9emHoLFL1r/JsRlqtun/F8i7vsu3OmqpO9ZcexEh+jx1Hqt6qSizNto6bQkKQ5WOul0kfT9U4kIHcKe0EIsUmD2d6CYLXBIYuSitp3/Fq/yX/tUwm9tJED+J0g76g8ItFAznf+7nYe4MSh039ehOKXLW4v+w6624RYfmjCauNHb4HSmwE0n2y8XgLwat7Tj1hwV8Qc=
