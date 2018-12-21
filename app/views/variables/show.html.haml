@@ -11,8 +11,6 @@
 
 %h3
   -if @variable.description
-    This
-    %strong= @variable.spec['entity']
     = @variable.description
   - else
     = @variable.name
@@ -29,6 +27,9 @@
   %strong=t :entity
   = @variable.spec['entity']
 
+  - if @variable.unit.present?
+    %strong=t :unit
+    = @variable.unit
 
 - cache @variable do
   - if @variable.variables.size.positive?

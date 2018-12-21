@@ -4,10 +4,10 @@
 
   %span.badge.badge-secondary=variable.value_type.name
 
-  %span.badge.badge-secondary=variable.spec['definitionPeriod']
+  %span.badge.badge-secondary=t variable.spec['definitionPeriod']
 
   - if variable.entity.present?
-    %span.badge.badge-success= link_to variable.entity.name, variable.entity
+    %span.badge.badge-success= link_to t(variable.entity.name), variable.entity
 
   - if variable.has_formula?
     %span.badge.badge-info= t :formula_included

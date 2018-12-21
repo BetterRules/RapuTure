@@ -32,10 +32,6 @@ class Variable < ApplicationRecord
     nil
   end
 
-  # def value_type
-  #   spec['valueType']
-  # endan
-
   def to_s
     name
   end
