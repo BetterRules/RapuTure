@@ -17,7 +17,6 @@
 
 
 %h3 Variables than you can set for a #{@entity.description}
-
-- @entity.variables.order(:namespace, :name).each do |v|
-  %li{class: v.value_type.name}
-    = render 'variables/link', variable: v
+.card-columns
+  - @entity.variables.order(:namespace, :name).each do |variable|
+    = render 'variables/card', variable: variable
