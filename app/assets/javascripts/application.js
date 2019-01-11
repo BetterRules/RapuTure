@@ -18,7 +18,6 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-
 $(() => {
   $('[data-toggle="tooltip"]').tooltip();
 });
