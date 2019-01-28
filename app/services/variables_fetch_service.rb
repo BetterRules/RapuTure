@@ -8,8 +8,13 @@ class VariablesFetchService
   #
   # Returns the loaded Variables, as a streamed enumerable
   def self.fetch_all
-    variables_list.keys.each do |name|
-      variable = Variable.find_or_initialize_by(name: name)
+    variables_list.each do |v|
+      # Find or create the Variable model
+      variable = Variable.find_or_initialize_by(name: v.first)
+      # Update the model with attributes retrieved from the server
+      # Note that the href value is available here but is not populated in .fetch below
+      variable.update(v.second)
+      # Fetch the additional attributes from the server and save to the database
       fetch(variable)
       yield variable
     end
@@ -59,7 +64,7 @@ class VariablesFetchService
     end
   end
 
-  # Retrieve the short info (name, description, href) of all variables from the
+  # Retrieve the short info [name, {description, href}] of all variables from the
   # OpenFisca server
   def self.variables_list
     of_conn.get('variables').body
