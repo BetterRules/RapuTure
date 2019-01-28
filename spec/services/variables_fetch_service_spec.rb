@@ -34,7 +34,7 @@ RSpec.describe VariablesFetchService do
 
     it 'retrieves a variable with the expected attributes' do
       expect(subject.attributes.keys).to match_array(
-        %w[id name href spec created_at updated_at namespace value_type_id entity_id unit description]
+        %w[id name href references spec created_at updated_at namespace value_type_id entity_id unit description]
       )
       expect(subject.spec.keys).to match_array(
         %w[defaultValue definitionPeriod description entity id references source valueType]
