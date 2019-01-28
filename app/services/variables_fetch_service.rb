@@ -33,8 +33,7 @@ class VariablesFetchService
 
     ActiveRecord::Base.transaction do
       variable.spec = spec
-      variable.href = spec['href']
-      variable.unit = spec['unit']
+      variable.references = spec['references']
       variable.description = spec['description']
       variable.value_type = ValueType.find_or_create_by!(name: spec['valueType'])
       variable.entity = Entity.find_or_create_by!(name: spec['entity'])

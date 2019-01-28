@@ -27,10 +27,6 @@
   %strong=t :entity
   = @variable.spec['entity']
 
-  - if @variable.unit.present?
-    %strong=t :unit
-    = @variable.unit
-
 - cache @variable do
   - if @variable.variables.size.positive?
     %hr/
@@ -60,9 +56,12 @@
 
   %hr/
   %ul.nav
-    - if @variable.spec.present? && @variable.spec['references'].present?
-      - @variable.spec['references'].each do |ref|
-        %li= link_to t(:reference), ref, class: 'nav-link'
+    - if @variable.references.present?
+      - @variable.references.each do |ref|
+        -if (ref =~ /\A#{URI::regexp}\z/)
+          %li= link_to t(:reference), ref, class: 'nav-link'
+        -else 
+          %li.nav-link Source: #{ref} 
     - if @variable.spec.present?
       %li= link_to 'Source Code',  @variable.github_url, class: 'nav-link'
     %li= link_to t(:view_api), @variable.href, class: 'nav-link'
