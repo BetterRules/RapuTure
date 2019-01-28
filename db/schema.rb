@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_01_28_032113) do
   create_table "variables", force: :cascade do |t|
     t.text "name", null: false
     t.text "description"
+    t.text "href"
     t.json "spec"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -68,7 +69,6 @@ ActiveRecord::Schema.define(version: 2019_01_28_032113) do
     t.bigint "value_type_id"
     t.bigint "entity_id"
     t.string "references", default: [], array: true
-    t.text "href"
     t.string "unit"
     t.index ["entity_id"], name: "index_variables_on_entity_id"
     t.index ["value_type_id"], name: "index_variables_on_value_type_id"
