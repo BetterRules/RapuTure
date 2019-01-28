@@ -7,8 +7,8 @@
 
 **Environment** | **URL**  | **Git Branch**
 --- | --- | ---
-UAT | uat-url | master
-Production | production-url | production
+UAT |  | 
+Production |  | 
 
 ## Project Resources
 
