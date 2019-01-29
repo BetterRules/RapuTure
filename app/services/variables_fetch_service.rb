@@ -11,7 +11,7 @@ class VariablesFetchService
     end
 
     stale_variables = Variable.where.not(name: variable_names)
-    stale_variables.each &:destroy
+    stale_variables.each(&:destroy)
   end
 
   def self.fetch(variable)
