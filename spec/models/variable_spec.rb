@@ -3,5 +3,9 @@
 require 'rails_helper'
 
 RSpec.describe Variable, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'when I use FactoryBot to create a Variable instance' do
+    subject { FactoryBot.build(:variable) }
+
+    it { should be_valid }
+  end
 end
