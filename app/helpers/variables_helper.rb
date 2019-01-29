@@ -8,4 +8,8 @@ module VariablesHelper
     end
     formula.html_safe
   end
+
+  def is_url?(string)
+    string =~ /\A#{URI::DEFAULT_PARSER.make_regexp}\z/
+  end
 end
