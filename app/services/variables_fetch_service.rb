@@ -3,9 +3,15 @@
 class VariablesFetchService
   def self.fetch_all
     json_response = of_conn.get('variables').body
-    json_response.keys.each do |name|
+    variable_names = json_response.keys
+
+    variable_names.each do |name|
       variable = Variable.find_or_initialize_by(name: name)
       fetch(variable)
+    end
+
+    Variable.where.not(name: variable_names).each do |each_var|
+      each_var.destroy
     end
   end
 
