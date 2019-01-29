@@ -6,6 +6,6 @@ RSpec.describe Variable, type: :model do
   context 'when I use FactoryBot to create a Variable instance' do
     subject { FactoryBot.build(:variable) }
 
-    it { should be_valid }
+    it { is_expected.to be_valid }
   end
 end
