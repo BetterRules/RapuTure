@@ -58,10 +58,10 @@
   %ul.nav
     - if @variable.references.present?
       - @variable.references.each do |ref|
-        -if (ref =~ /\A#{URI::regexp}\z/)
+        - if url?(ref)
           %li= link_to t(:reference), ref, class: 'nav-link'
-        -else 
-          %li.nav-link Source: #{ref} 
+        - else
+          %li.nav-link Source: #{ref}
     - if @variable.spec.present?
-      %li= link_to 'Source Code',  @variable.github_url, class: 'nav-link'
+      %li= link_to 'Source Code', @variable.github_url, class: 'nav-link'
     %li= link_to t(:view_api), @variable.href, class: 'nav-link'
