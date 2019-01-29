@@ -26,11 +26,11 @@ CI | https://travis-ci.org/ServiceInnovationLab/RapuTure
 **Role(s)** | **Name(s)**
 --- | ---
 Team | Rapu Ture
-Developers | [Lyall Morrison](lyall.morrison@ackama.com)
-Designers | 
+Developers | [Lyall Morrison](lyall.morrison@ackama.com), [Mischa Saunders](mischa.saunders@ackama.com),  [Brenda Wallace](brenda.wallace@dia.govt.nz), [Dana Iti](dana.iti@dia.govt.nz) & [Jacob Ong](jacob.ong@dia.govt.nz)
+Designers | [Siobhan McCarthy](siobhan.mccarthy@dia.govt.nz)
 Testers | 
-Project Manager | 
-Product Owner | 
+Project Manager | [Charlotte Hinton](charlotte.hinton@dia.govt.nz)
+Product Owner | [Brenda Wallace](brenda.wallace@dia.govt.nz)
 
 ## Comms:
 Slack: LabPlus-team #rapu-ture
@@ -47,13 +47,25 @@ git clone git@github.com:ServiceInnovationLab/RapuTure.git
 ```
 rbenv install < .ruby-version
 ```
-* Install PostgreSQL (in a mac)
+* Install PostgreSQL *(in a Mac)*
 ```
 brew install postgresql
 ```
-* Start PostgreSQL on startup
+* Start PostgreSQL on startup *(in a Mac)*
 ```
 brew services start postgresql
+```
+* Install PostgreSQL *(in Ubuntu)*
+```
+apt-get install postgresql postgresql-contrib
+```
+* Configure PostgreSQL to startup upon server boot *(in Ubuntu)*
+```
+update-rc.d postgresql enable
+```
+* Start PostgreSQL *(in Ubuntu)*
+```
+service postgresql start
 ```
 * Bundler. Install this from gem
 ```
@@ -63,6 +75,7 @@ gem install bundler
 ```
 bin/setup
 ```
+* Rename `env-example` file to `.env`
 * Load seed data from OpenFisca (Note: this takes 15 minutes)
 ```
 bundle exec rake fetch:variables
