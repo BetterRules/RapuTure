@@ -58,7 +58,7 @@
   %ul.nav
     - if @variable.references.present?
       - @variable.references.each do |ref|
-        - if is_url?(ref)
+        - if url?(ref)
           %li= link_to t(:reference), ref, class: 'nav-link'
         - else
           %li.nav-link Source: #{ref}
