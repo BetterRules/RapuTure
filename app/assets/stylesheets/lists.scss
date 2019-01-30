@@ -1,9 +1,9 @@
-@import "variables";
+@import 'variables';
 
 dl {
   dt {
-    margin-top: 1.75rem;
     color: $primary-color;
+    margin-top: 1.75rem;
   }
 }
 
@@ -15,8 +15,9 @@ dl {
 .list-inline {
   li {
     display: inline-block;
+
     ::after {
-      content: " /";
+      content: ' /';
     }
   }
 }

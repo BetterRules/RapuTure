@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 $primary-border: .0625rem solid $primary-color;
 
@@ -13,8 +13,8 @@ $primary-border: .0625rem solid $primary-color;
   a {
     border-bottom: $primary-border;
     display: block;
-    padding: .5rem;
     font-weight: bold;
+    padding: .5rem;
 
     &:hover {
       background: $primary-color;
