@@ -28,17 +28,17 @@
 
 .btn,
 .btn > a {
-  display: inline-block;
-  padding: .7rem 1rem;
-  border: .3125rem solid $primary-color;
   background: $white;
-  color: $primary-color;
-  font-weight: bold;
-  box-shadow: 0 0 .3125rem rgba($primary-color, .5);
+  border: .3125rem solid $primary-color;
   border-radius: 0;
+  box-shadow: 0 0 .3125rem rgba($primary-color, .5);
+  color: $primary-color;
+  display: inline-block;
   font-size: $button-font-size;
-  text-decoration: none;
+  font-weight: bold;
+  padding: .7rem 1rem;
   text-align: center;
+  text-decoration: none;
 
   &:visited {
     color: $primary-color;
