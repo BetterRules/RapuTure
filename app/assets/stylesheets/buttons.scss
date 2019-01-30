@@ -1,16 +1,27 @@
 @import "variables";
 
 .btn-nav {
-  padding: 3rem 0;
+  padding: 2.5rem 0;
   text-align: center;
 
-  .btn {
-    &:first-child {
-      margin-right: 2rem;
-    }
+  @media (min-width: 768px) {
+    padding: 3rem 0;
+  }
 
-    &:last-child {
-      margin-left: 2rem;
+  .btn {
+    width: 100%;
+    margin-bottom: .5rem;
+
+    @media (min-width: 768px) {
+      width: auto;
+
+      &:first-child {
+        margin-right: 2rem;
+      }
+
+      &:last-child {
+        margin-left: 2rem;
+      }
     }
   }
 }

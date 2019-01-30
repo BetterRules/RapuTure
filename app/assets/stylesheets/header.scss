@@ -2,18 +2,28 @@
 
 .header {
   background: $secondary-color;
-  padding: 3rem 0;
+  padding: 1.5rem 0 2rem 0;
   border-bottom: 10px solid $primary-color;
+
+  @media (min-width: 768px) {
+    padding: 3rem 0;
+  }
+
 }
 
 .hero {
   border: 5px solid $primary-color;
   border-radius: $border-radius;
   background: $white;
-  padding: 2rem 4rem;
   box-shadow: 0 0 10px $primary-color;
-  margin: 0 5rem;
-  margin-bottom: 3rem;
+  padding: 1.5rem 1.5rem 1rem;
+  margin-bottom: 1rem;
+
+  @media (min-width: 768px) {
+    padding: 2rem 4rem;
+    margin: 0 5rem;
+    margin-bottom: 3rem;
+  }
 
   > h1 {
     font-weight: bold;
@@ -31,10 +41,15 @@
   /* border: 5px solid $primary-color; */
   border-radius: $border-radius;
   background: $white;
-  padding: 2rem 3rem;
+  padding: 2rem;
   box-shadow: 0 0 20px rgba($primary-color, .7);
-  margin: 0 12rem;
+  /* margin: 0 12rem; */
   text-align: center;
+
+  @media (min-width: 768px) {
+    padding: 2rem 3rem;
+    margin: 0 12rem;
+  }
 
   > h2 {
     color: $primary-color;
@@ -47,7 +62,11 @@
 .sub-header {
   background: $secondary-color;
   overflow: auto;
-  padding: 2.5rem 0;
+  padding: 1rem 0;
+
+  @media (min-width: 768px) {
+    padding: 2.5rem 0;
+  }
 
   h1 {
     border: 5px solid $primary-color;

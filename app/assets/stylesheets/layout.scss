@@ -6,10 +6,16 @@ body {
 
 main {
   background-color: $grey;
+  padding-bottom: 2rem;
 }
 
 a {
   &:visited {
     color: $primary-color;
   }
+}
+
+footer {
+  background: $secondary-color;
+  padding: 1rem;
 }
