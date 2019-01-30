@@ -1,0 +1,25 @@
+@import "variables";
+
+.side-nav {
+  list-style: none;
+  padding-left: 0;
+  margin: 2rem 0;
+  margin-left: 1rem;
+
+  &:first-child {
+    border-top: 1px solid $primary-color;
+  }
+
+  a {
+    border-bottom: 1px solid $primary-color;
+    display: block;
+    padding: .5rem;
+    font-weight: bold;
+
+    &:hover {
+      background: $primary-color;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}

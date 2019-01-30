@@ -1,0 +1,23 @@
+@import "variables";
+
+.section {
+  background: $white;
+  margin-top: 1.95rem;
+  padding: 1.75rem 2rem;
+  box-shadow: 0 2px 5px rgba(darken($grey, 10%), .9);
+
+  .heading {
+    color: $primary-color;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .heading-secondary {
+    color: $secondary-heading;
+    font-weight: bold;
+    margin-top: 0;
+    font-size: 26px;
+    margin-bottom: 3rem;
+  }
+}
