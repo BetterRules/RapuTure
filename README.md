@@ -1,24 +1,115 @@
-# README
+# Rapu Ture
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Overview
+...
 
-Things you may want to cover:
+## Environments
 
-* Ruby version
+**Environment** | **URL**  | **Git Branch**
+--- | --- | ---
+UAT |  | 
+Production |  | 
 
-* System dependencies
+## Project Resources
 
-* Configuration
+**Resource** | **URL**
+--- | ---
+Backlog | https://waffle.io/ServiceInnovationLab/RapuTure
+CI | https://travis-ci.org/ServiceInnovationLab/RapuTure
 
-* Database creation
+## Documentation
 
-* Database initialization
+[OpenFisca](https://openfisca.org/doc/)
 
-* How to run the test suite
+## People Involved
 
-* Services (job queues, cache servers, search engines, etc.)
+**Role(s)** | **Name(s)**
+--- | ---
+Team | Rapu Ture
+Developers | [Lyall Morrison](lyall.morrison@ackama.com), [Mischa Saunders](mischa.saunders@ackama.com),  [Brenda Wallace](brenda.wallace@dia.govt.nz), [Dana Iti](dana.iti@dia.govt.nz) & [Jacob Ong](jacob.ong@dia.govt.nz)
+Designers | [Siobhan McCarthy](siobhan.mccarthy@dia.govt.nz)
+Testers | 
+Project Manager | [Charlotte Hinton](charlotte.hinton@dia.govt.nz)
+Product Owner | [Brenda Wallace](brenda.wallace@dia.govt.nz)
 
-* Deployment instructions
+## Comms:
+Slack: LabPlus-team #rapu-ture
 
-* ...
+## Setup
+
+This is a ruby on rails app. You will need to:
+* Git clone this repo
+```
+git clone git@github.com:ServiceInnovationLab/RapuTure.git
+```
+* Install the correct version of Ruby. We recommend installing `rbenv` to manage multiple versions of ruby, and then using that to install the version of ruby specified in our file `.ruby-version`
+* Install `rbenv` from https://github.com/rbenv/rbenv then
+```
+rbenv install < .ruby-version
+```
+* Install PostgreSQL *(in a Mac)*
+```
+brew install postgresql
+```
+* Start PostgreSQL on startup *(in a Mac)*
+```
+brew services start postgresql
+```
+* Install PostgreSQL *(in Ubuntu)*
+```
+apt-get install postgresql postgresql-contrib
+```
+* Configure PostgreSQL to startup upon server boot *(in Ubuntu)*
+```
+update-rc.d postgresql enable
+```
+* Start PostgreSQL *(in Ubuntu)*
+```
+service postgresql start
+```
+* Bundler. Install this from gem
+```
+gem install bundler
+```
+* Run the setup script
+```
+bin/setup
+```
+* Rename `env-example` file to `.env`
+* Load seed data from OpenFisca (Note: this takes 15 minutes)
+```
+bundle exec rake fetch:variables
+```
+* Run the app
+```
+bundle exec rails server
+```
+## Development
+
+### Major Dependencies
+Ruby 2.5
+Rails 5.2 / Puma
+
+* Postgres
+* Haml
+* React
+
+### Quality assurance tools
+
+* Rubocop
+```
+bundle exec rubocop
+```
+
+* Code Climate - integrated with Travis CI
+
+## Deployment
+
+* Deploys to Heroku via Travis. See `.travis.yml`
+
+## Testing
+* Rspec tests are included in the Travis deployment script and can be run locally
+
+```
+bundle exec rspec
+```
