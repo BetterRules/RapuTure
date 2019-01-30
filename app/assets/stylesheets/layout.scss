@@ -7,3 +7,9 @@ body {
 main {
   background-color: $grey;
 }
+
+a {
+  &:visited {
+    color: $primary-color;
+  }
+}

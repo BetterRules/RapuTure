@@ -1,9 +1,7 @@
 @import "variables";
 
 .btn-nav {
-  display: inline-block;
-  margin: 2rem auto;
-  text-align: center;
+  padding: 3rem 0;
 
   .btn {
     &:first-child {
@@ -26,6 +24,7 @@
   font-size: $button-font-size;
   padding: .7rem 1.75rem;
   text-decoration: none;
+  text-align: center;
 
   &:visited {
     color: $primary-color;

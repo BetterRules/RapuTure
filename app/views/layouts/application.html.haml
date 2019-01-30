@@ -21,11 +21,15 @@
       = render 'layouts/explanation'
 
     %main
-      .container
-        %nav.btn-nav{"aria-label" => "breadcrumb"}
-          .btn= link_to t(:explore_by_acts), entities_path
-          .btn= link_to t(:explore_by_variables), variables_path
-          .btn= link_to t(:explore_by_entities), variables_path
+      .btn-nav
+        .container
+          .row
+            .col-sm
+              .btn= link_to t(:explore_by_acts), entities_path
+            .col-sm
+              .btn= link_to t(:explore_by_variables), variables_path
+            .col-sm
+              .btn= link_to t(:explore_by_entities), variables_path
           =yield :breadcrumbs
 
 
