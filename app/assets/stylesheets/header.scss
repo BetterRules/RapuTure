@@ -2,8 +2,8 @@
 
 .header {
   background: $secondary-color;
-  padding: 1.5rem 0 2rem 0;
   border-bottom: .625rem solid $primary-color;
+  padding: 1.5rem 0 2rem;
 
   @media (min-width: 768px) {
     padding: 3rem 0;
@@ -11,12 +11,12 @@
 }
 
 .hero {
+  background: $white;
   border: 5px solid $primary-color;
   border-radius: $border-radius;
-  background: $white;
   box-shadow: 0 0 .625rem $primary-color;
-  padding: 1.5rem 1.5rem 1rem;
   margin-bottom: 1rem;
+  padding: 1.5rem 1.5rem 1rem;
 
   @media (min-width: 768px) {
     padding: 2rem 4rem;
@@ -25,9 +25,9 @@
   }
 
   > h1 {
-    font-weight: bold;
     color: $primary-color;
     font-size: 1.5625rem;
+    font-weight: bold;
   }
 
   > p {
