@@ -3,28 +3,27 @@
     .row
       .col-lg-3
         %ul.side-nav.list-stripped
-          %li= link_to 'What is Rapu Ture?', '#q1'
-          %li= link_to 'What is Legislation of Code?'
-          %li= link_to 'How to use Rapu Ture', '#q3'
-          %li= link_to 'How to contribute'
-          %li= link_to 'Contact Us'
+          %li= link_to t(:what_is_raputure), '#q1'
+          %li= link_to t(:what_is_legislation_of_code)
+          %li= link_to t(:how_to_use_rapu_ture), '#q3'
+          %li= link_to t(:how_to_contribute)
+          %li= link_to t(:contact_us)
+
       .col-lg-9
         %section.section
-          %h1.heading What is Rapu Ture?
-          %h2.heading-secondary Rapu Ture is an API library that lets you explore and call legislative rules.
+          %h1.heading= t(:what_is_rapu_ture)
+          %h2.heading-secondary= t(:rapu_ture_explanation)
 
           %dl
-            %dt#q1 What is Legislation as Code?
-            %dd Lorem ipsum dolor sit amet consectetur adipisicing elit.equuntur et voluptatum sint omnis vel tempore assumenda, quaerat cum reiciendis quibusdam, autem maiores ab beatae libero!
+            %dt#q1= t(:what_is_legislation_of_code)
+            %dd= t(:legislation_of_code_explanation)
 
 
-            %dt How to use Rapu Ture
-            %dd Lorem, ipsum dolor sit amet consectetur adipisicing elit. Asperiores minus voluptatum totam quibusdam veniam? Harum, quo asperiores corrupti praesentium recusandae vel doloremque sapiente adipisci necessitatibus doloribus accusantium, delectus minima deleniti.
+            %dt= t(:how_to_use_rapu_ture)
+            %dd= t(:how_to_use_rapu_ture_explanation)
 
+            %dt= t(:how_to_contribute)
+            %dd= t(:how_to_contribute_explanation)
 
-            %dt How to contribute
-            %dd Lorem ipsum, dolor sit amet consectetur adipisicing elit. Beatae maxime, perspiciatis dignissimos iste repudiandae odio nulla numquam alias ea minima. Voluptatibus, fugit! Facilis suscipit dolore repellat, mollitia soluta nulla neque.
-
-
-            %dt Contact Us
-            %dd Lorem ipsum dolor sit amet consectetur adipisicing elit.um voluptatem odit ad tenetur iste officiis, animi explicabo cumque impedit inventore, quisquam possimus vero qui.
+            %dt= t(:contact_us)
+            %dd= t(:contact_us_explanation)

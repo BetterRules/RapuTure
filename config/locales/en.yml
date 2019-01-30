@@ -15,3 +15,13 @@ en:
   variables: Variables
   variables_explanation: within Aotearoa/New Zealand's Legislation as Code experiment
   view_api: View API
+  what_is_rapu_ture: What is Rapu Ture?
+  rapu_ture_explanation: Rapu Ture is an API library that lets you explore and call legislative rules.
+  what_is_legislation_of_code: What is Legislation as Code?
+  legislation_of_code_explanation: Lorem ipsum dolor sit amet consectetur adipisicing elit
+  how_to_use_rapu_ture: How to use Rapu Ture
+  how_to_use_rapu_ture_explanation: Lorem ipsum dolor sit amet consectetur adipisicing elit
+  how_to_contribute: How to contribute
+  how_to_contribute_explanation: Lorem ipsum dolor sit amet consectetur adipisicing elit
+  contact_us: Contact Us
+  contact_us_explanation: Lorem ipsum dolor sit amet consectetur adipisicing elit
