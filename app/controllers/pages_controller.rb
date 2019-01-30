@@ -2,6 +2,6 @@
 
 class PagesController < ActionController::Base
   def show
-    render params[:page]
+    render 'about'
   end
 end
