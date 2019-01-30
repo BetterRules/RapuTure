@@ -2,7 +2,7 @@
 %html
   %head
     %title
-      Rapu Ture Connecting the Rules 
+      Rapu Ture Connecting the Rules
       = '|'
       = yield :title
     = csrf_meta_tags
@@ -14,29 +14,30 @@
 
 
   %body
-    .container
-      %p.notice= notice
-      %p.alert= alert
 
-      - if current_page?(root_url)
-        = render 'layouts/explanation'
+    =# import alerts here
 
-      %nav{"aria-label" => "breadcrumb"}
-        %ol.breadcrumb
-          %li.breadcrumb-item= link_to t(:entities), entities_path
-          %li.breadcrumb-item= link_to t(:variables), variables_path
+    - if current_page?(root_url)
+      = render 'layouts/explanation'
+
+    %main
+      .container
+        %nav.btn-nav{"aria-label" => "breadcrumb"}
+          .btn= link_to t(:explore_by_acts), entities_path
+          .btn= link_to t(:explore_by_variables), variables_path
+          .btn= link_to t(:explore_by_entities), variables_path
           =yield :breadcrumbs
 
 
       = yield
 
-    .container
-      %p
-        %span
-          Computations powered by
-          = succeed "," do
-            %a{href: "https://openfisca.org", rel: "noopener", target: "_blank"}
-              %img{alt: "OpenFisca", height: "24", src: "https://openfisca.org/img/logo-openfisca.svg"}/
-          %a{href: "https://github.com/openfisca/openfisca-core"} source code
-          is used under an
-          %a{href: "https://choosealicense.com/licenses/agpl-3.0/", rel: "noopener", target: "_blank"} AGPL license.
+  .container
+    %p
+      %span
+        Computations powered by
+        = succeed "," do
+          %a{href: "https://openfisca.org", rel: "noopener", target: "_blank"}
+            %img{alt: "OpenFisca", height: "24", src: "https://openfisca.org/img/logo-openfisca.svg"}/
+        %a{href: "https://github.com/openfisca/openfisca-core"} source code
+        is used under an
+        %a{href: "https://choosealicense.com/licenses/agpl-3.0/", rel: "noopener", target: "_blank"} AGPL license.

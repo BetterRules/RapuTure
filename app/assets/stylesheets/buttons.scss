@@ -1,0 +1,39 @@
+@import "variables";
+
+.btn-nav {
+  display: inline-block;
+  margin: 2rem auto;
+  text-align: center;
+
+  .btn {
+    &:first-child {
+      margin-right: 2rem;
+    }
+
+    &:last-child {
+      margin-left: 2rem;
+    }
+  }
+}
+
+.btn {
+  border: 3px solid $primary-color;
+  background: $white;
+  color: $primary-color;
+  font-weight: bold;
+  box-shadow: 0 0 5px rgba($primary-color, .5);
+  border-radius: 0;
+  font-size: $button-font-size;
+  padding: .7rem 1.75rem;
+  text-decoration: none;
+
+  &:visited {
+    color: $primary-color;
+  }
+
+  &:hover {
+    background: $primary-color;
+    color: $white;
+    border: 3px solid transparent;
+  }
+}

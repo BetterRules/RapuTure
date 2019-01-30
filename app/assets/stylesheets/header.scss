@@ -1,0 +1,45 @@
+@import "variables";
+
+.header {
+  background: $secondary-color;
+  padding: 3rem 0;
+  border-bottom: 10px solid $primary-color;
+}
+
+.hero {
+  border: 5px solid $primary-color;
+  border-radius: $border-radius;
+  background: $white;
+  padding: 2rem 4rem;
+  box-shadow: 0 0 10px $primary-color;
+  margin: 0 5rem;
+  margin-bottom: 3rem;
+
+  > h1 {
+    font-weight: bold;
+    color: $primary-color;
+    font-size: 25px;
+  }
+
+  > p {
+    color: $sub-heading;
+    font-weight: bold;
+  }
+}
+
+.header-secondary {
+  /* border: 5px solid $primary-color; */
+  border-radius: $border-radius;
+  background: $white;
+  padding: 2rem 3rem;
+  box-shadow: 0 0 20px rgba($primary-color, .7);
+  margin: 0 12rem;
+  text-align: center;
+
+  > h2 {
+    color: $primary-color;
+    font-weight: bold;
+    font-size: 18px;
+    margin-bottom: 1.5rem;
+  }
+}
