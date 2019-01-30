@@ -5,14 +5,14 @@
     background: $white;
     display: inline-block;
     border-radius: $border-radius;
-    padding: 5px 10px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    border: 3px solid transparent;
+    padding: .3125rem .625rem;
+    margin-bottom: .3125rem;
+    margin-right: .3125rem;
+    border: .1875rem solid transparent;
     color: $badge-primary;
 
     &:hover {
-      border: 3px solid $badge-primary;
+      border: .1875rem solid $badge-primary;
       text-decoration: none;
       background: $badge-primary;
       color: $white;
