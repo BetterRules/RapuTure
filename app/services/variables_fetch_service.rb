@@ -92,7 +92,7 @@ class VariablesFetchService
   # @param name [String] The name of a variable which exists on the OpenFisca server
   # @return [Array<(String, Hash{String, String})>]
   def self.variable(name:)
-    of_conn.get("variable/#{CGI::escape(name)}").body
+    of_conn.get("variable/#{CGI.escape(name)}").body
   end
 
   # Parse an OpenFisca variable name and return the namespace portion if it exists
