@@ -7,4 +7,24 @@
   border-radius: 15px;
   padding: .2rem .5rem;
   background: $secondary-color;
+  margin-bottom: 2px;
+  display: inline-block;
+
+  > a {
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &-primary {
+    background: #007bff;
+  }
+
+  &-secondary {
+    background: darken($grey, 40%);
+  }
+
+  &-success {
+    background: #a0d468;
+  }
 }
