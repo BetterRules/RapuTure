@@ -25,8 +25,10 @@ class VariablesFetchService
       # Fetch the additional attributes from the server and save to the database
       fetch(variable)
 
-      yield variable
+      yield variable if block_given?
     end
+
+    variables_list unless block_given?
   end
 
   # Load the full data of a variable into the database
