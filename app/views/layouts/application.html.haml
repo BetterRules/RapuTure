@@ -19,6 +19,8 @@
 
     - if current_page?(root_url)
       = render 'layouts/explanation'
+    - else
+      = render 'layouts/sub_header'
 
     %main
       .btn-nav

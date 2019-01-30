@@ -43,3 +43,15 @@
     margin-bottom: 1.5rem;
   }
 }
+
+.sub-header {
+  background: $secondary-color;
+  overflow: auto;
+  padding: 2.5rem 0;
+
+  .btn {
+    border: 5px solid $primary-color;
+    border-radius: $border-radius;
+    padding: .75rem 1.5rem;
+  }
+}
