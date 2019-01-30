@@ -3,7 +3,7 @@
 .card {
   border: none;
   border-radius: 0;
-  box-shadow: 0 0 .9375rem rgba($grey, .8);
+  box-shadow: 0 .125rem .3125rem rgba(darken($grey, 10%), .8);
 
   &-title {
     a {

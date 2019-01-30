@@ -4,7 +4,7 @@
     %h6 Current filters
     %p
       - @namespace_filter.selected.each do |namespace|
-        = link_to @namespace_filter.remove(namespace).path do
+        = link_to @namespace_filter.remove(namespace).path, class: 'filter-select' do
           = t(namespace.to_sym)
           = fa_icon 'close'
 
@@ -12,5 +12,7 @@
   %p
     - @namespace_filter.facet.reject(&:selected).each do |facet_value|
       - if facet_value.entity
-        = link_to t(facet_value.entity.to_sym), @namespace_filter.add(facet_value.entity).path
-        %span.count= "(#{facet_value.count})"
+        = link_to @namespace_filter.add(facet_value.entity).path, class: 'filter-select' do
+          = fa_icon 'plus'
+          = t(facet_value.entity.to_sym)
+          %span.count= "(#{facet_value.count})"

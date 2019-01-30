@@ -1,0 +1,20 @@
+@import "variables";
+
+.filter {
+  &-select {
+    background: $white;
+    display: inline-block;
+    border-radius: $border-radius;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    border: 3px solid transparent;
+
+    &:hover {
+      border: 3px solid $primary-color;
+      text-decoration: none;
+      background: $primary-color;
+      color: $white;
+    }
+  }
+}
