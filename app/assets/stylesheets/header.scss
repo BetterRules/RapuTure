@@ -49,9 +49,15 @@
   overflow: auto;
   padding: 2.5rem 0;
 
-  .btn {
+  h1 {
     border: 5px solid $primary-color;
     border-radius: $border-radius;
     padding: .75rem 1.5rem;
+    background: $white;
+    width: auto;
+    font-size: 1rem;
+    font-weight: bold;
+    display: inline-block;
+    color: $primary-color;
   }
 }

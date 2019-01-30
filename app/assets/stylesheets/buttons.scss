@@ -2,6 +2,7 @@
 
 .btn-nav {
   padding: 3rem 0;
+  text-align: center;
 
   .btn {
     &:first-child {
@@ -14,7 +15,10 @@
   }
 }
 
-.btn {
+.btn,
+.btn > a {
+  display: inline-block;
+  padding: .7rem 1rem;
   border: 3px solid $primary-color;
   background: $white;
   color: $primary-color;
@@ -22,7 +26,6 @@
   box-shadow: 0 0 5px rgba($primary-color, .5);
   border-radius: 0;
   font-size: $button-font-size;
-  padding: .7rem 1rem;
   text-decoration: none;
   text-align: center;
 
@@ -34,5 +37,6 @@
     background: $primary-color;
     color: $white;
     border: 3px solid transparent;
+    text-decoration: none;
   }
 }
