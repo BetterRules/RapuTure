@@ -1,15 +1,17 @@
 @import "variables";
 
+$primary-border: .0625rem solid $primary-color;
+
 .side-nav {
   margin: 2rem 0;
   margin-left: 1rem;
 
   &:first-child {
-    border-top: 1px solid $primary-color;
+    border-top: $primary-border;
   }
 
   a {
-    border-bottom: 1px solid $primary-color;
+    border-bottom: $primary-border;
     display: block;
     padding: .5rem;
     font-weight: bold;

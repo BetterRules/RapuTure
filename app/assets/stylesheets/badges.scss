@@ -1,13 +1,13 @@
 @import "variables";
 
 .badge {
-  font-size: 11px;
+  font-size: .6875rem;
   font-weight: bold;
   color: $white;
-  border-radius: 15px;
+  border-radius: .9375rem;
   padding: .2rem .5rem;
   background: $secondary-color;
-  margin-bottom: 2px;
+  margin-bottom: .125rem;
   display: inline-block;
 
   > a {
@@ -17,7 +17,7 @@
   }
 
   &-primary {
-    background: #007bff;
+    background: $badge-primary;
   }
 
   &-secondary {
@@ -25,6 +25,6 @@
   }
 
   &-success {
-    background: #a0d468;
+    background: $badge-success;
   }
 }

@@ -4,7 +4,7 @@
   background: $white;
   margin-top: 1.95rem;
   padding: 1.75rem 2rem;
-  box-shadow: 0 2px 5px rgba(darken($grey, 10%), .9);
+  box-shadow: 0 .125rem .3125rem rgba(darken($grey, 10%), .9);
 
   .heading {
     color: $primary-color;
@@ -17,7 +17,7 @@
     color: $secondary-heading;
     font-weight: bold;
     margin-top: 0;
-    font-size: 26px;
+    font-size: 1.625rem;
     margin-bottom: 3rem;
   }
 }
