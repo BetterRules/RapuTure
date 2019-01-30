@@ -19,9 +19,9 @@
   padding: 1.5rem 1.5rem 1rem;
 
   @media (min-width: 768px) {
-    padding: 2rem 4rem;
     margin: 0 5rem;
     margin-bottom: 2rem;
+    padding: 2rem 4rem;
   }
 
   > h1 {
@@ -37,10 +37,10 @@
 }
 
 .header-secondary {
-  border-radius: $border-radius;
   background: $white;
-  padding: 2rem;
+  border-radius: $border-radius;
   box-shadow: 0 0 20px rgba($primary-color, .7);
+  padding: 2rem;
   text-align: center;
 
   @media (min-width: 768px) {

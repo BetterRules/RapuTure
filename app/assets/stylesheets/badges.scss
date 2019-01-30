@@ -1,14 +1,14 @@
 @import 'variables';
 
 .badge {
+  background: $secondary-color;
+  border-radius: .9375rem;
+  color: $white;
+  display: inline-block;
   font-size: .6875rem;
   font-weight: bold;
-  color: $white;
-  border-radius: .9375rem;
-  padding: .2rem .5rem;
-  background: $secondary-color;
   margin-bottom: .125rem;
-  display: inline-block;
+  padding: .2rem .5rem;
 
   > a {
     &:hover {
