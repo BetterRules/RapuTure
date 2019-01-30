@@ -4,10 +4,11 @@
 
 
   - content_for(:breadcrumbs) do
-    - if @variable.namespace.present?
-      %li.breadcrumb-item
-        = t @variable.namespace.to_sym
-    %li.breadcrumb-item.active{"aria-current" => "page"}= @variable.name
+    %ul.list-stripped.list-inline.breadcrumbs
+      - if @variable.namespace.present?
+        %li.breadcrumb-item
+          = t @variable.namespace.to_sym
+      %li.breadcrumb-item.active{"aria-current" => "page"}= @variable.name
 
 
   %h3
