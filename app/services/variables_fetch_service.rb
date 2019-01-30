@@ -6,28 +6,39 @@ class VariablesFetchService
   # Updates existing database records but does not remove old records no longer
   # mentioned by the OpenFisca server
   #
-  # Returns the loaded Variables, as a streamed enumerable
+  # @return [Enumerable<Variable>] the loaded +Variable+s, as a streamed
+  #   enumerable
   def self.fetch_all
     variables_list.each do |v|
-      # Find or create the Variable model
-      variable = Variable.find_or_initialize_by(name: v.first)
+      # variables_list returns a small data structure which has the variable
+      # name as a key and other attributes as a hash
+      variable_name = v.first
+      variable_attributes = v.second
+
+      # Find or create the Variable model using the name as the key
+      variable = Variable.find_or_initialize_by(name: variable_name)
+
       # Update the model with attributes retrieved from the server
       # Note that the href value is available here but is not populated in .fetch below
-      variable.update(v.second)
+      variable.update(variable_attributes)
+
       # Fetch the additional attributes from the server and save to the database
       fetch(variable)
+
       yield variable
     end
   end
 
   # Load the full data of a variable into the database
   #
-  # The parameter is a Variable containing the short info (only :name is
-  # required) such as loaded from .variables_list, which does not yet contain
-  # the full data for the Variable. This method will load the remaining data and
-  # save the object.
+  # @param variable [Variable, #name] a +Variable+ with some unset attributes, such as
+  #   loaded from {variables_list}, which does not yet contain the full data
+  #   available from the server. This method will load the remaining data and
+  #   save the object into the local database. The +name+ attribute must be set
+  #   to perform the lookup.
   #
-  # Returns the supplied Variable (which has had its full data loaded and saved to the database)
+  # @return [Variable] The same +Variable+ supplied as the parameter (which has
+  #   been updated with the attributes retrieved from the server)
   def self.fetch(variable)
     spec = variable(name: variable.name)
 
@@ -63,21 +74,39 @@ class VariablesFetchService
     end
   end
 
-  # Retrieve the short info [name, {description, href}] of all variables from the
-  # OpenFisca server
+  # Retrieve the short info (name, description, href) of all variables from the
+  # OpenFisca server. Full info can be loaded for each variable by passing it
+  # to {fetch}
+  #
+  # @return [Array<Array<(String, Hash{String, String})>>] a list of pairs
+  #   containing the name of an OpenFisca variable and a hash of some attributes
+  #   of the variable
   def self.variables_list
     of_conn.get('variables').body
   end
 
   # Retrieve the full data of one variable from the OpenFisca server
+  #
+  # @param name [String] The name of a variable which exists on the OpenFisca server
+  # @return [Array<(String, Hash{String, String})>]
   def self.variable(name:)
     of_conn.get("variable/#{name}").body
   end
 
+  # Parse an OpenFisca variable name and return the namespace portion if it exists
+  #
+  # By our convention anything preceding +__+ (two underscores) is the namespace
+  #
+  # @return String
   def self.parse_namespace(name)
     name.split('__')[0] if name.include? '__'
   end
 
+  # Get a connection to the OpenFisca server
+  #
+  # Uses the environment variable +OPENFISCA_URL+
+  #
+  # @return [Faraday::Connection]
   def self.of_conn
     Faraday.new ENV['OPENFISCA_URL'] do |conn|
       conn.response :json, content_type: /\bjson$/
