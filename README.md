@@ -1,7 +1,13 @@
 # Rapu Ture
+[![Waffle.io - Columns and their card count](https://badge.waffle.io/ServiceInnovationLab/RapuTure.svg?columns=all)](https://waffle.io/ServiceInnovationLab/RapuTure)
+[![Maintainability](https://api.codeclimate.com/v1/badges/580a9cc169de1c21c180/maintainability)](https://codeclimate.com/github/ServiceInnovationLab/RapuTure/maintainability)
+[![Build Status](https://travis-ci.org/ServiceInnovationLab/RapuTure.svg?branch=master)](https://travis-ci.org/ServiceInnovationLab/RapuTure)
 
 ## Overview
-...
+
+Rapu Ture is a phrase that means "Exploring the rules/law"
+
+This web application presents the variables from within Aotearoa New Zealand's Legislation as Code (Open Fisca) service, as web pages, allowing a user to discover what calculations are available, and where in legislation (or regulation) the rule came from.
 
 ## Environments
 
