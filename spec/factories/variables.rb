@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :variable do
-    sequence(:name) { |n| "#{Faker::Name.name}_#{n}" }
+    sequence(:name) { |n| "#{Faker::Lorum.word}_#{n}" }
     description { Faker::Lorem.paragraph }
     href { Faker::Internet.url }
     spec { '{}' }
