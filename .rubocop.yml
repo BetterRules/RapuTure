@@ -46,6 +46,7 @@ Rails:
 AllCops:
   TargetRubyVersion: 2.4
   Include:
+    - '**/*.rb'
     # Include important files that don't end in .rb
     - '**/Rakefile'
     - '**/config.ru'
