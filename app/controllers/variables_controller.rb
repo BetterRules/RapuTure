@@ -5,6 +5,7 @@ class VariablesController < ApplicationController
   def index
     @search = VariablesSearchService.new(params)
     @variables = @search.result.distinct(false).includes(:variables, :value_type).order(:name)
+    @variable_usage_counts = Link.group(:link_from).count
     @namespace_filter = @search.filter(:namespace)
   end
 

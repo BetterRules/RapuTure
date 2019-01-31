@@ -12,9 +12,9 @@
   - if variable.has_formula?
     %span.badge.badge-info= t :formula_included
 
-  - if variable.reversed_variables.size.positive?
-    %span.badge.badge-dark used #{pluralize variable.reversed_variables.size, 'time'}
-  - elsif variable.variables.size == 0
+  - unless usage_count.nil?
+    %span.badge.badge-dark used #{pluralize usage_count, 'time'}
+  - if variable.variables.size == 0
     %span.badge.badge-warning{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself'}= t :orphaned
 
   - unless variable.description
