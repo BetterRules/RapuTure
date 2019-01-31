@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 2019_01_28_032113) do
     t.string "namespace"
     t.bigint "value_type_id"
     t.bigint "entity_id"
-    t.string "references", default: [], array: true
     t.string "unit"
+    t.string "references", default: [], array: true
     t.index ["entity_id"], name: "index_variables_on_entity_id"
     t.index ["value_type_id"], name: "index_variables_on_value_type_id"
   end
