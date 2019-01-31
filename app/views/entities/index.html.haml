@@ -4,7 +4,7 @@
       .card.w-33
         .card-body
           %h5.card-title
-            = link_to entity.to_s, entity
+            = link_to entity.to_s.capitalize, entity
           = render 'badges', entity: entity
           %p.card-text
             = render_markdown(entity.documentation) if entity.documentation.present?
