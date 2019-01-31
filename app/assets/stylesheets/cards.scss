@@ -1,0 +1,14 @@
+@import 'variables';
+
+.card {
+  border: 0;
+  border-radius: 0;
+  box-shadow: 0 .125rem .3125rem rgba(darken($grey, 10%), .8);
+
+  &-title {
+    a {
+      color: $primary-color;
+      font-weight: bold;
+    }
+  }
+}

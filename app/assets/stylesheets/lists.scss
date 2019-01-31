@@ -1,0 +1,29 @@
+@import 'variables';
+
+dl {
+  dt {
+    color: $primary-color;
+    margin-top: 1.75rem;
+  }
+}
+
+.list-stripped {
+  list-style: none;
+  padding-left: 0;
+}
+
+.list-inline {
+  li {
+    display: inline-block;
+
+    ::after {
+      content: ' /';
+    }
+  }
+}
+
+.list-bulleted {
+  li {
+    margin-bottom: .3125rem;
+  }
+}

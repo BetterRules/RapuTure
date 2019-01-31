@@ -1,0 +1,42 @@
+@import 'variables';
+
+.badge {
+  background: $secondary-color;
+  border-radius: .9375rem;
+  color: $white;
+  display: inline-block;
+  font-size: .6875rem;
+  font-weight: bold;
+  margin-bottom: .125rem;
+  padding: .2rem .5rem;
+
+  > a {
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  &-primary {
+    background: $badge-primary;
+  }
+
+  &-secondary {
+    background: darken($grey, 40%);
+  }
+
+  &-success {
+    background: $badge-success;
+  }
+
+  &-warning {
+    background: $badge-warning;
+  }
+
+  &-info {
+    background: $badge-info;
+  }
+
+  &-dark {
+    background: $badge-dark;
+  }
+}

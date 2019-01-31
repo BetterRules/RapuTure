@@ -1,0 +1,49 @@
+@import 'variables';
+
+.btn-nav {
+  padding: 2.5rem 0;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    padding: 3rem 0;
+  }
+
+  .btn {
+    margin-bottom: .5rem;
+    width: 100%;
+
+    @media (min-width: 768px) {
+      width: auto;
+
+      &:first-child {
+        margin-right: 2rem;
+      }
+    }
+  }
+}
+
+.btn,
+.btn > a {
+  background: $white;
+  border: .3125rem solid $primary-color;
+  border-radius: 0;
+  box-shadow: 0 0 .3125rem rgba($primary-color, .5);
+  color: $primary-color;
+  display: inline-block;
+  font-size: $button-font-size;
+  font-weight: bold;
+  padding: .7rem 1rem;
+  text-align: center;
+  text-decoration: none;
+
+  &:visited {
+    color: $primary-color;
+  }
+
+  &:hover {
+    background: $primary-color;
+    border: .3125rem solid transparent;
+    color: $white;
+    text-decoration: none;
+  }
+}
