@@ -90,4 +90,5 @@ group :test do
   gem 'chromedriver-helper'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'simplecov', require: false
 end

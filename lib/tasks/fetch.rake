@@ -5,10 +5,8 @@ namespace :fetch do
   # usage: rake growstuff:admin_user name=skud
 
   task variables: :environment do
-    VariablesFetchService.fetch_all
-    Variable.all.each do |v|
+    VariablesFetchService.fetch_all do |v|
       puts v.name
-      VariablesFetchService.fetch(v)
     end
   end
   task entities: :environment do
