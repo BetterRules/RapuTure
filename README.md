@@ -86,6 +86,9 @@ bin/setup
 ```
 bundle exec rake fetch:variables
 ```
+```
+bundle exec rake fetch:entities
+```
 * Run the app
 ```
 bundle exec rails server
