@@ -4,6 +4,7 @@
       .card.w-33
         .card-body
           %h5.card-title
+            - Rails.logger.info(entity, "THESE ARE WHAT WE WNAaaaaaaaaaaaaaaaT", entity.name)
             = link_to entity.to_s.capitalize, entity
           = render 'badges', entity: entity
           %p.card-text
