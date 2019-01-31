@@ -1,0 +1,29 @@
+%main
+  .container
+    .row
+      .col-lg-3
+        %ul.side-nav.list-stripped
+          %li= link_to t(:what_is_raputure), '#q1'
+          %li= link_to t(:what_is_legislation_of_code)
+          %li= link_to t(:how_to_use_rapu_ture), '#q3'
+          %li= link_to t(:how_to_contribute)
+          %li= link_to t(:contact_us)
+
+      .col-lg-9
+        %section.section
+          %h1.heading= t(:what_is_rapu_ture)
+          %h2.heading-secondary= t(:rapu_ture_explanation)
+
+          %dl
+            %dt#q1= t(:what_is_legislation_of_code)
+            %dd= t(:legislation_of_code_explanation)
+
+
+            %dt= t(:how_to_use_rapu_ture)
+            %dd= t(:how_to_use_rapu_ture_explanation)
+
+            %dt= t(:how_to_contribute)
+            %dd= t(:how_to_contribute_explanation)
+
+            %dt= t(:contact_us)
+            %dd= t(:contact_us_explanation)

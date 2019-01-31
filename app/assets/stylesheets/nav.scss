@@ -1,0 +1,25 @@
+@import "variables";
+
+$primary-border: 0.0625rem solid $primary-color;
+
+.side-nav {
+  margin: 2rem 0;
+  margin-left: 1rem;
+
+  &:first-child {
+    border-top: $primary-border;
+  }
+
+  a {
+    border-bottom: $primary-border;
+    display: block;
+    font-weight: bold;
+    padding: 0.5rem;
+
+    &:hover {
+      background: $primary-color;
+      color: $white;
+      text-decoration: none;
+    }
+  }
+}

@@ -1,5 +1,5 @@
 - if variable.variables.size.positive?
-  %ul
+  %ul.list-bulleted
     - variable.variables.order(:name).each do |v|
       %li{class: v.value_type.name}
         = render 'link', variable: v

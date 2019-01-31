@@ -2,8 +2,7 @@
 %html
   %head
     %title
-      Rapu Ture Connecting the Rules 
-      = '|'
+      Rapu Ture Connecting the Rules
       = yield :title
     = csrf_meta_tags
     = csp_meta_tag
@@ -14,27 +13,31 @@
 
 
   %body
-    .container
-      %p.notice= notice
-      %p.alert= alert
 
-      - if current_page?(root_url)
-        = render 'layouts/explanation'
+    =# import alerts here
 
-      %nav{"aria-label" => "breadcrumb"}
-        %ol.breadcrumb
-          %li.breadcrumb-item= link_to t(:entities), entities_path
-          %li.breadcrumb-item= link_to t(:variables), variables_path
+    - if current_page?(root_url)
+      = render 'layouts/explanation'
+    - else
+      = render 'layouts/sub_header'
+
+    %main
+      .btn-nav
+        .container
+          = link_to t(:explore_by_variables), variables_path, class: 'btn'
+          = link_to t(:explore_by_entities), entities_path, class: 'btn'
+        .container
           =yield :breadcrumbs
 
 
       = yield
 
+  %footer
     .container
       %p
         %span
           Computations powered by
-          = succeed "," do
+          = succeed ',' do
             %a{href: "https://openfisca.org", rel: "noopener", target: "_blank"}
               %img{alt: "OpenFisca", height: "24", src: "https://openfisca.org/img/logo-openfisca.svg"}/
           %a{href: "https://github.com/openfisca/openfisca-core"} source code
