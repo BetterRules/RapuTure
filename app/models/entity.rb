@@ -8,6 +8,6 @@ class Entity < ApplicationRecord
   has_many :variables
 
   def to_s
-    name
+    name || ''
   end
 end
