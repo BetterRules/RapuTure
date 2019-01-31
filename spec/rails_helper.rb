@@ -1,5 +1,10 @@
 # frozen_string_literal: true
 
+# Start SimpleCov as early as possible. Code loaded before this won't be
+# tracked.
+require 'simplecov'
+SimpleCov.start 'rails'
+
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'

@@ -1,8 +1,8 @@
-@import 'variables';
+@import "variables";
 
 .header {
   background: $secondary-color;
-  border-bottom: .625rem solid $primary-color;
+  border-bottom: 0.625rem solid $primary-color;
   padding: 1.5rem 0 2rem;
 
   @media (min-width: 768px) {
@@ -14,7 +14,7 @@
   background: $white;
   border: 5px solid $primary-color;
   border-radius: $border-radius;
-  box-shadow: 0 0 .625rem $primary-color;
+  box-shadow: 0 0 0.625rem $primary-color;
   margin-bottom: 1rem;
   padding: 1.5rem 1.5rem 1rem;
   position: relative;
@@ -45,7 +45,7 @@
 .header-secondary {
   background: $white;
   border-radius: $border-radius;
-  box-shadow: 0 0 20px rgba($primary-color, .7);
+  box-shadow: 0 0 20px rgba($primary-color, 0.7);
   padding: 2rem;
   text-align: center;
 
@@ -78,13 +78,13 @@
 
   h1 {
     background: $white;
-    border: .3125rem solid $primary-color;
+    border: 0.3125rem solid $primary-color;
     border-radius: $border-radius;
     color: $primary-color;
     display: inline-block;
     font-size: 1rem;
     font-weight: bold;
-    padding: .75rem 1.5rem;
+    padding: 0.75rem 1.5rem;
     width: auto;
   }
 }

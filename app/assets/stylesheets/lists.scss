@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 
 dl {
   dt {
@@ -17,13 +17,13 @@ dl {
     display: inline-block;
 
     ::after {
-      content: ' /';
+      content: " /";
     }
   }
 }
 
 .list-bulleted {
   li {
-    margin-bottom: .3125rem;
+    margin-bottom: 0.3125rem;
   }
 }

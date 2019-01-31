@@ -1,6 +1,6 @@
-@import 'variables';
+@import "variables";
 
-$primary-border: .0625rem solid $primary-color;
+$primary-border: 0.0625rem solid $primary-color;
 
 .side-nav {
   margin: 2rem 0;
@@ -14,7 +14,7 @@ $primary-border: .0625rem solid $primary-color;
     border-bottom: $primary-border;
     display: block;
     font-weight: bold;
-    padding: .5rem;
+    padding: 0.5rem;
 
     &:hover {
       background: $primary-color;

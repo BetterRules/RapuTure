@@ -1,8 +1,8 @@
-@import 'variables';
+@import "variables";
 
 .section {
   background: $white;
-  box-shadow: 0 .125rem .3125rem rgba(darken($grey, 10%), .9);
+  box-shadow: 0 0.125rem 0.3125rem rgba(darken($grey, 10%), 0.9);
   margin-top: 1.95rem;
   padding: 1.75rem 2rem;
 
