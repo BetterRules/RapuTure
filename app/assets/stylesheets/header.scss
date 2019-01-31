@@ -17,11 +17,17 @@
   box-shadow: 0 0 .625rem $primary-color;
   margin-bottom: 1rem;
   padding: 1.5rem 1.5rem 1rem;
+  position: relative;
+  text-align: center;
 
   @media (min-width: 768px) {
     margin: 0 5rem;
     margin-bottom: 2rem;
     padding: 2rem 4rem;
+  }
+
+  @media (min-width: 1024px) {
+    text-align: left;
   }
 
   > h1 {
