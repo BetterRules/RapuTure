@@ -12,9 +12,10 @@
   - if variable.has_formula?
     %span.badge.badge-info= t :formula_included
 
-  - unless usage_count.nil?
-    %span.badge.badge-dark used #{pluralize usage_count, 'time'}
-  - if variable.variables.size == 0
+  - unless link_to_count == 0
+    %span.badge.badge-dark used #{pluralize link_to_count, 'time'}
+
+  - if 0 == link_to_count && 0 == link_from_count
     %span.badge.badge-warning{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself'}= t :orphaned
 
   - unless variable.description

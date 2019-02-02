@@ -15,8 +15,10 @@
       = @variable.description
     - else
       = @variable.name
+  = render 'badges', variable: @variable,
+    link_to_count: @variable.reversed_variables.size,
+    link_from_count: @variable.variables.size
 
-  = render 'badges', variable: @variable, usage_count: @variable.reversed_variables.size
   %hr/
 
   %p
