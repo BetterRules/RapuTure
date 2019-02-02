@@ -6,15 +6,15 @@ class VariablesController < ApplicationController
     @search = VariablesSearchService.new(params)
 
     @variables = @search.result
-      .distinct(false)
-      .includes(:variables, :value_type, :entity)
-      .order(:name)
-    
+                        .distinct(false)
+                        .includes(:variables, :value_type, :entity)
+                        .order(:name)
+
     # Get the links between variables (both directions)
     # in just 2 quick db queries
     @link_from_counts = Link.group(:link_from).count
     @link_to_counts = Link.group(:link_to).count
-    
+
     @namespace_filter = @search.filter(:namespace)
   end
 

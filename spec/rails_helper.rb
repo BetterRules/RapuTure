@@ -5,7 +5,6 @@
 require 'simplecov'
 SimpleCov.start 'rails'
 
-
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
@@ -22,17 +21,17 @@ Capybara::Screenshot.register_filename_prefix_formatter(:rspec) do |example|
   "screenshot_#{example.description.tr(' ', '-').gsub(%r{^.*/spec/}, '')}"
 end
 
-SCREENSHOT_DIR = Rails.root.join("tmp/rspec_screens")
+SCREENSHOT_DIR = Rails.root.join('tmp/rspec_screens')
 
 def take_screenshot(example)
-  meta            = example.metadata
-  filename         = File.basename(meta[:file_path])
+  meta = example.metadata
+  filename = File.basename(meta[:file_path])
   line_number     = meta[:line_number]
   screenshot_name = "screenshot-#{filename}-#{line_number}.png"
   screenshot_path = File.join(SCREENSHOT_DIR, screenshot_name)
-  
+
   page.save_screenshot(screenshot_path)
-  
+
   puts meta[:full_description] + "\n  Screenshot: #{screenshot_path}"
 end
 
