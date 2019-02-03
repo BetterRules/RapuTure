@@ -3,42 +3,45 @@
 class VariablesFetchService
   # Load all variables from the OpenFisca server into the database
   #
-  # Updates existing database records but does not remove old records no longer
+  # Updates existing database records and removes old records no longer
   # mentioned by the OpenFisca server
   #
   # @return [Enumerable<Variable>] the loaded +Variable+s, as a streamed
   #   enumerable
   def self.fetch_all
     var_list = variables_list
-    var_list.each do |v|
-      # var_list returns a small data structure which has the variable
-      # name as a key and other attributes as a hash
-      variable_name = v.first
-      variable_attributes = v.second
-      find_or_create_variable(variable_name, variable_attributes)
-      yield variable if block_given?
+    var_list.each do |name, attributes|
+      v = find_or_create_variable(variable_name: name, variable_attributes: attributes)
+      yield v if block_given?
     end
 
     remove_stale_variables(var_list)
-    var_list unless block_given?
+
+    Variable.all unless block_given?
   end
 
-  def self.find_or_create_variable(variable_name, variable_attributes)
+  def self.find_or_create_variable(variable_name:, variable_attributes: {})
     # Find or create the Variable model using the name as the key
     variable = Variable.find_or_initialize_by(name: variable_name)
 
-    # Update the model with attributes retrieved from the server
-    # Note that the href value is available here but is not populated in .fetch below
+    # Update the model with attributes retrieved from the server Note that the
+    # href value is available here but is not populated in .fetch below, which
+    # seems to be an OpenFisca bug
     variable.update(variable_attributes)
 
     # Fetch the additional attributes from the server and save to the database
     fetch(variable)
   end
 
+  # Remove from the database any variables not named in the parameter. Use this
+  # method to remove old entries when the latest Variables list is retrieved
+  # from the OpenFisca server.
+  #
+  # @param [Hash<string, _>]
+  #
+  # @return [Array<Variable>] The variables removed
   def self.remove_stale_variables(var_list)
-    variable_names = var_list.keys
-    stale_variables = Variable.where.not(name: variable_names)
-    stale_variables.each(&:destroy)
+    Variable.where.not(name: var_list.keys).each(&:destroy)
   end
 
   # Load the full data of a variable into the database
