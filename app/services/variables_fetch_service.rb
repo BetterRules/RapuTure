@@ -15,7 +15,7 @@ class VariablesFetchService
       yield v if block_given?
     end
 
-    remove_stale_variables(var_list)
+    remove_stale_variables(variable_names: var_list.keys)
 
     Variable.all unless block_given?
   end
@@ -40,8 +40,11 @@ class VariablesFetchService
   # @param [Hash<string, _>]
   #
   # @return [Array<Variable>] The variables removed
-  def self.remove_stale_variables(var_list)
-    Variable.where.not(name: var_list.keys).each(&:destroy)
+  def self.remove_stale_variables(variable_names:)
+    Variable
+      .where
+      .not(name: variable_names)
+      .each(&:destroy)
   end
 
   # Load the full data of a variable into the database
