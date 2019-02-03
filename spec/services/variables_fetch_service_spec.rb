@@ -17,9 +17,11 @@ RSpec.describe VariablesFetchService do
   end
 
   let(:variables_body) do
+    result = {}
     variables.map do |vari|
-      [vari[:name], vari.slice(:description, :href)]
+      result[vari[:name]] = vari.slice(:description, :href)
     end
+    result
   end
 
   # Mock responses from the OpenFisca server using our dummy data If the
