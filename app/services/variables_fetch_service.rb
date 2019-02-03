@@ -9,30 +9,32 @@ class VariablesFetchService
   # @return [Enumerable<Variable>] the loaded +Variable+s, as a streamed
   #   enumerable
   def self.fetch_all
-    variables_list.each do |v|
+    var_list = variables_list
+    var_list.each do |v|
       # variables_list returns a small data structure which has the variable
       # name as a key and other attributes as a hash
       variable_name = v.first
       variable_attributes = v.second
-
-      # Find or create the Variable model using the name as the key
-      variable = Variable.find_or_initialize_by(name: variable_name)
-
-      # Update the model with attributes retrieved from the server
-      # Note that the href value is available here but is not populated in .fetch below
-      variable.update(variable_attributes)
-
-      # Fetch the additional attributes from the server and save to the database
-      fetch(variable)
+      find_or_create_variable(variable_name, variable_attributes)
 
       yield variable if block_given?
     end
 
-    variable_names = variables_list.keys
-    stale_variables = Variable.where.not(name: variable_names)
-    stale_variables.each(&:destroy)
+    remove_stale_variables(var_list)
 
     variables_list unless block_given?
+  end
+
+  def find_or_create_variable(variable_name, variable_attributes)
+    # Find or create the Variable model using the name as the key
+    variable = Variable.find_or_initialize_by(name: variable_name)
+
+    # Update the model with attributes retrieved from the server
+    # Note that the href value is available here but is not populated in .fetch below
+    variable.update(variable_attributes)
+
+    # Fetch the additional attributes from the server and save to the database
+    fetch(variable)
   end
 
   # Load the full data of a variable into the database
@@ -88,7 +90,7 @@ class VariablesFetchService
   #   containing the name of an OpenFisca variable and a hash of some attributes
   #   of the variable
   def self.variables_list
-    of_conn.get('variables').body
+    @variables_list ||= of_conn.get('variables').body
   end
 
   # Retrieve the full data of one variable from the OpenFisca server
