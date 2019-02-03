@@ -3,8 +3,12 @@ en:
   all_variables: All variables
   default_value: Default value
   entity: Entity
+  example_variables: Example variables
   formula_explanation: This is the formula used to calculate the value of %{name}
   formulas: Formulas
+  formula_for_scenarios_from_date_onwards: This formula is used for scenarios from the date %{formula_date} onwards.
+  rapu_ture_exploring_the_rules: Rapu Ture - Exploring the Rules
+  rapu_ture_connecting_the_rules: Rapu Ture - Connecting the Rules
   reference: Reference
   referenced_by: Where is this used?
   referenced_explanation: This variable is referred to by these other variables in their own calculations
