@@ -11,21 +11,19 @@ class VariablesFetchService
   def self.fetch_all
     var_list = variables_list
     var_list.each do |v|
-      # variables_list returns a small data structure which has the variable
+      # var_list returns a small data structure which has the variable
       # name as a key and other attributes as a hash
       variable_name = v.first
       variable_attributes = v.second
       find_or_create_variable(variable_name, variable_attributes)
-
       yield variable if block_given?
     end
 
     remove_stale_variables(var_list)
-
-    variables_list unless block_given?
+    var_list unless block_given?
   end
 
-  def find_or_create_variable(variable_name, variable_attributes)
+  def self.find_or_create_variable(variable_name, variable_attributes)
     # Find or create the Variable model using the name as the key
     variable = Variable.find_or_initialize_by(name: variable_name)
 
@@ -35,6 +33,12 @@ class VariablesFetchService
 
     # Fetch the additional attributes from the server and save to the database
     fetch(variable)
+  end
+
+  def self.remove_stale_variables(var_list)
+    variable_names = var_list.keys
+    stale_variables = Variable.where.not(name: variable_names)
+    stale_variables.each(&:destroy)
   end
 
   # Load the full data of a variable into the database
@@ -90,7 +94,7 @@ class VariablesFetchService
   #   containing the name of an OpenFisca variable and a hash of some attributes
   #   of the variable
   def self.variables_list
-    @variables_list ||= of_conn.get('variables').body
+    of_conn.get('variables').body
   end
 
   # Retrieve the full data of one variable from the OpenFisca server
