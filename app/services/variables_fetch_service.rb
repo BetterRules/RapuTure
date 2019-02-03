@@ -44,7 +44,7 @@ class VariablesFetchService
     Variable
       .where
       .not(name: variable_names)
-      .each(&:destroy)
+      .delete_all
   end
 
   # Load the full data of a variable into the database
