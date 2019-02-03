@@ -2,7 +2,8 @@
 
 = render 'filters'
 
-.card-columns
-  - @variables.each do |variable|
-    
-    = render 'card', variable: variable
+.container
+  .card-columns
+    - @variables.each do |variable|
+
+      = render 'card', variable: variable

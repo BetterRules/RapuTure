@@ -1,0 +1,40 @@
+@import "variables";
+
+body {
+  margin: 0;
+}
+
+main {
+  background-color: $grey;
+  padding-bottom: 2rem;
+}
+
+a {
+  &:visited {
+    color: $primary-color;
+  }
+
+  &:hover {
+    background: transparent;
+  }
+}
+
+footer {
+  background: $secondary-color;
+  padding: 1rem;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.logo {
+  height: 80px;
+
+  @media (min-width: 1024px) {
+    height: 80px;
+    position: absolute;
+    right: 40px;
+    top: 25px;
+  }
+}

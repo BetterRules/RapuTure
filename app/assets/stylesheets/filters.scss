@@ -1,0 +1,27 @@
+@import "variables";
+
+.filter-select {
+  background: $white;
+  border: 0.1875rem solid transparent;
+  border-radius: $border-radius;
+  color: $badge-primary;
+  display: inline-block;
+  margin-bottom: 0.3125rem;
+  margin-right: 0.3125rem;
+  padding: 0.3125rem 0.625rem;
+
+  &:hover {
+    background: $badge-primary;
+    border: 0.1875rem solid $badge-primary;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+.filter-select:visited {
+  color: $badge-primary;
+
+  &:hover {
+    color: $white;
+  }
+}

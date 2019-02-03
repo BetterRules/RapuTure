@@ -43,3 +43,9 @@ yarn-debug.log*
 
 # Ignore system files
 .DS_Store
+
+# Ignore SimpleCov coverage files
+coverage/
+
+# Ignore yard documentation configuration
+.yardoc/
