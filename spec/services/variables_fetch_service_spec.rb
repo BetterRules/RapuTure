@@ -45,6 +45,30 @@ RSpec.describe VariablesFetchService do
     it 'adds all of the Variables to the database' do
       expect { subject }.to change { Variable.count }.by(variables_total_number)
     end
+
+    it 'correctly sets the href and description attributes' do
+      # There used to be a bug where an available href value would be
+      # overwritten by nil during the .fetch call. This could also have applied
+      # to the description (since they are retrieved in the first variables_list
+      # call). This is a regression test to ensure the values aren't lost again
+      # in future if the server responses or our code change. Note that this
+      # test isn't very useful if the OpenFisca responses are mocked above.
+      # Consider running this agains the live server to debug weird server
+      # behaviour.
+
+      # Pick a random Variable where href and description are set
+      variable = variables.select { |v| v.href.present? && v.description.present? }.sample
+
+      # Load all the variables, which should correctly set href and description
+      subject
+
+      # Find the corresponding Variable model in the database
+      model = Variable.find_by(name: variable.name)
+
+      # Check that the database has recorded the correct values from the original data
+      expect(model.href).to eq variable.href
+      expect(model.description).to eq variable.description
+    end
   end
 
   describe '.fetch' do
