@@ -32,11 +32,11 @@ CI | https://travis-ci.org/ServiceInnovationLab/RapuTure
 **Role(s)** | **Name(s)**
 --- | ---
 Team | Rapu Ture
-Developers | [Lyall Morrison](lyall.morrison@ackama.com), [Mischa Saunders](mischa.saunders@ackama.com),  [Brenda Wallace](brenda.wallace@dia.govt.nz), [Dana Iti](dana.iti@dia.govt.nz) & [Jacob Ong](jacob.ong@dia.govt.nz)
-Designers | [Siobhan McCarthy](siobhan.mccarthy@dia.govt.nz)
+Developers | [Brenda Wallace](https://github.com/Br3nda), [Dana Iti](https://github.com/dlouise64), [Jacob Ong](https://github.com/JacOng17), [Lyall Morrison](https://github.com/lamorrison), [Mischa Saunders](https://github.com/mischa-s)
+Designers | [Siobhan McCarthy](https://github.com/ssibbehh)
 Testers | 
-Project Manager | [Charlotte Hinton](charlotte.hinton@dia.govt.nz)
-Product Owner | [Brenda Wallace](brenda.wallace@dia.govt.nz)
+Project Manager | [Charlotte Hinton](https://github.com/CharlotteHinton)
+Product Owner | [Brenda Wallace](https://github.com/Br3nda)
 
 ## Comms:
 Slack: LabPlus-team #rapu-ture
