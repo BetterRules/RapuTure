@@ -5,5 +5,6 @@
 .container
   .card-columns
     - @variables.each do |variable|
-
-      = render 'card', variable: variable
+      = render 'card', variable: variable,
+        link_to_count: @link_to_counts[variable.id],
+        link_from_count: @link_from_counts[variable.id]
