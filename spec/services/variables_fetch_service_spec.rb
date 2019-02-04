@@ -89,15 +89,7 @@ RSpec.describe VariablesFetchService do
       expect(Variable.find_by(name: new_variable.name)).not_to be_nil
     end
   end
-
-  describe '.variables_list' do
-    subject { described_class.variables_list }
-
-    it 'fetches all the variable descriptions' do
-      expect(subject.count).to eq variables_total_number
-    end
-  end
-
+  
   describe '.variable' do
     subject { described_class.variable(name: variables.sample.name) }
 
