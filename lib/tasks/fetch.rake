@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 namespace :fetch do
-  desc 'Fetch Variables'
+  desc 'Fetch Resources'
   # usage: rake growstuff:admin_user name=skud
-
+  task fetchall: [:variables, :entities] do
+    # This runs after all the above tasks have run
+    puts 'Your database has now been populated with variables and entities!'
+  end
   task variables: :environment do
     VariablesFetchService.fetch_all do |v|
       puts v.name
@@ -11,9 +14,5 @@ namespace :fetch do
   end
   task entities: :environment do
     EntitiesFetchService.fetch_all
-    # Entity.all.each do |v|
-    #   puts v.name
-    #   EntitiesFetchService.fetch(v)
-    # end
   end
 end
