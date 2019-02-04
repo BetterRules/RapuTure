@@ -84,10 +84,7 @@ bin/setup
 * Rename `env-example` file to `.env`
 * Load seed data from OpenFisca (Note: this takes 15 minutes)
 ```
-bundle exec rake fetch:variables
-```
-```
-bundle exec rake fetch:entities
+bundle exec rake fetch:fetchall
 ```
 * Run the app
 ```
