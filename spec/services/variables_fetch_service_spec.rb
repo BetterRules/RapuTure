@@ -17,9 +17,11 @@ RSpec.describe VariablesFetchService do
   end
 
   let(:variables_body) do
+    result = {}
     variables.map do |vari|
-      [vari[:name], vari.slice(:description, :href)]
+      result[vari[:name]] = vari.slice(:description, :href)
     end
+    result
   end
 
   # Mock responses from the OpenFisca server using our dummy data If the
@@ -40,10 +42,29 @@ RSpec.describe VariablesFetchService do
   end
 
   describe '.fetch_all' do
-    subject { described_class.fetch_all }
 
     it 'adds all of the Variables to the database' do
-      expect { subject }.to change { Variable.count }.by(variables_total_number)
+      expect { described_class.fetch_all }.to change { Variable.count }.by(variables_total_number)
+    end
+
+    it 'removes stale Variables the database which are no longer part of API' do
+      described_class.fetch_all
+      stale_variable = variables.sample
+      variables_body.delete(stale_variable.name)
+      described_class.fetch_all
+      expect(Variable.find_by(name: stale_variable.name)).to be_nil
+    end
+
+    xit 'unlinks linked variables when one is deleted' do
+    end
+
+    it 'streams Variable objects if a block is given' do
+      described_class.fetch_all { |v| expect(v).to be_a Variable }
+    end
+
+    it 'returns a collection of Variable objects if no block is given' do
+      results = described_class.fetch_all
+      results.each { |v| expect(v).to be_a Variable }
     end
 
     it 'correctly sets the href and description attributes' do
@@ -93,15 +114,7 @@ RSpec.describe VariablesFetchService do
       expect(Variable.find_by(name: new_variable.name)).not_to be_nil
     end
   end
-
-  describe '.variables_list' do
-    subject { described_class.variables_list }
-
-    it 'fetches all the variable descriptions' do
-      expect(subject.count).to eq variables_total_number
-    end
-  end
-
+  
   describe '.variable' do
     subject { described_class.variable(name: variables.sample.name) }
 
