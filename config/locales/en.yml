@@ -1,7 +1,9 @@
 ---
 en:
   all_variables: All variables
+  available_filters_to_use: Available filters that you can use
   computations_powered_by: Computations powered by
+  current_filters: Current filters
   default_value: Default value
   entity: Entity
   example_variables: Example variables
@@ -19,6 +21,7 @@ en:
   variable_explanation: This is a variable within Aotearoa/New Zealand's Legislation as Code experiment
   variables: Variables
   variables_explanation: within Aotearoa/New Zealand's Legislation as Code experiment
+  variables_that_you_can_set: Variables that you can set %{entity_description}
   view_api: View API
   what_is_rapu_ture: What is Rapu Ture?
   rapu_ture_explanation: Rapu Ture is an API library that lets you explore and call legislative rules.
