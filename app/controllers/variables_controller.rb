@@ -12,8 +12,8 @@ class VariablesController < ApplicationController
 
     # Get the links between variables (both directions)
     # in just 2 quick db queries
-    @link_from_counts = Link.group(:link_from).count
-    @link_to_counts = Link.group(:link_to).count
+    @link_from_counts = Variable.all.joins(:variables).group(:link_from).count
+    @link_to_counts = Variable.all.joins(:reversed_variables).group(:link_to).count
 
     @namespace_filter = @search.filter(:namespace)
   end
