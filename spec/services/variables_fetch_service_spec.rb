@@ -49,10 +49,11 @@ RSpec.describe VariablesFetchService do
 
     it 'removes stale Variables the database which are no longer part of API' do
       described_class.fetch_all
-      stale_variable = variables.sample
+      stale_variable, fresh_variable = variables.sample(2)
       variables_body.delete(stale_variable.name)
       described_class.fetch_all
       expect(Variable.find_by(name: stale_variable.name)).to be_nil
+      expect(Variable.find_by(name: fresh_variable.name)).not_to be_nil
     end
 
     xit 'unlinks linked variables when one is deleted' do
