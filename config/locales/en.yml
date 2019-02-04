@@ -1,6 +1,7 @@
 ---
 en:
   all_variables: All variables
+  computations_powered_by: Computations powered by
   default_value: Default value
   entity: Entity
   example_variables: Example variables
