@@ -49,9 +49,7 @@ RSpec.describe VariablesFetchService do
 
     it 'removes stale Variables the database which are no longer part of API' do
       described_class.fetch_all
-      sample_variables = variables.sample(2)
-      stale_variable = sample_variables[0]
-      fresh_variable = sample_variables[1]
+      stale_variable, fresh_variable = variables.sample(2)
       variables_body.delete(stale_variable.name)
       described_class.fetch_all
       expect(Variable.find_by(name: stale_variable.name)).to be_nil
