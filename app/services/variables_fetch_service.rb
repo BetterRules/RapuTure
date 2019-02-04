@@ -9,8 +9,8 @@ class VariablesFetchService
   # @return [Enumerable<Variable>] the loaded +Variable+s, as a streamed
   #   enumerable
   def self.fetch_all
-    var_list = variables_list
-    var_list.each do |v|
+    variables_list = of_conn.get('variables').body
+    variables_list.each do |v|
       # var_list returns a small data structure which has the variable
       # name as a key and other attributes as a hash
       variable_name = v.first
@@ -19,7 +19,7 @@ class VariablesFetchService
       yield variable if block_given?
     end
 
-    remove_stale_variables(var_list)
+    remove_stale_variables(variables_list)
     var_list unless block_given?
   end
 
