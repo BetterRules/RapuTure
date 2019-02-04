@@ -30,19 +30,20 @@ RSpec.describe VariablesController, type: :controller do
     end
 
     context 'Many variables that refer to each other' do
-      let!(:parent_1) { FactoryBot.create :variable, name: 'likes_to_eat_chocolate', variables: [child_1] }
-      let!(:child_1) { FactoryBot.create :variable, name: 'likes_to_eat' }
+      let!(:parent_1) { FactoryBot.create :variable, name: 'likes_to_eat', variables: [child_1] }
+      let!(:child_1) { FactoryBot.create :variable, name: 'likes_to_eat_chocolate', variables: [grandchild_1] }
+      let!(:grandchild_1){ FactoryBot.create :variable, name: 'likes_to_eat_chocolate_eggs' }
 
-      let!(:parent_2) { FactoryBot.create :variable, name: 'likes_to_drink_water', variables: [child_2] }
-      let!(:child_2) { FactoryBot.create :variable, name: 'likes_to_drink' }
+      let!(:parent_2) { FactoryBot.create :variable, name: 'likes_to_drink', variables: [child_2] }
+      let!(:child_2) { FactoryBot.create :variable, name: 'likes_to_drink_water' }
 
       before { get :index, params: {} }
 
       # These appear in alphabetical order
-      it { expect(assigns(:variables)).to eq [child_2, parent_2, child_1, parent_1] }
-      
-      it { expect(assigns(:link_from_counts)).to eq ({ child_1.id => 1, child_2.id => 1 }) }
-      it { expect(assigns(:link_to_counts)).to eq ({ parent_1.id => 1, parent_2.id => 1 }) }
+      it { expect(assigns(:variables)).to eq [parent_2, child_2, parent_1, child_1, grandchild_1] }
+
+      it { expect(assigns(:link_from_counts)).to eq ({ child_1.id => 1, child_2.id => 1, grandchild_1.id => 1 }) }
+      it { expect(assigns(:link_to_counts)).to eq ({ parent_1.id => 1, parent_2.id => 1, child_1.id => 1 }) }
     end
   end
 end
