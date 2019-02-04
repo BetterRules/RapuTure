@@ -82,10 +82,11 @@ RSpec.describe VariablesFetchService do
       variable = variables.select { |v| v.href.present? && v.description.present? }.sample
 
       # Load all the variables, which should correctly set href and description
-      subject
+      described_class.fetch_all
 
       # Find the corresponding Variable model in the database
       model = Variable.find_by(name: variable.name)
+      expect(model).not_to be_nil
 
       # Check that the database has recorded the correct values from the original data
       expect(model.href).to eq variable.href
