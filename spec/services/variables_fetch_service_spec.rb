@@ -51,11 +51,11 @@ RSpec.describe VariablesFetchService do
       described_class.fetch_all
       sample_variables = variables.sample(2)
       stale_variable = sample_variables[0]
-      present_variable = sample_variables[1]
+      fresh_variable = sample_variables[1]
       variables_body.delete(stale_variable.name)
       described_class.fetch_all
       expect(Variable.find_by(name: stale_variable.name)).to be_nil
-      expect(Variable.find_by(name: present_variable.name)).not_to be_nil
+      expect(Variable.find_by(name: fresh_variable.name)).not_to be_nil
     end
 
     xit 'unlinks linked variables when one is deleted' do
