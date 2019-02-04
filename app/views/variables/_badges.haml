@@ -12,7 +12,7 @@
   - if variable.has_formula?
     %span.badge.badge-info= t :formula_included
 
-  - if link_to_count.nil? && link_from_count.nil?
+  - if link_to_count.zero? && link_from_count.zero?
     %span.badge.badge-warning{'data-toggle': 'tooltip',
       'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself'}
       Orphaned
