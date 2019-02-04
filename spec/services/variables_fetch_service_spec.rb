@@ -54,6 +54,18 @@ RSpec.describe VariablesFetchService do
       described_class.fetch_all
       expect(Variable.find_by(name: stale_variable.name)).to be_nil
     end
+
+    xit 'unlinks linked variables when one is deleted' do
+    end
+
+    it 'streams Variable objects if a block is given' do
+      described_class.fetch_all { |v| expect(v).to be_a Variable }
+    end
+
+    it 'returns a collection of Variable objects if no block is given' do
+      results = described_class.fetch_all
+      results.each { |v| expect(v).to be_a Variable }
+    end
   end
 
   describe '.fetch' do
