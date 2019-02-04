@@ -51,10 +51,11 @@ RSpec.describe VariablesFetchService do
       # overwritten by nil during the .fetch call. This could also have applied
       # to the description (since they are retrieved in the first variables_list
       # call). This is a regression test to ensure the values aren't lost again
-      # in future if the server responses or our code change. Note that this
-      # test isn't very useful if the OpenFisca responses are mocked above.
-      # Consider running this agains the live server to debug weird server
-      # behaviour.
+      # in future if the server responses or our code change. 
+      #
+      # Note that this test isn't very useful if the OpenFisca responses are
+      # mocked above. Consider running this against the live server to debug
+      # weird server behaviour.
 
       # Pick a random Variable where href and description are set
       variable = variables.select { |v| v.href.present? && v.description.present? }.sample
