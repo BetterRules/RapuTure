@@ -8,6 +8,7 @@ class VariablesFetchService
   #
   # @return [Enumerable<Variable>] the loaded +Variable+s, as a streamed
   #   enumerable
+
   def self.fetch_all
     # @return [Array<Array<(String, Hash{String, String})>>] a list of pairs
     # containing the name of an OpenFisca variable and a hash of some attributes
