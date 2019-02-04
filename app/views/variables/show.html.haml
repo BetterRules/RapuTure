@@ -2,7 +2,6 @@
   - content_for(:title) do
     = @variable.name
 
-
   - content_for(:breadcrumbs) do
     %ul.list-stripped.list-inline.breadcrumbs
       - if @variable.namespace.present?
@@ -16,8 +15,10 @@
       = @variable.description
     - else
       = @variable.name
+  = render 'badges', variable: @variable,
+    link_to_count: @variable.reversed_variables.size,
+    link_from_count: @variable.variables.size
 
-  = render 'badges', variable: @variable
   %hr/
 
   %p
