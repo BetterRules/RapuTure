@@ -17,31 +17,6 @@ require 'rspec/rails'
 require 'capybara'
 require 'capybara/rspec'
 require 'capybara-screenshot/rspec'
-Capybara::Screenshot.register_filename_prefix_formatter(:rspec) do |example|
-  "screenshot_#{example.description.tr(' ', '-').gsub(%r{^.*/spec/}, '')}"
-end
-
-SCREENSHOT_DIR = Rails.root.join('tmp/rspec_screens')
-
-def take_screenshot(example)
-  meta = example.metadata
-  filename = File.basename(meta[:file_path])
-  line_number     = meta[:line_number]
-  screenshot_name = "screenshot-#{filename}-#{line_number}.png"
-  screenshot_path = File.join(SCREENSHOT_DIR, screenshot_name)
-
-  page.save_screenshot(screenshot_path)
-
-  puts meta[:full_description] + "\n  Screenshot: #{screenshot_path}"
-end
-
-Capybara.configure do |config|
-  config.asset_host = 'http://localhost:3000'
-  config.always_include_port = true
-  config.default_normalize_ws = true
-  config.server_port = 3000
-  config.app_host = 'http://localhost'
-end
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
