@@ -9,6 +9,7 @@ feature 'index' do
       before { visit variables_path }
       it { expect(page).to have_text 'Available filters for Namespace' }
       it { expect(page).to have_link 'likes_to_eat_chocolate' }
+      it { expect(page).to have_text 'Orphaned' }
     end
   end
 
