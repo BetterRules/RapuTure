@@ -2,7 +2,7 @@
 %html
   %head
     %title
-      =t(:rapu_ture_connecting_the_rules)
+      = t(:rapu_ture_connecting_the_rules)
       = yield :title
     = csrf_meta_tags
     = csp_meta_tag
@@ -36,7 +36,7 @@
     .container
       %p
         %span
-          =t(:computations_powered_by)
+          = t(:computations_powered_by)
           = succeed ',' do
             %a{href: "https://openfisca.org", rel: "noopener", target: "_blank"}
               %img{alt: "OpenFisca", height: "24", src: "https://openfisca.org/img/logo-openfisca.svg"}/
