@@ -49,10 +49,11 @@ RSpec.describe VariablesFetchService do
 
     it 'removes stale Variables the database which are no longer part of API' do
       described_class.fetch_all
-      stale_variable = variables.sample
+      stale_variable, fresh_variable = variables.sample(2)
       variables_body.delete(stale_variable.name)
       described_class.fetch_all
       expect(Variable.find_by(name: stale_variable.name)).to be_nil
+      expect(Variable.find_by(name: fresh_variable.name)).not_to be_nil
     end
 
     xit 'unlinks linked variables when one is deleted' do
@@ -65,6 +66,32 @@ RSpec.describe VariablesFetchService do
     it 'returns a collection of Variable objects if no block is given' do
       results = described_class.fetch_all
       results.each { |v| expect(v).to be_a Variable }
+    end
+
+    it 'correctly sets the href and description attributes' do
+      # There used to be a bug where an available href value would be
+      # overwritten by nil during the .fetch call. This could also have applied
+      # to the description (since they are retrieved in the first variables_list
+      # call). This is a regression test to ensure the values aren't lost again
+      # in future if the server responses or our code change. 
+      #
+      # Note that this test isn't very useful if the OpenFisca responses are
+      # mocked above. Consider running this against the live server to debug
+      # weird server behaviour.
+
+      # Pick a random Variable where href and description are set
+      variable = variables.select { |v| v.href.present? && v.description.present? }.sample
+
+      # Load all the variables, which should correctly set href and description
+      described_class.fetch_all
+
+      # Find the corresponding Variable model in the database
+      model = Variable.find_by(name: variable.name)
+      expect(model).not_to be_nil
+
+      # Check that the database has recorded the correct values from the original data
+      expect(model.href).to eq variable.href
+      expect(model.description).to eq variable.description
     end
   end
 
