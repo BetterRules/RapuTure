@@ -1,7 +1,7 @@
 ---
 en:
   all_variables: All variables
-  available_filters_to_use: Available filters that you can use
+  available_filters_to_use: Available filters for %{namespace_filter_name}
   computations_powered_by: Computations powered by
   current_filters: Current filters
   default_value: Default value
