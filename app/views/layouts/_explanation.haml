@@ -1,12 +1,12 @@
 %header.header
   .container
     .hero
-      %h1 Rapu Ture - Exploring the Rules
+      %h1= t(:rapu_ture_exploring_the_rules)
       %p= t :variables_explanation
       = image_tag('beehive.svg', alt: 'A scalable vector image of the New Zealand Government Beehive', class: 'logo')
 
     .header-secondary
-      %h2 Rapu Ture is an API library that lets you explore and call legislative rules.
+      %h2= t(:rapu_ture_explanation)
       = link_to 'https://www.digital.govt.nz/blog/global-coverage-of-our-legislation-as-code-work/', class: 'btn btn-primary btn-lg', role: 'button' do
         Learn more
 
