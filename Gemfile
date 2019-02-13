@@ -55,7 +55,7 @@ gem 'forty_facets'
 gem 'globalize'
 
 # css
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.0'
 
 gem 'jquery-rails'
 
