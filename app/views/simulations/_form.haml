@@ -1,0 +1,25 @@
+
+%h2 Run a simulation
+to calculate #{@variable.name}
+
+= form_tag("/simulations", method: "post") do
+  
+  /# the variable we are calculating
+  = hidden_field_tag(:variable, @variable.name)
+
+  %p
+    = text_field_tag(:period, '2019-03', placeholder: '2019-03')
+    = label_tag(:period)
+
+  %h3 Person One
+  - variable.variables.each do |child|
+    %p
+      - if child.value_type.name == 'Boolean'
+        = check_box_tag("persons[one][#{child.name}]")
+      - elsif child.value_type.name = 'Int'
+        = text_field_tag("persons[one][#{child.name}]")
+      - else
+        = child.value_type.name
+        not supported yet
+      = label_tag("persons[one][#{child.name}]", child.description)
+  = submit_tag("Calculate")

@@ -1,0 +1,9 @@
+%p
+  - if variable.value_type.name == 'Boolean'
+    = check_box_tag(variable.name)
+  - elsif variable.value_type.name = 'Int'
+
+  - else
+    TODO
+    = variable.value_type.name
+  = label_tag(variable.name, variable.description)

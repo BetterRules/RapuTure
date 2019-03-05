@@ -31,10 +31,10 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'faraday'
 gem 'faraday_middleware'
-
+gem 'httparty'
+gem "responders"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -56,7 +56,6 @@ gem 'globalize'
 
 # css
 gem 'bootstrap', '~> 4.3.1'
-
 gem 'jquery-rails'
 
 gem 'font-awesome-rails'

@@ -1,0 +1,10 @@
+.container
+  .row
+    .col-sm
+      .shadow.p-3.mb-5.bg-white.rounded
+        %h2 Request
+        = display_formula JSON.pretty_generate(@simulation.request)
+    .col-sm
+      .shadow.p-3.mb-5.bg-white.rounded
+        %h2 Response
+        = display_formula JSON.pretty_generate(@simulation.response)
