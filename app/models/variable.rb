@@ -35,4 +35,27 @@ class Variable < ApplicationRecord
   def to_s
     name
   end
+
+  def default_value
+    spec['defaultValue']
+  end
+
+  def formulas
+    spec['formulas']
+  end
+  def references
+    spec['references']
+  end
+
+  def definition_period
+    spec['definitionPeriod']
+  end
+
+  def entity_name
+    entity.name
+  end
+
+  def child_variables
+    variables.pluck(:name)
+  end
 end

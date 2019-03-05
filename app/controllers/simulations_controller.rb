@@ -14,7 +14,7 @@ class SimulationsController < ApplicationController
     @variable = Variable.find_by name: params[:variable]
     @query = query_from_params
     @resonse = SimluationsService.calculate(@query)
-    @simulation = Simulation.create!(request: @query, response: @resonse)
+    @simulation = Simulation.create!(variable: @variable, request: @query, response: @resonse)
     respond_with @simulation
   end
 
@@ -28,6 +28,9 @@ class SimulationsController < ApplicationController
       values = params.require(:persons).require(person_name).permit(variables).to_hash
       query['persons'][person_name] = {}
       values.each do |variable_name, value|
+        variable = Variable.find_by name: variable_name
+        value = (value=='1') if variable.value_type.name == 'Boolean'
+        value = value.to_i if variable.value_type.name == 'Int'
         # input variables
         query['persons'][person_name][variable_name] = {period => value}
       end

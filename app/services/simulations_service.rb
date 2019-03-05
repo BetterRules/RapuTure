@@ -1,4 +1,4 @@
-class SimluationsService < OpenfiscaService
+class SimluationsService
   def self.calculate(query)
     headers = { 'Content-Type' => 'application/json' }
     url = "#{ENV['OPENFISCA_URL']}/calculate"

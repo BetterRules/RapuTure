@@ -1,10 +1,11 @@
+%h2
+  Simulation for
+  = link_to @simulation.variable.name, @simulation.variable
 .container
   .row
-    .col-sm
-      .shadow.p-3.mb-5.bg-white.rounded
-        %h2 Request
-        = display_formula JSON.pretty_generate(@simulation.request)
-    .col-sm
-      .shadow.p-3.mb-5.bg-white.rounded
-        %h2 Response
-        = display_formula JSON.pretty_generate(@simulation.response)
+    .col-sm.shadow.p-3.mb-5.bg-white.rounded
+      %h2 Request
+      %pre= display_formula JSON.pretty_generate(@simulation.request)
+    .col-sm.shadow.p-3.mb-5.bg-white.rounded
+      %h2 Response
+      %pre= display_formula JSON.pretty_generate(@simulation.response)

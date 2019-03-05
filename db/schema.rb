@@ -43,10 +43,12 @@ ActiveRecord::Schema.define(version: 2019_03_05_003424) do
   end
 
   create_table "simulations", force: :cascade do |t|
+    t.bigint "variable_id"
     t.json "request"
     t.json "response"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["variable_id"], name: "index_simulations_on_variable_id"
   end
 
   create_table "value_types", force: :cascade do |t|

@@ -9,12 +9,10 @@
           = t @variable.namespace.to_sym
       %li.breadcrumb-item.active{"aria-current" => "page"}= @variable.name
 
-
   %h3
-    -if @variable.description
+    = @variable.name
+    - if @variable.description
       = @variable.description
-    - else
-      = @variable.name
   = render 'badges', variable: @variable,
     link_to_count: @variable.reversed_variables.size,
     link_from_count: @variable.variables.size
@@ -30,12 +28,15 @@
     %strong=t :entity
     = @variable.spec['entity']
 
+  = link_to 'Run a simluation', new_simulation_path(variable: @variable.to_param)
+
   - cache @variable do
     - if @variable.variables.size.positive?
       %hr/
       %h3= t :references
       %p= t :references_explanation
       = render 'references', variable: @variable
+
     - if @variable.reversed_variables.size.positive?
       %hr/
       %h3=t :referenced_by
