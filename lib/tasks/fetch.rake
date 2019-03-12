@@ -8,7 +8,7 @@ namespace :fetch do
     puts 'Your database has now been populated with variables and entities!'
   end
   task variables: :environment do
-    VariablesFetchService.fetch_all do |v|
+    VariablesFetchService.process_all do |v|
       puts v.name
     end
   end
