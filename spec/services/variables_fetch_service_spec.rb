@@ -18,16 +18,8 @@ RSpec.describe VariablesFetchService do
   # mock and the tests will run against the production data, which might help
   # diagnose an API change in OpenFisca
   before do
-    allow_any_instance_of(Faraday::Connection)
-      .to receive(:get) do |_self, param|
-        if param == 'variables'
-          OpenStruct.new(body: variables_body)
-        else
-          # 'variable/variable_name'
-          name = param.split('/').second
-          OpenStruct.new(body: variables_dictionary[name])
-        end
-      end
+    allow(VariablesFetchService).to receive(:fetch_all).and_return(variables_list_body)
+    allow(VariablesFetchService).to receive(:fetch_one).and_return(variable_body)
   end
 
   describe '.fetch_all' do
