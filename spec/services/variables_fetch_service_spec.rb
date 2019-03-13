@@ -10,19 +10,8 @@ RSpec.describe VariablesFetchService do
     FactoryBot.build_list(:variable, variables_total_number)
   end
 
-  let(:variables_dictionary) do
-    variables
-      .index_by(&:name)
-      .transform_values(&:attributes)
-  end
-
-  let(:variables_body) do
-    result = {}
-    variables.map do |vari|
-      result[vari[:name]] = vari.slice(:description, :href)
-    end
-    result
-  end
+  let(:variables_list_body) { JSON.parse file_fixture("variables_list_body.json").read }
+  let(:variable_body) { JSON.parse file_fixture("variable_body.json").read }
 
   # Mock responses from the OpenFisca server using our dummy data If the
   # production server starts returning unexpected responses you can remove this
