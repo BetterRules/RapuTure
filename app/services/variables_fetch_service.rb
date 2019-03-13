@@ -14,7 +14,7 @@ class VariablesFetchService < OpenfiscaService
     # of the variable
     variables = []
     fetch_all.each do |name, attributes|
-      variables << Variable.find_or_create_by!(name: name)
+      variables << Variable.find_or_initialize_by(name: name)
     end
 
     remove_stale_variables(variables.pluck(:name))
