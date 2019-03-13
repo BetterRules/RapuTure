@@ -1,0 +1,18 @@
+{
+  "id": "parental_leave__is_primary_carer",
+  "description": "Is primary carer, as per Parental Leave and Employment Protection Act 1987",
+  "valueType": "Boolean",
+  "defaultValue": false,
+  "definitionPeriod": "MONTH",
+  "entity": "person",
+  "source": "/blob//app/openfisca_aotearoa/variables/acts/parental_leave/parental_leave.py#L7-L27",
+  "references": [
+    "http://www.legislation.govt.nz/act/public/1987/0129/latest/DLM120458.html"
+  ],
+  "formulas": {
+    "2002-01-01": {
+      "source": "/blob//app/openfisca_aotearoa/variables/acts/parental_leave/parental_leave.py#L14-L27",
+      "content": "def formula_2002(persons, period, parameters):\n    biological_mother = persons('parental_leave__is_the_biological_mother', period)\n\n    her_spouse = persons('parental_leave__is_spouse_or_partner_of_the_biological_mother', period)\n    received_transferred_entitlement = persons('parental_leave__has_spouse_who_transferred_her_entitlement', period)\n\n    other = persons('parental_leave__a_person_other_than_biological_mother_or_her_spouse', period)\n    permanent = persons('parental_leave__taking_permanent_primary_responsibility_for_child', period)\n\n    # Mark who is the principal caregiver, as there may be >1 eligible\n    # PPL Section 7 (2)\n    nominated = persons.has_role(Family.PRINCIPAL_CAREGIVER)\n\n    return nominated * (biological_mother + (her_spouse * received_transferred_entitlement) + (other * permanent))\n"
+    }
+  }
+}

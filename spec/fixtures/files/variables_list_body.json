@@ -1,0 +1,878 @@
+{
+  "student_allowance__is_secondary_student": {
+    "description": "is a secondary student",
+    "href": "https://api.rules.nz/variable/student_allowance__is_secondary_student"
+  },
+  "student_allowance__is_tertiary_student": {
+    "description": "is a tertiary student",
+    "href": "https://api.rules.nz/variable/student_allowance__is_tertiary_student"
+  },
+  "student_allowance__combined_income": {
+    "description": "the personal income of that student; and the spousal or partner’s income of that student",
+    "href": "https://api.rules.nz/variable/student_allowance__combined_income"
+  },
+  "student_allowance__has_a_spouse": {
+    "description": "Has spouse as per Student Allowances Regulations 1998",
+    "href": "https://api.rules.nz/variable/student_allowance__has_a_spouse"
+  },
+  "student_allowance__has_a_supported_child": {
+    "description": "has a supported child as per Student Allowances Regulations 1998",
+    "href": "https://api.rules.nz/variable/student_allowance__has_a_supported_child"
+  },
+  "student_allowance__income_before_tax": {
+    "description": "income before tax includes gains before tax and profits before tax",
+    "href": "https://api.rules.nz/variable/student_allowance__income_before_tax"
+  },
+  "student_allowance__is_a_dependent_student": {
+    "description": "is a dependent student",
+    "href": "https://api.rules.nz/variable/student_allowance__is_a_dependent_student"
+  },
+  "student_allowance__is_a_student": {
+    "description": "student means a person who is enrolled or intends to enrol in a recognised course of study",
+    "href": "https://api.rules.nz/variable/student_allowance__is_a_student"
+  },
+  "student_allowance__is_childless": {
+    "description": "childless means not having a supported child or children",
+    "href": "https://api.rules.nz/variable/student_allowance__is_childless"
+  },
+  "student_allowance__is_living_with_a_parent": {
+    "description": "living with a parent has the same meaning as in section 3(1) of the Social Security Act 1964",
+    "href": "https://api.rules.nz/variable/student_allowance__is_living_with_a_parent"
+  },
+  "student_allowance__is_married_or_partnered": {
+    "description": "married or partnered as per Student Allowances Regulations 1998",
+    "href": "https://api.rules.nz/variable/student_allowance__is_married_or_partnered"
+  },
+  "student_allowance__partner_has_a_supported_child": {
+    "description": "their spouse has a supported child, as per Student Allowances Regulations 1998",
+    "href": "https://api.rules.nz/variable/student_allowance__partner_has_a_supported_child"
+  },
+  "student_allowance__partner_or_person_receiving_certain_allowances": {
+    "description": "Student not eligible for certain allowances where student or spouse or partner receiving social security payments, New Zealand superannuation, or veteran’s pension",
+    "href": "https://api.rules.nz/variable/student_allowance__partner_or_person_receiving_certain_allowances"
+  },
+  "student_allowance__eligible_for_basic_grant": {
+    "description": "eligibily for Student Allowance basic grant",
+    "href": "https://api.rules.nz/variable/student_allowance__eligible_for_basic_grant"
+  },
+  "student_allowance__eligible_for_independent_circumstances": {
+    "description": "Eligible for Student Allowance Independent Circumstances Grant",
+    "href": "https://api.rules.nz/variable/student_allowance__eligible_for_independent_circumstances"
+  },
+  "student_allowance__approved_to_study_overseas": {
+    "description": "is approved to study overseas under regulation 26",
+    "href": "https://api.rules.nz/variable/student_allowance__approved_to_study_overseas"
+  },
+  "student_allowance__approved_to_study_parttime": {
+    "description": "is approved to study in a part-time course under regulation 12A.",
+    "href": "https://api.rules.nz/variable/student_allowance__approved_to_study_parttime"
+  },
+  "student_allowance__eligible_for_certain_allowances": {
+    "description": "Eligible to certain allowances under Student Allowance Regulations",
+    "href": "https://api.rules.nz/variable/student_allowance__eligible_for_certain_allowances"
+  },
+  "student_allowance__is_enrolled_fulltime": {
+    "description": "is enrolled in a full-time course at a tertiary provider or secondary school",
+    "href": "https://api.rules.nz/variable/student_allowance__is_enrolled_fulltime"
+  },
+  "student_allowance__meets_attendance_and_performance_requirements": {
+    "description": "meets the attendance and performance requirements of that provider or school for tuition",
+    "href": "https://api.rules.nz/variable/student_allowance__meets_attendance_and_performance_requirements"
+  },
+  "early_childcare_hours_participation_per_week": {
+    "description": "Number of hours per week person is participating in approved early-childhood education programmes",
+    "href": "https://api.rules.nz/variable/early_childcare_hours_participation_per_week"
+  },
+  "is_attending_school": {
+    "description": "Is child attending school",
+    "href": "https://api.rules.nz/variable/is_attending_school"
+  },
+  "social_security_regulation__eligible_for_childcare_subsidy": {
+    "description": "Eligibility of child for payment of childcare subsidy",
+    "href": "https://api.rules.nz/variable/social_security_regulation__eligible_for_childcare_subsidy"
+  },
+  "social_security_regulation__family_has_child_eligible_for_disability_allowance_child_under_6": {
+    "description": "Family has a child under 6 years old and eligible for Disability Allowance and in minimum childcare hours per week",
+    "href": "https://api.rules.nz/variable/social_security_regulation__family_has_child_eligible_for_disability_allowance_child_under_6"
+  },
+  "social_security_regulation__family_has_resident_child_aged_5_who_will_be_enrolled_in_school": {
+    "description": "Family has resident child aged 5 who will be enrolled in school and in minimum childcare hours per week",
+    "href": "https://api.rules.nz/variable/social_security_regulation__family_has_resident_child_aged_5_who_will_be_enrolled_in_school"
+  },
+  "social_security_regulation__family_has_resident_child_under_5_not_in_school": {
+    "description": "Family has a resident child who is under 5 years old, not in school and in minimum childcare hours per week",
+    "href": "https://api.rules.nz/variable/social_security_regulation__family_has_resident_child_under_5_not_in_school"
+  },
+  "social_security_regulation__household_income_below_childcare_subsidy_threshold": {
+    "description": "Household income is below Childcare Subsidy threshold",
+    "href": "https://api.rules.nz/variable/social_security_regulation__household_income_below_childcare_subsidy_threshold"
+  },
+  "will_be_enrolled_in_school": {
+    "description": "Child will be enrolled in a school that has a cohort entry policy in place",
+    "href": "https://api.rules.nz/variable/will_be_enrolled_in_school"
+  },
+  "number_of_years_lived_in_nz": {
+    "description": "Number of years lived in NZ",
+    "href": "https://api.rules.nz/variable/number_of_years_lived_in_nz"
+  },
+  "total_number_of_years_lived_in_nz_since_age_20": {
+    "description": "Total number of years lived in NZ since age 20",
+    "href": "https://api.rules.nz/variable/total_number_of_years_lived_in_nz_since_age_20"
+  },
+  "total_number_of_years_lived_in_nz_since_age_50": {
+    "description": "Total number of years lived in NZ since age 50",
+    "href": "https://api.rules.nz/variable/total_number_of_years_lived_in_nz_since_age_50"
+  },
+  "has_a_partner": {
+    "description": "Is this person in a relationship?",
+    "href": "https://api.rules.nz/variable/has_a_partner"
+  },
+  "has_been_married_or_in_a_civil_union_or_de_facto_relationship": {
+    "description": "He or she is not married but has been married or in a civil union or de facto relationship",
+    "href": "https://api.rules.nz/variable/has_been_married_or_in_a_civil_union_or_de_facto_relationship"
+  },
+  "is_a_parent": {
+    "description": "Is a parent?",
+    "href": "https://api.rules.nz/variable/is_a_parent"
+  },
+  "is_a_step_parent": {
+    "description": "Is a step-parent?",
+    "href": "https://api.rules.nz/variable/is_a_step_parent"
+  },
+  "is_adequately_supported_by_partner": {
+    "description": "Is adequately supported by their partner? (false if lost the regular support of\n    their partner as their partner has been imprisoned or is subject to release or detention conditions that prevent employment)\n    ",
+    "href": "https://api.rules.nz/variable/is_adequately_supported_by_partner"
+  },
+  "is_in_civil_union": {
+    "description": "Is in a civil union?",
+    "href": "https://api.rules.nz/variable/is_in_civil_union"
+  },
+  "is_in_de_facto_relationship": {
+    "description": "Is in a de facto relationship?",
+    "href": "https://api.rules.nz/variable/is_in_de_facto_relationship"
+  },
+  "is_married": {
+    "description": "Is married?",
+    "href": "https://api.rules.nz/variable/is_married"
+  },
+  "is_married_or_in_a_civil_union_or_de_facto_relationship": {
+    "description": "He or she is married, or in a civil union or de facto relationship",
+    "href": "https://api.rules.nz/variable/is_married_or_in_a_civil_union_or_de_facto_relationship"
+  },
+  "is_of_full_capacity": {
+    "description": "is of full capacity (a person shall be deemed to be of full capacity if he is not of unsound mind)",
+    "href": "https://api.rules.nz/variable/is_of_full_capacity"
+  },
+  "age": {
+    "description": "The age of a Person (in years)",
+    "href": "https://api.rules.nz/variable/age"
+  },
+  "age_of_partner": {
+    "description": "The age of partner in a family",
+    "href": "https://api.rules.nz/variable/age_of_partner"
+  },
+  "age_of_youngest": {
+    "description": "The age of the youngest member of a family",
+    "href": "https://api.rules.nz/variable/age_of_youngest"
+  },
+  "date_of_birth": {
+    "description": "Birth date",
+    "href": "https://api.rules.nz/variable/date_of_birth"
+  },
+  "due_date_of_birth": {
+    "description": "Birth due date",
+    "href": "https://api.rules.nz/variable/due_date_of_birth"
+  },
+  "hours_per_week_employed": {
+    "description": "The hours per week a person is employed for",
+    "href": "https://api.rules.nz/variable/hours_per_week_employed"
+  },
+  "financially_supported_by_parent_or_guardian": {
+    "description": "is being financially supported by a parent or guardian",
+    "href": "https://api.rules.nz/variable/financially_supported_by_parent_or_guardian"
+  },
+  "has_dependent_child": {
+    "description": "has a dependent child or dependent children",
+    "href": "https://api.rules.nz/variable/has_dependent_child"
+  },
+  "living_with_parent_or_guardian": {
+    "description": "is living with a parent or guardian",
+    "href": "https://api.rules.nz/variable/living_with_parent_or_guardian"
+  },
+  "monthly_income": {
+    "description": "Monthly income of this person",
+    "href": "https://api.rules.nz/variable/monthly_income"
+  },
+  "yearly_income": {
+    "description": "Yearly income of this person",
+    "href": "https://api.rules.nz/variable/yearly_income"
+  },
+  "immigration__holds_permanent_resident_visa": {
+    "description": "Holder of a permanent resident visa",
+    "href": "https://api.rules.nz/variable/immigration__holds_permanent_resident_visa"
+  },
+  "immigration__holds_resident_visa": {
+    "description": "Holder of a resident visa",
+    "href": "https://api.rules.nz/variable/immigration__holds_resident_visa"
+  },
+  "immigration__is_protected_person": {
+    "description": "is recognised as a a protected person in New Zealand",
+    "href": "https://api.rules.nz/variable/immigration__is_protected_person"
+  },
+  "immigration__is_recognised_refugee": {
+    "description": "is recognised as a refugee",
+    "href": "https://api.rules.nz/variable/immigration__is_recognised_refugee"
+  },
+  "is_citizen_or_resident": {
+    "description": "NZ Citizen or Resident",
+    "href": "https://api.rules.nz/variable/is_citizen_or_resident"
+  },
+  "is_nz_citizen": {
+    "description": "New Zealand citizen means a person who has New Zealand citizenship as provided in\n        the Citizenship Act 1977 or the Citizenship (Western Samoa) Act 1982",
+    "href": "https://api.rules.nz/variable/is_nz_citizen"
+  },
+  "is_permanent_resident": {
+    "description": "Holder of a permanent resident visa",
+    "href": "https://api.rules.nz/variable/is_permanent_resident"
+  },
+  "is_resident": {
+    "description": "Holder of a permanent resident visa or a resident visa",
+    "href": "https://api.rules.nz/variable/is_resident"
+  },
+  "immigration__entitled_to_indefinite_stay": {
+    "description": "is entitled in terms of the Immigration Act 2009 to be in New Zealand indefinitely",
+    "href": "https://api.rules.nz/variable/immigration__entitled_to_indefinite_stay"
+  },
+  "acc__is_receiving_compensation": {
+    "description": "Is receiving compensation payment through ACC",
+    "href": "https://api.rules.nz/variable/acc__is_receiving_compensation"
+  },
+  "parental_leave__a_person_other_than_biological_mother_or_her_spouse": {
+    "description": "a person, other than the biological mother or her spouse or partner",
+    "href": "https://api.rules.nz/variable/parental_leave__a_person_other_than_biological_mother_or_her_spouse"
+  },
+  "parental_leave__applied_for_leave_or_stopped_working": {
+    "description": "Has applied for/taken leave or stopped working immediately",
+    "href": "https://api.rules.nz/variable/parental_leave__applied_for_leave_or_stopped_working"
+  },
+  "parental_leave__eligible_employee": {
+    "description": "Eligible employee",
+    "href": "https://api.rules.nz/variable/parental_leave__eligible_employee"
+  },
+  "parental_leave__family_includes_biological_mother_as_partner": {
+    "description": null,
+    "href": "https://api.rules.nz/variable/parental_leave__family_includes_biological_mother_as_partner"
+  },
+  "parental_leave__had_previous_parental_leave_in_last_six_months": {
+    "description": "Had previous parental leave in last six months",
+    "href": "https://api.rules.nz/variable/parental_leave__had_previous_parental_leave_in_last_six_months"
+  },
+  "parental_leave__has_spouse_who_transferred_her_entitlement": {
+    "description": "is the spouse of the biological mother, and she transferred her entitlement to this spouse",
+    "href": "https://api.rules.nz/variable/parental_leave__has_spouse_who_transferred_her_entitlement"
+  },
+  "parental_leave__is_primary_carer": {
+    "description": "Is primary carer, as per Parental Leave and Employment Protection Act 1987",
+    "href": "https://api.rules.nz/variable/parental_leave__is_primary_carer"
+  },
+  "parental_leave__is_spouse_or_partner_of_the_biological_mother": {
+    "description": "the spouse or partner of the biological mother",
+    "href": "https://api.rules.nz/variable/parental_leave__is_spouse_or_partner_of_the_biological_mother"
+  },
+  "parental_leave__is_the_biological_mother": {
+    "description": "a female (the biological mother) who is pregnant or has given birth to a child",
+    "href": "https://api.rules.nz/variable/parental_leave__is_the_biological_mother"
+  },
+  "parental_leave__taking_permanent_primary_responsibility_for_child": {
+    "description": "taking permanent primary responsibility for the care, development, and upbringing of a child who is under the age of 6 years (and if there is more than 1 such person, the person nominated in accordance with subsection (2)).",
+    "href": "https://api.rules.nz/variable/parental_leave__taking_permanent_primary_responsibility_for_child"
+  },
+  "parental_leave__threshold_tests": {
+    "description": "satisfies Parental Leave Threshold Tests (tests are used to determine an employee's entitlements to parental leave)",
+    "href": "https://api.rules.nz/variable/parental_leave__threshold_tests"
+  },
+  "parental_leave__transferred_her_entitlement_to_spouse": {
+    "description": "has transferred all or part of her entitlement to a parental leave payment to that spouse or partner",
+    "href": "https://api.rules.nz/variable/parental_leave__transferred_her_entitlement_to_spouse"
+  },
+  "property_relationships__is_in_de_facto_relationship": {
+    "description": "in a de facto relationship, a relationship between 2 persons (whether a man and a woman, or a man and a man, or a woman and a woman)",
+    "href": "https://api.rules.nz/variable/property_relationships__is_in_de_facto_relationship"
+  },
+  "rates_rebates__combined_income": {
+    "description": "Combined Income of applicant and others normally resident at property for the purposes of Rates Rebates",
+    "href": "https://api.rules.nz/variable/rates_rebates__combined_income"
+  },
+  "rates_rebates__dependants": {
+    "description": "Number of Persons classified as dependant for the purposes of Rates Rebates",
+    "href": "https://api.rules.nz/variable/rates_rebates__dependants"
+  },
+  "rates_rebates__maximum_income_for_full_rebate": {
+    "description": "Maximum income eligible for the full rebate, less than this number should get full rebate",
+    "href": "https://api.rules.nz/variable/rates_rebates__maximum_income_for_full_rebate"
+  },
+  "rates_rebates__minimum_income_for_no_rebate": {
+    "description": "Minimum income that returns no rebate. Less than this number gets a rebate",
+    "href": "https://api.rules.nz/variable/rates_rebates__minimum_income_for_no_rebate"
+  },
+  "rates_rebates__rates_total": {
+    "description": "Total rates for the property",
+    "href": "https://api.rules.nz/variable/rates_rebates__rates_total"
+  },
+  "rates_rebates__rebate": {
+    "description": "Yearly rebate applied to housing rates.",
+    "href": "https://api.rules.nz/variable/rates_rebates__rebate"
+  },
+  "marriage__is_married": {
+    "description": "is married (marriage means the union of 2 people, regardless of their sex, sexual orientation, or gender identity)",
+    "href": "https://api.rules.nz/variable/marriage__is_married"
+  },
+  "super___eligibility_age": {
+    "description": "The age the applicant will be eligible for NZ Super.",
+    "href": "https://api.rules.nz/variable/super___eligibility_age"
+  },
+  "super__eligibility": {
+    "description": "Classified as eligible for NZ Super",
+    "href": "https://api.rules.nz/variable/super__eligibility"
+  },
+  "super__is_being_paid_nz_superannuation": {
+    "description": "New Zealand superannuation",
+    "href": "https://api.rules.nz/variable/super__is_being_paid_nz_superannuation"
+  },
+  "income_tax__annual_gross_income": {
+    "description": "Annual gross income",
+    "href": "https://api.rules.nz/variable/income_tax__annual_gross_income"
+  },
+  "income_tax__annual_total_deduction": {
+    "description": "Annual total deduction",
+    "href": "https://api.rules.nz/variable/income_tax__annual_total_deduction"
+  },
+  "income_tax__available_tax_loss": {
+    "description": "Available tax loss",
+    "href": "https://api.rules.nz/variable/income_tax__available_tax_loss"
+  },
+  "income_tax__net_income": {
+    "description": "Net income",
+    "href": "https://api.rules.nz/variable/income_tax__net_income"
+  },
+  "income_tax__net_loss": {
+    "description": "Net loss",
+    "href": "https://api.rules.nz/variable/income_tax__net_loss"
+  },
+  "income_tax__residence": {
+    "description": "Boolean for if a Person is classified as meeting residence requirements",
+    "href": "https://api.rules.nz/variable/income_tax__residence"
+  },
+  "income_tax__taxable_income": {
+    "description": "A person's taxable income for a tax year",
+    "href": "https://api.rules.nz/variable/income_tax__taxable_income"
+  },
+  "income_tax__dependent_child": {
+    "description": "Determines if a Person is classified as financially dependant",
+    "href": "https://api.rules.nz/variable/income_tax__dependent_child"
+  },
+  "family_scheme__in_work_tax_credit_entitlement": {
+    "description": "The in-work tax credit entitlement a person has under the family scheme",
+    "href": "https://api.rules.nz/variable/family_scheme__in_work_tax_credit_entitlement"
+  },
+  "family_scheme__in_work_tax_credit_income_under_threshold": {
+    "description": "Is the income under the threshold for the in work tax credit",
+    "href": "https://api.rules.nz/variable/family_scheme__in_work_tax_credit_income_under_threshold"
+  },
+  "family_scheme__qualifies_for_in_work_tax_credit": {
+    "description": "Is a person is qualified as eligible for the in-work tax credit",
+    "href": "https://api.rules.nz/variable/family_scheme__qualifies_for_in_work_tax_credit"
+  },
+  "family_scheme__qualifies_for_minimum_family_tax_credit": {
+    "description": "Is a person is qualified as eligible for the minimum family tax credit",
+    "href": "https://api.rules.nz/variable/family_scheme__qualifies_for_minimum_family_tax_credit"
+  },
+  "family_scheme__parental_tax_credit_entitlement": {
+    "description": "The parental tax credit entitlement a person has under the family scheme",
+    "href": "https://api.rules.nz/variable/family_scheme__parental_tax_credit_entitlement"
+  },
+  "family_scheme__qualifies_for_parental_tax_credit": {
+    "description": "Is a person is qualified as eligible for the parental tax credit",
+    "href": "https://api.rules.nz/variable/family_scheme__qualifies_for_parental_tax_credit"
+  },
+  "family_scheme__child_tax_credit_entitlement": {
+    "description": "The child tax credit entitlement a person has under the family scheme",
+    "href": "https://api.rules.nz/variable/family_scheme__child_tax_credit_entitlement"
+  },
+  "family_scheme__qualifies_for_child_tax_credit": {
+    "description": "Is a person qualified as eligible for the child tax credit",
+    "href": "https://api.rules.nz/variable/family_scheme__qualifies_for_child_tax_credit"
+  },
+  "family_scheme__family_tax_credit_entitlement": {
+    "description": "The family tax credit person is entitlement to under the family scheme",
+    "href": "https://api.rules.nz/variable/family_scheme__family_tax_credit_entitlement"
+  },
+  "family_scheme__family_tax_credit_income_under_threshold": {
+    "description": "Is the person income under the threshold for the family tax credit",
+    "href": "https://api.rules.nz/variable/family_scheme__family_tax_credit_income_under_threshold"
+  },
+  "family_scheme__qualifies_for_family_tax_credit": {
+    "description": "Is a person qualified as eligible for the family tax credit",
+    "href": "https://api.rules.nz/variable/family_scheme__qualifies_for_family_tax_credit"
+  },
+  "family_scheme__assessable_income": {
+    "description": "The annual net income for a person as relates to the family scheme",
+    "href": "https://api.rules.nz/variable/family_scheme__assessable_income"
+  },
+  "family_scheme__assessable_income_for_month": {
+    "description": "The monthly net income for a person as relates to the family scheme",
+    "href": "https://api.rules.nz/variable/family_scheme__assessable_income_for_month"
+  },
+  "family_scheme__base_qualifies": {
+    "description": "Is a person qualified as eligible under the family scheme",
+    "href": "https://api.rules.nz/variable/family_scheme__base_qualifies"
+  },
+  "family_scheme__caregiver_age_qualifies": {
+    "description": "Is a person qualified under the family scheme age parameters",
+    "href": "https://api.rules.nz/variable/family_scheme__caregiver_age_qualifies"
+  },
+  "family_scheme__full_time_earner": {
+    "description": "Does the hours per week the person is employed for qualify them as a full time earner",
+    "href": "https://api.rules.nz/variable/family_scheme__full_time_earner"
+  },
+  "family_scheme__has_dependent_children": {
+    "description": "A family has one or more people who qualify as financially dependant children",
+    "href": "https://api.rules.nz/variable/family_scheme__has_dependent_children"
+  },
+  "family_scheme__qualifies_as_principal_carer": {
+    "description": "Is the person the principal caregiver and do they have dependent children",
+    "href": "https://api.rules.nz/variable/family_scheme__qualifies_as_principal_carer"
+  },
+  "family_scheme__qualifies_for_working_for_families": {
+    "description": "Is a person is qualified as eligible for the working for families",
+    "href": "https://api.rules.nz/variable/family_scheme__qualifies_for_working_for_families"
+  },
+  "family_scheme__working_for_families_entitlement": {
+    "description": "The entitlement a person has under the family scheme",
+    "href": "https://api.rules.nz/variable/family_scheme__working_for_families_entitlement"
+  },
+  "best_start__eligibility": {
+    "description": "Is each person classified as eligible for best start tax credit",
+    "href": "https://api.rules.nz/variable/best_start__eligibility"
+  },
+  "best_start__entitlement": {
+    "description": "The total value the principal carer is entitled to for the best start tax credit",
+    "href": "https://api.rules.nz/variable/best_start__entitlement"
+  },
+  "best_start__family_has_children_eligible": {
+    "description": "Is each family classified as eligible for best start tax credit",
+    "href": "https://api.rules.nz/variable/best_start__family_has_children_eligible"
+  },
+  "best_start__tax_credit_per_child": {
+    "description": "Value of a Families entitlement for best start tax credit",
+    "href": "https://api.rules.nz/variable/best_start__tax_credit_per_child"
+  },
+  "best_start__year_of_child": {
+    "description": "Returns the year of eligibilty either 1, 2 or 3 otherwise returns zero",
+    "href": "https://api.rules.nz/variable/best_start__year_of_child"
+  },
+  "citizenship__citizenship_by_grant_may_be_authorized": {
+    "description": "statisfies criteria such that the Minister may authorise the grant of New Zealand citizenship to this person",
+    "href": "https://api.rules.nz/variable/citizenship__citizenship_by_grant_may_be_authorized"
+  },
+  "citizenship__has_sufficient_knowledge_of_the_english_language": {
+    "description": "has sufficient knowledge of the English language",
+    "href": "https://api.rules.nz/variable/citizenship__has_sufficient_knowledge_of_the_english_language"
+  },
+  "citizenship__has_sufficient_knowledge_of_the_responsibilities_and_privileges_attaching_to_nz_citizenship": {
+    "description": "has sufficient knowledge of the responsibilities and privileges attaching to New Zealand citizenship",
+    "href": "https://api.rules.nz/variable/citizenship__has_sufficient_knowledge_of_the_responsibilities_and_privileges_attaching_to_nz_citizenship"
+  },
+  "citizenship__intends_crown_service": {
+    "description": "intends to enter into or continue in Crown service under the New Zealand Government",
+    "href": "https://api.rules.nz/variable/citizenship__intends_crown_service"
+  },
+  "citizenship__intends_international_service": {
+    "description": "intends to enter into or continue service under an international organisation of which the New Zealand Government is a member",
+    "href": "https://api.rules.nz/variable/citizenship__intends_international_service"
+  },
+  "citizenship__intends_nz_employment": {
+    "description": "intends to enter into or continue service in the employment of a person, company, society, or other body of persons resident or established in New Zealand",
+    "href": "https://api.rules.nz/variable/citizenship__intends_nz_employment"
+  },
+  "citizenship__intends_to_reside_in_nz": {
+    "description": "intends to continue to reside in New Zealand",
+    "href": "https://api.rules.nz/variable/citizenship__intends_to_reside_in_nz"
+  },
+  "citizenship__is_of_good_character": {
+    "description": "is of good character",
+    "href": "https://api.rules.nz/variable/citizenship__is_of_good_character"
+  },
+  "citizenship__meets_5_year_presence_requirement": {
+    "description": "was present in New Zealand for a minimum of 1,350 days during the 5 years immediately preceding the date of the application",
+    "href": "https://api.rules.nz/variable/citizenship__meets_5_year_presence_requirement"
+  },
+  "citizenship__meets_each_year_minimum_presence_requirements": {
+    "description": "was present in New Zealand for at least 240 days in each the 5 years immediately preceding the date of application ",
+    "href": "https://api.rules.nz/variable/citizenship__meets_each_year_minimum_presence_requirements"
+  },
+  "citizenship__meets_minimum_presence_requirements": {
+    "description": "meets the two presence in NZ requirements within the Citizenship Act",
+    "href": "https://api.rules.nz/variable/citizenship__meets_minimum_presence_requirements"
+  },
+  "citizenship__meets_preceeding_single_year_minimum_presence_requirement": {
+    "description": "was present in New Zealand for at least 240 days in one rolling year immediately preceding the date of application ",
+    "href": "https://api.rules.nz/variable/citizenship__meets_preceeding_single_year_minimum_presence_requirement"
+  },
+  "days_present_in_new_zealand_in_preceeding_5_years": {
+    "description": null,
+    "href": "https://api.rules.nz/variable/days_present_in_new_zealand_in_preceeding_5_years"
+  },
+  "days_present_in_new_zealand_in_preceeding_year": {
+    "description": "was present in New Zealand this many days in the last (rolling) year",
+    "href": "https://api.rules.nz/variable/days_present_in_new_zealand_in_preceeding_year"
+  },
+  "present_in_new_zealand": {
+    "description": "was present in New Zealand on this day",
+    "href": "https://api.rules.nz/variable/present_in_new_zealand"
+  },
+  "was_present_in_nz_and_entitled_to_indefinite_stay": {
+    "description": "was present in New Zealand and entitled to indefinite stay",
+    "href": "https://api.rules.nz/variable/was_present_in_nz_and_entitled_to_indefinite_stay"
+  },
+  "civil_union__is_in_civil_union": {
+    "description": "Two people, whether they are of different or the same sex, may enter into a civil union under this Ac",
+    "href": "https://api.rules.nz/variable/civil_union__is_in_civil_union"
+  },
+  "veterans_support__is_being_paid_a_veterans_pension": {
+    "description": "Is being paid a Veteran's Pension",
+    "href": "https://api.rules.nz/variable/veterans_support__is_being_paid_a_veterans_pension"
+  },
+  "veterans_support__is_entitled_to_be_paid_veterans_pension": {
+    "description": "Applicant is a entitled to be paid veterans pension in a Pacific country",
+    "href": "https://api.rules.nz/variable/veterans_support__is_entitled_to_be_paid_veterans_pension"
+  },
+  "veterans_support__received_childrens_pension": {
+    "description": "Is classified as receiving a children's pension",
+    "href": "https://api.rules.nz/variable/veterans_support__received_childrens_pension"
+  },
+  "veterans_support__received_parents_allowance": {
+    "description": "Is classified as receiving a parent's allowance",
+    "href": "https://api.rules.nz/variable/veterans_support__received_parents_allowance"
+  },
+  "social_security__child_with_serious_disability": {
+    "description": "Child has serious disability",
+    "href": "https://api.rules.nz/variable/social_security__child_with_serious_disability"
+  },
+  "social_security__disability_was_self_inflicted": {
+    "description": "The person's restricted capacity for work, or total blindness, was self-inflicted and brought about by\n    the person with a view to qualifying for a benefit",
+    "href": "https://api.rules.nz/variable/social_security__disability_was_self_inflicted"
+  },
+  "social_security__has_severely_restricted_capacity_for_work": {
+    "description": "Is incapable of regularly working 15 or more hours a week in open employment",
+    "href": "https://api.rules.nz/variable/social_security__has_severely_restricted_capacity_for_work"
+  },
+  "social_security__is_totally_blind": {
+    "description": "Person is totally blind",
+    "href": "https://api.rules.nz/variable/social_security__is_totally_blind"
+  },
+  "accommodation_supplement__below_cash_threshold": {
+    "description": "Cash is below Accommodation Supplement threshold?",
+    "href": "https://api.rules.nz/variable/accommodation_supplement__below_cash_threshold"
+  },
+  "accommodation_supplement__below_income_threshold": {
+    "description": "Income is below Accommodation Supplement threshold?",
+    "href": "https://api.rules.nz/variable/accommodation_supplement__below_income_threshold"
+  },
+  "community_services_card__below_income_threshold": {
+    "description": "Income is below Community Services Card threshold?",
+    "href": "https://api.rules.nz/variable/community_services_card__below_income_threshold"
+  },
+  "jobseeker_support__below_income_threshold": {
+    "description": "Income is below Job Seeker Support threshold?",
+    "href": "https://api.rules.nz/variable/jobseeker_support__below_income_threshold"
+  },
+  "sole_parent_support__below_income_threshold": {
+    "description": "Income is below Sole Parent Support threshold?",
+    "href": "https://api.rules.nz/variable/sole_parent_support__below_income_threshold"
+  },
+  "social_security__eligible_for_sole_parent_support": {
+    "description": "Eligible for Sole Parent Support",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_sole_parent_support"
+  },
+  "sole_parent_support__family_has_child_under_age_limit": {
+    "description": "Does the family have a child who meets the criteria for disabled",
+    "href": "https://api.rules.nz/variable/sole_parent_support__family_has_child_under_age_limit"
+  },
+  "sole_parent_support__meets_age_threshold": {
+    "description": "Meets the age test for sole parent support?",
+    "href": "https://api.rules.nz/variable/sole_parent_support__meets_age_threshold"
+  },
+  "sole_parent_support__meets_relationship_qualification": {
+    "description": "Meets the sole parent support test for not being in a relationship",
+    "href": "https://api.rules.nz/variable/sole_parent_support__meets_relationship_qualification"
+  },
+  "sole_parent_support__meets_years_in_nz_requirement": {
+    "description": "Has lived continuously in New Zealand for 2 years or more at any one time since becoming a New Zealand citizen or permanent resident?",
+    "href": "https://api.rules.nz/variable/sole_parent_support__meets_years_in_nz_requirement"
+  },
+  "social_security__eligible_for_supported_living_payment": {
+    "description": "Eligible for Supported Living Payment.",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_supported_living_payment"
+  },
+  "social_security__is_required_to_give_fulltime_care": {
+    "description": "Eligible for Supported Living Payment.",
+    "href": "https://api.rules.nz/variable/social_security__is_required_to_give_fulltime_care"
+  },
+  "supported_living_payment__below_income_threshold": {
+    "description": "Income below threshold for supported living payment",
+    "href": "https://api.rules.nz/variable/supported_living_payment__below_income_threshold"
+  },
+  "social_security__family_income_under_young_parent_payment_threshold": {
+    "description": "Person's family income is under the young parent payment threshold",
+    "href": "https://api.rules.nz/variable/social_security__family_income_under_young_parent_payment_threshold"
+  },
+  "social_security__meets_young_parent_payment_single_persons_requirements": {
+    "description": "Meets Young Parent Payment single person requirements from section 165",
+    "href": "https://api.rules.nz/variable/social_security__meets_young_parent_payment_single_persons_requirements"
+  },
+  "social_security__eligible_for_orphans_benefit": {
+    "description": "Eligible for Orphan's benefit",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_orphans_benefit"
+  },
+  "social_security__has_orphaned_child_in_family": {
+    "description": "Family is caring for an orphan as per Social Security Act 1964",
+    "href": "https://api.rules.nz/variable/social_security__has_orphaned_child_in_family"
+  },
+  "social_security__is_orphaned": {
+    "description": "each of the child's natural or adoptive parents is dead, or cannot be found, or suffers a serious long-term disablement which renders him or her unable to care for the child",
+    "href": "https://api.rules.nz/variable/social_security__is_orphaned"
+  },
+  "social_security__spouse_is_a_specified_beneficiary": {
+    "description": "his or her spouse is a specified beneficiary within the meaning of paragraphs (b) to (d) of the definition\n        of that term in section 157.",
+    "href": "https://api.rules.nz/variable/social_security__spouse_is_a_specified_beneficiary"
+  },
+  "eligible_for_social_housing": {
+    "description": "Has social housing?",
+    "href": "https://api.rules.nz/variable/eligible_for_social_housing"
+  },
+  "social_security__eligible_for_accommodation_supplement": {
+    "description": "Eligible for Accommodation Supplement",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_accommodation_supplement"
+  },
+  "social_security__has_accomodation_costs": {
+    "description": "Person has accommodation costs",
+    "href": "https://api.rules.nz/variable/social_security__has_accomodation_costs"
+  },
+  "social_security__is_a_beneficiary": {
+    "description": "Person is a beneficiary",
+    "href": "https://api.rules.nz/variable/social_security__is_a_beneficiary"
+  },
+  "social_security__is_being_paid_a_supported_living_payment": {
+    "description": "Is being paid a supported living payment",
+    "href": "https://api.rules.nz/variable/social_security__is_being_paid_a_supported_living_payment"
+  },
+  "social_security__is_being_paid_a_young_parent_payment": {
+    "description": "Is being paid a a young parent payment",
+    "href": "https://api.rules.nz/variable/social_security__is_being_paid_a_young_parent_payment"
+  },
+  "social_security__is_being_paid_a_youth_payment": {
+    "description": "Is being paid a a youth payment",
+    "href": "https://api.rules.nz/variable/social_security__is_being_paid_a_youth_payment"
+  },
+  "social_security__is_being_paid_an_emergency_benefit": {
+    "description": "Is being paid a a young parent payment",
+    "href": "https://api.rules.nz/variable/social_security__is_being_paid_an_emergency_benefit"
+  },
+  "social_security__is_being_paid_jobseeker_benefit": {
+    "description": "Is being paid Jobseeker",
+    "href": "https://api.rules.nz/variable/social_security__is_being_paid_jobseeker_benefit"
+  },
+  "social_security__is_being_paid_sole_parent_support": {
+    "description": "Is being paid sole parent support",
+    "href": "https://api.rules.nz/variable/social_security__is_being_paid_sole_parent_support"
+  },
+  "social_security__eligible_for_young_parent_payment": {
+    "description": "Eligible for Young Parent Payment",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_young_parent_payment"
+  },
+  "social_security__income_under_young_parent_payment_threshold": {
+    "description": "Is their income under the Young Parent Payment threshold?",
+    "href": "https://api.rules.nz/variable/social_security__income_under_young_parent_payment_threshold"
+  },
+  "social_security__meets_young_parent_payment_basic_requirements": {
+    "description": "Meets young parent payment basic requirements",
+    "href": "https://api.rules.nz/variable/social_security__meets_young_parent_payment_basic_requirements"
+  },
+  "jobseeker_support__is_prepared_for_employment": {
+    "description": "Is prepared for employment?",
+    "href": "https://api.rules.nz/variable/jobseeker_support__is_prepared_for_employment"
+  },
+  "jobseeker_support__meets_age_threshold": {
+    "description": "Meets the age test for Jobseeker Support?",
+    "href": "https://api.rules.nz/variable/jobseeker_support__meets_age_threshold"
+  },
+  "social_security__eligible_for_jobseeker_support": {
+    "description": "Eligible for Job Seeker Support",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_jobseeker_support"
+  },
+  "has_community_services_card": {
+    "description": "Has a current Community Services Card",
+    "href": "https://api.rules.nz/variable/has_community_services_card"
+  },
+  "social_security__eligible_for_community_services_card": {
+    "description": "is eligible for Community Services Card",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_community_services_card"
+  },
+  "social_security__is_fulltime_student": {
+    "description": "Is a Full-time student",
+    "href": "https://api.rules.nz/variable/social_security__is_fulltime_student"
+  },
+  "social_security__received_child_disability_allowance": {
+    "description": "Received Child Disability Allowance",
+    "href": "https://api.rules.nz/variable/social_security__received_child_disability_allowance"
+  },
+  "social_security__received_orphans_benefit": {
+    "description": "Received Orphan's Benefit",
+    "href": "https://api.rules.nz/variable/social_security__received_orphans_benefit"
+  },
+  "social_security__received_residential_care_subsidy": {
+    "description": "Received Residential Care Subsidy",
+    "href": "https://api.rules.nz/variable/social_security__received_residential_care_subsidy"
+  },
+  "social_security__received_superannuation": {
+    "description": "Received Superannuation",
+    "href": "https://api.rules.nz/variable/social_security__received_superannuation"
+  },
+  "social_security__received_unsupported_childs_benefit": {
+    "description": "Received Unsupported Child's Benefit",
+    "href": "https://api.rules.nz/variable/social_security__received_unsupported_childs_benefit"
+  },
+  "veterans_support__received_veterans_pension": {
+    "description": "Received Veteran's Pension",
+    "href": "https://api.rules.nz/variable/veterans_support__received_veterans_pension"
+  },
+  "veterans_support__received_weekly_compensation": {
+    "description": "Received Weekly Compensation",
+    "href": "https://api.rules.nz/variable/veterans_support__received_weekly_compensation"
+  },
+  "veterans_support__received_weekly_income_compensation": {
+    "description": "Received Weekly Income Compensation",
+    "href": "https://api.rules.nz/variable/veterans_support__received_weekly_income_compensation"
+  },
+  "social_security__is_in_full_employment": {
+    "description": "Is in full employment or full-time employment",
+    "href": "https://api.rules.nz/variable/social_security__is_in_full_employment"
+  },
+  "is_dependent_child": {
+    "description": "Is a dependent child",
+    "href": "https://api.rules.nz/variable/is_dependent_child"
+  },
+  "social_security__has_child_in_family": {
+    "description": "Family has a child",
+    "href": "https://api.rules.nz/variable/social_security__has_child_in_family"
+  },
+  "social_security__has_dependant_child": {
+    "description": "has a dependent child (or children)",
+    "href": "https://api.rules.nz/variable/social_security__has_dependant_child"
+  },
+  "social_security__is_a_child": {
+    "description": "child means a single person under the age of 18 years, other than a person who is—\n        (a) aged 16 years or 17 years; and\n        (b) financially independent\n        ",
+    "href": "https://api.rules.nz/variable/social_security__is_a_child"
+  },
+  "social_security__is_dependent_child": {
+    "description": "Is a dependent child",
+    "href": "https://api.rules.nz/variable/social_security__is_dependent_child"
+  },
+  "social_security__in_receipt_of_basic_grant": {
+    "description": "in receipt of a basic grant or an independent circumstances grant under the Student Allowances Regulations 1998 (SR 1998/277)",
+    "href": "https://api.rules.nz/variable/social_security__in_receipt_of_basic_grant"
+  },
+  "social_security__is_financially_independent": {
+    "description": "financially independent, in relation to a person, means—\n        (a) in full employment; or\n        (b) in receipt of a basic grant or an independent circumstances grant under the Student Allowances Regulations 1998 (SR 1998/277); or\n        (c) in receipt of payments under a Government-assisted scheme which the chief executive considers analogous to a main benefit under this Act; or\n        (d) in receipt of a main benefit under this Act\n        ",
+    "href": "https://api.rules.nz/variable/social_security__is_financially_independent"
+  },
+  "social_security__received_income_tested_benefit": {
+    "description": "Boolean for if a Person is classified as receiving an income tested benefit",
+    "href": "https://api.rules.nz/variable/social_security__received_income_tested_benefit"
+  },
+  "social_security__recieves_goverment_assisted_scheme_payments": {
+    "description": "In receipt of payments under a Government-assisted scheme which the chief executive considers analogous to a main benefit under Socal Security Act",
+    "href": "https://api.rules.nz/variable/social_security__recieves_goverment_assisted_scheme_payments"
+  },
+  "social_security__recieves_main_benefit": {
+    "description": "in receipt of a main benefit under Social Security Act",
+    "href": "https://api.rules.nz/variable/social_security__recieves_main_benefit"
+  },
+  "social_security__meets_young_parent_payment_in_relationship_requirements": {
+    "description": "Meets Young Parent Payment single person requirements from section 165",
+    "href": "https://api.rules.nz/variable/social_security__meets_young_parent_payment_in_relationship_requirements"
+  },
+  "social_security__has_resided_continuously_in_nz_for_a_period_of_at_least_2_years_at_any_one_time": {
+    "description": "has resided continuously in New Zealand for a period of at least 2 years at any one time",
+    "href": "https://api.rules.nz/variable/social_security__has_resided_continuously_in_nz_for_a_period_of_at_least_2_years_at_any_one_time"
+  },
+  "social_security__is_ordinarily_resident_in_new_zealand": {
+    "description": "is ordinarily resident in New Zealand",
+    "href": "https://api.rules.nz/variable/social_security__is_ordinarily_resident_in_new_zealand"
+  },
+  "social_security__meets_residential_requirements_for_certain_benefits": {
+    "description": "Residential requirements for certain benefits",
+    "href": "https://api.rules.nz/variable/social_security__meets_residential_requirements_for_certain_benefits"
+  },
+  "social_security__single_young_person_in_exceptional_circumstances": {
+    "description": "a young person in exceptional circumstances",
+    "href": "https://api.rules.nz/variable/social_security__single_young_person_in_exceptional_circumstances"
+  },
+  "disability_allowance__family_has_eligible_child": {
+    "description": "Does the family have a child who meets the criteria for disabled",
+    "href": "https://api.rules.nz/variable/disability_allowance__family_has_eligible_child"
+  },
+  "social_security__child_meets_child_disability_allowance_criteria": {
+    "description": "Has serious disability",
+    "href": "https://api.rules.nz/variable/social_security__child_meets_child_disability_allowance_criteria"
+  },
+  "social_security__eligible_for_child_disability_allowance": {
+    "description": "Eligible for Child Disability Allowance",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_child_disability_allowance"
+  },
+  "social_security__medical_certification_months": {
+    "description": "Number of future months the disability is expected to last for, in months",
+    "href": "https://api.rules.nz/variable/social_security__medical_certification_months"
+  },
+  "social_security__requires_constant_care_and_attention": {
+    "description": "Requires constant care and attention",
+    "href": "https://api.rules.nz/variable/social_security__requires_constant_care_and_attention"
+  },
+  "social_security__eligible_for_unsupported_childs_benefit": {
+    "description": "Eligible for Unsupported child’s benefit",
+    "href": "https://api.rules.nz/variable/social_security__eligible_for_unsupported_childs_benefit"
+  },
+  "social_security__has_unsupported_child_in_family": {
+    "description": "Family has an unsupported child",
+    "href": "https://api.rules.nz/variable/social_security__has_unsupported_child_in_family"
+  },
+  "social_security__is_principal_carer_for_one_year_from_application_date": {
+    "description": "Is the principal carer for one year (or more) from the application date",
+    "href": "https://api.rules.nz/variable/social_security__is_principal_carer_for_one_year_from_application_date"
+  },
+  "social_security__is_the_parent_of_dependent_child": {
+    "description": "Is the parent of their dependent child",
+    "href": "https://api.rules.nz/variable/social_security__is_the_parent_of_dependent_child"
+  },
+  "social_security__parents_unable_to_provide_sufficient_care": {
+    "description": "because of a breakdown in the child’s family, no natural parent, adoptive parent, or step-parent of the child is able to care for the child or to provide fully for the child’s support",
+    "href": "https://api.rules.nz/variable/social_security__parents_unable_to_provide_sufficient_care"
+  },
+  "home_help__adopted_2_or_more_children": {
+    "description": "Have or adopted twins, and already has another child under 5.",
+    "href": "https://api.rules.nz/variable/home_help__adopted_2_or_more_children"
+  },
+  "home_help__eligible_for_home_help": {
+    "description": "Eligible for Home Help",
+    "href": "https://api.rules.nz/variable/home_help__eligible_for_home_help"
+  },
+  "home_help__had_multiple_birth": {
+    "description": "Had a multiple birth from the same pregnancy",
+    "href": "https://api.rules.nz/variable/home_help__had_multiple_birth"
+  },
+  "home_help__has_no_immediate_family": {
+    "description": "Has no immediate family or anyone else living with you who can help",
+    "href": "https://api.rules.nz/variable/home_help__has_no_immediate_family"
+  }
+}
