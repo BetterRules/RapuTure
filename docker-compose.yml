@@ -1,0 +1,20 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+  web:
+    image: raputure:latest
+    build: .
+    command: bin/docker_web
+    volumes:
+      - .:/RapuTure
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    env_file:
+      - .env.docker
