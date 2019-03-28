@@ -1,6 +1,9 @@
 #! /bin/bash
 export RAILS_ENV=development
 export NODE_ENV=production
+export DATABASE_URL=postgresql://$DATABASE_USERNAME@$DATABASE_HOST:$DATABASE_PORT
+
+/usr/bin/wait-for-it -h $DATABASE_HOST -p $DATABASE_PORT
 
 # Initialise development database
 FILE=$INSTALL_PATH/tmp/database_initialised_development.txt
