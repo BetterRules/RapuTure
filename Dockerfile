@@ -10,6 +10,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
+COPY env-example .env
 COPY Gemfile* ./
 RUN bundle install
 
