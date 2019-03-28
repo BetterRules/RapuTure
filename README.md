@@ -50,7 +50,7 @@ git clone git@github.com:ServiceInnovationLab/RapuTure.git
 
 ### Docker
 
-This application is configured to run using Docker and docker-compose.
+This application is configured to run using Docker and docker-compose. You will need [Docker for Desktop](https://www.docker.com/products/docker-desktop) to run this locally.
 
 To set up:
 
@@ -59,6 +59,10 @@ To set up:
 To run:
 
 `docker-compose up`
+
+To fetch data:
+
+`docker exec raputure_web_1 bundle exec rake fetch:fetchall`
 
 To shut down:
 
