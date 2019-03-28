@@ -60,6 +60,10 @@ To run:
 
 `docker-compose up`
 
+To shut down:
+
+`docker-compose down`
+
 ### Non-Docker
 
 It can also be set up without Docker. You will need Ruby, Node, and Postgres.
