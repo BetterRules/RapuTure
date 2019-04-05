@@ -2,6 +2,7 @@
 
 class VariablesController < ApplicationController
   before_action :set_variable, only: %i[show edit update destroy]
+
   def index
     @search = VariablesSearchService.new(params)
 

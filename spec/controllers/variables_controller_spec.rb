@@ -32,7 +32,7 @@ RSpec.describe VariablesController, type: :controller do
     context 'Many variables that refer to each other' do
       let!(:parent_1) { FactoryBot.create :variable, name: 'likes_to_eat', variables: [child_1] }
       let!(:child_1) { FactoryBot.create :variable, name: 'likes_to_eat_chocolate', variables: [grandchild_1] }
-      let!(:grandchild_1){ FactoryBot.create :variable, name: 'likes_to_eat_chocolate_eggs' }
+      let!(:grandchild_1) { FactoryBot.create :variable, name: 'likes_to_eat_chocolate_eggs' }
 
       let!(:parent_2) { FactoryBot.create :variable, name: 'likes_to_drink', variables: [child_2] }
       let!(:child_2) { FactoryBot.create :variable, name: 'likes_to_drink_water' }
