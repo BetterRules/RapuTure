@@ -17,7 +17,7 @@
             %p.card-text= role.description
 
 
-  %h3.page-heading Variables than you can set for a #{@entity.description}
+  %h3.page-heading= t(:variables_that_you_can_set, entity_description: @entity.description)
 
   .card-columns
     - @entity.variables.order(:namespace, :name).each do |variable|

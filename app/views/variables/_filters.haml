@@ -1,14 +1,14 @@
 
 .container
   - if @namespace_filter.selected.size.positive?
-    %h6 Current filters
+    %h6= t(:current_filters)
     %p
       - @namespace_filter.selected.each do |namespace|
         = link_to @namespace_filter.remove(namespace).path, class: 'filter-select' do
           = t(namespace.to_sym)
           = fa_icon 'close'
 
-  %h6 Available filters for #{@namespace_filter.name}
+  %h6= t(:available_filters_to_use, namespace_filter_name: @namespace_filter.name)
   %p
     - @namespace_filter.facet.reject(&:selected).each do |facet_value|
       - if facet_value.entity

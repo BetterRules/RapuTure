@@ -8,7 +8,7 @@
           = render 'badges', entity: entity
           %p.card-text
             = render_markdown(entity.documentation) if entity.documentation.present?
-          %h5 Example variables
+          %h5= t(:example_variables)
           %ul.list-group.list-group-flush
             - entity.variables.limit(5).order("RANDOM()").each do |v|
               %li.list-group-item

@@ -52,7 +52,7 @@
         - @variable.spec['formulas'].each do |d, formula|
           %h3= d
           %p
-            This formula is used for scenarios from the date #{d} onwards.
+            = t(:formula_for_scenarios_from_date_onwards, formula_date: d)
             = link_to 'More info on formulas', 'https://openfisca.org/doc/coding-the-legislation/10_basic_example.html'
           %pre= display_formula formula['content']
 
