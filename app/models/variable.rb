@@ -10,6 +10,9 @@ class Variable < ApplicationRecord
   belongs_to :value_type
   belongs_to :entity
 
+  has_many :scenario_variables, dependent: :destroy
+  has_many :scenarios, through: :scenario_variables
+
   has_and_belongs_to_many(:variables,
                           class_name: 'Variable',
                           join_table: 'links',

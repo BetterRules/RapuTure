@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_28_032113) do
+ActiveRecord::Schema.define(version: 2019_04_16_000833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,24 @@ ActiveRecord::Schema.define(version: 2019_01_28_032113) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["entity_id"], name: "index_roles_on_entity_id"
+  end
+
+  create_table "scenarios", force: :cascade do |t|
+    t.string "name", null: false
+    t.json "inputs"
+    t.json "outputs"
+    t.string "period"
+    t.integer "error_margin"
+    t.string "namespace"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "scenarios_variables", id: false, force: :cascade do |t|
+    t.bigint "scenario_id", null: false
+    t.bigint "variable_id", null: false
+    t.index ["scenario_id", "variable_id"], name: "index_scenarios_variables_on_scenario_id_and_variable_id"
+    t.index ["variable_id", "scenario_id"], name: "index_scenarios_variables_on_variable_id_and_scenario_id"
   end
 
   create_table "value_types", force: :cascade do |t|
