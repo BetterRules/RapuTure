@@ -3,10 +3,15 @@
 class GithubScrapeService
 
   def self.scrape_all
-    github = Github.new
-    github.repos.list user: 'ServiceInnovationLab'
+    repos = Github::Client::Repos.new
+    contents = repos.contents user: 'ServiceInnovationLab', repo: 'openfisca-aotearoa'
 
-    puts github
+    directories = contents.get user: 'ServiceInnovationLab', repo: 'openfisca-aotearoa', path: 'openfisca_aotearoa/tests'
+
+    directories.each do |t|
+      puts "======================================================================"
+      puts t.url
+    end
   end
 
 end
