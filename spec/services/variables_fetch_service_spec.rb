@@ -29,20 +29,18 @@ RSpec.describe VariablesFetchService do
   # mock and the tests will run against the production data, which might help
   # diagnose an API change in OpenFisca
   before do
-    allow_any_instance_of(Faraday::Connection)
-      .to receive(:get) do |_self, param|
-        if param == 'variables'
-          OpenStruct.new(body: variables_body)
-        else
-          # 'variable/variable_name'
-          name = param.split('/').second
-          OpenStruct.new(body: variables_dictionary[name])
-        end
+    allow_any_instance_of(Faraday::Connection).to receive(:get) do |_self, param|
+      if param == 'variables'
+        OpenStruct.new(body: variables_body)
+      else
+        # 'variable/variable_name'
+        name = param.split('/').second
+        OpenStruct.new(body: variables_dictionary[name])
       end
+    end
   end
 
   describe '.fetch_all' do
-
     it 'adds all of the Variables to the database' do
       expect { described_class.fetch_all }.to change { Variable.count }.by(variables_total_number)
     end
@@ -73,7 +71,7 @@ RSpec.describe VariablesFetchService do
       # overwritten by nil during the .fetch call. This could also have applied
       # to the description (since they are retrieved in the first variables_list
       # call). This is a regression test to ensure the values aren't lost again
-      # in future if the server responses or our code change. 
+      # in future if the server responses or our code change.
       #
       # Note that this test isn't very useful if the OpenFisca responses are
       # mocked above. Consider running this against the live server to debug
@@ -116,7 +114,7 @@ RSpec.describe VariablesFetchService do
       expect(Variable.find_by(name: new_variable.name)).not_to be_nil
     end
   end
-  
+
   describe '.variable' do
     subject { described_class.variable(name: variables.sample.name) }
 
