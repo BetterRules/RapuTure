@@ -25,14 +25,14 @@ class ScenariosFetchService
   def self.find_or_create_scenario(yaml_scenario)
     scenario = Scenario.find_or_initialize_by(name: yaml_scenario['name'])
 
-    associated_varaibles = fetch_associated_variables(yaml_scenario['input'], yaml_scenario['output'])
+    associated_variables = fetch_associated_variables(yaml_scenario['input'], yaml_scenario['output'])
 
     ActiveRecord::Base.transaction do
       scenario.inputs = yaml_scenario['input']
       scenario.outputs = yaml_scenario['output']
       scenario.period = yaml_scenario['period']
       scenario.error_margin = yaml_scenario['absolute_error_margin']
-      scenario.variables << associated_varaibles
+      scenario.variables << associated_variables
       # scenario.namespace = parse_namespace(yaml_scenario['name'])
       scenario.save!
       scenario
@@ -76,7 +76,11 @@ class ScenariosFetchService
 
   # This could use some refinement
   # Currently it is returning all the keys
-  # It would be smarter to only use the lowest level
+  # Can't just user lower level though because of data structures like:
+  #  output:
+  #   best_start__tax_credit_per_child:
+  #     2018-07: [0, 0, 0, 260 ]
+
   def self.get_all_keys(hash)
     hash.each_with_object([]) do |(k, v), keys|
       keys << k
