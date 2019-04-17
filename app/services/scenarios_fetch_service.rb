@@ -5,28 +5,28 @@ require 'yaml'
 class ScenariosFetchService
   def self.fetch_all
     # Needs to be updated to use github scraper
-    scenarios_list = YAML.load(File.read("../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml"))
+    scenarios_list = YAML.safe_load(File.read('../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'))
 
-    scenario_names = scenarios_list.map { |s| s["name"] }
+    scenario_names = scenarios_list.map { |s| s['name'] }
 
     find_all_duplicates(scenario_names)
-    
+
     scenarios_list.each do |yaml_scenario|
       scenario = find_or_create_scenario(yaml_scenario)
       yield scenario if block_given?
     end
 
     remove_stale_scenarios(scenario_names: scenario_names)
-    
+
     Scenario.all unless block_given?
   end
 
   def self.find_or_create_scenario(yaml_scenario)
     scenario = Scenario.find_or_initialize_by(name: yaml_scenario['name'])
 
-    inputKeys = get_all_keys(yaml_scenario['input'])
-    outputKeys = get_all_keys(yaml_scenario['output'])
-    input_output_keys = inputKeys + outputKeys
+    input_keys = get_all_keys(yaml_scenario['input'])
+    output_keys = get_all_keys(yaml_scenario['output'])
+    input_output_keys = input_keys + output_keys
 
     associated_varaibles = fetch_associated_variables(input_output_keys)
 
@@ -42,7 +42,7 @@ class ScenariosFetchService
     end
   end
 
-  def self.fetch_associated_variables (input_output_keys)
+  def self.fetch_associated_variables(input_output_keys)
     Variable.select('id').where(name: input_output_keys)
   end
 
@@ -51,11 +51,9 @@ class ScenariosFetchService
     map = {}
     dup = []
     array.each do |v|
-      map[v] = (map[v] || 0 ) + 1
-  
-      if map[v] == 2
-        dup << v
-      end
+      map[v] = (map[v] || 0) + 1
+
+      dup << v if map[v] == 2
     end
     raise StandardError.new("These scenarios have duplicate names: #{dups} !!!!!") if dup[0]
   end
@@ -77,12 +75,11 @@ class ScenariosFetchService
 
   # This could use some refinement
   # Currently it is returning all the keys
-  # It would be smarter to only use the lowest level 
+  # It would be smarter to only use the lowest level
   def self.get_all_keys(h)
-    h.each_with_object([]) do |(k,v),keys|      
+    h.each_with_object([]) do |(k, v), keys|
       keys << k
       keys.concat(get_all_keys(v)) if v.is_a? Hash
     end
   end
 end
-
