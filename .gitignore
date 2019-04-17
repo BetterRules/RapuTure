@@ -49,3 +49,5 @@ coverage/
 
 # Ignore yard documentation configuration
 .yardoc/
+
+scenarios/

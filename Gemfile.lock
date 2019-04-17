@@ -384,6 +384,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   faraday
+  faraday-http-cache
   faraday_middleware
   font-awesome-rails
   forty_facets

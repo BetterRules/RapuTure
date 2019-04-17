@@ -31,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'faraday'
 gem 'faraday_middleware'
+gem 'faraday-http-cache'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
