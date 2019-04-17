@@ -4,8 +4,9 @@ require 'yaml'
 
 class ScenariosFetchService
   def self.fetch_all
+    example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
     # Needs to be updated to use github scraper
-    scenarios_list = YAML.safe_load(File.read('../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'))
+    scenarios_list = YAML.safe_load(File.read(example_file))
 
     scenario_names = scenarios_list.map { |s| s['name'] }
 
@@ -24,11 +25,7 @@ class ScenariosFetchService
   def self.find_or_create_scenario(yaml_scenario)
     scenario = Scenario.find_or_initialize_by(name: yaml_scenario['name'])
 
-    input_keys = get_all_keys(yaml_scenario['input'])
-    output_keys = get_all_keys(yaml_scenario['output'])
-    input_output_keys = input_keys + output_keys
-
-    associated_varaibles = fetch_associated_variables(input_output_keys)
+    associated_varaibles = fetch_associated_variables(yaml_scenario['input'], yaml_scenario['output'])
 
     ActiveRecord::Base.transaction do
       scenario.inputs = yaml_scenario['input']
@@ -42,7 +39,11 @@ class ScenariosFetchService
     end
   end
 
-  def self.fetch_associated_variables(input_output_keys)
+  def self.fetch_associated_variables(inputs, outputs)
+    input_keys = get_all_keys(inputs)
+    output_keys = get_all_keys(outputs)
+    input_output_keys = input_keys + output_keys
+
     Variable.select('id').where(name: input_output_keys)
   end
 
@@ -76,8 +77,8 @@ class ScenariosFetchService
   # This could use some refinement
   # Currently it is returning all the keys
   # It would be smarter to only use the lowest level
-  def self.get_all_keys(h)
-    h.each_with_object([]) do |(k, v), keys|
+  def self.get_all_keys(hash)
+    hash.each_with_object([]) do |(k, v), keys|
       keys << k
       keys.concat(get_all_keys(v)) if v.is_a? Hash
     end
