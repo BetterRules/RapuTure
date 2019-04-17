@@ -1,8 +1,9 @@
 # frozen_string_literal: true
+
 require 'yaml'
 
 class ScenariosFetchService
-    def self.fetch_all
+  def self.fetch_all
     # Needs to be updated to use github scraper
     scenarios_list = YAML.load(File.read("../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml"))
 
