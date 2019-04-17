@@ -42,6 +42,13 @@ ActiveRecord::Schema.define(version: 2019_04_16_000833) do
     t.index ["entity_id"], name: "index_roles_on_entity_id"
   end
 
+  create_table "scenario_variables", force: :cascade do |t|
+    t.bigint "scenario_id"
+    t.bigint "variable_id"
+    t.index ["scenario_id"], name: "index_scenario_variables_on_scenario_id"
+    t.index ["variable_id"], name: "index_scenario_variables_on_variable_id"
+  end
+
   create_table "scenarios", force: :cascade do |t|
     t.string "name", null: false
     t.json "inputs"
@@ -51,13 +58,6 @@ ActiveRecord::Schema.define(version: 2019_04_16_000833) do
     t.string "namespace"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "scenarios_variables", id: false, force: :cascade do |t|
-    t.bigint "scenario_id", null: false
-    t.bigint "variable_id", null: false
-    t.index ["scenario_id", "variable_id"], name: "index_scenarios_variables_on_scenario_id_and_variable_id"
-    t.index ["variable_id", "scenario_id"], name: "index_scenarios_variables_on_variable_id_and_scenario_id"
   end
 
   create_table "value_types", force: :cascade do |t|
@@ -92,6 +92,8 @@ ActiveRecord::Schema.define(version: 2019_04_16_000833) do
     t.index ["value_type_id"], name: "index_variables_on_value_type_id"
   end
 
+  add_foreign_key "scenario_variables", "scenarios"
+  add_foreign_key "scenario_variables", "variables"
   add_foreign_key "variables", "entities"
   add_foreign_key "variables", "value_types"
 end
