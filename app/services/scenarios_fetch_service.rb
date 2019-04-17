@@ -21,20 +21,28 @@ class ScenariosFetchService
   end
 
   def self.find_or_create_scenario(yaml_scenario)
-    
     scenario = Scenario.find_or_initialize_by(name: yaml_scenario['name'])
 
-    associate_variables_and_scenarios(scenarios_list)
+    inputKeys = get_all_keys(yaml_scenario['input'])
+    outputKeys = get_all_keys(yaml_scenario['output'])
+    input_output_keys = inputKeys + outputKeys
+
+    associated_varaibles = fetch_associated_variables(input_output_keys)
 
     ActiveRecord::Base.transaction do
       scenario.inputs = yaml_scenario['input']
       scenario.outputs = yaml_scenario['output']
       scenario.period = yaml_scenario['period']
       scenario.error_margin = yaml_scenario['absolute_error_margin']
+      scenario.variables << associated_varaibles
       # scenario.namespace = parse_namespace(yaml_scenario['name'])
       scenario.save!
       scenario
     end
+  end
+
+  def self.fetch_associated_variables (input_output_keys)
+    Variable.select('id').where(name: input_output_keys)
   end
 
   # https://gist.github.com/naveed-ahmad/8f0b926ffccf5fbd206a1cc58ce9743e
@@ -51,11 +59,6 @@ class ScenariosFetchService
     raise StandardError.new("These scenarios have duplicate names: #{dups} !!!!!") if dup[0]
   end
 
-  def associate_variables_and_scenarios (scenario)
-    
-  end
-
-
   def self.remove_stale_scenarios(scenario_names:)
     Scenario
       .where
@@ -68,6 +71,14 @@ class ScenariosFetchService
     # Faraday.new ENV['OPENFISCA_URL'] do |conn|
     #   conn.response :json, content_type: /\bjson$/
     #   conn.adapter Faraday.default_adapter
+    # end
+  end
+
+  def self.get_all_keys(h)
+    h.each_with_object([]) do |(k,v),keys|      
+      keys << k
+      keys.concat(get_all_keys(v)) if v.is_a? Hash
     end
   end
 end
+
