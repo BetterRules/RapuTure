@@ -6,7 +6,9 @@ class ScenariosFetchService
   def self.fetch_all
     example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
     # Needs to be updated to use github scraper
-    scenarios_list = YAML.safe_load(File.read(example_file))
+
+    # https://github.com/ruby/psych/issues/262
+    scenarios_list = YAML.load(File.read(example_file)) # rubocop:disable Security/YAMLLoad
 
     scenario_names = scenarios_list.map { |s| s['name'] }
 
