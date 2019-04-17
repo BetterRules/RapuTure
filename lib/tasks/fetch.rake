@@ -3,7 +3,7 @@
 namespace :fetch do
   desc 'Fetch Resources'
   # usage: rake growstuff:admin_user name=skud
-  task fetchall: [:variables, :entities, :scenarios] do
+  task fetchall: %i[variables entities scenarios] do
     # This runs after all the above tasks have run
     puts 'Your database has now been populated with variables and entities!'
   end
