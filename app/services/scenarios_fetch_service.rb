@@ -11,8 +11,8 @@ class ScenariosFetchService
     find_all_duplicates(scenario_names)
     
     scenarios_list.each do |yaml_scenario|
-      scene = find_or_create_scenario(yaml_scenario)
-      yield scene if block_given?
+      scenario = find_or_create_scenario(yaml_scenario)
+      yield scenario if block_given?
     end
 
     remove_stale_scenarios(scenario_names: scenario_names)
@@ -74,6 +74,9 @@ class ScenariosFetchService
     # end
   end
 
+  # This could use some refinement
+  # Currently it is returning all the keys
+  # It would be smarter to only use the lowest level 
   def self.get_all_keys(h)
     h.each_with_object([]) do |(k,v),keys|      
       keys << k
