@@ -1,15 +1,14 @@
 # frozen_string_literal: true
 
 class GithubScrapeService
-
-  FILES = {name: 'Files', include: ['.yaml', 'tests/', 'blob/master'], exclude: ['&source=login']}
+  FILES = { name: 'Files', include: ['.yaml', 'tests/', 'blob/master'], exclude: ['&source=login'] }.freeze
   def self.scrape_all
-    page = MetaInspector.new(ENV['GITHUB_URL']+ENV['GITHUB_TESTS_PATH'])
+    page = MetaInspector.new(ENV['GITHUB_URL'] + ENV['GITHUB_TESTS_PATH'])
 
     all_links = []
     all_dirs = []
 
-    #TODO: Too much repitition, ideas on to how refactor this are welcome!
+    # TODO: Too much repitition, ideas on to how refactor this are welcome!
     files(page, FILES).each do |link|
       all_links.push(link)
     end
@@ -28,13 +27,12 @@ class GithubScrapeService
       end
     end
 
-    puts "Creating files ..."
+    puts 'Creating files ...'
 
     write_files(all_links)
   end
 
   def self.write_files(all_links)
-
     all_links.uniq.each do |link|
       file_name = link.split('/').last
       folder = link.split('/')[-2]
@@ -42,7 +40,6 @@ class GithubScrapeService
       page = MetaInspector.new(link, allow_non_html_content: true)
       write_to_dir(file_name, page, folder)
     end
-
   end
 
   def self.tidy_url(link)
@@ -52,7 +49,7 @@ class GithubScrapeService
   end
 
   def self.files(page, filters)
-    results = Array.new
+    results = []
     page.links.all.each do |link|
       if included_in?(link, filters[:include]) && !included_in?(link, filters[:exclude])
         results.push(link)
@@ -67,11 +64,11 @@ class GithubScrapeService
   end
 
   def self.dirs(page)
-    results = Array.new
+    results = []
     page.links.all.each do |link|
-      #TODO: work out why self.included_in? does not work here?....
+      # TODO: work out why self.included_in? does not work here?....
 
-      #TODO: need to check if directory has a yaml file or not. if not go to next directory (for income_tax/)
+      # TODO: need to check if directory has a yaml file or not. if not go to next directory (for income_tax/)
       if !link.include?('https://github.com/login') && !link.include?('.yaml') && !link.include?('income_tax') && link.include?('tests/') && !link.include?('#start-of-content') && link.include?('tree/master/') && !link.include?('&source=login')
         results.push(link)
       end
@@ -83,12 +80,8 @@ class GithubScrapeService
     dir = "app/scenarios/#{folder}"
     file = "app/scenarios/#{folder}/#{file_name}"
 
-    unless Dir.exists?(dir) then
-      Dir.mkdir(dir)
-    end
+    Dir.mkdir(dir) unless Dir.exist?(dir)
 
-    unless File.exists?(file) then
-      File.open(file, "w+") { |f| f.write(page) }
-    end
+    File.open(file, 'w+') { |f| f.write(page) } unless File.exist?(file)
   end
 end
