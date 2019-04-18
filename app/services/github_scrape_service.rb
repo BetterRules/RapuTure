@@ -2,17 +2,12 @@
 
 class GithubScrapeService
 
-  FILE_INCLUDE = ['.yaml', 'tests/', 'blob/master']
-  FILE_EXCLUDE = ['&source=login']
-  DIR_INCLUDE = []
-  DIR_EXCLUDE = []
-
   FILES = {name: 'Files', include: ['.yaml', 'tests/', 'blob/master'], exclude: ['&source=login']}
   def self.scrape_all
     page = MetaInspector.new(ENV['GITHUB_URL']+ENV['GITHUB_TESTS_PATH'])
 
-    all_links = Array.new
-    all_dirs = Array.new
+    all_links = []
+    all_dirs = []
 
     #TODO: Too much repitition, ideas on to how refactor this are welcome!
     files(page, FILES).each do |link|
