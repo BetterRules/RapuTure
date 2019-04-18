@@ -31,7 +31,6 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'faraday'
 gem 'faraday_middleware'
-gem 'faraday-http-cache'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -66,7 +65,6 @@ gem 'font-awesome-rails'
 gem 'redcarpet'
 
 # Scraper
-gem 'github_api'
 gem 'metainspector'
 
 group :development, :test do
