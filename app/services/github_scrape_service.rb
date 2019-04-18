@@ -4,6 +4,8 @@ class GithubScrapeService
 
   FILE_INCLUDE = ['.yaml', 'tests/', 'blob/master']
   FILE_EXCLUDE = ['&source=login']
+  DIR_INCLUDE = []
+  DIR_EXCLUDE = []
 
   FILES = {name: 'Files', include: ['.yaml', 'tests/', 'blob/master'], exclude: ['&source=login']}
   def self.scrape_all
@@ -33,13 +35,11 @@ class GithubScrapeService
 
     puts "Creating files ..."
 
-<<<<<<< Updated upstream
-=======
     write_files(all_links)
   end
 
   def self.write_files(all_links)
->>>>>>> Stashed changes
+
     all_links.uniq.each do |link|
       file_name = link.split('/').last
       folder = link.split('/')[-2]
@@ -74,6 +74,7 @@ class GithubScrapeService
   def self.dirs(page)
     results = Array.new
     page.links.all.each do |link|
+      #TODO: work out why self.included_in? does not work here?....
       if !link.include?('https://github.com/login') && !link.include?('.yaml') && !link.include?('income_tax') && link.include?('tests/') && !link.include?('#start-of-content') && link.include?('tree/master/') && !link.include?('&source=login')
         results.push(link)
       end
