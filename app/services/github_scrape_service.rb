@@ -75,6 +75,8 @@ class GithubScrapeService
     results = Array.new
     page.links.all.each do |link|
       #TODO: work out why self.included_in? does not work here?....
+
+      #TODO: need to check if directory has a yaml file or not. if not go to next directory (for income_tax/)
       if !link.include?('https://github.com/login') && !link.include?('.yaml') && !link.include?('income_tax') && link.include?('tests/') && !link.include?('#start-of-content') && link.include?('tree/master/') && !link.include?('&source=login')
         results.push(link)
       end
