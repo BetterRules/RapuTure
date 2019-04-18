@@ -33,6 +33,13 @@ class GithubScrapeService
 
     puts "Creating files ..."
 
+<<<<<<< Updated upstream
+=======
+    write_files(all_links)
+  end
+
+  def self.write_files(all_links)
+>>>>>>> Stashed changes
     all_links.uniq.each do |link|
       file_name = link.split('/').last
       folder = link.split('/')[-2]
