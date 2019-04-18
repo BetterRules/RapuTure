@@ -2,14 +2,18 @@
 
 class GithubScrapeService
 
-  ALLOWED_STRINGS = Set[' '
-  ]
+  FILE_INCLUDE = ['.yaml', 'tests/', 'blob/master']
+  FILE_EXCLUDE = ['&source=login']
+
+  FILES = {name: 'Files', include: ['.yaml', 'tests/', 'blob/master'], exclude: ['&source=login']}
   def self.scrape_all
     page = MetaInspector.new(ENV['GITHUB_URL']+ENV['GITHUB_TESTS_PATH'])
 
     all_links = Array.new
     all_dirs = Array.new
-    files(page).each do |link|
+
+    #TODO: Too much repitition, ideas on to how refactor this are welcome!
+    files(page, FILES).each do |link|
       all_links.push(link)
     end
 
@@ -19,7 +23,7 @@ class GithubScrapeService
 
     all_dirs.each do |dir|
       page = MetaInspector.new(dir)
-      files(page).each do |link|
+      files(page, FILES).each do |link|
         all_links.push(link)
       end
       dirs(page).each do |link|
@@ -31,19 +35,24 @@ class GithubScrapeService
 
     all_links.uniq.each do |link|
       file_name = link.split('/').last
-      link.gsub!('https://github.com', 'https://raw.githubusercontent.com')
-      link.gsub!('blob/', '')
+      folder = link.split('/')[-2]
+      tidy_url(link)
       page = MetaInspector.new(link, allow_non_html_content: true)
-      write_to_dir(file_name, page)
+      write_to_dir(file_name, page, folder)
     end
 
   end
 
+  def self.tidy_url(link)
+    link.gsub!('https://github.com', 'https://raw.githubusercontent.com')
+    link.gsub!('blob/', '')
+    link
+  end
 
-  def self.files(page)
+  def self.files(page, filters)
     results = Array.new
     page.links.all.each do |link|
-      if link.include?('.yaml') && link.include?('tests/') && link.include?('blob/master') && !link.include?('&source=login')
+      if included_in?(link, filters[:include]) && !included_in?(link, filters[:exclude])
         results.push(link)
         puts "Added File: #{link}"
       end
@@ -51,19 +60,30 @@ class GithubScrapeService
     results
   end
 
+  def self.included_in?(link, array)
+    array.all? { |i| link.include?(i) }
+  end
+
   def self.dirs(page)
     results = Array.new
     page.links.all.each do |link|
       if !link.include?('https://github.com/login') && !link.include?('.yaml') && !link.include?('income_tax') && link.include?('tests/') && !link.include?('#start-of-content') && link.include?('tree/master/') && !link.include?('&source=login')
         results.push(link)
-        puts "Added Directory: #{link}"
       end
     end
     results
   end
 
-  def self.write_to_dir(file_name, page)
-    File.open("app/scenarios/#{file_name}", "w+") { |f| f.write(page) }
-  end
+  def self.write_to_dir(file_name, page, folder)
+    dir = "app/scenarios/#{folder}"
+    file = "app/scenarios/#{folder}/#{file_name}"
 
+    unless Dir.exists?(dir) then
+      Dir.mkdir(dir)
+    end
+
+    unless File.exists?(file) then
+      File.open(file, "w+") { |f| f.write(page) }
+    end
+  end
 end
