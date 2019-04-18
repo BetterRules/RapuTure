@@ -86,6 +86,10 @@ bin/setup
 ```
 bundle exec rake fetch:fetchall
 ```
+* Load tests/scenarios from OpenFisca
+```
+bundle exec rake scrape:scrapeall
+```
 * Run the app
 ```
 bundle exec rails server
