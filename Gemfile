@@ -49,8 +49,8 @@ gem 'globalize'
 
 # css
 gem 'bootstrap', '~> 4.3.1'
-gem 'jquery-rails'
 gem 'font-awesome-rails'
+gem 'jquery-rails'
 
 # Markdown
 gem 'redcarpet'
