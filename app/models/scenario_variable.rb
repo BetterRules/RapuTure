@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Scenario < ApplicationRecord
+class ScenarioVariable < ApplicationRecord
   belongs_to :scenario
   belongs_to :variable
 end
