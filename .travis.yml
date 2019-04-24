@@ -6,6 +6,7 @@ before_install:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64  > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
 before_script:
+- yarn install
 - RAILS_ENV=test bundle exec rake db:create db:migrate
 - RAILS_ENV=test bundle exec rake assets:precompile
 script:
