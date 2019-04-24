@@ -1,20 +1,18 @@
 # frozen_string_literal: true
 
 class GithubScrapeService
-
-
   # TODO: check if scenarios folder exists
   FILES = { name: 'Files', include: ['.yaml', 'tests/', 'blob/master'], exclude: ['&source=login'] }.freeze
   SCENARIOS_DIR = './app/scenarios'
 
   def self.scrape_all
-
     clean_dir
-
-    puts "Scraping openfisca-aotearoa from Github..."
-    
+    puts 'Scraping openfisca-aotearoa from Github...'
     page = MetaInspector.new(ENV['GITHUB_URL'] + ENV['GITHUB_TESTS_PATH'])
+    collect_urls(page)
+  end
 
+  def self.collect_urls(page)
     all_links = []
     all_dirs = []
 
@@ -22,11 +20,9 @@ class GithubScrapeService
     files(page, FILES).each do |link|
       all_links.push(link)
     end
-
     dirs(page).each do |link|
       all_dirs.push(link)
     end
-
     all_dirs.each do |dir|
       page = MetaInspector.new(dir)
       files(page, FILES).each do |link|
@@ -36,15 +32,14 @@ class GithubScrapeService
         all_dirs.push(link)
       end
     end
-
     write_files(all_links)
   end
 
   def self.clean_dir
     if File.directory?(SCENARIOS_DIR)
-      if !Dir.empty?(SCENARIOS_DIR)
+      unless Dir.empty?(SCENARIOS_DIR)
         FileUtils.rm_rf(Dir.glob("#{SCENARIOS_DIR}/*"))
-        puts "Scenario files exist! Cleaning scenarios directory."
+        puts 'Scenario files exist! Cleaning scenarios directory.'
       end
     end
   end

@@ -4,32 +4,31 @@ require 'yaml'
 
 class ScenariosFetchService
   def self.fetch_all
-
     example_file = ''
 
     Dir.glob("#{Rails.root}/app/scenarios/**/*").each do |f|
-      if !File.directory?(f)
-        example_file = f
+      next if File.directory?(f)
 
-        # example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
-        # Needs to be updated to use github scraper
+      example_file = f
 
-        # https://github.com/ruby/psych/issues/262
-        scenarios_list = YAML.load(File.read(example_file)) # rubocop:disable Security/YAMLLoad
+      # example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
+      # Needs to be updated to use github scraper
 
-        scenario_names = scenarios_list.map { |s| s['name'] }
+      # https://github.com/ruby/psych/issues/262
+      scenarios_list = YAML.load(File.read(example_file)) # rubocop:disable Security/YAMLLoad
 
-        find_all_duplicates(scenario_names)
+      scenario_names = scenarios_list.map { |s| s['name'] }
 
-        scenarios_list.each do |yaml_scenario|
-          scenario = find_or_create_scenario(yaml_scenario)
-          yield scenario if block_given?
-        end
+      find_all_duplicates(scenario_names)
 
-        remove_stale_scenarios(scenario_names: scenario_names)
-
-        Scenario.all unless block_given?
+      scenarios_list.each do |yaml_scenario|
+        scenario = find_or_create_scenario(yaml_scenario)
+        yield scenario if block_given?
       end
+
+      remove_stale_scenarios(scenario_names: scenario_names)
+
+      Scenario.all unless block_given?
     end
   end
 
