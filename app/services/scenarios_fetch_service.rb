@@ -4,7 +4,16 @@ require 'yaml'
 
 class ScenariosFetchService
   def self.fetch_all
-    example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
+
+    example_file = ''
+
+    Dir.glob("#{Rails.root}/app/scenarios/**/*").each do |f|
+      if !File.directory?(f)
+        example_file = f
+      end
+    end
+
+    # example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
     # Needs to be updated to use github scraper
 
     # https://github.com/ruby/psych/issues/262
@@ -58,7 +67,7 @@ class ScenariosFetchService
 
       dup << v if map[v] == 2
     end
-    raise StandardError.new("These scenarios have duplicate names: #{dups} !!!!!") if dup[0]
+    raise StandardError.new("These scenarios have duplicate names: #{dup} !!!!!") if dup[0]
   end
 
   def self.remove_stale_scenarios(scenario_names:)
