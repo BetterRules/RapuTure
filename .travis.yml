@@ -5,10 +5,11 @@ cache:
 before_install:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64  > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
-script:
+before_script:
 - RAILS_ENV=test bundle exec rake db:create db:migrate
 - RAILS_ENV=test bundle exec rake assets:precompile
-- bundle exec rspec
+script:
+- npx percy exec -- bundle exec rspec
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT -t simplecov --id $CC_TEST_REPORTER_ID"
 deploy:
