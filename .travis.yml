@@ -8,7 +8,7 @@ before_install:
 - export PATH=$PWD/geckodriver:$PATH
 before_script:
 - yarn install
-- ./scripts/install_phantomjs.sh
+- ./scripts/install_gecko.sh
 - RAILS_ENV=test bundle exec rake db:create db:migrate
 - RAILS_ENV=test bundle exec rake assets:precompile
 script:
