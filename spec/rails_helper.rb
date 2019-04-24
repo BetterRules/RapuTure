@@ -16,7 +16,7 @@ require 'rspec/rails'
 
 require 'capybara'
 require 'capybara/rspec'
-require "capybara/poltergeist" # Add this line to require poltergeist
+require 'capybara/poltergeist' # Add this line to require poltergeist
 Capybara.javascript_driver = :poltergeist
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
