@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class GithubScrapeService
+
+  # TODO: check if scenarios folder exists
   FILES = { name: 'Files', include: ['.yaml', 'tests/', 'blob/master'], exclude: ['&source=login'] }.freeze
   def self.scrape_all
     page = MetaInspector.new(ENV['GITHUB_URL'] + ENV['GITHUB_TESTS_PATH'])
