@@ -14,7 +14,6 @@ module AwhiMai
     config.load_defaults 5.2
     config.generators.javascript_engine = :js
 
-
     config.generators do |g|
       g.orm               :active_record
       g.template_engine   :haml

@@ -76,6 +76,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 3.8'
 
+  gem 'poltergeist'
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'capybara-screenshot' # for test debugging
@@ -86,4 +87,6 @@ group :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'simplecov', require: false
+
+  gem 'percy-capybara', '~> 4.0.0'
 end
