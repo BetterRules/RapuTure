@@ -4,32 +4,24 @@ require 'yaml'
 
 class ScenariosFetchService
   def self.fetch_all
-    example_file = ''
+    example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
+    # Needs to be updated to use github scraper
 
-    Dir.glob("#{Rails.root}/app/scenarios/**/*").each do |f|
-      next if File.directory?(f)
+    # https://github.com/ruby/psych/issues/262
+    scenarios_list = YAML.load(File.read(example_file)) # rubocop:disable Security/YAMLLoad
 
-      example_file = f
+    scenario_names = scenarios_list.map { |s| s['name'] }
 
-      # example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
-      # Needs to be updated to use github scraper
+    find_all_duplicates(scenario_names)
 
-      # https://github.com/ruby/psych/issues/262
-      scenarios_list = YAML.load(File.read(example_file)) # rubocop:disable Security/YAMLLoad
-
-      scenario_names = scenarios_list.map { |s| s['name'] }
-
-      find_all_duplicates(scenario_names)
-
-      scenarios_list.each do |yaml_scenario|
-        scenario = find_or_create_scenario(yaml_scenario)
-        yield scenario if block_given?
-      end
-
-      remove_stale_scenarios(scenario_names: scenario_names)
-
-      Scenario.all unless block_given?
+    scenarios_list.each do |yaml_scenario|
+      scenario = find_or_create_scenario(yaml_scenario)
+      yield scenario if block_given?
     end
+
+    remove_stale_scenarios(scenario_names: scenario_names)
+
+    Scenario.all unless block_given?
   end
 
   def self.find_or_create_scenario(yaml_scenario)
@@ -66,7 +58,7 @@ class ScenariosFetchService
 
       dup << v if map[v] == 2
     end
-    raise StandardError.new("These scenarios have duplicate names: #{dup} !!!!!") if dup[0]
+    raise StandardError.new("These scenarios have duplicate names: #{dups} !!!!!") if dup[0]
   end
 
   def self.remove_stale_scenarios(scenario_names:)
