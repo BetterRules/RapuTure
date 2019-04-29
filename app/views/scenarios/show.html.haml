@@ -1,0 +1,24 @@
+.container
+  %h1= @scenario.name
+  %h2 Associated Variables
+  - @variables.each do | v |
+    %li
+      = link_to v.description, v
+
+  %h2 Inputs
+  - @scenario.inputs.each do |key, value|
+    %i
+      %h3
+        = "#{key.capitalize}: "
+    - value.each do |key, value|
+      %h4
+        = "#{key.capitalize}:"
+      - unless value.class == Hash || value.class == Array
+        %h6
+          = value
+      - value.each do |key, value|
+        %h5
+          = "#{key.capitalize}: "
+        %h6
+          = value
+        
