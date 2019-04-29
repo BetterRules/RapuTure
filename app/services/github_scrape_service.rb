@@ -9,9 +9,11 @@ class GithubScrapeService
   RAW_FILE_STRIP_URL = 'https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/'
 
   def self.scrape_all
-    next if File.directory?(SCENARIOS_DIR)
-
-    inspect_dir
+    if File.directory?(SCENARIOS_DIR)
+      inspect_dir
+    else
+      FileUtils.mkdir_p SCENARIOS_DIR
+    end
 
     page = MetaInspector.new(ENV['GITHUB_URL'] + ENV['GITHUB_TESTS_PATH'])
     build_scenarios(page)
