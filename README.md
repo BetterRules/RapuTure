@@ -1,5 +1,5 @@
 # Rapu Ture
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/ServiceInnovationLab/RapuTure.svg?columns=all)](https://waffle.io/ServiceInnovationLab/RapuTure)
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/580a9cc169de1c21c180/maintainability)](https://codeclimate.com/github/ServiceInnovationLab/RapuTure/maintainability)
 [![Build Status](https://travis-ci.org/ServiceInnovationLab/RapuTure.svg?branch=master)](https://travis-ci.org/ServiceInnovationLab/RapuTure)
 
@@ -20,8 +20,7 @@ Production |  |
 
 **Resource** | **URL**
 --- | ---
-Backlog | https://waffle.io/ServiceInnovationLab/RapuTure
-CI | https://travis-ci.org/ServiceInnovationLab/RapuTure
+Backlog | https://github.com/orgs/ServiceInnovationLab/projects/11
 
 ## Documentation
 
