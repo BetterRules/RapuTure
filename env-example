@@ -1,6 +1,7 @@
 LANG: en
 OPENFISCA_URL: https://api.rules.nz
 GITHUB_URL: https://github.com/ServiceInnovationLab/openfisca-aotearoa
+GITHUB_TESTS_PATH: /tree/master/openfisca_aotearoa/tests
 RAILS_ENV: development
 RAILS_LOG_TO_STDOUT: true
 RAILS_SERVE_STATIC_FILES: true
