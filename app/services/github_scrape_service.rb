@@ -9,7 +9,10 @@ class GithubScrapeService
   RAW_FILE_STRIP_URL = 'https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/'
 
   def self.scrape_all
-    clean_dir
+    next if File.directory?(SCENARIOS_DIR)
+
+    inspect_dir
+
     page = MetaInspector.new(ENV['GITHUB_URL'] + ENV['GITHUB_TESTS_PATH'])
     build_scenarios(page)
   end
@@ -19,15 +22,19 @@ class GithubScrapeService
       next unless link.include?(TOP_LEVEL_INCLUDE)
 
       files = MetaInspector.new(link, allow_non_html_content: false)
-      files.links.all.each do |file|
-        next unless file.include?(SECOND_LEVEL_INCLUDE)
+      traverse_urls(files, link)
+    end
+  end
 
-        directory = top_level_url(link)
-        raw_file = file.gsub!(RAW_FILE_STRIP_URL, RAW_FILE_DIR)
-        raw_file_contents = MetaInspector.new(raw_file, allow_non_html_content: true)
-        mkfile = "#{directory}/#{file.split('/').last}"
-        mkdir_mkfile(directory, mkfile, raw_file_contents)
-      end
+  def self.traverse_urls(files, link)
+    files.links.all.each do |file|
+      next unless file.include?(SECOND_LEVEL_INCLUDE)
+
+      directory = top_level_url(link)
+      raw_file = file.gsub!(RAW_FILE_STRIP_URL, RAW_FILE_DIR)
+      raw_file_contents = MetaInspector.new(raw_file, allow_non_html_content: true)
+      mkfile = "#{directory}/#{file.split('/').last}"
+      mkdir_mkfile(directory, mkfile, raw_file_contents)
     end
   end
 
@@ -39,15 +46,16 @@ class GithubScrapeService
   def self.mkdir_mkfile(dir, file, content)
     FileUtils.mkdir_p dir
     FileUtils.touch file
-    File.open(file, 'w+') { |file| file.write(content) }
+    File.open(file, 'w+') { |f| f.write(content) }
+  end
+
+  def self.inspect_dir
+    return unless !File.directory?(SCENARIOS_DIR) && !Dir.empty?(SCENARIOS_DIR)
+
+    clean_dir
   end
 
   def self.clean_dir
-    if File.directory?(SCENARIOS_DIR)
-      unless Dir.empty?(SCENARIOS_DIR)
-        FileUtils.rm_rf(Dir.glob("#{SCENARIOS_DIR}/*"))
-        puts 'Scenario files exist! Cleaning scenarios directory.'
-      end
-    end
+    FileUtils.rm_rf(Dir.glob("#{SCENARIOS_DIR}/*"))
   end
 end
