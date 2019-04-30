@@ -2,6 +2,12 @@ LANG: en
 OPENFISCA_URL: https://api.rules.nz
 GITHUB_URL: https://github.com/ServiceInnovationLab/openfisca-aotearoa
 GITHUB_TESTS_PATH: /tree/master/openfisca_aotearoa/tests
+GITHUB_RAW_FILE_PATH: https://raw.githubusercontent.com/ServiceInnovationLab/openfisca-aotearoa/master/
+SCENARIOS_DIR: ./tmp/scenarios
+TOP_LEVEL_INCLUDE = tree/master/openfisca_aotearoa/tests/
+SECOND_LEVEL_INCLUDE = blob/master/openfisca_aotearoa/tests/
+SECOND_LEVEL_STRIP_URL = https://github.com/ServiceInnovationLab/openfisca-aotearoa/tree/master/openfisca_aotearoa/tests/
+RAW_FILE_STRIP_URL = https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/
 RAILS_ENV: development
 RAILS_LOG_TO_STDOUT: true
 RAILS_SERVE_STATIC_FILES: true

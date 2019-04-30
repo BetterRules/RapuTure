@@ -1,18 +1,12 @@
 # frozen_string_literal: true
 
 class GithubScrapeService
-  SCENARIOS_DIR = './app/scenarios'
-  RAW_FILE_DIR = 'https://raw.githubusercontent.com/ServiceInnovationLab/openfisca-aotearoa/master/'
-  TOP_LEVEL_INCLUDE = 'tree/master/openfisca_aotearoa/tests/'
-  SECOND_LEVEL_INCLUDE = 'blob/master/openfisca_aotearoa/tests/'
-  SECOND_LEVEL_STRIP_URL = 'https://github.com/ServiceInnovationLab/openfisca-aotearoa/tree/master/openfisca_aotearoa/tests/'
-  RAW_FILE_STRIP_URL = 'https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/'
 
   def self.scrape_all
-    if File.directory?(SCENARIOS_DIR)
+    if File.directory?(ENV['SCENARIOS_DIR'])
       inspect_dir
     else
-      FileUtils.mkdir_p SCENARIOS_DIR
+      FileUtils.mkdir_p ENV['SCENARIOS_DIR']
     end
 
     page = MetaInspector.new(ENV['GITHUB_URL'] + ENV['GITHUB_TESTS_PATH'])
@@ -21,7 +15,7 @@ class GithubScrapeService
 
   def self.build_scenarios(page)
     page.links.all.each do |link|
-      next unless link.include?(TOP_LEVEL_INCLUDE)
+      next unless link.include?(ENV['TOP_LEVEL_INCLUDE'])
 
       files = MetaInspector.new(link, allow_non_html_content: false)
       traverse_urls(files, link)
@@ -30,10 +24,10 @@ class GithubScrapeService
 
   def self.traverse_urls(files, link)
     files.links.all.each do |file|
-      next unless file.include?(SECOND_LEVEL_INCLUDE)
+      next unless file.include?(ENV['SECOND_LEVEL_INCLUDE'])
 
       directory = top_level_url(link)
-      raw_file = file.gsub!(RAW_FILE_STRIP_URL, RAW_FILE_DIR)
+      raw_file = file.gsub!(ENV['RAW_FILE_STRIP_URL'], ENV['GITHUB_RAW_FILE_PATH'])
       raw_file_contents = MetaInspector.new(raw_file, allow_non_html_content: true)
       mkfile = "#{directory}/#{file.split('/').last}"
       mkdir_mkfile(directory, mkfile, raw_file_contents)
@@ -41,8 +35,8 @@ class GithubScrapeService
   end
 
   def self.top_level_url(link)
-    link.gsub!(SECOND_LEVEL_STRIP_URL, '')
-    "#{SCENARIOS_DIR}/#{link}"
+    link.gsub!(ENV['SECOND_LEVEL_STRIP_URL'], '')
+    "#{ENV['SCENARIOS_DIR']}/#{link}"
   end
 
   def self.mkdir_mkfile(dir, file, content)
@@ -52,12 +46,12 @@ class GithubScrapeService
   end
 
   def self.inspect_dir
-    return unless !File.directory?(SCENARIOS_DIR) && !Dir.empty?(SCENARIOS_DIR)
+    return unless !File.directory?(ENV['SCENARIOS_DIR']) && !Dir.empty?(ENV['SCENARIOS_DIR'])
 
     clean_dir
   end
 
   def self.clean_dir
-    FileUtils.rm_rf(Dir.glob("#{SCENARIOS_DIR}/*"))
+    FileUtils.rm_rf(Dir.glob("#{ENV['SCENARIOS_DIR']}/*"))
   end
 end
