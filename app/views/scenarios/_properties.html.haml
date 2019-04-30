@@ -1,0 +1,21 @@
+%hr/
+%i
+  %h3 Titled Properties 🏘️
+- properties.each do |property, groups|
+  .card
+    .card-body
+      %h4.card-title
+        = "#{property.humanize} 🏠"
+      - if groups.class == Hash || value.class == Array
+        - groups.each do |group, residents|
+          = group.humanize
+          %ul
+            - if residents.class == Array
+              - residents.each do |resident|
+                %li
+                  = "#{resident} 👤"
+            - else
+              %li
+                = "#{residents} 👤"
+      - else
+        = groups
