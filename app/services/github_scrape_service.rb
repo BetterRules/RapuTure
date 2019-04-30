@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class GithubScrapeService
-
   def self.scrape_all
     if File.directory?(ENV['SCENARIOS_DIR'])
       inspect_dir
