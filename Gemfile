@@ -55,6 +55,7 @@ gem 'jquery-rails'
 # Markdown
 gem 'redcarpet'
 
+# Web scraper
 gem 'metainspector'
 
 group :development, :test do
