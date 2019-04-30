@@ -10,6 +10,7 @@ describe 'Test with visual testing', type: :feature, js: true do
     FactoryBot.create :variable, entity: person,
       name: 'is_eligible_for_chocolate',
       description: 'is eligible for chocolate',
+      namespace: 'chocolate',
       value_type: value_type
   end
   before do
