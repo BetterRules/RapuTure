@@ -18,7 +18,7 @@ RSpec.describe GithubScrapeService do
     ]
   end
 
-  it 'checks if folder have been generated' do
+  it 'scrapes the tests from openfisca-aotearoa' do
     described_class.scrape_all
     expect(File).to be_directory(@main_dir)
 
