@@ -1,0 +1,25 @@
+%hr/
+%h2 Outputs
+.card-columns
+  - @scenario.outputs.each do |name, value|
+    .card
+      .card-body
+        - if value.class == Hash || value.class == Array
+          - vari = @variables.select {|variable| variable["name"] == name }[0]
+          %h4.card-title
+            = link_to vari.description, vari || name
+          - value.each do |key, value|
+            %ul
+              %li
+                %h5
+                  = "#{key}: "
+                  - if value.class == Array
+                    - value.each do |value|
+                      = "#{value}$ "
+                  - else
+                    = "#{value}$ "
+        - else
+          - vari = @variables.select {|variable| variable["name"] == name }[0]
+          %h6.card-title
+            = link_to vari.description, vari || name
+            = ": #{value}"

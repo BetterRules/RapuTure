@@ -6,7 +6,7 @@
     .card-body
       %h4.card-title
         = "#{property.humanize} 🏠"
-      - if groups.class == Hash || value.class == Array
+      - if groups.class == Hash || groups.class == Array
         - groups.each do |group, residents|
           = group.humanize
           %ul
