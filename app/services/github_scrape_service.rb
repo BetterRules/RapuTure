@@ -9,10 +9,10 @@ class GithubScrapeService
     end
 
     page = MetaInspector.new(ENV['GITHUB_URL'] + ENV['GITHUB_TESTS_PATH'])
-    build_scenarios(page)
+    get_page_links(page)
   end
 
-  def self.build_scenarios(page)
+  def self.get_page_links(page)
     page.links.all.each do |link|
       next unless link.include?(ENV['TOP_LEVEL_INCLUDE'])
 
@@ -25,7 +25,7 @@ class GithubScrapeService
     files.links.all.each do |file|
       next unless file.include?(ENV['SECOND_LEVEL_INCLUDE'])
 
-      directory = top_level_url(link)
+      directory = get_directory_name(link)
       raw_file = file.gsub!(ENV['RAW_FILE_STRIP_URL'], ENV['GITHUB_RAW_FILE_PATH'])
       raw_file_contents = MetaInspector.new(raw_file, allow_non_html_content: true)
       mkfile = "#{directory}/#{file.split('/').last}"
@@ -33,8 +33,9 @@ class GithubScrapeService
     end
   end
 
-  def self.top_level_url(link)
-    link.gsub!(ENV['SECOND_LEVEL_STRIP_URL'], '')
+  def self.get_directory_name(link)
+    strip_url = ENV['SECOND_LEVEL_STRIP_URL']
+    link.gsub!(ENV['SECOND_LEVEL_STRIP_URL'], '') if link.include?(strip_url)
     "#{ENV['SCENARIOS_DIR']}/#{link}"
   end
 
