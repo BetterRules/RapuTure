@@ -15,11 +15,15 @@ describe 'Test with visual testing', type: :feature, js: true do
   end
   before do
     FactoryBot.create :variable,
-                      name: 'first_variable', entity: person, description: 'this one was first',
+                      name: 'first_variable',
+                      entity: person,
+                      description: 'this one was first',
                       namespace: 'humans',
                       value_type: value_type
     FactoryBot.create :variable,
-                      name: 'second_variable', entity: person, description: 'and this one was second',
+                      name: 'second_variable',
+                      entity: person,
+                      description: 'and this one was second',
                       namespace: 'humans',
                       value_type: value_type
   end
