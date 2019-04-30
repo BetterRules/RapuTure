@@ -4,8 +4,7 @@
 - families.each do |family, roles|
   .card
     .card-body
-      %h4.card-title
-        = "#{family.humanize} 👥"
+      %h4.card-title #{family.humanize} 👥
       - roles.each do |role, people|
         %h5
           = "#{role.humanize}: "
