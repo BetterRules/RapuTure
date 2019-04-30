@@ -70,3 +70,5 @@ Naming/FileName:
   Exclude:
     - Gemfile
     - Gemfile.lock
+
+require: rubocop-performance
