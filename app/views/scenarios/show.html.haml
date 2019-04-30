@@ -1,24 +1,33 @@
 .container
   %h1= @scenario.name
-  %h2 Associated Variables
-  - @variables.each do | v |
-    %li
-      = link_to v.description, v
-
+  %hr/
   %h2 Inputs
   - @scenario.inputs.each do |key, value|
-    %i
-      %h3
-        = "#{key.capitalize}: "
-    - value.each do |key, value|
-      %h4
-        = "#{key.capitalize}:"
-      - unless value.class == Hash || value.class == Array
-        %h6
-          = value
+    - if key == 'persons'
+      = render 'persons', people: value, variables: @variables 
+    - elsif key == 'families'
+      = render 'families', families: value, variables: @variables 
+    - else
+      %hr/
+      %i
+        %h3
+          = "#{key.humanize}: "
       - value.each do |key, value|
-        %h5
-          = "#{key.capitalize}: "
-        %h6
-          = value
-        
+        .card
+          .card-body
+            %h4.card-title
+              = "#{key.humanize}:"
+            - if value.class == Hash || value.class == Array
+              - value.each do |key, value|
+                = "#{key.humanize}: #{value}"
+            - else
+              = value
+  %hr/
+  %i
+    %h3 Variables used in this scenario:
+  .card
+    .card-body
+      %ul
+        - @variables.each do | v |
+          %li
+            = link_to v.description, v

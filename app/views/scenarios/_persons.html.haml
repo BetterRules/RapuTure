@@ -1,0 +1,19 @@
+%hr/
+%i
+  %h3 People
+.card-columns
+  - people.each do |person, attributes|
+    .card
+      .card-body
+        %h4.card-title
+          = "#{person.humanize} 👤"
+        - attributes.each do |name, value|
+          - v = variables.select {|variable| variable["name"] == name }[0]
+          %h5
+            = link_to v.description, v
+            - if value.class == Hash
+              - value.map do |key, value|
+                %h5.li
+                  = "#{key}: #{value}"
+            - else
+              = ": #{value}"
