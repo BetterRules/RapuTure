@@ -7,13 +7,13 @@
       .card-body
         %h4.card-title
           = "#{person.humanize} 👤"
-        - attributes.each do |name, value|
+        - attributes.each do |name, value1|
           - v = variables.select { |variable| variable['name'] == name }[0]
           %h5
             = link_to v.description, v
-            - if value.class == Hash
-              - value.map do |key, value|
+            - if value1.class == Hash
+              - value1.map do |key2, value2|
                 %h5.li
-                  = "#{key}: #{value}"
+                  = "#{key2}: #{value2}"
             - else
-              = ": #{value}"
+              = ": #{value1}"
