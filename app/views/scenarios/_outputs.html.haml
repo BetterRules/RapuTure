@@ -4,7 +4,7 @@
   - @scenario.outputs.each do |name, value|
     .card
       .card-body
-        - vari = @variables.select { |variable| variable["name"] == name }[0]
+        - vari = @variables.select { |variable| variable['name'] == name }[0]
         - if value.class == Hash || value.class == Array
           %h4.card-title
             = link_to vari.description, vari || name

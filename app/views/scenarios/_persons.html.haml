@@ -8,7 +8,7 @@
         %h4.card-title
           = "#{person.humanize} 👤"
         - attributes.each do |name, value|
-          - v = variables.select {|variable| variable["name"] == name }[0]
+          - v = variables.select { |variable| variable['name'] == name }[0]
           %h5
             = link_to v.description, v
             - if value.class == Hash
