@@ -34,9 +34,9 @@ class ScenariosFetchService
       scenario.outputs = yaml_scenario['output']
       scenario.period = yaml_scenario['period']
       scenario.error_margin = yaml_scenario['absolute_error_margin']
+      scenario.save!
       scenario.variables << associated_variables
       # scenario.namespace = parse_namespace(yaml_scenario['name'])
-      scenario.save!
       scenario
     end
   end
@@ -65,7 +65,7 @@ class ScenariosFetchService
     Scenario
       .where
       .not(name: scenario_names)
-      .delete_all
+      .destroy_all
   end
 
   # Needs to be updated to use github scraper
