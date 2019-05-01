@@ -2,20 +2,20 @@
   %h1= @scenario.name
   = render 'outputs', variables: @variables
   %h2 Inputs
-  - @scenario.inputs.each do |key1, value1|
+  - @scenario.inputs.each do |key1, valuation|
     - if key1 == 'persons'
-      = render 'persons', people: value1, variables: @variables 
+      = render 'persons', people: valuation, variables: @variables 
     - elsif key1 == 'families'
-      = render 'families', families: value1, variables: @variables 
+      = render 'families', families: valuation, variables: @variables 
     - elsif key1 == 'titled_properties'
-      = render 'properties', properties: value1, variables: @variables 
+      = render 'properties', properties: valuation, variables: @variables 
     - else
-      - if value1.class == Hash || value1.class == Array
+      - if valuation.class == Hash || valuation.class == Array
         %hr/
         %i
           %h3
           #{key1.humanize}:
-        - value1.each do |key2, value2|
+        - valuation.each do |key2, value2|
           .card
             .card-body
               %h4.card-title
@@ -32,7 +32,7 @@
           .card-body
             %h6.card-title
               = link_to vari.description, vari || key
-              : #{value1}
+              : #{valuation}
   %hr/
   %i
     %h3 Variables used in this scenario:
