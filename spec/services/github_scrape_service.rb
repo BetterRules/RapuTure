@@ -53,6 +53,10 @@ RSpec.describe GithubScrapeService do
     expect(File.readlines("#{@main_dir}/#{dir}/#{file}.yaml")).not_to eq(content)
   end
 
+  xit 'expects the scenarios directory to exist then cleans directory' do
+
+  end
+
   it 'cleans the scenarios directory' do
     described_class.clean_dir
     expect(FileUtils.rm_rf(Dir.glob("#{ENV['SCENARIOS_DIR']}/*"))).to match_array([])
