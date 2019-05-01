@@ -5,11 +5,9 @@
   },
   "env": {
     "GITHUB_RAW_FILE_PATH": {
-      "required": true,
       "value": "https://raw.githubusercontent.com/ServiceInnovationLab/openfisca-aotearoa/master/"
     },
     "GITHUB_TESTS_PATH": {
-      "required": true,
       "value": "/tree/master/openfisca_aotearoa/tests"
     },
     "LANG": {
@@ -31,26 +29,21 @@
       "required": true
     },
     "RAW_FILE_STRIP_URL": {
-      "required": true,
       "value": "https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/"
     },
     "SECOND_LEVEL_INCLUDE": {
-      "required": true,
       "value": "SECOND_LEVEL_INCLUDE"
     },
     "SECOND_LEVEL_STRIP_URL": {
-      "required": true,
       "value": "https://github.com/ServiceInnovationLab/openfisca-aotearoa/tree/master/openfisca_aotearoa/tests/"
     },
     "SECRET_KEY_BASE": {
       "required": true
     },
     "SCENARIOS_DIR": {
-      "required": true,
       "value": "./tmp/scenarios"
     },
     "TOP_LEVEL_INCLUDE": {
-      "required": true,
       "value": "tree/master/openfisca_aotearoa/tests/"
     }
   },
