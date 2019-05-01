@@ -55,7 +55,7 @@ gem 'jquery-rails'
 # Markdown
 gem 'redcarpet'
 
-# Web scraper
+# Web scraper (used to fetch Open Fisca tests/scenarios from github)
 gem 'metainspector'
 
 group :development, :test do
