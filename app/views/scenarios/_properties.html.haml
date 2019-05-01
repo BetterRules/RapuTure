@@ -5,7 +5,7 @@
   .card
     .card-body
       %h4.card-title
-        = "#{property.humanize} 🏠"
+        #{property.humanize} 🏠
       - if groups.is_a? Enumerable
         - groups.each do |group, residents|
           = group.humanize
@@ -13,10 +13,10 @@
             - if residents.class == Array
               - residents.each do |resident|
                 %li
-                  = "#{resident} 👤"
+                  #{resident} 👤
             - else
               %li
-                = "#{residents} 👤"
+                #{residents} 👤
       - else
         = groups
         

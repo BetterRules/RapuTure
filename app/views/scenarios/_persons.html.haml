@@ -6,7 +6,7 @@
     .card
       .card-body
         %h4.card-title
-          = "#{person.humanize} 👤"
+          #{person.humanize} 👤
         - attributes.each do |name, value1|
           - v = variables.select { |variable| variable['name'] == name }[0]
           %h5
@@ -14,6 +14,6 @@
             - if value1.class == Hash
               - value1.map do |key2, value2|
                 %h5.li
-                  = "#{key2}: #{value2}"
+                  #{key2}: #{value2}
             - else
-              = ": #{value1}"
+              : #{value1}

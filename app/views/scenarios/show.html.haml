@@ -14,15 +14,15 @@
         %hr/
         %i
           %h3
-          = "#{key1.humanize}: "
+          #{key1.humanize}: 
         - value1.each do |key2, value2|
           .card
             .card-body
               %h4.card-title
-                = "#{key2.humanize}:"
+                #{key2.humanize}:
               - if value2.class == Hash || value2.class == Array
                 - value2.each do |key3, value3|
-                  = "#{key3.humanize}: #{value3}"
+                  #{key3.humanize}: #{value3}
               - else
                 = value2
       - else
@@ -32,7 +32,7 @@
           .card-body
             %h6.card-title
               = link_to vari.description, vari || key
-              = ": #{value1}"
+              : #{value1}
   %hr/
   %i
     %h3 Variables used in this scenario:
