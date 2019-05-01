@@ -4,6 +4,12 @@
     "postdeploy": "rake db:migrate"
   },
   "env": {
+    "GITHUB_RAW_FILE_PATH": {
+      "required": true
+    },
+    "GITHUB_TESTS_PATH": {
+      "required": true
+    },
     "LANG": {
       "required": true
     },
@@ -22,7 +28,22 @@
     "RAILS_SERVE_STATIC_FILES": {
       "required": true
     },
+    "RAW_FILE_STRIP_URL": {
+      "required": true
+    },
+    "SECOND_LEVEL_INCLUDE": {
+      "required": true
+    },
+    "SECOND_LEVEL_STRIP_URL": {
+      "required": true
+    },
     "SECRET_KEY_BASE": {
+      "required": true
+    },
+    "SCENARIOS_DIR": {
+      "required": true
+    },
+    "TOP_LEVEL_INCLUDE": {
       "required": true
     }
   },
