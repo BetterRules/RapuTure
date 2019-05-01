@@ -12,12 +12,12 @@
             %ul
               %li
                 %h5
-                  #{key}: 
+                  #{key}:
                   - if value2.class == Array
                     - value2.each do |value3|
-                      #{value3}$ 
+                      #{value3}$
                   - else
-                    #{value2}$ 
+                    #{value2}$
         - else
           %h6.card-title
             = link_to vari.description, vari || name
