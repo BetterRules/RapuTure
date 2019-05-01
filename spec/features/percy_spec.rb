@@ -26,6 +26,7 @@ describe 'Test with visual testing', type: :feature, js: true do
                       description: 'and this one was second',
                       namespace: 'humans',
                       value_type: value_type
+    FactoryBot.create :scenario
   end
   it 'loads homepage' do
     visit root_path
@@ -38,5 +39,13 @@ describe 'Test with visual testing', type: :feature, js: true do
   it 'variables#show' do
     visit variable_path(variable)
     Percy.snapshot(page, name: 'variables#show')
+  end
+  it 'scenarios#index' do
+    visit scenarios_path
+    Percy.snapshot(page, name: 'scenarios#index')
+  end
+  it 'scenarios#show' do
+    visit variable_path(variable)
+    Percy.snapshot(page, name: 'scenarios#show')
   end
 end
