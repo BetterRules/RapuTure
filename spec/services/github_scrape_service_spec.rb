@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe GithubScrapeService do
   before(:each) do
     @main_dir = ENV['SCENARIOS_DIR']
+    @github_url = ENV['GITHUB_URL']
+    @github_tests_path = ENV['GITHUB_TESTS_PATH']
     @scenarios = %w[
       citizenship
       demographics
@@ -28,7 +30,7 @@ RSpec.describe GithubScrapeService do
   end
 
   it 'returns all links on page' do
-    page = MetaInspector.new(ENV['GITHUB_URL'] + ENV['GITHUB_TESTS_PATH'])
+    page = MetaInspector.new(@github_url + @github_tests_path)
     described_class.get_page_links(page)
     expect(described_class.get_page_links(page)).not_to be_empty
   end
