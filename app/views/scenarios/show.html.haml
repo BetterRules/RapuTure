@@ -4,7 +4,7 @@
   %h2 Inputs
   - @scenario.inputs.each do |key1, value1|
     - if key1 == 'persons'
-      = render 'persons', people: value1, variables: @variables 
+       = render 'properties', properties: value1, variables: @variables
     - elsif key1 == 'families'
       = render 'families', families: value1, variables: @variables
     - elsif key1 == 'titled_properties'
