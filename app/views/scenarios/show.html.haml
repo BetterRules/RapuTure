@@ -12,9 +12,7 @@
     - else
       - if value1.class == Hash || value1.class == Array
         %hr/
-        %i
-          %h3
-          #{key1.humanize}:
+        %h3.font-italic #{key1.humanize}:
         - value1.each do |key2, value2|
           .card
             .card-body
@@ -40,5 +38,4 @@
     .card-body
       %ul
         - @variables.each do |v|
-          %li
-            = link_to v.description, v
+          %li= link_to v.description, v
