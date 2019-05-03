@@ -8,7 +8,7 @@
     - elsif key1 == 'families'
       = render 'families', families: value1, variables: @variables
     - elsif key1 == 'titled_properties'
-       = render 'properties', properties: value1, variables: @variables
+      = render 'properties', properties: value1, variables: @variables
     - else
       - if value1.class == Hash || value1.class == Array
         %hr/
