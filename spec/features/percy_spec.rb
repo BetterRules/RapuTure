@@ -33,6 +33,14 @@ describe 'Test with visual testing', type: :feature, js: true do
     visit root_path
     Percy.snapshot(page, name: 'homepage')
   end
+  it 'entities#index' do
+    visit entities_path
+    Percy.snapshot(page, name: 'entities#index')
+  end
+  it 'entities#show' do
+    visit entity_path(person)
+    Percy.snapshot(page, name: 'entities#show')
+  end
   it 'variables#index' do
     visit variables_path
     Percy.snapshot(page, name: 'variables#index')
