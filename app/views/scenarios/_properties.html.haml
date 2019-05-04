@@ -1,11 +1,10 @@
 %hr/
-%i
-  %h3 Titled Properties 🏘️
+%h3.font-italic Titled Properties 🏘️
 - properties.each do |property, groups|
   .card
+    .card-header
+      #{property.humanize} 🏠
     .card-body
-      %h4.card-title
-        #{property.humanize} 🏠
       - if groups.is_a? Enumerable
         - groups.each do |group, residents|
           = group.humanize
