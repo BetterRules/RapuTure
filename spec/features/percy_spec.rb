@@ -6,6 +6,7 @@ require 'percy'
 describe 'Test with visual testing', type: :feature, js: true do
   let(:value_type) { FactoryBot.create :value_type, name: 'int' }
   let!(:person) { FactoryBot.create :entity, name: 'person', documentation: 'this is a human being' }
+  let!(:scenario) { FactoryBot.create :scenario }
   let(:variable) do
     FactoryBot.create :variable, entity: person,
                                  name: 'is_eligible_for_chocolate',
@@ -45,7 +46,8 @@ describe 'Test with visual testing', type: :feature, js: true do
     Percy.snapshot(page, name: 'scenarios#index')
   end
   it 'scenarios#show' do
-    visit variable_path(variable)
+    FactoryBot.create :scenario
+    visit scenario_path(scenario)
     Percy.snapshot(page, name: 'scenarios#show')
   end
 end
