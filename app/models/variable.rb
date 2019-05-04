@@ -40,11 +40,11 @@ class Variable < ApplicationRecord
   end
 
   def inbound_links
-    variables
+    reversed_variables
   end
 
   def outbound_links
-    reversed_variables
+    variables
   end
 
   def orphaned?
