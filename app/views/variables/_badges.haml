@@ -12,5 +12,13 @@
   - if variable.has_formula?
     %span.badge.badge-info= t :formula_included
 
+  - if variable.orphaned?
+    %span.badge.badge-warning{ 'data-toggle': 'tooltip',
+      'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself' }
+      Orphaned
+  - else
+    %span.badge.badge-dark used #{pluralize variable.inbound_links.size, 'time'}
+
+
   - unless variable.description
     %span.badge.badge-danger{'data-toggle': 'tooltip', 'data-placement': 'bottom', title: 'No label defined for this variable'}= t :label_missing
