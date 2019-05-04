@@ -36,7 +36,6 @@ RSpec.describe GithubScrapeService do
   end
 
   xit 'gets the data from openfisca-aoteroa by given directory' do
-
   end
 
   it 'returns the directory name for a scenario' do
@@ -49,7 +48,6 @@ RSpec.describe GithubScrapeService do
   end
 
   xit 'expects the scenarios directory to exist then cleans directory' do
-
   end
 
   it 'cleans the scenarios directory' do
