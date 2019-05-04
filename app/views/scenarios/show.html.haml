@@ -1,6 +1,7 @@
 .container
   %h1= @scenario.name
-  = render 'outputs', variables: @variables
+  - if @scenario.outputs.present?
+    = render 'outputs', variables: @variables
   %h2 Inputs
   - @scenario.inputs.each do |key1, value1|
     - if key1 == 'persons'
