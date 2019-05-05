@@ -6,7 +6,14 @@ require 'percy'
 describe 'Test with visual testing', type: :feature, js: true do
   let(:value_type) { FactoryBot.create :value_type, name: 'int' }
   let!(:person) { FactoryBot.create :entity, name: 'person', documentation: 'this is a human being' }
-  let!(:scenario) { FactoryBot.create :scenario }
+  let!(:scenario) do
+    FactoryBot.create :scenario,
+      name: 'a complicated situation',
+      inputs: '',
+      period: '2019-05',
+      error_margin: 1.0,
+      namespace: 'ghostchips'
+  end
   let(:variable) do
     FactoryBot.create :variable, entity: person,
                                  name: 'is_eligible_for_chocolate',
