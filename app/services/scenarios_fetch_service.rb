@@ -3,31 +3,62 @@
 require 'yaml'
 
 class ScenariosFetchService
+  def self.clone_git_repo
+    raise if clone_url.blank?
+
+    branch = 'master'
+    if File.directory?(git_clone_folder)
+      Rails.logger.info("Pull branch #{branch}")
+      g = Git.init(git_clone_folder) # , { repository: clone_url, index: '/tmp/index'} )
+      g.checkout(branch)
+      g.pull
+    else
+      Rails.logger.info("Cloning #{clone_url} into #{git_clone_folder}")
+      g = Git.clone(clone_url, git_clone_folder)
+      g.checkout(branch)
+    end
+  end
+
+  def self.git_clone_folder
+    "./tmp/#{ENV['RAILS_ENV']}-openfisca-aotearoa"
+  end
+
+  def self.clone_url
+    ENV['OPENFISCA_GIT_CLONE_URL']
+  end
+
+  def self.yaml_tests_folder
+    "#{git_clone_folder}/openfisca_aotearoa/tests/"
+  end
+
   def self.fetch_all
-    example_file = '../openfisca-aotearoa/openfisca_aotearoa/tests/income_tax/family_scheme/best_start.yaml'
-    # Needs to be updated to use github scraper
+    clone_git_repo
+    found_scenarios = [] # Keep a running list of scenarios we found
 
-    # https://github.com/ruby/psych/issues/262
-    scenarios_list = YAML.load(File.read(example_file)) # rubocop:disable Security/YAMLLoad
+    Find.find(yaml_tests_folder).each do |filename|
+      next unless File.extname(filename) == '.yaml'
 
-    scenario_names = scenarios_list.map { |s| s['name'] }
+      Rails.logger.debug(filename)
 
-    find_all_duplicates(scenario_names)
-
-    scenarios_list.each do |yaml_scenario|
-      scenario = find_or_create_scenario(yaml_scenario)
-      yield scenario if block_given?
+      # https://github.com/ruby/psych/issues/262
+      scenarios_list = YAML.load(File.read(filename)) # rubocop:disable Security/YAMLLoad
+      scenario_names = scenarios_list.map { |s| s['name'] }
+      found_scenarios += scenario_names
+      Rails.logger.debug(scenario_names)
+      find_all_duplicates(scenario_names)
+      scenarios_list.each do |yaml_scenario|
+        scenario = find_or_create_scenario(yaml_scenario)
+      end
     end
 
-    remove_stale_scenarios(scenario_names: scenario_names)
-
-    Scenario.all unless block_given?
+    remove_stale_scenarios(scenario_names: found_scenarios)
   end
 
   def self.find_or_create_scenario(yaml_scenario)
-    scenario = Scenario.find_or_initialize_by(name: yaml_scenario['name'])
+    scenario_name = yaml_scenario['name']
+    raise if scenario_name.blank?
 
-    associated_variables = fetch_associated_variables(yaml_scenario['input'], yaml_scenario['output'])
+    scenario = Scenario.find_or_initialize_by(name: scenario_name)
 
     ActiveRecord::Base.transaction do
       scenario.inputs = yaml_scenario['input']
@@ -35,8 +66,7 @@ class ScenariosFetchService
       scenario.period = yaml_scenario['period']
       scenario.error_margin = yaml_scenario['absolute_error_margin']
       scenario.save!
-      scenario.variables << associated_variables
-      # scenario.namespace = parse_namespace(yaml_scenario['name'])
+      scenario.variables = fetch_associated_variables(yaml_scenario['input'], yaml_scenario['output'])
       scenario
     end
   end
@@ -45,8 +75,11 @@ class ScenariosFetchService
     input_keys = get_all_keys(inputs)
     output_keys = get_all_keys(outputs)
     input_output_keys = input_keys + output_keys
-
-    Variable.select('id').where(name: input_output_keys)
+    # ensure they exist
+    input_output_keys.each do |variable_name|
+      Variable.find_or_create_by(name: variable_name)
+    end
+    Variable.where(name: input_output_keys)
   end
 
   # https://gist.github.com/naveed-ahmad/8f0b926ffccf5fbd206a1cc58ce9743e
