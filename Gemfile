@@ -54,8 +54,8 @@ gem 'jquery-rails'
 # Markdown
 gem 'redcarpet'
 
-# Web scraper (used to fetch Open Fisca tests/scenarios from github)
-gem 'metainspector'
+# Clones open fisca to read the test yaml
+gem 'git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
