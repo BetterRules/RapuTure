@@ -40,7 +40,6 @@ describe 'Test with visual testing', type: :feature, js: true do
                       description: 'and this one was second',
                       namespace: 'humans',
                       value_type: value_type
-    FactoryBot.create :scenario
   end
   it 'loads homepage' do
     visit root_path
