@@ -9,7 +9,7 @@ class ScenariosFetchService
     branch = 'master'
     if File.directory?(git_clone_folder)
       Rails.logger.info("Pull branch #{branch}")
-      g = Git.init(git_clone_folder) # , { repository: clone_url, index: '/tmp/index'} )
+      g = Git.init(git_clone_folder)
       g.checkout(branch)
       g.pull
     else
