@@ -15,10 +15,10 @@
               %ul.list-group.list-group-flush
                 %li.list-group-item
                   - if value2.class == Array
-                    %h4 #{key}
+                    %h4= key
                     %ul
                       - value2.each do |value3|
-                        %li #{value3}
+                        %li= value3
                   - else
                     #{key}: #{value2}
           - else
