@@ -91,7 +91,9 @@ describe 'Test with visual testing', type: :feature, js: true do
   end
   it 'scenarios#show' do
     expected_variables.each do |variable_name|
-      FactoryBot.create :variable, name: variable_name, namespace: 'percy'
+      FactoryBot.create :variable, name: variable_name,
+                                   namespace: 'percy',
+                                   description: "a very good #{variable_name}"
     end
     complicated_scenario.parse_variables!
     visit scenario_path(complicated_scenario)
