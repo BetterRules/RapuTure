@@ -78,7 +78,6 @@ class ScenariosFetchService
       scenario.error_margin = yaml_scenario['absolute_error_margin']
       scenario.save!
       scenario.parse_variables!
-      # scenario.variables = fetch_associated_variables(yaml_scenario['input'], yaml_scenario['output'])
       scenario
     end
   end
