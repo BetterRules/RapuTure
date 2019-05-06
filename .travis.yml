@@ -28,6 +28,7 @@ deploy:
 
   run:
   - bundle install
+  - bundle exec rake tmp:cache:clear
   - bundle exec rake db:migrate
   - bundle exec rake assets:precompile
   - restart
