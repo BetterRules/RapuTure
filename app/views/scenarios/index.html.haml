@@ -1,0 +1,6 @@
+.container
+  .card-columns
+    - @scenarios.each do |scenario|
+      .card
+        .card-body
+          %h5.card-title= link_to scenario.name, scenario

@@ -5,7 +5,7 @@ FactoryBot.define do
     name { Faker::Name.name }
     inputs { Faker::Json }
     period { Faker::Name.name }
-    error_margin { Faker::Number.number }
+    error_margin { Faker::Number.within(1..100) }
     created_at { DateTime.now.utc }
     updated_at { DateTime.now.utc }
     namespace { Faker::Quote.yoda }

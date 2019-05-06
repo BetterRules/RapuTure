@@ -1,0 +1,15 @@
+%hr/
+%i
+  %h3 Families
+- families.each do |family, roles|
+  .card
+    .card-body
+      %h4.card-title #{family.humanize} 👥
+      - roles.each do |role, people|
+        %h5
+          #{role.humanize}:
+          - if people.class == Array
+            - people.map do |person|
+              #{person} 👤
+          - else
+            #{people}   👤

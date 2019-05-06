@@ -3,5 +3,4 @@
     .card-body
       %h5.card-title= link_to variable.name, variable
       %p.card-text=variable.description
-      = render 'variables/badges', variable: variable,
-        link_to_count: link_to_count.to_i, link_from_count: link_from_count.to_i
+      = render 'variables/badges', variable: variable

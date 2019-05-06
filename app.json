@@ -7,16 +7,10 @@
     "LANG": {
       "required": true
     },
+    "OPENFISCA_GIT_CLONE_URL": {
+      "value": "https://github.com/ServiceInnovationLab/openfisca-aotearoa"
+    },
     "OPENFISCA_URL": {
-      "required": true
-    },
-    "RACK_ENV": {
-      "required": true
-    },
-    "RAILS_ENV": {
-      "required": true
-    },
-    "RAILS_LOG_TO_STDOUT": {
       "required": true
     },
     "RAILS_SERVE_STATIC_FILES": {

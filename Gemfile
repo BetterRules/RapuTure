@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.5.5'
+ruby '2.6.3'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -54,6 +53,9 @@ gem 'jquery-rails'
 
 # Markdown
 gem 'redcarpet'
+
+# Clones open fisca to read the test yaml
+gem 'git'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

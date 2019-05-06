@@ -55,7 +55,7 @@ GEM
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
     bindex (0.5.0)
-    bootsnap (1.4.3)
+    bootsnap (1.4.4)
       msgpack (~> 1.0)
     bootstrap (4.3.1)
       autoprefixer-rails (>= 9.1.0)
@@ -108,6 +108,7 @@ GEM
     forty_facets (0.1.9.0)
     friendly_id (5.2.5)
       activerecord (>= 4.0.0)
+    git (1.5.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     globalize (5.2.0)
@@ -158,7 +159,7 @@ GEM
     mini_mime (1.0.1)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    msgpack (1.2.9)
+    msgpack (1.2.10)
     multi_json (1.13.1)
     multipart-post (2.0.0)
     nio4r (2.3.1)
@@ -244,7 +245,7 @@ GEM
       rspec-mocks (~> 3.8.0)
       rspec-support (~> 3.8.0)
     rspec-support (3.8.0)
-    rubocop (0.68.0)
+    rubocop (0.68.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5, != 2.5.1.1)
@@ -341,6 +342,7 @@ DEPENDENCIES
   font-awesome-rails
   forty_facets
   friendly_id
+  git
   globalize
   haml
   i18n-tasks (~> 0.9.29)
@@ -368,7 +370,7 @@ DEPENDENCIES
   webpacker
 
 RUBY VERSION
-   ruby 2.5.3p105
+   ruby 2.6.3p62
 
 BUNDLED WITH
    1.17.3
