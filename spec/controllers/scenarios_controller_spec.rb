@@ -6,7 +6,9 @@ RSpec.describe ScenariosController, type: :controller do
   describe '#index' do
     let!(:scenarios) { FactoryBot.create_list :scenario, 3 }
     before { get :index }
-    it { expect(assigns(:scenarios)).to eq scenarios }
+    it { expect(assigns(:scenarios)).to include scenarios[0] }
+    it { expect(assigns(:scenarios)).to include scenarios[1] }
+    it { expect(assigns(:scenarios)).to include scenarios[2] }
   end
   describe '#show' do
     let(:scenario) { FactoryBot.create :scenario }
