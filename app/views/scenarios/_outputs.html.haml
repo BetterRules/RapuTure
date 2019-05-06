@@ -7,10 +7,10 @@
         - vari = variables.select { |variable| variable['name'] == name }.first
         - if vari.present?
           - if vari.namespace.present?
-            %span.badge=vari.namespace
+            %span.badge= vari.namespace
           - if value1.is_a? Enumerable
             %h4.card-title= link_to(vari.name, vari) || name
-            %p=vari.description
+            %p= vari.description
             - value1.each do |key, value2|
               %ul.list-group.list-group-flush
                 %li.list-group-item
