@@ -38,5 +38,5 @@
         - @variables.each do |v|
           %li
             - if v.namespace.present?
-              %span.badge=v.namespace
+              %span.badge= v.namespace
             = link_to v.description, v
