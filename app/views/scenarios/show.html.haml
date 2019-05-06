@@ -36,4 +36,7 @@
     .card-body
       %ul
         - @variables.each do |v|
-          %li= link_to v.description, v
+          %li
+            - if v.namespace.present?
+              %span.badge=v.namespace
+            = link_to v.description, v

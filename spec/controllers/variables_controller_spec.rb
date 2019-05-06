@@ -7,7 +7,7 @@ RSpec.describe VariablesController, type: :controller do
     context 'one orphaned variable' do
       let!(:variable) { FactoryBot.create :variable }
       before { get :index }
-      it { expect(assigns(:variables)).to eq ([variable]) }
+      it { expect(assigns(:variables)).to eq [variable] }
     end
 
     context 'three orphaned variables' do
@@ -15,7 +15,7 @@ RSpec.describe VariablesController, type: :controller do
       let!(:variable_two) { FactoryBot.create :variable }
       let!(:variable_three) { FactoryBot.create :variable }
       before { get :index }
-      it { expect(assigns(:variables).size).to eq (3) }
+      it { expect(assigns(:variables).size).to eq 3 }
     end
 
     context 'two variables that refer to each other' do

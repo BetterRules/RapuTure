@@ -5,17 +5,41 @@ require 'percy'
 
 describe 'Test with visual testing', type: :feature, js: true do
   let(:value_type) { FactoryBot.create :value_type, name: 'int' }
+
+  let(:input_hash) do
+    {
+      'persons' => {
+        'fulltime_uni_student' => {
+          'age' => 21,
+          'is_nz_citizen' => true,
+          'social_security__is_ordinarily_resident_in_new_zealand' => true,
+          'student_allowance__is_tertiary_student' => true,
+          'student_allowance__is_enrolled_fulltime' => true,
+          'student_allowance__meets_attendance_and_performance_requirements' => true
+        }
+      }
+    }
+  end
+  let(:output_hash) do
+    { 'student_allowance__eligible_for_basic_grant' => [true, true, true, true, false] }
+  end
+  let(:expected_variables) do
+    %w[age is_nz_citizen social_security__is_ordinarily_resident_in_new_zealand
+       student_allowance__is_tertiary_student student_allowance__is_enrolled_fulltime
+       student_allowance__meets_attendance_and_performance_requirements
+       student_allowance__eligible_for_basic_grant]
+  end
   let!(:person) do
     FactoryBot.create :entity,
                       name: 'person',
                       description: 'this is a human being',
                       documentation: 'you, me, everyone'
   end
-  let!(:scenario) do
+  let!(:complicated_scenario) do
     FactoryBot.create :scenario,
                       name: 'a complicated situation',
-                      inputs: { 'persons' => { 'fulltime_uni_student' => { 'age' => 21, 'is_nz_citizen' => true, 'social_security__is_ordinarily_resident_in_new_zealand' => true, 'student_allowance__is_tertiary_student' => true, 'student_allowance__is_enrolled_fulltime' => true, 'student_allowance__meets_attendance_and_performance_requirements' => true }, 'Parttime_student' => { 'age' => 18, 'is_nz_citizen' => true, 'social_security__is_ordinarily_resident_in_new_zealand' => true, 'student_allowance__is_tertiary_student' => true, 'student_allowance__approved_to_study_parttime' => true }, 'Overseas_student' => { 'age' => 27, 'is_nz_citizen' => true, 'social_security__is_ordinarily_resident_in_new_zealand' => true, 'student_allowance__is_tertiary_student' => true, 'student_allowance__approved_to_study_overseas' => true }, 'Refugee' => { 'age' => 25, 'immigration__is_recognised_refugee' => true, 'student_allowance__is_tertiary_student' => true, 'student_allowance__is_enrolled_fulltime' => true, 'student_allowance__meets_attendance_and_performance_requirements' => true }, 'Not_a_student' => { 'age' => 50, 'is_nz_citizen' => true, 'social_security__is_ordinarily_resident_in_new_zealand' => true, 'student_allowance__is_tertiary_student' => false } }, 'families' => { 'Whanau' => { 'others' => %w[fulltime_uni_student Overseas_student Refugee Not_a_student Parttime_student] } }, 'titled_properties' => { 'whare' => { 'others' => %w[fulltime_uni_student Overseas_student Refugee Not_a_student Parttime_student] } } },
-                      outputs: { 'student_allowance__eligible_for_basic_grant' => [true, true, true, true, false] },
+                      inputs: input_hash,
+                      outputs: output_hash,
                       period: '2019-05',
                       error_margin: 1.0,
                       namespace: 'ghostchips'
@@ -66,8 +90,11 @@ describe 'Test with visual testing', type: :feature, js: true do
     Percy.snapshot(page, name: 'scenarios#index')
   end
   it 'scenarios#show' do
-    FactoryBot.create :scenario
-    visit scenario_path(scenario)
+    expected_variables.each do |variable_name|
+      FactoryBot.create :variable, name: variable_name, namespace: 'percy'
+    end
+    complicated_scenario.parse_variables!
+    visit scenario_path(complicated_scenario)
     Percy.snapshot(page, name: 'scenarios#show')
   end
 end
