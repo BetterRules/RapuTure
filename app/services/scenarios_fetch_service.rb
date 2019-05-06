@@ -58,7 +58,7 @@ class ScenariosFetchService
       Rails.logger.debug(scenario_names)
       find_all_duplicates(scenario_names)
       scenarios_list.each do |yaml_scenario|
-        scenario = find_or_create_scenario(yaml_scenario)
+        find_or_create_scenario(yaml_scenario)
       end
     end
 
