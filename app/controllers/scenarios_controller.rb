@@ -2,7 +2,7 @@
 
 class ScenariosController < ApplicationController
   def index
-    @scenarios = Scenario.all
+    @scenarios = Scenario.all.order(:name)
   end
 
   def show
