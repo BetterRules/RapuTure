@@ -27,10 +27,10 @@ RSpec.describe ScenariosFetchService do
       expect(File).not_to exist('./tmp/test-openfisca-aotearoa')
 
       # clone
-      described_class.clone_git_repo
+      described_class.clone_or_pull_git_repo
       expect(File).to exist('./tmp/test-openfisca-aotearoa')
       # call again, and it'll only pull
-      described_class.clone_git_repo
+      described_class.clone_or_pull_git_repo
       expect(File).to exist('./tmp/test-openfisca-aotearoa')
     end
   end
