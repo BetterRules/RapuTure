@@ -6,17 +6,28 @@ class ScenariosFetchService
   def self.clone_git_repo
     raise if clone_url.blank?
 
-    branch = 'master'
     if File.directory?(git_clone_folder)
-      Rails.logger.info("Pull branch #{branch}")
-      g = Git.init(git_clone_folder)
-      g.checkout(branch)
-      g.pull
+      git_clone
     else
-      Rails.logger.info("Cloning #{clone_url} into #{git_clone_folder}")
-      g = Git.clone(clone_url, git_clone_folder)
-      g.checkout(branch)
+      git_pull
     end
+  end
+
+  def self.git_branch
+    'master'
+  end
+
+  def self.git_clone
+    Rails.logger.info("Pull branch #{git_branch}")
+    g = Git.init(git_clone_folder)
+    g.checkout(git_branch)
+    g.pull
+  end
+
+  def self.git_pull
+    Rails.logger.info("Cloning #{clone_url} into #{git_clone_folder}")
+    g = Git.clone(clone_url, git_clone_folder)
+    g.checkout(git_branch)
   end
 
   def self.git_clone_folder
