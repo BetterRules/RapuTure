@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'yaml'
+require 'find'
 
 class ScenariosFetchService
   def self.clone_or_pull_git_repo

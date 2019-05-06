@@ -19,7 +19,7 @@ deploy:
   provider: heroku
   skip_cleanup: true
   api_key:
-    secure: Uz6q19RTSuJ+pt2MgyHyEcQQSkQgg3FKlBXVR6A+dVxhUK2f+RSDCotS+fGp/KSxGXgWkP4955WznaJDcb9Khj2IKA79HdtIrA/ZeneiDqp+H47N0BpA8T3FkEj6URNqdulXBOLbvF8tAmQVzU+9nmnSXakjM4PSBxcfQuFj0EgvmHYqWuet7cjoJoZXSBMlgFG3hGWQOF7iJLL9nyGv1dkDfRXqINs2nwvLYfUa/2HinTTak3qDRJO9RPYSubDefhxntH9X7B0cAKBe5a4anLgq9XY2kJoCHXbno1VjVCe/IPwlhT+7yhCnSHcQpYG0hQuTSDkt6kM5GFYXHnjoGCKWNv/xzZRzYIIww1Bsmo96dnswALnfZV8YG+i+3ULd7xRyImivrNh5nqiQ8MiwsXYbXREev6JWlo2IbaLmCxF+HMPxp8mwK8Zl9i7uoF/iMQ+btjRRQC+ll/akIzy4474HV64cvH5HyNMla6iUWUYqxQ9/aHtu7QKEaWZIAMA3yrzOBnF2fQBGJFC7HF6lQl9d0FkDI3zCsxiGPBwYFG0cDTLNZxj+H3HR2ifFSJAb4DqgNIttLwFXeSbos+139tK2CpqCfNBsYzXTCez0JJmgYq0dua26IlVtlD+QP3WnSUBfkQmNs5LlcWklrx/FxQ3Y5r1teVR0dUXFAcueyn4=
+    secure: lczUIdll3TOtzo7K1YRAL0xewC2SzL5QD3Bh1knAsBy4N2n8UyLhcIKimbTrOoMpT9hjUP1ZG/VikzqRo0leRFgrMs11sKy2KpwvRmQf6GcTM8BvOU9LZSxxEyyCYj3n6+6SuYS2Uz4NuSKbNcMazk5E7WAFi5quWAINIFoQuNx0IG2Z3t3GKsiYX6aYoQ643E9x31dhi8zMTCfrCug4IWQTrXr/d18p5KjH4v5BYHnmJSQeNUF+Mhf1bKASNzIHfrxj+akrq9wpz8e4uM50FKeKGYfOyTDULHpwKH9R4rKSWm3J2HHnn+DsSTBJ/lMGud09bvEpMuI6iZpnnRmVGAQBAdk6gdynITDVKtP463yhDSmUTOb9GHptr3zTbABs2PmT6P3XxROdFZKTrrHPiLcPGJVULJ9dA62IQySiSbe4T/mHaCe0izDyxAzdXBQ0Vh659qc2e4gxN6iYktXVLiA8NsCgNuTySxicsEU3AbHR1/AgPfG1PwB4YUqhlauWe7PsDL1o/sUuSVkamxLetghSQICIy1pgygjT0AOZDE2uvZ3jDQubDjTlptFfh4a7ZsXVZsUap5JaaLWBl+3j5orG7rtrYucW/qrc+QEM7yZHfyHfMN69lZTb/kR8jIQ2V+cSYLkjsCcDIQcQ9vDTcZD+5oiuRTXWBCPq4zN/eCA=
   on:
     repo: ServiceInnovationLab/RapuTure
   app:
@@ -28,6 +28,7 @@ deploy:
 
   run:
   - bundle install
+  - bundle exec rake tmp:cache:clear
   - bundle exec rake db:migrate
   - bundle exec rake assets:precompile
   - restart
