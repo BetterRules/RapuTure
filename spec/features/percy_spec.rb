@@ -86,7 +86,7 @@ describe 'Test with visual testing', type: :feature, js: true do
     Percy.snapshot(page, name: 'scenarios#index')
   end
   it 'scenarios#show' do
-    expected_variables.each {|variable_name| FactoryBot.create :variable, name: variable_name }
+    expected_variables.each {|variable_name| FactoryBot.create :variable, name: variable_name, namespace: 'percy' }
     complicated_scenario.parse_variables!
     visit scenario_path(complicated_scenario)
     Percy.snapshot(page, name: 'scenarios#show')
