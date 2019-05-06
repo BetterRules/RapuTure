@@ -6,7 +6,6 @@
     .card
       .card-body
         %h4.card-title #{person.humanize} 👤
-
         %ul.list-group.list-group-flush
           - attributes.each do |name, value1|
             - if variables.size.positive?
@@ -15,7 +14,6 @@
                 = link_to v, v
                 - if value1.class == Hash
                   - value1.map do |key2, value2|
-                    %h5.li
-                      #{key2}: #{value2}
+                    #{key2}: #{value2}
                 - else
                   %tt.pull-right= value1

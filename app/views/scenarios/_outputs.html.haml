@@ -6,16 +6,17 @@
       .card-body
         - vari = variables.select { |variable| variable['name'] == name }.first
         - if value1.is_a? Enumerable
-          %h4.card-title= link_to(vari&.description, vari) || name
+          %h4.card-title= link_to(vari.name, vari) || name
+          %p=vari.description
           - value1.each do |key, value2|
-            %ul
-              %li
-                %h5
-                  #{key}:
-                  - if value2.class == Array
+            %ul.list-group.list-group-flush
+              %li.list-group-item
+                - if value2.class == Array
+                  %h4 #{key}
+                  %ul
                     - value2.each do |value3|
-                      #{value3}$
-                  - else
-                    #{value2}$
+                      %li #{value3}
+                - else
+                  #{key}: #{value2}
         - else
           %h6.card-title= link_to vari.description, vari || name
