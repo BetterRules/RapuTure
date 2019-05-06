@@ -35,12 +35,6 @@ env:
   global:
     - RAILS_ENV=test
     - OPENFISCA_URL=https://api.rules.nz
-    - secure: T7+npfKb6EW0G++OP4C91y2WMrMYyOrozeNT1WPCuedd5vKdILSskMz5LBav54F0J6OBbwozH82e0xclMTa23VuOrc9805tEcwtSRdDYb/mIb7F6gEyseqLIk/TZvDfmB5Yrrji0IVX9s5q0OKfVVb0rTrgh87pSRW2YnYAu41k6v2pK/OquixQX0sogblOLfKYprqh4h3Ay6+1IIDmC/lg0XSe+0xRFBZ5FJk0ycStu74xM+qbphIFgzd6q2kChFqRrOporeCgN3WSAFsQd7QneLITN3eucH9AR0OC9Udpuxr8tvAqTfy7Lo3ogj9PTYjD60ObQjcr212d/isSaZd6Zk2wHH35bzsZU3Y5f6vsILiZVJY2rDPkf7A6jMrWSPw8jd/CRizFjedveF9jCy3J2viwNI23y4Ce+sQkc5u0dAV3Z7n5Avy1R/UjyBpRoYb7VhfX1mZTKsVfLPoOxMuvChyOAL4MZGR83N9emHoLFL1r/JsRlqtun/F8i7vsu3OmqpO9ZcexEh+jx1Hqt6qSizNto6bQkKQ5WOul0kfT9U4kIHcKe0EIsUmD2d6CYLXBIYuSitp3/Fq/yX/tUwm9tJED+J0g76g8ItFAznf+7nYe4MSh039ehOKXLW4v+w6624RYfmjCauNHb4HSmwE0n2y8XgLwat7Tj1hwV8Qc=
     - GITHUB_URL=https://github.com/ServiceInnovationLab/openfisca-aotearoa
-    - GITHUB_TESTS_PATH=/tree/master/openfisca_aotearoa/tests
-    - GITHUB_RAW_FILE_PATH=https://raw.githubusercontent.com/ServiceInnovationLab/openfisca-aotearoa/master/
-    - SCENARIOS_DIR=./tmp/scenarios
-    - TOP_LEVEL_INCLUDE=tree/master/openfisca_aotearoa/tests/
-    - SECOND_LEVEL_INCLUDE=blob/master/openfisca_aotearoa/tests/
-    - SECOND_LEVEL_STRIP_URL=https://github.com/ServiceInnovationLab/openfisca-aotearoa/tree/master/openfisca_aotearoa/tests/
-    - RAW_FILE_STRIP_URL=https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/
+    - OPENFISCA_GIT_CLONE_URL=https://github.com/ServiceInnovationLab/openfisca-aotearoa
+    - secure: T7+npfKb6EW0G++OP4C91y2WMrMYyOrozeNT1WPCuedd5vKdILSskMz5LBav54F0J6OBbwozH82e0xclMTa23VuOrc9805tEcwtSRdDYb/mIb7F6gEyseqLIk/TZvDfmB5Yrrji0IVX9s5q0OKfVVb0rTrgh87pSRW2YnYAu41k6v2pK/OquixQX0sogblOLfKYprqh4h3Ay6+1IIDmC/lg0XSe+0xRFBZ5FJk0ycStu74xM+qbphIFgzd6q2kChFqRrOporeCgN3WSAFsQd7QneLITN3eucH9AR0OC9Udpuxr8tvAqTfy7Lo3ogj9PTYjD60ObQjcr212d/isSaZd6Zk2wHH35bzsZU3Y5f6vsILiZVJY2rDPkf7A6jMrWSPw8jd/CRizFjedveF9jCy3J2viwNI23y4Ce+sQkc5u0dAV3Z7n5Avy1R/UjyBpRoYb7VhfX1mZTKsVfLPoOxMuvChyOAL4MZGR83N9emHoLFL1r/JsRlqtun/F8i7vsu3OmqpO9ZcexEh+jx1Hqt6qSizNto6bQkKQ5WOul0kfT9U4kIHcKe0EIsUmD2d6CYLXBIYuSitp3/Fq/yX/tUwm9tJED+J0g76g8ItFAznf+7nYe4MSh039ehOKXLW4v+w6624RYfmjCauNHb4HSmwE0n2y8XgLwat7Tj1hwV8Qc=
