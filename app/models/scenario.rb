@@ -11,12 +11,6 @@ class Scenario < ApplicationRecord
     output_keys = get_all_keys(outputs)
     input_output_keys = input_keys + output_keys
 
-    # byebug
-    # # ensure they exist
-    # input_output_keys.each do |variable_name|
-    #   byebug
-    #   Variable.find_or_create_by(name: variable_name)
-    # end
     self.variables = Variable.where(name: input_output_keys)
   end
 
