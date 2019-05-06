@@ -10,12 +10,6 @@ class VariablesController < ApplicationController
                         .distinct(false)
                         .includes(:variables, :value_type, :entity)
                         .order(:name)
-
-    # Get the links between variables (both directions)
-    # in just 2 quick db queries
-    @link_from_counts = link_count(:variables, :link_from)
-    @link_to_counts = link_count(:reversed_variables, :link_to)
-
     @namespace_filter = @search.filter(:namespace)
   end
 

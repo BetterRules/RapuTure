@@ -38,4 +38,16 @@ class Variable < ApplicationRecord
   def to_s
     name
   end
+
+  def inbound_links
+    reversed_variables
+  end
+
+  def outbound_links
+    variables
+  end
+
+  def orphaned?
+    inbound_links.empty? && outbound_links.empty?
+  end
 end

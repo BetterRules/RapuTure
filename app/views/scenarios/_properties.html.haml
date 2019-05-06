@@ -1,0 +1,18 @@
+%hr/
+%h3.font-italic Titled Properties 🏘️
+- properties.each do |property, groups|
+  .card
+    .card-header
+      #{property.humanize} 🏠
+    .card-body
+      - if groups.is_a? Enumerable
+        - groups.each do |group, residents|
+          = group.humanize
+          %ul
+            - if residents.class == Array
+              - residents.each do |resident|
+                %li #{resident} 👤
+            - else
+              %li #{residents} 👤
+      - else
+        = groups

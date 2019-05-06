@@ -13,11 +13,8 @@
     width: 100%;
 
     @media (min-width: 768px) {
+      margin-right: 2rem;
       width: auto;
-
-      &:first-child {
-        margin-right: 2rem;
-      }
     }
   }
 }

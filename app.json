@@ -4,47 +4,20 @@
     "postdeploy": "rake db:migrate"
   },
   "env": {
-    "GITHUB_RAW_FILE_PATH": {
-      "value": "https://raw.githubusercontent.com/ServiceInnovationLab/openfisca-aotearoa/master/"
-    },
-    "GITHUB_TESTS_PATH": {
-      "value": "/tree/master/openfisca_aotearoa/tests"
-    },
     "LANG": {
       "required": true
     },
+    "OPENFISCA_GIT_CLONE_URL": {
+      "value": "https://github.com/ServiceInnovationLab/openfisca-aotearoa"
+    },
     "OPENFISCA_URL": {
-      "required": true
-    },
-    "RACK_ENV": {
-      "required": true
-    },
-    "RAILS_ENV": {
-      "required": true
-    },
-    "RAILS_LOG_TO_STDOUT": {
       "required": true
     },
     "RAILS_SERVE_STATIC_FILES": {
       "required": true
     },
-    "RAW_FILE_STRIP_URL": {
-      "value": "https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/"
-    },
-    "SECOND_LEVEL_INCLUDE": {
-      "value": "SECOND_LEVEL_INCLUDE"
-    },
-    "SECOND_LEVEL_STRIP_URL": {
-      "value": "https://github.com/ServiceInnovationLab/openfisca-aotearoa/tree/master/openfisca_aotearoa/tests/"
-    },
     "SECRET_KEY_BASE": {
       "required": true
-    },
-    "SCENARIOS_DIR": {
-      "value": "./tmp/scenarios"
-    },
-    "TOP_LEVEL_INCLUDE": {
-      "value": "tree/master/openfisca_aotearoa/tests/"
     }
   },
   "formation": {
