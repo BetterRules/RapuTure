@@ -11,7 +11,9 @@
             - if variables.size.positive?
               - v = variables.select { |variable| variable['name'] == name }[0]
               %li.list-group-item
-                = link_to v, v
+                - if v.namespace.present?
+                  %span.badge= v.namespace
+                = link_to v.description, v
                 - if value1.class == Hash
                   - value1.map do |key2, value2|
                     #{key2}: #{value2}
