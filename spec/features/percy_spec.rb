@@ -20,10 +20,14 @@ describe 'Test with visual testing', type: :feature, js: true do
       }
     }
   end
+  let(:output_hash) do
+    { 'student_allowance__eligible_for_basic_grant' => [true, true, true, true, false] }
+  end
   let(:expected_variables) do
     %w[age is_nz_citizen social_security__is_ordinarily_resident_in_new_zealand
        student_allowance__is_tertiary_student student_allowance__is_enrolled_fulltime
-       student_allowance__meets_attendance_and_performance_requirements]
+       student_allowance__meets_attendance_and_performance_requirements
+       student_allowance__eligible_for_basic_grant]
   end
   let!(:person) do
     FactoryBot.create :entity,
@@ -35,7 +39,7 @@ describe 'Test with visual testing', type: :feature, js: true do
     FactoryBot.create :scenario,
                       name: 'a complicated situation',
                       inputs: input_hash,
-                      outputs: { 'student_allowance__eligible_for_basic_grant' => [true, true, true, true, false] },
+                      outputs: output_hash,
                       period: '2019-05',
                       error_margin: 1.0,
                       namespace: 'ghostchips'
@@ -86,7 +90,9 @@ describe 'Test with visual testing', type: :feature, js: true do
     Percy.snapshot(page, name: 'scenarios#index')
   end
   it 'scenarios#show' do
-    expected_variables.each {|variable_name| FactoryBot.create :variable, name: variable_name, namespace: 'percy' }
+    expected_variables.each do |variable_name|
+      FactoryBot.create :variable, name: variable_name, namespace: 'percy'
+    end
     complicated_scenario.parse_variables!
     visit scenario_path(complicated_scenario)
     Percy.snapshot(page, name: 'scenarios#show')
