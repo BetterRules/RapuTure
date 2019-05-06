@@ -3,7 +3,7 @@
 require 'yaml'
 
 class ScenariosFetchService
-  def self.clone_git_repo
+  def self.clone_or_pull_git_repo
     raise if clone_url.blank?
 
     if File.directory?(git_clone_folder)
@@ -43,7 +43,7 @@ class ScenariosFetchService
   end
 
   def self.fetch_all
-    clone_git_repo
+    clone_or_pull_git_repo
     found_scenarios = [] # Keep a running list of scenarios we found
 
     Find.find(yaml_tests_folder).each do |filename|
