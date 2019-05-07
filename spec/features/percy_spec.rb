@@ -80,13 +80,6 @@ describe 'Test with visual testing', type: :feature, js: true do
                       namespace: 'humans',
                       value_type: value_type
 
-    expected_variables.each do |variable_name|
-      FactoryBot.create :variable, name: variable_name,
-                                   namespace: 'percy',
-                                   entity: person,
-                                   description: "a very good #{variable_name}"
-    end
-    one_level_scenario.parse_variables!
   end
   it 'loads homepage' do
     visit root_path
@@ -114,6 +107,14 @@ describe 'Test with visual testing', type: :feature, js: true do
   end
 
   it 'scenarios#show' do
+    expected_variables.each do |variable_name|
+      FactoryBot.create :variable, name: variable_name,
+                                   namespace: 'percy',
+                                   entity: person,
+                                   description: "a very good #{variable_name}"
+    end
+    one_level_scenario.parse_variables!
+    nested_scenario.parse_variables!
     visit scenario_path(one_level_scenario)
     Percy.snapshot(page, name: 'scenarios#show')
     visit scenario_path(nested_scenario)
