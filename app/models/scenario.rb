@@ -6,6 +6,23 @@ class Scenario < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
 
+  def input_persons
+    inputs.fetch 'persons', {}
+  end
+
+  def input_families
+    inputs.fetch 'families', {}
+  end
+
+  def input_titled_properties
+    inputs.fetch 'titled_properties', {}
+  end
+
+  def other_input_keys
+    keys = inputs.keys
+    keys - %w[persons families titled_properties]
+  end
+
   def parse_variables!
     input_keys = get_all_keys(inputs)
     output_keys = get_all_keys(outputs)
