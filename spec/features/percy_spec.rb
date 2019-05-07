@@ -6,7 +6,13 @@ require 'percy'
 describe 'Test with visual testing', type: :feature, js: true do
   let(:value_type) { FactoryBot.create :value_type, name: 'int' }
 
-  let(:input_hash) do
+  let(:nested_input_hash) do
+    {"persons"=>{"Kiwi"=>{"age"=>19, "has_dependent_child"=>true, "is_a_parent"=>true, "is_nz_citizen"=>true, "family_scheme__assessable_income_for_month"=>300.0, "social_security__is_ordinarily_resident_in_new_zealand"=>true}, "OE"=>{"age"=>19, "has_dependent_child"=>true, "is_a_parent"=>true, "is_nz_citizen"=>true, "family_scheme__assessable_income_for_month"=>300.0, "social_security__is_ordinarily_resident_in_new_zealand"=>false}}, "families"=>{"One"=>{"principal_caregiver"=>"Kiwi"}, "Two"=>{"principal_caregiver"=>"OE"}}}
+  end
+  let(:nested_output_hash) do
+    {"social_security__eligible_for_young_parent_payment"=>[true, false]}
+  end
+  let(:one_level_input_hash) do
     {
       'persons' => {
         'fulltime_uni_student' => {
@@ -20,7 +26,7 @@ describe 'Test with visual testing', type: :feature, js: true do
       }
     }
   end
-  let(:output_hash) do
+  let(:one_level_output_hash) do
     { 'student_allowance__eligible_for_basic_grant' => [true] }
   end
   let(:expected_variables) do
@@ -35,14 +41,23 @@ describe 'Test with visual testing', type: :feature, js: true do
                       description: 'this is a human being',
                       documentation: 'you, me, everyone'
   end
-  let!(:complicated_scenario) do
+  let!(:one_level_scenario) do
     FactoryBot.create :scenario,
-                      name: 'a complicated situation',
-                      inputs: input_hash,
-                      outputs: output_hash,
+                      name: 'Student Allowance',
+                      inputs: one_level_input_hash,
+                      outputs: one_level_output_hash,
                       period: '2019-05',
                       error_margin: 1.0,
                       namespace: 'ghostchips'
+  end
+  let!(:nested_scenario) do
+    FactoryBot.create :scenario,
+                      name: 'Young Parent Payment',
+                      inputs: nested_input_hash,
+                      outputs: nested_output_hash,
+                      period: '2019-05',
+                      error_margin: 1.0,
+                      namespace: 'social_security'
   end
   let(:variable) do
     FactoryBot.create :variable, entity: person,
@@ -64,6 +79,13 @@ describe 'Test with visual testing', type: :feature, js: true do
                       description: 'and this one was second',
                       namespace: 'humans',
                       value_type: value_type
+
+    expected_variables.each do |variable_name|
+      FactoryBot.create :variable, name: variable_name,
+                                   namespace: 'percy',
+                                   description: "a very good #{variable_name}"
+    end
+    one_level_scenario.parse_variables!
   end
   it 'loads homepage' do
     visit root_path
@@ -89,14 +111,11 @@ describe 'Test with visual testing', type: :feature, js: true do
     visit scenarios_path
     Percy.snapshot(page, name: 'scenarios#index')
   end
+
   it 'scenarios#show' do
-    expected_variables.each do |variable_name|
-      FactoryBot.create :variable, name: variable_name,
-                                   namespace: 'percy',
-                                   description: "a very good #{variable_name}"
-    end
-    complicated_scenario.parse_variables!
-    visit scenario_path(complicated_scenario)
+    visit scenario_path(one_level_scenario)
     Percy.snapshot(page, name: 'scenarios#show')
+    visit scenario_path(nested_scenario)
+    Percy.snapshot(page, name: 'scenarios#show-nested')
   end
 end
