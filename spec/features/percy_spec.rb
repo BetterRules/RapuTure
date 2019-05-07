@@ -6,11 +6,11 @@ require 'percy'
 describe 'Test with visual testing', type: :feature, js: true do
   let(:value_type) { FactoryBot.create :value_type, name: 'int' }
 
-  let(:nested_input_hash) do
-    {"persons"=>{"Kiwi"=>{"age"=>19, "has_dependent_child"=>true, "is_a_parent"=>true, "is_nz_citizen"=>true, "family_scheme__assessable_income_for_month"=>300.0, "social_security__is_ordinarily_resident_in_new_zealand"=>true}, "OE"=>{"age"=>19, "has_dependent_child"=>true, "is_a_parent"=>true, "is_nz_citizen"=>true, "family_scheme__assessable_income_for_month"=>300.0, "social_security__is_ordinarily_resident_in_new_zealand"=>false}}, "families"=>{"One"=>{"principal_caregiver"=>"Kiwi"}, "Two"=>{"principal_caregiver"=>"OE"}}}
+  let(:simple_input_hash) do
+    {"age"=>30, "is_nz_citizen"=>true, "social_security__is_ordinarily_resident_in_new_zealand"=>true, "social_security__has_accomodation_costs"=>true, "eligible_for_social_housing"=>false, "accommodation_supplement__below_income_threshold"=>true, "accommodation_supplement__below_cash_threshold"=>true}
   end
-  let(:nested_output_hash) do
-    {"social_security__eligible_for_young_parent_payment"=>[true, false]}
+  let(:simple_output_hash) do
+    {"social_security__eligible_for_accommodation_supplement"=>true}
   end
   let(:one_level_input_hash) do
     {
@@ -53,8 +53,8 @@ describe 'Test with visual testing', type: :feature, js: true do
   let!(:nested_scenario) do
     FactoryBot.create :scenario,
                       name: 'Young Parent Payment',
-                      inputs: nested_input_hash,
-                      outputs: nested_output_hash,
+                      inputs: simple_input_hash,
+                      outputs: simple_output_hash,
                       period: '2019-05',
                       error_margin: 1.0,
                       namespace: 'social_security'
