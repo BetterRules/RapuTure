@@ -1,0 +1,13 @@
+.card
+  .card-header #{icon} #{name}
+  .card-body
+    %ul.list-group.list-group-flush
+      - attributes.each do |key, value|
+        %li.list-group-item
+          %strong= link_if_variable(key)
+          .pull-right
+            - if value.class == Array
+              - value.each do |item|
+                = item
+            - else
+              = value.to_json

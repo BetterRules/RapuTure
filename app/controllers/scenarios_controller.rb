@@ -7,6 +7,5 @@ class ScenariosController < ApplicationController
 
   def show
     @scenario = Scenario.find(params[:id])
-    @variables = @scenario.variables.uniq
   end
 end
