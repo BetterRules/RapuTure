@@ -7,7 +7,7 @@
           - value.each_with_index.map do |item, key|
             %li.list-group-item
               %strong
-                -#assume this is for a person
+                -# assume this is for a person
                 = @scenario.input_persons.keys[key]
               .pull-right= item.to_json
       - elsif value.is_a? Enumerable
