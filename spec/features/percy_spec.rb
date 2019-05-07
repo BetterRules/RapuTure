@@ -83,6 +83,7 @@ describe 'Test with visual testing', type: :feature, js: true do
     expected_variables.each do |variable_name|
       FactoryBot.create :variable, name: variable_name,
                                    namespace: 'percy',
+                                   entity: person,
                                    description: "a very good #{variable_name}"
     end
     one_level_scenario.parse_variables!
