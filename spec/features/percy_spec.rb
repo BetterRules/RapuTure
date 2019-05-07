@@ -21,7 +21,7 @@ describe 'Test with visual testing', type: :feature, js: true do
     }
   end
   let(:output_hash) do
-    { 'student_allowance__eligible_for_basic_grant' => [true, true, true, true, false] }
+    { 'student_allowance__eligible_for_basic_grant' => [true] }
   end
   let(:expected_variables) do
     %w[age is_nz_citizen social_security__is_ordinarily_resident_in_new_zealand
