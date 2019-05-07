@@ -9,7 +9,7 @@
               %strong
                 -#assume this is for a person
                 = @scenario.input_persons.keys[key]
-              .pull-right=item.to_json
+              .pull-right= item.to_json
       - elsif value.is_a? Enumerable
         %ul.list-group.list-group-flush
           - value.each do |key, item|
