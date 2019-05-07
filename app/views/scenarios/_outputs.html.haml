@@ -1,8 +1,8 @@
 - @scenario.outputs.each do |name, value|
   .card
-    .card-header 🤖 #{link_if_variable(name)}
-    .card-body
-      - if value.class == Array
+    - if value.class == Array
+      .card-header 🤖 #{link_if_variable(name)}
+      .card-body
         %ul.list-group.list-group-flush
           - value.each_with_index.map do |item, key|
             %li.list-group-item
@@ -10,12 +10,16 @@
                 -# assume this is for a person
                 = @scenario.input_persons.keys[key]
               .pull-right= item.to_json
-      - elsif value.is_a? Enumerable
+
+    - elsif value.is_a? Enumerable
+      .card-header 🤖 #{link_if_variable(name)}
+      .card-body
         %ul.list-group.list-group-flush
           - value.each do |key, item|
             %li.list-group-item
               %strong #{key}:
               .pull-right= item.to_json
-      - else
-        other
-        = value.to_json
+    - else
+      .card-body
+        = link_if_variable(name)
+        .pull-right= value.to_json
