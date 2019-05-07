@@ -23,7 +23,7 @@ feature 'index' do
   end
   describe 'view all scenarios' do
     before { visit scenario_path(our_scenario) }
-    it { expect(page).to have_text 'age in years' }
-    it { expect(page).to have_text 'is a new zealand citizen' }
+    it { expect(page).to have_link 'age' }
+    it { expect(page).to have_link 'is_nz_citizen' }
   end
 end
