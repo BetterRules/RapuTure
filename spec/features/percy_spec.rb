@@ -50,7 +50,7 @@ describe 'Test with visual testing', type: :feature, js: true do
                       error_margin: 1.0,
                       namespace: 'ghostchips'
   end
-  let!(:nested_scenario) do
+  let!(:simple_scenarios) do
     FactoryBot.create :scenario,
                       name: 'Young Parent Payment',
                       inputs: simple_input_hash,
@@ -114,10 +114,10 @@ describe 'Test with visual testing', type: :feature, js: true do
                                    description: "a very good #{variable_name}"
     end
     one_level_scenario.parse_variables!
-    nested_scenario.parse_variables!
+    simple_scenarios.parse_variables!
     visit scenario_path(one_level_scenario)
     Percy.snapshot(page, name: 'scenarios#show')
-    visit scenario_path(nested_scenario)
-    Percy.snapshot(page, name: 'scenarios#show-nested')
+    visit scenario_path(simple_scenarios)
+    Percy.snapshot(page, name: 'scenarios#show-simple')
   end
 end
