@@ -3,7 +3,7 @@
 namespace :fetch do
   desc 'Fetch Resources'
   # usage: rake growstuff:admin_user name=skud
-  task fetchall: [:variables, :entities] do
+  task fetchall: %i[variables entities scraper scenarios] do
     # This runs after all the above tasks have run
     puts 'Your database has now been populated with variables and entities!'
   end
@@ -19,5 +19,11 @@ namespace :fetch do
     ParametersFetchService.fetch_all do |p|
       puts p.name
     end
+  task scraper: :environment do
+    GithubScrapeService.scrape_all
+    puts 'Github scenarios scraped!'
+  end
+  task scenarios: :environment do
+    ScenariosFetchService.fetch_all
   end
 end

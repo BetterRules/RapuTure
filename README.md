@@ -1,5 +1,5 @@
 # Rapu Ture
-[![Waffle.io - Columns and their card count](https://badge.waffle.io/ServiceInnovationLab/RapuTure.svg?columns=all)](https://waffle.io/ServiceInnovationLab/RapuTure)
+
 [![Maintainability](https://api.codeclimate.com/v1/badges/580a9cc169de1c21c180/maintainability)](https://codeclimate.com/github/ServiceInnovationLab/RapuTure/maintainability)
 [![Build Status](https://travis-ci.org/ServiceInnovationLab/RapuTure.svg?branch=master)](https://travis-ci.org/ServiceInnovationLab/RapuTure)
 
@@ -13,15 +13,14 @@ This web application presents the variables from within Aotearoa New Zealand's L
 
 **Environment** | **URL**  | **Git Branch**
 --- | --- | ---
-UAT |  | 
-Production |  | 
+UAT |  |
+Production |  |
 
 ## Project Resources
 
 **Resource** | **URL**
 --- | ---
-Backlog | https://waffle.io/ServiceInnovationLab/RapuTure
-CI | https://travis-ci.org/ServiceInnovationLab/RapuTure
+Backlog | https://github.com/orgs/ServiceInnovationLab/projects/11
 
 ## Documentation
 
@@ -34,7 +33,7 @@ CI | https://travis-ci.org/ServiceInnovationLab/RapuTure
 Team | Rapu Ture
 Developers | [Brenda Wallace](https://github.com/Br3nda), [Dana Iti](https://github.com/dlouise64), [Jacob Ong](https://github.com/JacOng17), [Lyall Morrison](https://github.com/lamorrison), [Mischa Saunders](https://github.com/mischa-s)
 Designers | [Siobhan McCarthy](https://github.com/ssibbehh)
-Testers | 
+Testers |
 Project Manager | [Charlotte Hinton](https://github.com/CharlotteHinton)
 Product Owner | [Brenda Wallace](https://github.com/Br3nda)
 
@@ -48,6 +47,31 @@ This is a ruby on rails app. You will need to:
 ```
 git clone git@github.com:ServiceInnovationLab/RapuTure.git
 ```
+
+### Docker
+
+This application is configured to run using Docker and docker-compose. You will need [Docker for Desktop](https://www.docker.com/products/docker-desktop) to run this locally.
+
+To set up:
+
+`docker-compose build`
+
+To run:
+
+`docker-compose up`
+
+To fetch data:
+
+`docker exec raputure_web_1 bundle exec rake fetch:fetchall`
+
+To shut down:
+
+`docker-compose down`
+
+### Non-Docker
+
+It can also be set up without Docker. You will need Ruby, Node, and Postgres.
+
 * Install the correct version of Ruby. We recommend installing `rbenv` to manage multiple versions of ruby, and then using that to install the version of ruby specified in our file `.ruby-version`
 * Install `rbenv` from https://github.com/rbenv/rbenv then
 ```

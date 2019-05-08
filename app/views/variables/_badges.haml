@@ -4,7 +4,7 @@
 
   %span.badge.badge-secondary=variable.value_type.name
 
-  %span.badge.badge-secondary=t variable.spec['definitionPeriod']
+  %span.badge.badge-secondary= variable.spec['definitionPeriod']
 
   - if variable.entity.present?
     %span.badge.badge-success= link_to t(variable.entity.name), variable.entity
@@ -12,12 +12,12 @@
   - if variable.has_formula?
     %span.badge.badge-info= t :formula_included
 
-  - if link_to_count.zero? && link_from_count.zero?
+  - if variable.orphaned?
     %span.badge.badge-warning{ 'data-toggle': 'tooltip',
       'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself' }
       Orphaned
   - else
-    %span.badge.badge-dark used #{pluralize link_to_count, 'time'}
+    %span.badge.badge-dark used #{pluralize variable.inbound_links.size, 'time'}
 
 
   - unless variable.description

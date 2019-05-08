@@ -10,6 +10,9 @@ class Variable < ApplicationRecord
   belongs_to :value_type
   belongs_to :entity
 
+  has_many :scenario_variables, dependent: :destroy
+  has_many :scenarios, through: :scenario_variables
+
   has_and_belongs_to_many(:variables,
                           class_name: 'Variable',
                           join_table: 'links',
@@ -27,12 +30,26 @@ class Variable < ApplicationRecord
   end
 
   def github_url
-    "#{ENV['GITHUB_URL']}#{spec['source'].gsub('//', '/tree/master/').gsub('blob', '').gsub('/app/', '/')}"
+    "#{ENV['GITHUB_URL']}#{spec['source'].gsub('//', '/tree/master/').gsub('blob', '').gsub(
+      '/app/', '/'
+    )}"
   rescue StandardError
     nil
   end
 
   def to_s
     name
+  end
+
+  def inbound_links
+    reversed_variables
+  end
+
+  def outbound_links
+    variables
+  end
+
+  def orphaned?
+    inbound_links.empty? && outbound_links.empty?
   end
 end

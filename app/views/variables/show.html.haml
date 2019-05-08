@@ -56,7 +56,11 @@
             = link_to 'More info on formulas', 'https://openfisca.org/doc/coding-the-legislation/10_basic_example.html'
           %pre= display_formula formula['content']
 
-
+    - if @variable.scenarios.size.positive?
+      %hr/
+      %h2 Scenarios (tests) for this variables
+      - @variable.scenarios.each do |scenario|
+        %li= link_to scenario.name, scenario
     %hr/
     %ul.nav
       - if @variable.references.present?
