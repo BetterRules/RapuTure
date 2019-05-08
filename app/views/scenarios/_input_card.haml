@@ -9,5 +9,11 @@
             - if value.class == Array
               - value.each do |item|
                 = item
+            - elsif value.is_a? Enumerable
+              %table
+                - value.each do |key, item|
+                  %tr
+                    %th= key
+                    %td= item.to_json
             - else
-              = value.to_json
+              %p= value.to_json
