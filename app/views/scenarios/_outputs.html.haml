@@ -17,7 +17,7 @@
         %ul.list-group.list-group-flush
           - value.each do |key, item|
             %li.list-group-item
-              %strong #{key}:
+              %strong #{key}
               .pull-right= item.to_json
     - else
       .card-body
