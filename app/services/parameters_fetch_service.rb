@@ -21,7 +21,7 @@ class ParametersFetchService
 
       # https://github.com/ruby/psych/issues/262
       parameters_list = YAML.load(File.read(filename)) # rubocop:disable Security/YAMLLoad
-      parameter_names = parameters_list.map { |s| s }
+      parameter_names = parameters_list.map { |s| s['description'] }
       found_parameters += parameter_names
       Rails.logger.debug(parameter_names)
       Services.find_all_duplicates(parameter_names)
