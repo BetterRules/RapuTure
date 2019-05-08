@@ -4,6 +4,8 @@ require 'yaml'
 require 'find'
 
 class ScenariosFetchService
+  include Services
+
   def self.clone_or_pull_git_repo
     raise if clone_url.blank?
 
@@ -57,7 +59,7 @@ class ScenariosFetchService
       scenario_names = scenarios_list.map { |s| s['name'] }
       found_scenarios += scenario_names
       Rails.logger.debug(scenario_names)
-      find_all_duplicates(scenario_names)
+      Services.find_all_duplicates(scenario_names)
       scenarios_list.each do |yaml_scenario|
         find_or_create_scenario(yaml_scenario)
       end
@@ -81,18 +83,6 @@ class ScenariosFetchService
       scenario.parse_variables!
       scenario
     end
-  end
-
-  # https://gist.github.com/naveed-ahmad/8f0b926ffccf5fbd206a1cc58ce9743e
-  def self.find_all_duplicates(array)
-    map = {}
-    dup = []
-    array.each do |v|
-      map[v] = (map[v] || 0) + 1
-
-      dup << v if map[v] == 2
-    end
-    raise StandardError.new("These scenarios have duplicate names: #{dup} !!!!!") if dup[0]
   end
 
   def self.remove_stale_scenarios(scenario_names:)
