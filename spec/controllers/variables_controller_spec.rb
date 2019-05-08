@@ -36,7 +36,10 @@ RSpec.describe VariablesController, type: :controller do
       before { get :index }
 
       # These appear in alphabetical order
-      it { expect(assigns(:variables)).to eq [parent_2, child_2, parent_1, child_1, grandchild_1] }
+      it {
+        expect(assigns(:variables)).to eq [parent_2, child_2, parent_1,
+                                           child_1, grandchild_1]
+      }
     end
   end
 end

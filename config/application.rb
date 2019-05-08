@@ -15,11 +15,11 @@ module AwhiMai
     config.generators.javascript_engine = :js
 
     config.generators do |g|
-      g.orm               :active_record
-      g.template_engine   :haml
-      g.test_framework    :rspec, fixture: false
+      g.orm :active_record
+      g.template_engine :haml
+      g.test_framework :rspec, fixture: false
       g.javascript_engine :js
-      g.factory_bot       true
+      g.factory_bot true
     end
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'index' do
+describe 'index' do
   context 'Variable is orphaned' do
     before { FactoryBot.create :variable, name: 'likes_to_eat_chocolate' }
     describe 'view all variables' do

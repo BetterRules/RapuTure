@@ -42,7 +42,7 @@ RSpec.describe VariablesFetchService do
 
   describe '.fetch_all' do
     it 'adds all of the Variables to the database' do
-      expect { described_class.fetch_all }.to change { Variable.count }.by(variables_total_number)
+      expect { described_class.fetch_all }.to change(Variable, :count).by(variables_total_number)
     end
 
     it 'removes stale Variables the database which are no longer part of API' do
@@ -102,15 +102,17 @@ RSpec.describe VariablesFetchService do
       pending 'dummy data needs to be updated'
 
       expect(subject.attributes.keys).to match_array(
-        %w[id name href references spec created_at updated_at namespace value_type_id entity_id unit description]
+        %w[id name href references spec created_at updated_at namespace
+           value_type_id entity_id unit description]
       )
       expect(subject.spec.keys).to match_array(
-        %w[defaultValue definitionPeriod description entity id references source valueType]
+        %w[defaultValue definitionPeriod description entity id references
+           source valueType]
       )
     end
 
     it 'loads the example variable into the database' do
-      expect { subject }.to change { Variable.count }.by(1)
+      expect { subject }.to change(Variable, :count).by(1)
       expect(Variable.find_by(name: new_variable.name)).not_to be_nil
     end
   end
@@ -121,7 +123,8 @@ RSpec.describe VariablesFetchService do
     it 'retrieves a variable with the expected attributes' do
       pending 'dummy data needs to be updated'
       expect(subject.keys).to match_array(
-        %w[defaultValue definitionPeriod description entity id references source valueType]
+        %w[defaultValue definitionPeriod description entity id references
+           source valueType]
       )
     end
   end

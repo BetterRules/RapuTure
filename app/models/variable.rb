@@ -30,7 +30,9 @@ class Variable < ApplicationRecord
   end
 
   def github_url
-    "#{ENV['GITHUB_URL']}#{spec['source'].gsub('//', '/tree/master/').gsub('blob', '').gsub('/app/', '/')}"
+    "#{ENV['GITHUB_URL']}#{spec['source'].gsub('//', '/tree/master/').gsub('blob', '').gsub(
+      '/app/', '/'
+    )}"
   rescue StandardError
     nil
   end
