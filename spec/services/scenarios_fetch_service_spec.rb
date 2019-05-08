@@ -8,7 +8,7 @@ RSpec.describe ScenariosFetchService do
   describe '.fetch_all' do
     subject { described_class.fetch_all }
     it 'adds all of the Scenarios to the database' do
-      expect { subject }.to change { Scenario.count }
+      expect { subject }.to change(Scenario, :count)
     end
 
     it 'removes stale Scenarios the database which are no longer part of the Data' do

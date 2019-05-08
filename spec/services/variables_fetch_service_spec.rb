@@ -42,7 +42,7 @@ RSpec.describe VariablesFetchService do
 
   describe '.fetch_all' do
     it 'adds all of the Variables to the database' do
-      expect { described_class.fetch_all }.to change { Variable.count }.by(variables_total_number)
+      expect { described_class.fetch_all }.to change(Variable, :count).by(variables_total_number)
     end
 
     it 'removes stale Variables the database which are no longer part of API' do
@@ -112,7 +112,7 @@ RSpec.describe VariablesFetchService do
     end
 
     it 'loads the example variable into the database' do
-      expect { subject }.to change { Variable.count }.by(1)
+      expect { subject }.to change(Variable, :count).by(1)
       expect(Variable.find_by(name: new_variable.name)).not_to be_nil
     end
   end
