@@ -26,4 +26,7 @@ namespace :fetch do
   task scenarios: :environment do
     ScenariosFetchService.fetch_all
   end
+  task scenarios: :environment do
+    ScenariosFetchService.fetch_all
+  end
 end

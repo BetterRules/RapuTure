@@ -1,16 +1,32 @@
 # frozen_string_literal: true
 
 class ParametersFetchService
+  def self.git_clone_folder
+    "./tmp/#{ENV['RAILS_ENV']}-openfisca-aotearoa"
+  end
+
+  def self.yaml_tests_folder
+    "#{git_clone_folder}/openfisca_aotearoa/parameters/"
+  end
+
   def self.fetch_all
-    parameters_list = of_conn.get('parameters').body
-    parameters_list.each do |name, attributes|
-      p = find_or_create_parameter(parameter_name: name, parameter_attributes: attributes)
-      yield p if block_given?
+    found_parameters = [] # Keep a running list of parameters we found
+
+    Find.find(yaml_tests_folder).each do |filename|
+      next unless File.extname(filename) == '.yaml'
+
+      Rails.logger.debug(filename)
+
+      # https://github.com/ruby/psych/issues/262
+      parameters_list = YAML.load(File.read(filename)) # rubocop:disable Security/YAMLLoad
+      parameter_names = parameters_list.map { |s| s }
+      found_parameters += parameter_names
+      Rails.logger.debug(parameter_names)
+      find_all_duplicates(parameter_names)
+      find_or_create_parameter(parameters_list)
     end
 
-    remove_stale_parameters(parameter_names: parameters_list.keys)
-
-    Parameter.all unless block_given?
+    remove_stale_parameters(parameter_names: found_parameters)
   end
 
   def self.find_or_create_parameter(parameter_name:, parameter_attributes: {})
@@ -20,33 +36,38 @@ class ParametersFetchService
     fetch(parameter)
   end
 
-  def self.remove_stale_parameters(parameter_names:)
+  def self.remove_stale_parameters(parameter_names)
+    puts parameter_names
     Parameter
       .where
-      .not(name: parameter_names)
+      .not(description: parameter_names)
       .delete_all
   end
 
-  def self.fetch(parameter)
-    json_res = parameter(name: parameter.name)
-    ActiveRecord::Base.transaction do
-      parameter.source = json_res['source']
-      parameter.brackets = json_res['brackets']
-      parameter.metadata = json_res['metadata']
-      parameter.values = json_res['values']
-      parameter.save!
-      parameter
+  def self.find_all_duplicates(array)
+    map = {}
+    dup = []
+    array.each do |v|
+      map[v] = (map[v] || 0) + 1
+
+      dup << v if map[v] == 2
     end
+    raise StandardError.new("These parameters have duplicate names: #{dup} !!!!!") if dup[0]
   end
 
-  def self.parameter(name:)
-    of_conn.get("parameter/#{CGI.escape(name)}").body
-  end
+  def self.find_or_create_parameter(yaml_parameter)
+    parameter_name = yaml_parameter['description']
+    raise if parameter_name.blank?
 
-  def self.of_conn
-    Faraday.new ENV['OPENFISCA_URL'] do |conn|
-      conn.response :json, content_type: /\bjson$/
-      conn.adapter Faraday.default_adapter
+    parameter = Parameter.find_or_initialize_by(description: parameter_name)
+
+    ActiveRecord::Base.transaction do
+      parameter.description = yaml_parameter['description']
+      parameter.href = yaml_parameter['reference']
+      parameter.brackets = 'brackets'
+      parameter.save!
+      parameter.parse_values!
+      parameter
     end
   end
 end
