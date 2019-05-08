@@ -1,0 +1,29 @@
+#! /bin/bash
+export RAILS_ENV=development
+export NODE_ENV=development
+export DATABASE_URL=postgresql://$DATABASE_USERNAME@$DATABASE_HOST:$DATABASE_PORT
+
+/usr/bin/wait-for-it -h $DATABASE_HOST -p $DATABASE_PORT
+
+# Initialise development database
+FILE=$INSTALL_PATH/tmp/database_initialised_development.txt
+if [ ! -f "$FILE" ]; then
+  echo "Creating and loading development databases"
+  RAILS_ENV=development bundle exec rake db:setup
+  touch "$FILE"
+fi
+
+# Initialise test database
+FILE=$INSTALL_PATH/tmp/database_initialised_test.txt
+if [ ! -f "$FILE" ]; then
+  echo "Creating and loading test databases"
+  RAILS_ENV=test bundle exec rake db:create db:schema:load
+  touch "$FILE"
+fi
+
+echo "Migrating and refreshing reference data"
+bundle exec rake db:migrate
+RAILS_ENV=test bundle exec rake db:migrate
+
+rm -f tmp/pids/server.pid
+bundle exec rails s -p 3000 -b '0.0.0.0'
