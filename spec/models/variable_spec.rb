@@ -10,7 +10,10 @@ RSpec.describe Variable, type: :model do
   end
 
   describe 'links' do
-    let!(:parent) { FactoryBot.create :variable, reversed_variables: [child1, child2] }
+    let!(:parent) {
+      FactoryBot.create :variable, reversed_variables: [child1,
+                                                        child2]
+    }
     let(:child1) { FactoryBot.create :variable }
     let(:child2) { FactoryBot.create :variable }
 

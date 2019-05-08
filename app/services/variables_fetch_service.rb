@@ -14,7 +14,8 @@ class VariablesFetchService
     # of the variable
     variables_list = of_conn.get('variables').body
     variables_list.each do |name, attributes|
-      v = find_or_create_variable(variable_name: name, variable_attributes: attributes)
+      v = find_or_create_variable(variable_name: name,
+                                  variable_attributes: attributes)
       yield v if block_given?
     end
 

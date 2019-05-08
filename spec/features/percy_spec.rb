@@ -7,10 +7,11 @@ describe 'Test with visual testing', type: :feature, js: true do
   let(:value_type) { FactoryBot.create :value_type, name: 'int' }
 
   let(:simple_input_hash) do
-    {"age"=>30, "is_nz_citizen"=>true, "social_security__is_ordinarily_resident_in_new_zealand"=>true, "social_security__has_accomodation_costs"=>true, "eligible_for_social_housing"=>false, "accommodation_supplement__below_income_threshold"=>true, "accommodation_supplement__below_cash_threshold"=>true}
+    { 'age' => 30, 'is_nz_citizen' => true,
+      'social_security__is_ordinarily_resident_in_new_zealand' => true, 'social_security__has_accomodation_costs' => true, 'eligible_for_social_housing' => false, 'accommodation_supplement__below_income_threshold' => true, 'accommodation_supplement__below_cash_threshold' => true }
   end
   let(:simple_output_hash) do
-    {"social_security__eligible_for_accommodation_supplement"=>true}
+    { 'social_security__eligible_for_accommodation_supplement' => true }
   end
   let(:one_level_input_hash) do
     {
@@ -79,7 +80,6 @@ describe 'Test with visual testing', type: :feature, js: true do
                       description: 'and this one was second',
                       namespace: 'humans',
                       value_type: value_type
-
   end
   it 'loads homepage' do
     visit root_path
