@@ -95,9 +95,8 @@ RSpec.describe VariablesFetchService do
   end
 
   describe '.fetch' do
-    let(:new_variable) { Variable.new(variables.sample.slice(:name)) }
-
     subject { described_class.fetch(new_variable) }
+    let(:new_variable) { Variable.new(variables.sample.slice(:name)) }
 
     it 'retrieves a variable with the expected attributes' do
       pending 'dummy data needs to be updated'
