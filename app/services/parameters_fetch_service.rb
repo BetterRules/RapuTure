@@ -25,7 +25,9 @@ class ParametersFetchService
       found_parameters += parameter_names
       Rails.logger.debug(parameter_names)
       Services.find_all_duplicates(parameter_names)
-      find_or_create_parameter(parameters_list)
+      parameters_list.each do |yaml_scenario|
+        find_or_create_scenario(yaml_scenario)
+      end
     end
 
     remove_stale_parameters(parameter_names: found_parameters)
