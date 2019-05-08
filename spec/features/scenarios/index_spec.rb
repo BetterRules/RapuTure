@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-feature 'index' do
+describe 'index' do
   before do
     FactoryBot.create :variable, name: 'fulltime_uni_student'
     FactoryBot.create :variable, name: 'is_nz_citizen'
