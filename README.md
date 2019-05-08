@@ -14,7 +14,7 @@ This web application presents the variables from within Aotearoa New Zealand's L
 
 **Environment** | **URL**  | **Git Branch**
 --- | --- | ---
-UAT |  |
+UAT | https://www.rules.nz | master
 Production |  |
 
 ## Project Resources
