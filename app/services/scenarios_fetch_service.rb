@@ -92,7 +92,7 @@ class ScenariosFetchService
 
       dup << v if map[v] == 2
     end
-    raise StandardError.new("These scenarios have duplicate names: #{dup} !!!!!") if dup[0]
+    raise StandardError, "These scenarios have duplicate names: #{dup} !!!!!" if dup[0]
   end
 
   def self.remove_stale_scenarios(scenario_names:)
