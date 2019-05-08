@@ -19,6 +19,7 @@ namespace :fetch do
     ParametersFetchService.fetch_all do |p|
       puts p.name
     end
+  end
   task scraper: :environment do
     GithubScrapeService.scrape_all
     puts 'Github scenarios scraped!'
