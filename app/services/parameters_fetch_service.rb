@@ -18,7 +18,6 @@ class ParametersFetchService
       next unless File.extname(filename) == '.yaml'
 
       Rails.logger.debug(filename)
-
       # https://github.com/ruby/psych/issues/262
       parameters_list = YAML.load(File.read(filename)) # rubocop:disable Security/YAMLLoad
       parameter_names = parameters_list.map { |s| s['description'] }
@@ -26,7 +25,7 @@ class ParametersFetchService
       Rails.logger.debug(parameter_names)
       Services.find_all_duplicates(parameter_names)
       parameters_list.each do |yaml_scenario|
-        find_or_create_scenario(yaml_scenario)
+        find_or_create_parameter(yaml_scenario)
       end
     end
 
