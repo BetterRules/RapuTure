@@ -42,7 +42,8 @@ RSpec.describe VariablesFetchService do
 
   describe '.fetch_all' do
     it 'adds all of the Variables to the database' do
-      expect { described_class.fetch_all }.to change(Variable, :count).by(variables_total_number)
+      expect { described_class.fetch_all }.to change(Variable,
+                                                     :count).by(variables_total_number)
     end
 
     it 'removes stale Variables the database which are no longer part of API' do
@@ -94,9 +95,8 @@ RSpec.describe VariablesFetchService do
   end
 
   describe '.fetch' do
-    let(:new_variable) { Variable.new(variables.sample.slice(:name)) }
-
     subject { described_class.fetch(new_variable) }
+    let(:new_variable) { Variable.new(variables.sample.slice(:name)) }
 
     it 'retrieves a variable with the expected attributes' do
       pending 'dummy data needs to be updated'

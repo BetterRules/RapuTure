@@ -1,6 +1,7 @@
 # Rapu Ture
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/580a9cc169de1c21c180/maintainability)](https://codeclimate.com/github/ServiceInnovationLab/RapuTure/maintainability)
+[![AwesomeCode Status for ServiceInnovationLab/RapuTure](https://awesomecode.io/projects/26aa53d4-bece-44c7-81d7-6c2f7648adec/status)](https://awesomecode.io/repos/ServiceInnovationLab/RapuTure)
 [![Build Status](https://travis-ci.org/ServiceInnovationLab/RapuTure.svg?branch=master)](https://travis-ci.org/ServiceInnovationLab/RapuTure)
 
 ## Overview
@@ -13,7 +14,7 @@ This web application presents the variables from within Aotearoa New Zealand's L
 
 **Environment** | **URL**  | **Git Branch**
 --- | --- | ---
-UAT |  |
+UAT | https://www.rules.nz | master
 Production |  |
 
 ## Project Resources
