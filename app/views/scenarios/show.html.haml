@@ -1,5 +1,12 @@
 .container
   %h1= @scenario.name
+  %p
+    %strong Period:
+    = @scenario.period
+  - if @scenario.error_margin.present?
+    %p
+      %strong Error Margin:
+      = @scenario.error_margin
   .row
     .col-md-6
       %h2 Inputs
