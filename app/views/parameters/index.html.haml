@@ -3,4 +3,4 @@
     - @parameters.each do |parameter|
       .card
         .card-body
-          %h5.card-title= link_to parameter.description, parameter
+          %h5.card-title= link_to filename_to_title(parameter.filename), parameter
