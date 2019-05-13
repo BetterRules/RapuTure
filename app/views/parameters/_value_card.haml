@@ -2,12 +2,6 @@
   .card-body
     %ul.list-unstyled
       - values.each do |key, value|
-        .card
-          .card-header
-            %li
-              %h6= key.to_s.capitalize
-          .card-body
-            %ul.list-unstyled
-              %li
-                - value.each do |v|
-                  = v.last
+        %b= "#{key.to_s.capitalize}: "
+        - value.each do |v|
+          = v.last
