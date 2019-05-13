@@ -54,5 +54,22 @@ RSpec.describe Scenario, type: :model do
     it { expect(complicated_scenario.variables.pluck(:name)).to eq expected_variables }
     it { expect(complicated_scenario.input_variables.pluck(:name)).to eq expected_input_variables }
     it { expect(complicated_scenario.output_variables.pluck(:name)).to eq expected_output_variables }
+    describe 'no duplicates allowed' do
+      subject { complicated_scenario.output_variables.pluck(:name) }
+      scenario do
+        complicated_scenario.parse_variables!
+        expect(subject).to eq ['student_allowance__eligible_for_basic_grant']
+        complicated_scenario.parse_variables!
+        expect(subject).to eq ['student_allowance__eligible_for_basic_grant']
+      end
+    end
+    describe 'removes variables we no longer refer to' do
+      scenario do
+        FactoryBot.create :variable, name: 'hates_marshmallows'
+        complicated_scenario.update!(outputs: { "hates_marshmallows": [true] })
+        complicated_scenario.parse_variables!
+        expect(complicated_scenario.output_variables.pluck(:name)).to eq ['hates_marshmallows']
+      end
+    end
   end
 end
