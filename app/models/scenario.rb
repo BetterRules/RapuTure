@@ -34,21 +34,31 @@ class Scenario < ApplicationRecord
   end
 
   def parse_variables!
-    input_variables = Variable.where(name: get_all_keys(inputs))
-    output_variables = Variable.where(name: get_all_keys(outputs))
-
-    scenario_variables.where.not(variable: input_variables + output_variables)
-                      .destroy_all
-
-    input_variables.each do |v|
-      ScenarioVariable.create! scenario: self, variable: v, direction: 'input'
-    end
-    output_variables.each do |v|
-      ScenarioVariable.create! scenario: self, variable: v, direction: 'output'
+    Scenario.transaction do
+      variables = []
+      %w[input output].each do |direction|
+        save_variable_links(direction).each do |v|
+          variables << v
+        end
+      end
+      # remove associating with any variables we no longer refer to
+      scenario_variables.where.not(variable: variables).destroy_all
     end
   end
 
   private
+
+  def save_variable_links(direction)
+    hash_keys = if direction == 'input'
+                  get_all_keys(inputs)
+                else
+                  get_all_keys(outputs)
+                end
+    variables = Variable.where(name: hash_keys)
+    variables.each do |v|
+      ScenarioVariable.find_or_create_by! scenario: self, variable: v, direction: direction
+    end
+  end
 
   # This could use some refinement
   # Currently it is returning all the keys
