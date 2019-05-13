@@ -2,11 +2,12 @@
   .card-body
     %ul.list-unstyled
       - val.each do |key, value|
-        %li= key.capitalize
+        %li= key.to_s.capitalize
         %ul
-          - value.each do |k, v|
-            %li= k
-            %ul
-              %li
-                - v.each do |v|
-                  = v.last
+          - unless value.nil?
+            - value.each do |k, v|
+              %li= k
+              %ul
+                %li
+                  - v.each do |v|
+                    = v.last
