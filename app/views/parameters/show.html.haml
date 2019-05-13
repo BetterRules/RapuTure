@@ -2,8 +2,17 @@
   %h2.display-3= @parameter.description
   .row
     .col-md-12
-      .display-3= link_to @parameter.href.match(/https?:\/\/[\S]+/), "#{@parameter.href.match(/https?:\/\/[\S]+/)}"
+      %p= link_to @parameter.href.match(/https?:\/\/[\S]+/), "#{@parameter.href.match(/https?:\/\/[\S]+/)}"
   .row
-    .col-md-12
-      %h2 Brackets
-      = render 'card', brackets: @brackets, values: @values
+    - if !@brackets.nil?
+      .col-md-12
+        .card
+          .card-header
+            %h3 Brackets
+          = render 'bracket_card', values: @brackets
+    - if !@values.nil?
+      .col-md-12
+        .card
+          .card-header
+            %h3 Values
+          = render 'value_card', values: @values

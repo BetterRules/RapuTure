@@ -1,0 +1,12 @@
+- values.each do |val|
+  .card-body
+    %ul
+      - val.each do |key, value|
+        %li= key
+        %ul
+          - value.each do |k, v|
+            %li= k
+            %ul
+              %li
+                - v.each do |k,v|
+                  = v
