@@ -17,40 +17,37 @@ class ParametersFetchService
     Find.find(yaml_tests_folder).each do |filename|
       next unless File.extname(filename) == '.yaml'
 
-      Rails.logger.debug(filename)
       # https://github.com/ruby/psych/issues/262
       parameters_list = YAML.load(File.read(filename)) # rubocop:disable Security/YAMLLoad
-      parameter_names = parameters_list.map { |s| s['description'] }
-      found_parameters += parameter_names
-      Rails.logger.debug(parameter_names)
-      Services.find_all_duplicates(parameter_names)
-      parameters_list.each do |yaml_scenario|
-        find_or_create_parameter(yaml_scenario)
-      end
+      parameters_list['filename'] = filename
+
+      found_parameters.push(parameters_list['filename'])
+      find_or_create_parameter(parameters_list)
     end
 
-    remove_stale_parameters(parameter_names: found_parameters)
+    remove_stale_parameters(found_parameters)
   end
 
   def self.remove_stale_parameters(parameter_names)
     Parameter
       .where
-      .not(description: parameter_names)
+      .not(filename: parameter_names)
       .delete_all
   end
 
   def self.find_or_create_parameter(yaml_parameter)
-    parameter_name = yaml_parameter['description']
+    parameter_name = yaml_parameter['filename']
     raise if parameter_name.blank?
 
-    parameter = Parameter.find_or_initialize_by(description: parameter_name)
+    parameter = Parameter.find_or_initialize_by(filename: parameter_name)
 
     ActiveRecord::Base.transaction do
       parameter.description = yaml_parameter['description']
       parameter.href = yaml_parameter['reference']
-      parameter.brackets = 'brackets'
+      parameter.brackets = yaml_parameter['brackets'] || ''
+      parameter.filename = yaml_parameter['filename']
+      parameter.values = yaml_parameter['values'] || ''
       parameter.save!
-      parameter.parse_values!
       parameter
     end
   end
