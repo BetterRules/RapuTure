@@ -6,6 +6,6 @@ module ParametersHelper
   end
 
   def url_from_reference(ref)
-    ref.match(/https?:\/\/[\S]+/)
+    ref.match(%r{https?://[\S]+})
   end
 end
