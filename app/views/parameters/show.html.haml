@@ -6,6 +6,6 @@
       %p= link_to url_from_reference(@parameter.href), "#{url_from_reference(@parameter.href)}"
   .row
     - unless @brackets.nil?
-      = render 'card', card: 'bracket_card', values: @brackets
+      = render 'card', name: 'Brackets', card: 'bracket_card', values: @brackets
     - unless @values.nil?
-      = render 'card', card: 'value_card', values: @values
+      = render 'card', name: 'Values', card: 'value_card', values: @values
