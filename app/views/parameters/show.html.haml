@@ -1,7 +1,8 @@
 .container
-  %h2.display-3= @parameter.description
-  .row
+  %row
     .col-md-12
+      %h2= filename_to_title(@parameter.filename)
+      %p= @parameter.description.capitalize
       %p= link_to @parameter.href.match(/https?:\/\/[\S]+/), "#{@parameter.href.match(/https?:\/\/[\S]+/)}"
   .row
     - if !@brackets.nil?
