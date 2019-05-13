@@ -4,7 +4,6 @@ require 'yaml'
 require 'find'
 
 class ScenariosFetchService
-  include Services
 
   def self.clone_or_pull_git_repo
     raise if clone_url.blank?
@@ -59,7 +58,7 @@ class ScenariosFetchService
       scenario_names = scenarios_list.map { |s| s['name'] }
       found_scenarios += scenario_names
       Rails.logger.debug(scenario_names)
-      Services.find_all_duplicates(scenario_names)
+      find_all_duplicates(scenario_names)
       scenarios_list.each do |yaml_scenario|
         find_or_create_scenario(yaml_scenario)
       end
