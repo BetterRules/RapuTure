@@ -5,5 +5,5 @@
         %li
           %b= "#{key.to_s.capitalize}: "
           - value.each do |v|
-            = v.last
+            = number_to_currency(v.last)
           %hr
