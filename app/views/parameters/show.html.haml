@@ -3,7 +3,7 @@
     .col-md-12
       %h2= filename_to_title(@parameter.filename)
       %p= @parameter.description.capitalize
-      %p= link_to url_from_reference(@parameter.href), "#{url_from_reference(@parameter.href)}"
+      %p= link_to url_from_reference(@parameter.href), url_from_reference(@parameter.href).to_s
   .row
     - unless @brackets.nil?
       = render 'card', name: 'Brackets', card: 'bracket_card', values: @brackets
