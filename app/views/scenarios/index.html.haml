@@ -1,4 +1,8 @@
 .container
+  - if @variable.present?
+    .text-center
+      %h2.text-center Scenarios calculating #{link_to @variable, @variable}
+      %p=@variable.description
   .card-columns
     - @scenarios.each do |scenario|
       .card
