@@ -3,7 +3,7 @@
 FactoryBot.define do
   factory :parameter do
     description { Faker::Name.name }
-    href { Fake::Name.name }
+    href { Faker::Name.name }
     brackets { Faker::Json }
     values { Faker::Json }
     filename { Faker::Name.name }
