@@ -2,8 +2,8 @@
   .card-body
     %ul.list-unstyled
       - values.each do |key, value|
-        %li= key
+        %li= key.capitalize
         %ul
           %li
-            - value.each do |k, v|
-              = v
+            - value.each do |v|
+              = v.last
