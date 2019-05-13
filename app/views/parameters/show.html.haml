@@ -3,17 +3,9 @@
     .col-md-12
       %h2= filename_to_title(@parameter.filename)
       %p= @parameter.description.capitalize
-      %p= link_to @parameter.href.match(/https?:\/\/[\S]+/), "#{@parameter.href.match(/https?:\/\/[\S]+/)}"
+      %p= link_to url_from_reference(@parameter.href), "#{url_from_reference(@parameter.href)}"
   .row
-    - if !@brackets.nil?
-      .col-md-12
-        .card
-          .card-header
-            %h3 Brackets
-          = render 'bracket_card', values: @brackets
-    - if !@values.nil?
-      .col-md-12
-        .card
-          .card-header
-            %h3 Values
-          = render 'value_card', values: @values
+    - unless @brackets.nil?
+      = render 'card', card: 'bracket_card', values: @brackets
+    - unless @values.nil?
+      = render 'card', card: 'value_card', values: @values
