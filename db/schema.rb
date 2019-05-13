@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 2019_05_13_001329) do
     t.bigint "scenario_id"
     t.bigint "variable_id"
     t.string "direction"
+    t.index ["scenario_id", "variable_id", "direction"], name: "scenario_variables_key", unique: true
     t.index ["scenario_id"], name: "index_scenario_variables_on_scenario_id"
     t.index ["variable_id"], name: "index_scenario_variables_on_variable_id"
   end
