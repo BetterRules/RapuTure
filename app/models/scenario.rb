@@ -3,6 +3,8 @@
 class Scenario < ApplicationRecord
   has_many :scenario_variables, dependent: :destroy
   has_many :variables, through: :scenario_variables, dependent: :destroy
+  has_many :input_variables, through: :scenario_variables, dependent: :destroy
+  has_many :output_variables, through: :scenario_variables, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 
@@ -23,12 +25,28 @@ class Scenario < ApplicationRecord
     keys - %w[persons families titled_properties]
   end
 
-  def parse_variables!
-    input_keys = get_all_keys(inputs)
-    output_keys = get_all_keys(outputs)
-    input_output_keys = input_keys + output_keys
+  def input_variables
+    variables.merge(ScenarioVariable.input)
+  end
 
-    self.variables = Variable.where(name: input_output_keys)
+  def output_variables
+    variables.merge(ScenarioVariable.output)
+  end
+
+  def parse_variables!
+    input_variables = Variable.where(name: get_all_keys(inputs))
+    output_variables = Variable.where(name: get_all_keys(outputs))
+    # input_output_keys = input_keys + output_keys
+
+    scenario_variables.where.not(variable: input_variables + output_variables)
+                      .destroy_all
+
+    input_variables.each do |v|
+      ScenarioVariable.create! scenario: self, variable: v, direction: 'input'
+    end
+    output_variables.each do |v|
+      ScenarioVariable.create! scenario: self, variable: v, direction: 'output'
+    end
   end
 
   private

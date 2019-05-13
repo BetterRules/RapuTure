@@ -24,10 +24,19 @@ RSpec.describe Scenario, type: :model do
         }
       }
     end
+    let(:output_hash) do
+      { 'student_allowance__eligible_for_basic_grant' => [true] }
+    end
     let(:expected_variables) do
+      expected_input_variables + expected_output_variables
+    end
+    let(:expected_input_variables) do
       %w[age is_nz_citizen social_security__is_ordinarily_resident_in_new_zealand
          student_allowance__is_tertiary_student student_allowance__is_enrolled_fulltime
          student_allowance__meets_attendance_and_performance_requirements]
+    end
+    let(:expected_output_variables) do
+      ['student_allowance__eligible_for_basic_grant']
     end
     let!(:complicated_scenario) do
       expected_variables.each do |variable_name|
@@ -36,12 +45,14 @@ RSpec.describe Scenario, type: :model do
       FactoryBot.create :scenario,
                         name: 'a complicated situation',
                         inputs: input_hash,
-                        outputs: { 'student_allowance__eligible_for_basic_grant' => [true] },
+                        outputs: output_hash,
                         period: '2019-05',
                         error_margin: 1.0,
                         namespace: 'ghostchips'
     end
     before { complicated_scenario.parse_variables! }
     it { expect(complicated_scenario.variables.pluck(:name)).to eq expected_variables }
+    it { expect(complicated_scenario.input_variables.pluck(:name)).to eq expected_input_variables }
+    it { expect(complicated_scenario.output_variables.pluck(:name)).to eq expected_output_variables }
   end
 end
