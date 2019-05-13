@@ -36,7 +36,6 @@ class Scenario < ApplicationRecord
   def parse_variables!
     input_variables = Variable.where(name: get_all_keys(inputs))
     output_variables = Variable.where(name: get_all_keys(outputs))
-    # input_output_keys = input_keys + output_keys
 
     scenario_variables.where.not(variable: input_variables + output_variables)
                       .destroy_all
