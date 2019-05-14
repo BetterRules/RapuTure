@@ -1,7 +1,7 @@
 - values.each do |val|
   .card-body
     %ul.list-unstyled
-      - val.each do |key, val|
+      - val.each do |key, val1|
         .card
           .card-header
             %li
@@ -9,8 +9,8 @@
 
           .card-body
             %ul
-              - unless val.nil?
-                - val.each do |key2, val2|
+              - unless val1.nil?
+                - val1.each do |key2, val2|
                   %p
                     %b= #{key2}:
                     - val2.each do |val3|
