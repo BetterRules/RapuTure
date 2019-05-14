@@ -54,6 +54,10 @@ RSpec.describe Scenario, type: :model do
     it { expect(complicated_scenario.variables.pluck(:name)).to eq expected_variables }
     it { expect(complicated_scenario.input_variables.pluck(:name)).to eq expected_input_variables }
     it { expect(complicated_scenario.output_variables.pluck(:name)).to eq expected_output_variables }
+    describe 'only allows input/output variables' do
+      it { expect { ScenarioVariable.create! variable: variable, scenario: scenario }.to raise_error }
+      it { expect { ScenarioVariable.create! variable: variable, scenario: scenario, direction: 'down' }.to raise_error }
+    end
     describe 'no duplicates allowed' do
       subject { complicated_scenario.output_variables.pluck(:name) }
       scenario do
