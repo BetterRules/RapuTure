@@ -53,7 +53,7 @@ class ScenariosFetchService
       Rails.logger.debug(filename)
 
       # https://github.com/ruby/psych/issues/262
-      scenarios_list = YAML.safe_load(File.read(filename))
+      scenarios_list = YAML.load(File.read(filename))
       scenario_names = scenarios_list.map { |s| s['name'] }
       found_scenarios += scenario_names
       Rails.logger.debug(scenario_names)
