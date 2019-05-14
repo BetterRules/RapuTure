@@ -4,6 +4,4 @@
       - values.each do |key, value|
         %li
           %b= "#{key.to_s.capitalize}: "
-          - value.each do |v|
-            = v.last
-          %hr
+          = value['value']

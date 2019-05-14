@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class ParametersFetchService
-
   def self.git_clone_folder
     "./tmp/#{ENV['RAILS_ENV']}-openfisca-aotearoa"
   end

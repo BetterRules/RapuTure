@@ -4,7 +4,6 @@ require 'yaml'
 require 'find'
 
 class ScenariosFetchService
-
   def self.clone_or_pull_git_repo
     raise if clone_url.blank?
 
