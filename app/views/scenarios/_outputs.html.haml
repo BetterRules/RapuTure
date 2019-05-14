@@ -26,9 +26,9 @@
                       %td= array_item.to_json
               - elsif item.is_a? Enumerable
                 %table.pull-right
-                  - item.each do |key, hash_item|
+                  - item.each do |hash_key, hash_item|
                     %tr
-                      %th=link_if_variable(key)
+                      %th=link_if_variable(hash_key)
                       %td=hash_item.to_json
               - else
                 .pull-right= item.to_json
