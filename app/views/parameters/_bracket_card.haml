@@ -12,6 +12,6 @@
               - unless val.nil?
                 - val.each do |key2, val2|
                   %p
-                    %b= "#{key2}:"
+                    %b= #{key2}:
                     - val2.each do |val3|
                       = number_to_currency(val3.last)
