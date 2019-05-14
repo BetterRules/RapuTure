@@ -1,7 +1,7 @@
 - values.each do |val|
   .card-body
     %ul.list-unstyled
-      - val.each do |key, value|
+      - val.each do |key, val|
         .card
           .card-header
             %li
@@ -9,9 +9,9 @@
 
           .card-body
             %ul
-              - unless value.nil?
-                - value.each do |k, v|
+              - unless val.nil?
+                - val.each do |key2, val2|
                   %p
-                    %b= "#{k}:"
-                    - v.each do |v|
-                      = number_to_currency(v.last)
+                    %b= "#{key2}:"
+                    - val2.each do |val3|
+                      = number_to_currency(val3.last)
