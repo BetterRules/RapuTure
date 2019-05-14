@@ -28,8 +28,8 @@
                 %table.pull-right
                   - item.each do |hash_key, hash_item|
                     %tr
-                      %th=link_if_variable(hash_key)
-                      %td=hash_item.to_json
+                      %th= link_if_variable(hash_key)
+                      %td= hash_item.to_json
               - else
                 .pull-right= item.to_json
     - else
