@@ -49,8 +49,10 @@ class Scenario < ApplicationRecord
   def save_variable_links(direction)
     hash_keys = if direction == 'input'
                   get_all_keys(inputs)
-                else
+                elsif direction == 'output'
                   get_all_keys(outputs)
+                else
+                  raise format('invalid direction %<direction>', direction: direction)
                 end
     variables = Variable.where(name: hash_keys)
     variables.each do |v|
