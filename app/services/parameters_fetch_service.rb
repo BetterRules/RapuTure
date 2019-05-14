@@ -30,7 +30,7 @@ class ParametersFetchService
     Parameter
       .where
       .not(filename: parameter_names)
-      .delete_all
+      .destroy_all
   end
 
   def self.find_or_create_parameter(yaml_parameter)
