@@ -50,7 +50,7 @@ git clone git@github.com:ServiceInnovationLab/RapuTure.git
 ```
 
 You will need to setup environment variables
-* Rename `env-example` file to `.env`
+> mv env-example .env
 
 ### Docker
 
