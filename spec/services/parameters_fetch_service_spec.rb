@@ -20,7 +20,7 @@ RSpec.describe ParametersFetchService do
       expect(Parameter.find_by(filename: fresh_parameter.filename)).not_to be_nil
     end
 
-    it { expect(described_class.git_clone_folder).to eq 'baab' }
-    it { expect(described_class.yaml_tests_folder).to eq 'baa' }
+    it { expect(described_class.git_clone_folder).to eq './tmp/test-openfisca-aotearoa' }
+    it { expect(described_class.yaml_parameters_folder).to eq './tmp/test-openfisca-aotearoa/openfisca_aotearoa/parameters/' }
   end
 end
