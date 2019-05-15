@@ -4,7 +4,7 @@
       - val.each do |k, v|
         .card-header= k.to_s.capitalize
         .card-body
-          - unless v&.nil?
+          - unless v.nil?
             - v.each do |k1, v1|
               - v1.each do |_k2, v2|
                 %p
