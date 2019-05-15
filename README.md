@@ -49,6 +49,9 @@ This is a ruby on rails app. You will need to:
 git clone git@github.com:ServiceInnovationLab/RapuTure.git
 ```
 
+You will need to setup environment variables
+* Rename `env-example` file to `.env`
+
 ### Docker
 
 This application is configured to run using Docker and docker-compose. You will need [Docker for Desktop](https://www.docker.com/products/docker-desktop) to run this locally.
