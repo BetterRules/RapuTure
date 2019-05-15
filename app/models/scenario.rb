@@ -23,15 +23,42 @@ class Scenario < ApplicationRecord
     keys - %w[persons families titled_properties]
   end
 
-  def parse_variables!
-    input_keys = get_all_keys(inputs)
-    output_keys = get_all_keys(outputs)
-    input_output_keys = input_keys + output_keys
+  def input_variables
+    variables.merge(ScenarioVariable.input)
+  end
 
-    self.variables = Variable.where(name: input_output_keys)
+  def output_variables
+    variables.merge(ScenarioVariable.output)
+  end
+
+  def parse_variables!
+    Scenario.transaction do
+      variables = []
+      %w[input output].each do |direction|
+        save_variable_links(direction).each do |v|
+          variables << v
+        end
+      end
+      # remove associating with any variables we no longer refer to
+      scenario_variables.where.not(variable: variables).destroy_all
+    end
   end
 
   private
+
+  def save_variable_links(direction)
+    hash_keys = if direction == 'input'
+                  get_all_keys(inputs)
+                elsif direction == 'output'
+                  get_all_keys(outputs)
+                else
+                  raise format('invalid direction %<direction>', direction: direction)
+                end
+    variables = Variable.where(name: hash_keys)
+    variables.each do |v|
+      ScenarioVariable.find_or_create_by! scenario: self, variable: v, direction: direction
+    end
+  end
 
   # This could use some refinement
   # Currently it is returning all the keys

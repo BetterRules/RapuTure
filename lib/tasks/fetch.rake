@@ -15,10 +15,6 @@ namespace :fetch do
   task entities: :environment do
     EntitiesFetchService.fetch_all
   end
-  task scraper: :environment do
-    GithubScrapeService.scrape_all
-    puts 'Github scenarios scraped!'
-  end
   task scenarios: :environment do
     ScenariosFetchService.fetch_all
   end

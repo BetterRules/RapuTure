@@ -104,6 +104,8 @@ describe 'Test with visual testing', type: :feature, js: true do
   it 'scenarios#index' do
     visit scenarios_path
     Percy.snapshot(page, name: 'scenarios#index')
+    visit variable_scenarios_path(variable_id: variable.name)
+    Percy.snapshot(page, name: 'variables/scenarios#index')
   end
 
   it 'scenarios#show' do

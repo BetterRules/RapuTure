@@ -13,6 +13,14 @@ class Variable < ApplicationRecord
   has_many :scenario_variables, dependent: :destroy
   has_many :scenarios, through: :scenario_variables
 
+  def input_scenarios
+    scenarios.merge(ScenarioVariable.input)
+  end
+
+  def output_scenarios
+    scenarios.merge(ScenarioVariable.output)
+  end
+
   has_and_belongs_to_many(:variables,
                           class_name: 'Variable',
                           join_table: 'links',
