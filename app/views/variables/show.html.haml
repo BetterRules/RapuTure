@@ -46,21 +46,28 @@
 
     - if @variable.has_formula?
       %hr/
-      %h3=t :formulas
-      %p
-        = t :formula_explanation, name: @variable.name
-        - @variable.spec['formulas'].each do |d, formula|
-          %h3= d
-          %p
-            = t(:formula_for_scenarios_from_date_onwards, formula_date: d)
-            = link_to 'More info on formulas', 'https://openfisca.org/doc/coding-the-legislation/10_basic_example.html'
-          %pre= display_formula formula['content']
+      .card
+        .card-header
+          %h3=t :formulas
+          %p= t :formula_explanation, name: @variable.name
+        .card-body
+          - @variable.spec['formulas'].each do |d, formula|
+            %h3= d
+            %p
+              = t(:formula_for_scenarios_from_date_onwards, formula_date: d)
+              = link_to 'More info on formulas', 'https://openfisca.org/doc/coding-the-legislation/10_basic_example.html'
+            %pre
+              %code= display_formula formula['content']
 
-    - if @variable.scenarios.size.positive?
+    - if @variable.output_scenarios.size.positive?
       %hr/
-      %h2 Scenarios (tests) for this variables
-      - @variable.scenarios.each do |scenario|
-        %li= link_to scenario.name, scenario
+      .card
+        .card-header
+          %h2 Scenarios calculating this variables
+        %ul.list-group.list-group-flush
+          - @variable.output_scenarios.each do |scenario|
+            %li.list-group-item
+              = link_to scenario.name, scenario
     %hr/
     %ul.nav
       - if @variable.references.present?

@@ -3,7 +3,9 @@
 Rails.application.routes.draw do
   root to: 'entities#index'
   resources :entities, only: %i[show index]
-  resources :variables, only: %i[show index]
+  resources :variables, only: %i[show index] do
+    resources :scenarios, only: %i[index]
+  end
   resources :scenarios, only: %i[show index]
   resources :parameters, only: %i[show index]
   # get "/:page" => "pages#show"

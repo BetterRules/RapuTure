@@ -18,7 +18,20 @@
           - value.each do |key, item|
             %li.list-group-item
               %strong= key
-              .pull-right= item.to_json
+              - if item.class == Array
+                %table.pull-right
+                  - item.each_with_index.map do |array_item, i|
+                    %tr
+                      %th{ scope: 'row' }= scenario.input_persons.keys[i]
+                      %td= array_item.to_json
+              - elsif item.is_a? Enumerable
+                %table.pull-right
+                  - item.each do |hash_key, hash_item|
+                    %tr
+                      %th= link_if_variable(hash_key)
+                      %td= hash_item.to_json
+              - else
+                .pull-right= item.to_json
     - else
       .card-body
         = link_if_variable(name)

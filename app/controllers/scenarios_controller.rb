@@ -2,7 +2,12 @@
 
 class ScenariosController < ApplicationController
   def index
-    @scenarios = Scenario.all.order(:name)
+    if params[:variable_id].present?
+      @variable = Variable.find_by(name: params[:variable_id])
+      @scenarios = @variable.output_scenarios
+    else
+      @scenarios = Scenario.all.order(:name)
+    end
   end
 
   def show

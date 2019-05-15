@@ -15,11 +15,13 @@ namespace :fetch do
   task entities: :environment do
     EntitiesFetchService.fetch_all
   end
+
   task parameters: :environment do
     ParametersFetchService.fetch_all do |p|
       puts p.name
     end
   end
+
   task scenarios: :environment do
     ScenariosFetchService.fetch_all
   end
