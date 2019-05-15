@@ -7,6 +7,10 @@ en:
   default_value: Default value
   entity: Entity
   example_variables: Example variables
+  explore_by_entities: Explore by Entities
+  explore_by_parameters: Explore by Parameters
+  explore_by_scenarios: Explore by Scenarios
+  explore_by_variables: Explore by Variables
   formula_explanation: This is the formula used to calculate the value of %{name}
   formulas: Formulas
   formula_for_scenarios_from_date_onwards: This formula is used for scenarios from the date %{formula_date} onwards.

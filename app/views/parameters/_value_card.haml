@@ -1,0 +1,7 @@
+.card
+  .card-body
+    %ul.list-unstyled
+      - values.each do |key, value|
+        %li
+          %b= "#{key.to_s.capitalize}: "
+          = value['value']

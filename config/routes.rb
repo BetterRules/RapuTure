@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :scenarios, only: %i[index]
   end
   resources :scenarios, only: %i[show index]
+  resources :parameters, only: %i[show index]
   # get "/:page" => "pages#show"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
