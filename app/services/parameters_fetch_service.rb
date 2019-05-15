@@ -32,15 +32,19 @@ class ParametersFetchService
     "./tmp/#{ENV['RAILS_ENV']}-openfisca-aotearoa"
   end
 
-  def self.yaml_tests_folder
-    "#{git_clone_folder}/openfisca_aotearoa/parameters"
+  def self.clone_url
+    ENV['OPENFISCA_GIT_CLONE_URL']
+  end
+
+  def self.yaml_parameters_folder
+    "#{git_clone_folder}/openfisca_aotearoa/parameters/"
   end
 
   def self.fetch_all
     clone_or_pull_git_repo
     found_parameters = [] # Keep a running list of parameters we found
 
-    Find.find(yaml_tests_folder).each do |filename|
+    Find.find(yaml_parameters_folder).each do |filename|
       next unless File.extname(filename) == '.yaml'
 
       # https://github.com/ruby/psych/issues/262
