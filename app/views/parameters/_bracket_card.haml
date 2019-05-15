@@ -1,13 +1,12 @@
 - values.each do |val|
   .card-body
     .card
-      .list-unstyled
-        - val.each do |k, v|
-          .card-header= k.to_s.capitalize
-          .card-body
-            - unless v.nil?
-              - v.each do |k1, v1|
-                - v1.each do |k2, v2|
-                  %p
-                    %b= "#{k1}:"
-                    = v2
+      - val.each do |k, v|
+        .card-header= k.to_s.capitalize
+        .card-body
+          - unless v.nil?
+            - v.each do |k1, v1|
+              - v1.each do |k2, v2|
+                %p
+                  %b= "#{k1}:"
+                  = v2
