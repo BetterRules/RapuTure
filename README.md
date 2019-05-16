@@ -55,7 +55,7 @@ git clone git@github.com:ServiceInnovationLab/RapuTure.git
 ruby -v
 ```
 
-There are a couple of good version managers you can use, if you need to change the ruby version.
+Choose one of these tools, to change the ruby version
 1. [rbenv](https://github.com/rbenv/rbenv)
 2. [rvm](https://rvm.io/)
 
