@@ -60,7 +60,7 @@ Choose one of these tools, to change the ruby version
 2. [rvm](https://rvm.io/)
 
 
-* You will need to setup the apps environment variables
+* You will need to setup the app's environment variables
 ```
 mv env-example .env
 ```
