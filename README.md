@@ -49,8 +49,22 @@ This is a ruby on rails app. You will need to:
 git clone git@github.com:ServiceInnovationLab/RapuTure.git
 ```
 
-You will need to setup environment variables
-> mv env-example .env
+* You will need to ensure you are using the correct ruby version
+
+```
+ruby -v
+```
+
+To change your ruby version there are a couple of good versions managers you can use.
+1. [rbenv](https://github.com/rbenv/rbenv)
+2. [rvm](https://rvm.io/)
+
+
+* You will need to setup the apps environment variables
+```
+mv env-example .env
+```
+
 
 ### Docker
 
@@ -109,7 +123,7 @@ gem install bundler
 ```
 bin/setup
 ```
-* Rename `env-example` file to `.env`
+* `mv env-example .env`
 * Load seed data from OpenFisca (Note: this takes 15 minutes)
 ```
 bundle exec rake fetch:fetchall
