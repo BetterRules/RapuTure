@@ -57,6 +57,9 @@ gem 'redcarpet'
 # Clones open fisca to read the test yaml
 gem 'git'
 
+# Tracks db queries, sources of memory bloat, performance abnormalities and more.
+gem 'scout_apm'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
