@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-include GithubService
 
 RSpec.describe ParametersFetchService do
   let(:parameters_total_number) { 5 }
@@ -22,6 +21,6 @@ RSpec.describe ParametersFetchService do
     end
 
     it { expect(described_class.git_clone_folder).to eq './tmp/test-openfisca-aotearoa' }
-    it { expect(described_class.GithubService.yaml_folder('parameters')).to eq './tmp/test-openfisca-aotearoa/openfisca_aotearoa/parameters/' }
+    it { expect(described_class.yaml_parameters_folder).to eq './tmp/test-openfisca-aotearoa/openfisca_aotearoa/parameters/' }
   end
 end

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-include GithubService
 
 RSpec.describe ScenariosFetchService do
   let(:scenarios_total_number) { 5 }
@@ -21,17 +20,17 @@ RSpec.describe ScenariosFetchService do
       expect(Scenario.find_by(name: fresh_scenario.name)).not_to be_nil
     end
 
-    it { expect(described_class.GithubService.git_clone_folder).to eq './tmp/test-openfisca-aotearoa' }
+    it { expect(described_class.git_clone_folder).to eq './tmp/test-openfisca-aotearoa' }
 
     it 'clones git repo' do
       FileUtils.rm_rf('./tmp/test-openfisca-aotearoa')
       expect(File).not_to exist('./tmp/test-openfisca-aotearoa')
 
       # clone
-      described_class.GithubService.clone_or_pull_git_repo
+      described_class.clone_or_pull_git_repo
       expect(File).to exist('./tmp/test-openfisca-aotearoa')
       # call again, and it'll only pull
-      described_class.GithubService.clone_or_pull_git_repo
+      described_class.clone_or_pull_git_repo
       expect(File).to exist('./tmp/test-openfisca-aotearoa')
     end
   end
