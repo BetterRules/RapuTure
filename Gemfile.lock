@@ -116,7 +116,7 @@ GEM
       activemodel (>= 4.2, < 6.1)
       activerecord (>= 4.2, < 6.1)
       request_store (~> 1.0)
-    haml (5.0.4)
+    haml (5.1.0)
       temple (>= 0.8.0)
       tilt
     highline (2.0.1)
@@ -295,7 +295,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    temple (0.8.0)
+    temple (0.8.1)
     terminal-table (1.8.0)
       unicode-display_width (~> 1.1, >= 1.1.1)
     thor (0.20.3)
