@@ -3,14 +3,13 @@
 require 'yaml'
 require 'find'
 
-class ScenariosFetchService
-  include GithubService
+class ScenariosFetchService < GithubCloneService
 
   def self.fetch_all
-    GithubService.clone_or_pull_git_repo
+    clone_or_pull_git_repo
     found_scenarios = [] # Keep a running list of scenarios we found
 
-    Find.find(GithubService.yaml_folder('tests')).each do |filename|
+    Find.find(yaml_folder('tests')).each do |filename|
       next unless File.extname(filename) == '.yaml'
 
       Rails.logger.debug(filename)

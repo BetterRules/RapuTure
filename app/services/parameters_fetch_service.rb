@@ -3,14 +3,13 @@
 require 'yaml'
 require 'find'
 
-class ParametersFetchService
-  include GithubService
+class ParametersFetchService < GithubCloneService
 
   def self.fetch_all
-    GithubService.clone_or_pull_git_repo
+    clone_or_pull_git_repo
     found_parameters = [] # Keep a running list of parameters we found
 
-    Find.find(GithubService.yaml_folder('parameters')).each do |filename|
+    Find.find(yaml_folder('parameters')).each do |filename|
       next unless File.extname(filename) == '.yaml'
 
       # https://github.com/ruby/psych/issues/262

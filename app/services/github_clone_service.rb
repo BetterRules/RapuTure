@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
-module GithubService
+require 'yaml'
+require 'find'
+
+class GithubCloneService
   def self.git_branch
     'master'
   end
