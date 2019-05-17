@@ -4,7 +4,6 @@ require 'yaml'
 require 'find'
 
 class ScenariosFetchService < GithubCloneService
-
   def self.fetch_all
     clone_or_pull_git_repo
     found_scenarios = [] # Keep a running list of scenarios we found

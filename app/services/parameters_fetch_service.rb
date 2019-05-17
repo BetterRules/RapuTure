@@ -4,7 +4,6 @@ require 'yaml'
 require 'find'
 
 class ParametersFetchService < GithubCloneService
-
   def self.fetch_all
     clone_or_pull_git_repo
     found_parameters = [] # Keep a running list of parameters we found
