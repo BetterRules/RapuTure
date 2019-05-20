@@ -274,6 +274,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
+    scout_apm (2.4.24)
     selenium-webdriver (3.142.2)
       childprocess (>= 0.5, < 2.0)
       rubyzip (~> 1.2, >= 1.2.2)
@@ -359,6 +360,7 @@ DEPENDENCIES
   rspec-rails (~> 3.8)
   rubocop
   sass-rails (~> 5.0)
+  scout_apm
   selenium-webdriver
   simplecov
   spring
