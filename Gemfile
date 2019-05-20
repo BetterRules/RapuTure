@@ -58,6 +58,7 @@ gem 'redcarpet'
 gem 'git'
 
 # Tracks db queries, sources of memory bloat, performance abnormalities and more.
+gem 'raygun4ruby'
 gem 'scout_apm'
 
 group :development, :test do
