@@ -53,6 +53,6 @@
           %a{href: "https://choosealicense.com/licenses/agpl-3.0/", rel: "noopener", target: "_blank"} AGPL license.
 
   :javascript
-    rg4js('apiKey', '5uleq1OMY5GqYWn3VzMyyg');
+    rg4js('apiKey', '#{ENV['RAYGUN_APIKEY']}');
     rg4js('enableCrashReporting', true);
     rg4js('enablePulse', true);
