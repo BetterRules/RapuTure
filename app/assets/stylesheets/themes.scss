@@ -1,0 +1,38 @@
+@import "variables";
+
+.theme-primary {
+
+  #roles { margin-top: 2rem; }
+
+  #variables { margin-top: 2.5rem; }
+
+  p,
+  .page-heading,
+  .sub-heading { color: $primary-color; }
+
+  .page-heading,
+  .sub-heading { font-weight: bold; }
+
+  p { overflow: auto; }
+
+  .page-heading {
+    font-size: 3rem;
+    margin-top: 0;
+  }
+
+  .sub-heading { margin-bottom: 1rem; }
+
+  .card {
+    border: none;
+    box-shadow: none;
+  }
+
+  .card-body {
+    &--alt {
+      border: 5px solid darken($grey, 20%);
+      border-radius: 0;
+    }
+  }
+
+  .badge-alt { color: $white; }
+}

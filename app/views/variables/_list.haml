@@ -1,0 +1,6 @@
+%ul.list-stripped
+  - cache variable do
+    %li
+      = link_to variable.name, variable
+      %p= variable.description
+      = render 'variables/badges', variable: variable
