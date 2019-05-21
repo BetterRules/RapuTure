@@ -21,6 +21,7 @@ RSpec.describe ScenariosFetchService do
     end
 
     it { expect(described_class.git_clone_folder).to eq './tmp/test-openfisca-aotearoa' }
+    it { expect(described_class.yaml_folder('tests')).to eq './tmp/test-openfisca-aotearoa/openfisca_aotearoa/tests/' }
 
     it 'clones git repo' do
       FileUtils.rm_rf('./tmp/test-openfisca-aotearoa')
