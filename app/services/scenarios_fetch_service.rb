@@ -3,51 +3,12 @@
 require 'yaml'
 require 'find'
 
-class ScenariosFetchService
-  def self.clone_or_pull_git_repo
-    raise if clone_url.blank?
-
-    if File.directory?(git_clone_folder)
-      git_pull
-    else
-      git_clone
-    end
-  end
-
-  def self.git_branch
-    'master'
-  end
-
-  def self.git_pull
-    Rails.logger.info("Pull branch #{git_branch}")
-    g = Git.init(git_clone_folder)
-    g.checkout(git_branch)
-    g.pull
-  end
-
-  def self.git_clone
-    Rails.logger.info("Cloning #{clone_url} into #{git_clone_folder}")
-    g = Git.clone(clone_url, git_clone_folder)
-    g.checkout(git_branch)
-  end
-
-  def self.git_clone_folder
-    "./tmp/#{ENV['RAILS_ENV']}-openfisca-aotearoa"
-  end
-
-  def self.clone_url
-    ENV['OPENFISCA_GIT_CLONE_URL']
-  end
-
-  def self.yaml_tests_folder
-    "#{git_clone_folder}/openfisca_aotearoa/tests/"
-  end
-
+class ScenariosFetchService < GithubCloneService
   def self.fetch_all
     clone_or_pull_git_repo
     found_scenarios = [] # Keep a running list of scenarios we found
 
-    Find.find(yaml_tests_folder).each do |filename|
+    Find.find(yaml_folder('tests')).each do |filename|
       next unless File.extname(filename) == '.yaml'
 
       Rails.logger.debug(filename)
