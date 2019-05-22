@@ -1,28 +1,3 @@
--# .container
--#   %h1= @entity.description
--#   = render 'badges', entity: @entity
-
-  -# %p
-  -#   = render_markdown(@entity.documentation) if @entity.documentation.present?
-
-
-  -# - if @entity.roles.size.positive?
-  -#   %h2 Roles within #{@entity.description}
-
-  -#   .card-columns
-  -#     - @entity.roles.each do |role|
-  -#       .card{:style => "width: 18rem;"}
-  -#         .card-body
-  -#           %h5.card-title= role.name
-  -#           %p.card-text= role.description
-
-
-  -# %h3.page-heading= t(:variables_that_you_can_set, entity_description: @entity.description)
-
-  -# .card-columns
-  -#   - @entity.variables.order(:namespace, :name).each do |variable|
-  -#     = render 'variables/card', variable: variable
-
 %main
   .container
     .row
