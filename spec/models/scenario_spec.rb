@@ -60,7 +60,7 @@ RSpec.describe Scenario, type: :model do
     end
     describe 'no duplicates allowed' do
       subject { complicated_scenario.output_variables.pluck(:name) }
-      scenario do
+      it do
         complicated_scenario.parse_variables!
         expect(subject).to eq ['student_allowance__eligible_for_basic_grant']
         complicated_scenario.parse_variables!
@@ -68,7 +68,7 @@ RSpec.describe Scenario, type: :model do
       end
     end
     describe 'removes variables we no longer refer to' do
-      scenario do
+      it do
         FactoryBot.create :variable, name: 'hates_marshmallows'
         complicated_scenario.update!(outputs: { "hates_marshmallows": [true] })
         complicated_scenario.parse_variables!
