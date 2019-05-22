@@ -22,7 +22,6 @@
                 %table.pull-right
                   - item.each_with_index.map do |array_item, i|
                     %tr
-                      %th{ scope: 'row' }= scenario.input_persons.keys[i]
                       %td= array_item.to_json
               - elsif item.is_a? Enumerable
                 %table.pull-right
