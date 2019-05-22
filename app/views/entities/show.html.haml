@@ -1,24 +1,30 @@
-.container
-  %h1= @entity.description
-  = render 'badges', entity: @entity
+%main
+  .container
+    .row
+      .col-lg-3
+        = render 'partials/sidebar', title: @entity.description
 
-  %p
-    = render_markdown(@entity.documentation) if @entity.documentation.present?
+      .col-lg-9
+        %section.section.theme-primary
+          #about
+            %h1.page-heading= @entity.description
+            = render 'badges', entity: @entity
 
+            %p= render_markdown(@entity.documentation) if @entity.documentation.present?
 
-  - if @entity.roles.size.positive?
-    %h2 Roles within #{@entity.description}
+          #roles
+            - if @entity.roles.size.positive?
+              %h2.sub-heading Roles within #{@entity.description}
 
-    .card-columns
-      - @entity.roles.each do |role|
-        .card{:style => "width: 18rem;"}
-          .card-body
-            %h5.card-title= role.name
-            %p.card-text= role.description
+              .card-columns
+                - @entity.roles.each do |role|
+                  .card
+                    .card-body.card-body--alt
+                      %h5.card-title= role.name
+                      %p.card-text= role.description
 
+          #variables
+            %h3.sub-heading= t(:variables_that_you_can_set, entity_description: @entity.description)
 
-  %h3.page-heading= t(:variables_that_you_can_set, entity_description: @entity.description)
-
-  .card-columns
-    - @entity.variables.order(:namespace, :name).each do |variable|
-      = render 'variables/card', variable: variable
+            - @entity.variables.order(:namespace, :name).each do |variable|
+              = render 'variables/list', variable: variable
