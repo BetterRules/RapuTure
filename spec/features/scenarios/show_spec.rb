@@ -12,7 +12,7 @@ describe 'index' do
   end
   let(:output_hash) do
     { 'student_allowance__eligible_for_basic_grant' => [true, true, true,
-                                                        true, false] }
+                                                       true, false] }
   end
   let(:our_scenario) do
     FactoryBot.create :variable, name: 'age', description: 'age in years'
