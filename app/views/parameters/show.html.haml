@@ -9,10 +9,10 @@
         %p= @parameter.description.capitalize
         %footer
           %p
-            %span Legislation:
-            %span= link_to url_from_reference(@parameter.href), url_from_reference(@parameter.href).to_s
-          %p
             %span Reference:
+            %span= link_to @parameter.href, @parameter.href.to_s
+          %p
+            %span Github:
             %span= link_to github_file_url(@parameter.filename).to_s, github_file_url(@parameter.filename).to_s
   .row
     - unless @brackets.nil?
