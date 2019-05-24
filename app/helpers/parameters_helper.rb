@@ -10,9 +10,13 @@ module ParametersHelper
   end
 
   def github_file_url(file)
-    unless file.filename.nil?
-      file = file.filename.gsub('./tmp/development-openfisca-aotearoa/', '')
-      "https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/#{file}"
-    end
+    file unless file.nil?
+
+    file = file.gsub('./tmp/development-openfisca-aotearoa/', '')
+    "https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/#{file}"
+  end
+
+  def github_url(file)
+    github_file_url(file).to_s
   end
 end
