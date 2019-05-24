@@ -13,7 +13,7 @@
             %span= link_to @parameter.href, @parameter.href.to_s
           %p
             %span Github:
-            %span= link_to github_file_url(@parameter.filename).to_s, github_file_url(@parameter.filename).to_s
+            %span= link_to github_file_url(@parameter), github_file_url(@parameter).to_s
   .row
     - unless @brackets.nil?
       = render 'card', name: 'Brackets', card: 'bracket_card', values: @brackets
