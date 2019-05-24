@@ -1,9 +1,19 @@
 .container
-  %row
+  .row
     .col-md-12
-      %h2= filename_to_title(@parameter.filename)
-      %p= @parameter.description.capitalize
-      %p= link_to url_from_reference(@parameter.href), url_from_reference(@parameter.href).to_s
+      %div
+        %h2.heading-inline= filename_to_title(@parameter.filename)
+        %span.badge.badge-primary.badge--inline= name_of_act(@parameter.filename)
+      %hr
+      %section.section--inner-content
+        %p= @parameter.description.capitalize
+        %footer
+          %p
+            %span Legislation:
+            %span= link_to url_from_reference(@parameter.href), url_from_reference(@parameter.href).to_s
+          %p
+            %span Reference:
+            %span= link_to github_file_url(@parameter.filename).to_s, github_file_url(@parameter.filename).to_s
   .row
     - unless @brackets.nil?
       = render 'card', name: 'Brackets', card: 'bracket_card', values: @brackets

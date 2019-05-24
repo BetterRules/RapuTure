@@ -1,5 +1,9 @@
 @import "variables";
 
+html {
+  font-size: 10px;
+}
+
 body {
   margin: 0;
   word-wrap: break-word;
@@ -8,6 +12,10 @@ body {
 main {
   background-color: $grey;
   padding-bottom: 2rem;
+
+  p {
+    font-size: 1.2rem;
+  }
 }
 
 a {
