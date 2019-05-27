@@ -9,7 +9,14 @@ module ParametersHelper
     str.split('/').pop(2).first.titleize
   end
 
-  def url_from_reference(ref)
-    ref.match(%r{https?://[\S]+})
+  def github_file_url(file)
+    file unless file.nil?
+
+    file = file.gsub('./tmp/development-openfisca-aotearoa/', '')
+    "https://github.com/ServiceInnovationLab/openfisca-aotearoa/blob/master/#{file}"
+  end
+
+  def github_url(file)
+    github_file_url(file).to_s
   end
 end
