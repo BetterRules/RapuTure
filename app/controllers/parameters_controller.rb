@@ -7,6 +7,7 @@ class ParametersController < ApplicationController
 
   def show
     @parameter = Parameter.find(params[:id])
+    @filename = @parameter.filename
     @brackets = @parameter.brackets unless @parameter.brackets.empty?
     @values = @parameter.values unless @parameter.values.empty?
   end

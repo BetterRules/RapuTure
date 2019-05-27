@@ -39,4 +39,11 @@
   &-dark {
     background: $badge-dark;
   }
+
+  @media (min-width:768px) {
+    &--inline {
+      margin-left: 1rem;
+      vertical-align: super;
+    }
+  }
 }
