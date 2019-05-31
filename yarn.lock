@@ -116,10 +116,10 @@
   resolved "https://registry.yarnpkg.com/@oclif/screen/-/screen-1.0.4.tgz#b740f68609dfae8aa71c3a6cab15d816407ba493"
   integrity sha512-60CHpq+eqnTxLZQ4PGHYNwUX572hgpMHGPtTWMjdTMsAvlm69lZV/4ly6O3sAYkomo4NggGcomrDpBe34rxUqw==
 
-"@percy/agent@^0.4.9":
-  version "0.4.9"
-  resolved "https://registry.yarnpkg.com/@percy/agent/-/agent-0.4.9.tgz#831a469056513f843b90fd340758ccd80eb8153c"
-  integrity sha512-SzWJb7vAt0hF5n2ViXTkfF+Ssey01B+d3hztvV1wnsaIf5CkffnuDo9CjxmTHXWeJ/gYG0Wnpb+hy15mFx7TUw==
+"@percy/agent@^0.5.0":
+  version "0.5.0"
+  resolved "https://registry.yarnpkg.com/@percy/agent/-/agent-0.5.0.tgz#2f1678b2a1555c8885cfea797226d0ff8f0d240a"
+  integrity sha512-uAz1MlxF3SOFi50TRh2IWQKCFaI8+RYuEgPzl0oQhix+fxCY2/AfmE7lYxSSY2Yf+iD1L+guqzeHROAEMo2ibg==
   dependencies:
     "@oclif/command" "1.5.10"
     "@oclif/config" "^1"
@@ -134,6 +134,7 @@
     cors "^2.8.4"
     cross-spawn "^6.0.5"
     express "^4.16.3"
+    generic-pool "^3.7.1"
     globby "^9.2.0"
     js-yaml "^3.13.1"
     percy-client "^3.0.3"
@@ -3149,6 +3150,11 @@ gaze@^1.0.0:
   integrity sha512-BRdNm8hbWzFzWHERTrejLqwHDfS4GibPoq5wjTPIoJHoBtKGPg3xAFfxmM+9ztbXelxcf2hwQcaz1PtmFeue8g==
   dependencies:
     globule "^1.0.0"
+
+generic-pool@^3.7.1:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/generic-pool/-/generic-pool-3.7.1.tgz#36fe5bb83e7e0e032e5d32cd05dc00f5ff119aa8"
+  integrity sha512-ug6DAZoNgWm6q5KhPFA+hzXfBLFQu5sTXxPpv44DmE0A2g+CiHoq9LTVdkXpZMkYVMoGw83F6W+WT0h0MFMK/w==
 
 get-caller-file@^1.0.1:
   version "1.0.3"
