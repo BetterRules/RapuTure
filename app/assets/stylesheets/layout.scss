@@ -26,9 +26,16 @@ footer {
   background: $secondary-color;
   padding: 1rem;
 
-  p {
-    margin-bottom: 0;
+  a {
+    border-bottom: 1px solid $primary-color;
+    color: $primary-color;
+
+    &:hover { text-decoration: none; }
+
+    &.img { border: 0; }
   }
+
+  p { margin-bottom: 0; }
 }
 
 .logo {
