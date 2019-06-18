@@ -1,5 +1,9 @@
 @import "variables";
 
+h1 {
+  font-size: 1.625rem;
+}
+
 .page-heading {
   color: $primary-color;
   font-size: 1.625rem;
@@ -7,6 +11,9 @@
   margin: 1.25rem 0;
 }
 
-.sub-heading { font-size: 1.6rem; }
+.sub-heading {
+  font-size: 1.4rem;
+  margin-top: .6rem;
+}
 
 .heading-inline { display: inline-block; }

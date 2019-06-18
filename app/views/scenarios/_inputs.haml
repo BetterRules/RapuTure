@@ -1,18 +1,18 @@
 
 - if @scenario.input_persons.size.positive?
-  %h3 Persons
+  %h3.sub-heading Persons
   - @scenario.input_persons.each do |person_name, attributes|
     = render 'input_card', name: person_name, icon: '👤', attributes: attributes
 
 - if @scenario.input_families.size.positive?
   %hr/
-  %h3 Families
+  %h3.sub-heading Families
   - @scenario.input_families.each do |family_name, attributes|
     = render 'input_card', name: family_name, icon: '👥', attributes: attributes
 
 - if @scenario.input_titled_properties.size.positive?
   %hr/
-  %h3 Properties (Houses etc)
+  %h3.sub-heading Properties (Houses etc)
   - @scenario.input_titled_properties.each do |property_name, attributes|
     = render 'input_card', name: property_name, icon: '🏠', attributes: attributes
 

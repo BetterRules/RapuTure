@@ -1,18 +1,28 @@
-.container
+.container{ 'data-turbolinks': 'false' }
   %h1= @scenario.name
-  %p
-    %strong Period:
-    = @scenario.period
-  - if @scenario.error_margin.present?
-    %p
-      %strong Error Margin:
-      = @scenario.error_margin
-  .row
-    .col-md-6
-      %h2 Inputs
-      %p These are values we supply into the calculation
-      = render 'inputs'
-    .col-md-6
-      %h2 Expected Outputs
-      %p These are the results we expect from the calculation
-      = render 'outputs'
+  %ul.nav.nav-tabs#simulator-tab{ role: 'tablist' }
+    %li.nav-item
+      = link_to 'Scenario', '#details', class: 'nav-link active', id: 'details-tab', 'aria-controls': 'details', 'aria-selected': true, 'data-toggle': 'tab', role: 'tab'
+    %li.nav-item
+      = link_to 'Try the Simulator', '#simulator', class: 'nav-link', id: 'details-tab', 'aria-controls': 'simulator', 'aria-selected': false, 'data-toggle': 'tab', role: 'tab'
+  .tab-content#simulator-tab-content
+    .tab-pane.fade#simulator{ 'aria-labelledby': 'simulator-tab', role: 'tabpanel' }
+      %h3.sub-heading Simulator
+      = react_component('Simulator', @scenario)
+    .tab-pane.fade.show.active#details{ 'aria-labelledby': 'details-tab', role: 'tabpanel' }
+      %p
+        %strong Period:
+        = @scenario.period
+      - if @scenario.error_margin.present?
+        %p
+          %strong Error Margin:
+          = @scenario.error_margin
+      .row
+        .col-md-6
+          %h2.sub-heading Inputs
+          %p These are values we supply into the calculation
+          = render 'inputs'
+        .col-md-6
+          %h2.sub-heading Expected Outputs
+          %p These are the results we expect from the calculation
+          = render 'outputs'

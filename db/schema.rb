@@ -77,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_05_14_020725) do
   end
 
   create_table "variable_translations", force: :cascade do |t|
-    t.integer "variable_id", null: false
+    t.bigint "variable_id", null: false
     t.string "locale", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

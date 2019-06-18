@@ -10,7 +10,7 @@
       %li.breadcrumb-item.active{"aria-current" => "page"}= @variable.name
 
 
-  %h3
+  %h1
     -if @variable.description
       = @variable.description
     - else
@@ -48,11 +48,11 @@
       %hr/
       .card
         .card-header
-          %h3=t :formulas
+          %h3.sub-heading=t :formulas
           %p= t :formula_explanation, name: @variable.name
         .card-body
           - @variable.spec['formulas'].each do |d, formula|
-            %h3= d
+            %h3.sub-heading= d
             %p
               = t(:formula_for_scenarios_from_date_onwards, formula_date: d)
               = link_to 'More info on formulas', 'https://openfisca.org/doc/coding-the-legislation/10_basic_example.html'
@@ -63,7 +63,7 @@
       %hr/
       .card
         .card-header
-          %h2 Scenarios calculating this variables
+          %h2.sub-heading Scenarios calculating this variables
         %ul.list-group.list-group-flush
           - @variable.output_scenarios.each do |scenario|
             %li.list-group-item
