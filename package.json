@@ -2,7 +2,7 @@
   "name": "AwhiMai",
   "private": true,
   "dependencies": {
-    "@percy/agent": "^0.5.0",
+    "@percy/agent": "^0.8.3",
     "@rails/webpacker": "3.6.0",
     "babel-preset-react": "6.24.1",
     "prop-types": "15.7.2",
