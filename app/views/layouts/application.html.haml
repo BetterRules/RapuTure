@@ -46,11 +46,13 @@
         %span
           = t(:computations_powered_by)
           = succeed ',' do
-            %a{href: "https://openfisca.org", rel: "noopener", target: "_blank"}
+            %a{href: "https://openfisca.org", rel: "noopener", target: "_blank", class: 'img'}
               %img{alt: "OpenFisca", height: "24", src: "https://openfisca.org/img/logo-openfisca.svg"}/
           %a{href: "https://github.com/openfisca/openfisca-core"} source code
           is used under an
           %a{href: "https://choosealicense.com/licenses/agpl-3.0/", rel: "noopener", target: "_blank"} AGPL license.
+      %p
+        = link_to "Documentation", "https://openfisca.org/doc/"
 
   :javascript
     rg4js('apiKey', '#{ENV['RAYGUN_APIKEY']}');
