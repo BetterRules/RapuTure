@@ -229,7 +229,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
     rainbow (3.0.0)
-    rake (12.3.2)
+    rake (12.3.3)
     raygun4ruby (3.2.1)
       concurrent-ruby
       httparty (> 0.13.7)
@@ -238,7 +238,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    react-rails (2.5.0)
+    react-rails (2.6.0)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
