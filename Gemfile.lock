@@ -295,7 +295,8 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (2.5.1)
+    scout_apm (2.6.1)
+      parser
     selenium-webdriver (3.142.4)
       childprocess (>= 0.5, < 3.0)
       rubyzip (~> 1.2, >= 1.2.2)
