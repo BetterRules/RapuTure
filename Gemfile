@@ -9,7 +9,7 @@ gem 'rails', '~> 5.2.3'
 
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 4.0'
+gem 'puma', '~> 4.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -94,5 +94,5 @@ group :test do
   gem 'faker'
   gem 'simplecov', require: false
 
-  gem 'percy-capybara', '~> 4.0.1'
+  gem 'percy-capybara', '~> 4.1.0'
 end
