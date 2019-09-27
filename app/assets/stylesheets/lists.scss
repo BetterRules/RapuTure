@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 dl {
   dt {
@@ -17,7 +17,7 @@ dl {
     display: inline-block;
 
     ::after {
-      content: " /";
+      content: ' /';
     }
   }
 }
