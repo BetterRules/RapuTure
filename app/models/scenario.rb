@@ -52,7 +52,8 @@ class Scenario < ApplicationRecord
                 elsif direction == 'output'
                   get_all_keys(outputs)
                 else
-                  raise format('invalid direction %<direction>', direction: direction)
+                  raise format('invalid direction %<direction>', 
+                               direction: direction)
                 end
     variables = Variable.where(name: hash_keys)
     variables.each do |v|
