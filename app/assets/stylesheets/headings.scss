@@ -1,4 +1,4 @@
-@import "variables";
+@import 'variables';
 
 .page-heading {
   color: $primary-color;
@@ -7,6 +7,10 @@
   margin: 1.25rem 0;
 }
 
-.sub-heading { font-size: 1.6rem; }
+.sub-heading {
+  font-size: 1.6rem;
+}
 
-.heading-inline { display: inline-block; }
+.heading-inline {
+  display: inline-block;
+}
