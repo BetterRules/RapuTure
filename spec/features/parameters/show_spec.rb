@@ -6,7 +6,7 @@ describe 'index' do
   let(:brackets_hash) do
     {
       'rate' => { '2018-04-01' => { 'value' => 3351 } },
-        'threshold' => { '2018-04-01' => { 'value' => 0 } }
+      'threshold' => { '2018-04-01' => { 'value' => 0 } }
     }
   end
   let(:values_hash) do
@@ -14,10 +14,10 @@ describe 'index' do
   end
   let(:our_parameters) do
     scen = FactoryBot.create :parameter, description: 'a complicated situation',
-                                        href: 'http://areallylongurl.com',
-                                        brackets: brackets_hash,
-                                        values: values_hash,
-                                        filename: 'minimum_age_threshold.yaml'
+                                         href: 'http://areallylongurl.com',
+                                         brackets: brackets_hash,
+                                         values: values_hash,
+                                         filename: 'minimum_age_threshold.yaml'
     scen
   end
   describe 'view all parameters' do
