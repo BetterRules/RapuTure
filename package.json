@@ -6,7 +6,7 @@
     "@rails/webpacker": "3.6.0",
     "babel-preset-react": "6.24.1",
     "prop-types": "15.7.2",
-    "react": "16.9.0",
+    "react": "16.10.1",
     "react-dom": "16.9.0",
     "react_ujs": "2.6.0"
   },
