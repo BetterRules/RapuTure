@@ -94,5 +94,5 @@ group :test do
   gem 'faker'
   gem 'simplecov', require: false
 
-  gem 'percy-capybara', '~> 4.1.0'
+  gem 'percy-capybara', '~> 4.1.1'
 end
