@@ -7,13 +7,10 @@ def setup!
     run  "bundle install"
     run  "bin/yarn install" if File.exist?("yarn.lock")
     # run  "bundle exec overcommit --install"
-    # copy "env-example"
+    copy "example.env"
     test_local_env_contains_required_keys
     puts "\n== Preparing database =="
     run "bin/rake db:setup"
-    # run "bin/rake db:create"
-    # run "bin/rake db:migrate"
-    # run "bin/rake db:seed"
     run "bin/rake tmp:create"
     puts "\n== Removing old logs and tempfiles =="
     run "bin/rake log:clear tmp:clear"
@@ -35,10 +32,6 @@ include FileUtils
 def within_project_root(&block)
   Dir.chdir(File.expand_path("../..", __FILE__), &block)
 end
-
-# def system!(*args)
-#   system(*args) || abort("\n== Command #{args} failed ==")
-# end
 
 def test(opts)
   command, output = opts.first
@@ -83,7 +76,7 @@ def test_local_env_contains_required_keys
   keys = ->(f) { IO.readlines(f).map { |l| l[/^([^#\s][^=\s]*)/, 1] }.compact }
 
   log(:yellow, "test .env contents") do
-    missing = keys["env-example"] - keys[".env"]
+    missing = keys["example.env"] - keys[".env"]
     if missing.any?
       die("Your .env file is missing #{missing.join(', ')}")
     end
