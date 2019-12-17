@@ -11,14 +11,14 @@ def setup!
     test_local_env_contains_required_keys
     puts "\n== Preparing database =="
     run "bin/rake db:setup"
+    # run "bin/rake db:create"
+    # run "bin/rake db:migrate"
+    # run "bin/rake db:seed"
+    run "bin/rake tmp:create"
     puts "\n== Removing old logs and tempfiles =="
     run "bin/rake log:clear tmp:clear"
     puts "\n== Restarting application server =="
     run  "bin/rails restart"
-    # run  "bin/rake tmp:create"
-    # run  "bin/rake db:create:all"
-    # run  "bin/rake db:migrate"
-    # run  "bin/rake db:seed"
   end
 end
 
@@ -36,9 +36,9 @@ def within_project_root(&block)
   Dir.chdir(File.expand_path("../..", __FILE__), &block)
 end
 
-def system!(*args)
-  system(*args) || abort("\n== Command #{args} failed ==")
-end
+# def system!(*args)
+#   system(*args) || abort("\n== Command #{args} failed ==")
+# end
 
 def test(opts)
   command, output = opts.first
@@ -71,7 +71,7 @@ def with_clean_bundler_env(&block)
 end
 
 def copy(example_path)
-  copy_path = example_path.sub(/\.?env-example/, "")
+  copy_path = example_path.sub(/\.?example/, "")
   return if File.exist?(copy_path)
 
   log(:magenta, "copy #{example_path} → #{copy_path}") do
