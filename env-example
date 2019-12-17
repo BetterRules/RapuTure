@@ -1,7 +1,0 @@
-LANG: en
-OPENFISCA_URL: https://api.rules.nz
-OPENFISCA_GIT_CLONE_URL: https://github.com/ServiceInnovationLab/openfisca-aotearoa
-GITHUB_URL: https://github.com/ServiceInnovationLab/openfisca-aotearoa
-RAILS_ENV: development
-RAILS_LOG_TO_STDOUT: true
-RAILS_SERVE_STATIC_FILES: true
