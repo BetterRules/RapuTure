@@ -3,7 +3,7 @@ default: &default
   adapter: postgresql
   host: localhost
   # If using another user other than postgres, ensure that they have the sufficient privilleges.
-  username: <%= ENV['DATABASE_USERNAME'] || postgres %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
   encoding: unicode
   pool: 5
