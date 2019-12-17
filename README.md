@@ -4,6 +4,7 @@
 [![AwesomeCode Status for ServiceInnovationLab/RapuTure](https://awesomecode.io/projects/26aa53d4-bece-44c7-81d7-6c2f7648adec/status)](https://awesomecode.io/repos/ServiceInnovationLab/RapuTure)
 [![Build Status](https://travis-ci.org/ServiceInnovationLab/RapuTure.svg?branch=master)](https://travis-ci.org/ServiceInnovationLab/RapuTure)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/580a9cc169de1c21c180/test_coverage)](https://codeclimate.com/github/ServiceInnovationLab/RapuTure/test_coverage)
+
 ## Overview
 
 Rapu Ture is a phrase that means "Exploring the rules/law"
@@ -38,33 +39,36 @@ Testers |
 Project Manager | [Charlotte Hinton](https://github.com/CharlotteHinton)
 Product Owner | [Brenda Wallace](https://github.com/Br3nda)
 
-## Comms:
+## Comms
+
 Slack: LabPlus-team #rapu-ture
 
 ## Setup
 
 This is a ruby on rails app. You will need to:
+
 * Git clone this repo
-```
+
+```sh
 git clone git@github.com:ServiceInnovationLab/RapuTure.git
 ```
 
 * You will need to ensure you are using the correct ruby version
 
-```
+```sh
 ruby -v
 ```
 
 Choose one of these tools, to change the ruby version
+
 1. [rbenv](https://github.com/rbenv/rbenv)
 2. [rvm](https://rvm.io/)
 
-
 * You will need to setup the app's environment variables
-```
+
+```sh
 mv env-example .env
 ```
-
 
 ### Docker
 
@@ -91,50 +95,91 @@ To shut down:
 It can also be set up without Docker. You will need Ruby, Node, and Postgres.
 
 * Install the correct version of Ruby. We recommend installing `rbenv` to manage multiple versions of ruby, and then using that to install the version of ruby specified in our file `.ruby-version`
-* Install `rbenv` from https://github.com/rbenv/rbenv then
-```
+
+* Install `rbenv` from [https://github.com/rbenv/rbenv](https://github.com/rbenv/rbenv) then
+
+```sh
 rbenv install < .ruby-version
 ```
-* Install PostgreSQL *(in a Mac)*
-```
+
+---
+
+## In a Mac
+
+Install PostgreSQL
+
+```sh
 brew install postgresql
 ```
-* Start PostgreSQL on startup *(in a Mac)*
-```
+
+Start PostgreSQL on startup
+
+```sh
 brew services start postgresql
 ```
-* Install PostgreSQL *(in Ubuntu)*
-```
+
+---
+
+## In Ubuntu
+
+Install PostgreSQL
+
+```sh
 apt-get install postgresql postgresql-contrib
 ```
-* Configure PostgreSQL to startup upon server boot *(in Ubuntu)*
-```
+
+Configure PostgreSQL to startup upon server boot
+
+```sh
 update-rc.d postgresql enable
+
 ```
-* Start PostgreSQL *(in Ubuntu)*
-```
+
+Start PostgreSQL
+
+```sh
 service postgresql start
 ```
-* Bundler. Install this from gem
-```
+
+---
+
+Bundler. Install this from gem
+
+```sh
 gem install bundler
 ```
-* Run the setup script
+
+`mv env-example .env`
+
+**Ensure** that your .env file contains these values:
+
+```txt
+DATABASE_USERNAME: postgres (we used this as the default)
+DATABASE_PASSWORD: <whatever password has been set for that user>
 ```
+
+Run the setup script
+
+```sh
 bin/setup
 ```
-* `mv env-example .env`
-* Load seed data from OpenFisca (Note: this takes 15 minutes)
-```
+
+Load seed data from OpenFisca (Note: this takes 15 minutes)
+
+```sh
 bundle exec rake fetch:fetchall
 ```
-* Run the app
-```
+
+Run the app
+
+```sh
 bundle exec rails server
 ```
+
 ## Development
 
 ### Major Dependencies
+
 Ruby 2.5
 Rails 5.2 / Puma
 
@@ -145,7 +190,8 @@ Rails 5.2 / Puma
 ### Quality assurance tools
 
 * Rubocop
-```
+
+```sh
 bundle exec rubocop
 ```
 
@@ -156,8 +202,9 @@ bundle exec rubocop
 * Deploys to Heroku via Travis. See `.travis.yml`
 
 ## Testing
+
 * Rspec tests are included in the Travis deployment script and can be run locally
 
-```
+```sh
 bundle exec rspec
 ```

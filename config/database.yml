@@ -1,6 +1,10 @@
 ---
 default: &default
   adapter: postgresql
+  host: localhost
+  # If using another user other than postgres, ensure that they have the sufficient privilleges.
+  username: <%= ENV['DATABASE_USERNAME'] || postgres %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
   encoding: unicode
   pool: 5
   variables:
@@ -12,6 +16,7 @@ development:
   <<: *default
   database: raputure_development
   url: <%= ENV['DATABASE_URL'] || 'postgresql://postgres@localhost:5432' %>
+  host: /var/run/postgresql
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
