@@ -275,7 +275,7 @@ GEM
       tilt
     scout_apm (2.6.5)
       parser
-    selenium-webdriver (3.142.6)
+    selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     simplecov (0.17.1)
