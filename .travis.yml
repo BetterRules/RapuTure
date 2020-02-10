@@ -39,11 +39,9 @@ before_script:
 - ./scripts/install_phantomjs.sh
 - RAILS_ENV=test bundle exec rake db:create db:migrate
 - RAILS_ENV=test bundle exec rake assets:precompile
-- export PERCY_TARGET_BRANCH=$TRAVIS_BRANCH
-- export PERCY_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
 
 script:
-- npx percy exec -- bundle exec rspec
+- bundle exec rspec
 
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT -t simplecov --id $CC_TEST_REPORTER_ID"
