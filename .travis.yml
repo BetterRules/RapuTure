@@ -10,7 +10,6 @@ services:
 branches:
   only:
   - master
-  - dev
 
 addons:
   postgresql: "10"
