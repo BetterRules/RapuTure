@@ -149,8 +149,6 @@ Bundler. Install this from gem
 gem install bundler
 ```
 
-`mv env-example .env`
-
 **Ensure** that your .env file contains these values:
 
 ```txt
