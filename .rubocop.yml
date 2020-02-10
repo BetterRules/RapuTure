@@ -7,8 +7,8 @@ require:
   - rubocop-rails
 
 # We do not typically use/need class documentation
-# Documentation:
-#   Enabled: false
+Documentation:
+  Enabled: false
 
 Metrics/LineLength:
   Max: 120
@@ -19,9 +19,6 @@ Metrics/MethodLength:
 Metrics/ModuleLength:
   Exclude:
     - 'spec/**/*_spec.rb'
-
-Style/Documentation:
-  Enabled: false
 
 Style/RaiseArgs:
   Enabled: false
