@@ -2,10 +2,6 @@
 # Built-in config:
 # https://github.com/bbatsov/rubocop/blob/master/config/default.yml
 
-require:
-  - rubocop-rspec
-  - rubocop-rails
-
 # We do not typically use/need class documentation
 Documentation:
   Enabled: false
