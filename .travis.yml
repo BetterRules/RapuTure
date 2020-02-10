@@ -2,12 +2,22 @@ sudo: required
 language: ruby
 cache:
   bundler: true
+  yarn: true
 services:
   - postgresql
+
+# Note: we will build pull requests, and these branches
+# This stops travis running two jobs on every pull requests
+branches:
+  only:
+  - master
+  - dev
+
 before_install:
 - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64  > ./cc-test-reporter
 - chmod +x ./cc-test-reporter
 - export PATH=$PWD/geckodriver:$PATH
+
 before_script:
 - yarn install
 - ./scripts/install_phantomjs.sh
@@ -15,10 +25,13 @@ before_script:
 - RAILS_ENV=test bundle exec rake assets:precompile
 - export PERCY_TARGET_BRANCH=$TRAVIS_BRANCH
 - export PERCY_BRANCH=$TRAVIS_PULL_REQUEST_BRANCH
+
 script:
 - npx percy exec -- bundle exec rspec
+
 after_script:
 - "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT -t simplecov --id $CC_TEST_REPORTER_ID"
+
 deploy:
   provider: heroku
   skip_cleanup: true
