@@ -48,7 +48,7 @@ GEM
       io-like (~> 0.3.0)
     arel (9.0.0)
     ast (2.4.0)
-    autoprefixer-rails (9.4.7)
+    autoprefixer-rails (9.7.3)
       execjs
     babel-source (5.8.35)
     babel-transpiler (0.7.0)
@@ -57,7 +57,7 @@ GEM
     bindex (0.5.0)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    bootstrap (4.3.1)
+    bootstrap (4.4.1)
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
@@ -227,7 +227,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    react-rails (2.6.0)
+    react-rails (2.6.1)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
@@ -273,9 +273,9 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (2.6.5)
+    scout_apm (2.6.6)
       parser
-    selenium-webdriver (3.142.6)
+    selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     simplecov (0.17.1)
@@ -303,7 +303,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    tzinfo (1.2.5)
+    tzinfo (1.2.6)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
       execjs (>= 0.3.0, < 3)
@@ -328,7 +328,7 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.3.1)
+  bootstrap (~> 4.4.1)
   byebug
   capybara (>= 2.15)
   capybara-screenshot
