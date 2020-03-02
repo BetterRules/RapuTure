@@ -107,7 +107,8 @@ GEM
     forty_facets (0.1.9.1)
     friendly_id (5.3.0)
       activerecord (>= 4.0.0)
-    git (1.5.0)
+    git (1.6.0)
+      rchardet (~> 1.8)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     globalize (5.3.0)
@@ -227,6 +228,7 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
+    rchardet (1.8.0)
     react-rails (2.6.1)
       babel-transpiler (>= 0.7.0)
       connection_pool
