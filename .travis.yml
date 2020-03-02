@@ -33,6 +33,13 @@ before_install:
 - chmod +x ./cc-test-reporter
 - export PATH=$PWD/geckodriver:$PATH
 
+install:
+  - nvm install 10
+  - npm i -g yarn
+  - gem install bundler
+  - bundle install
+  - yarn install
+
 before_script:
 - yarn install
 - ./scripts/install_phantomjs.sh
