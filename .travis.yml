@@ -33,6 +33,11 @@ before_install:
 - chmod +x ./cc-test-reporter
 - export PATH=$PWD/geckodriver:$PATH
 
+install:
+  - bundle install
+  - gem install bundler
+  - bundle update
+
 before_script:
 - yarn install
 - ./scripts/install_phantomjs.sh
