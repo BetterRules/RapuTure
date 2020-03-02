@@ -58,6 +58,8 @@ deploy:
 
   run:
   - bundle install
+  - gem install bundler
+  - bundle update
   - yarn install
   - bundle exec rake tmp:cache:clear
   - bundle exec rake db:migrate
