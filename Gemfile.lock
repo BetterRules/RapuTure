@@ -170,7 +170,7 @@ GEM
     nokogiri (1.10.9)
       mini_portile2 (~> 2.4.0)
     parallel (1.19.1)
-    parser (2.7.0.3)
+    parser (2.7.0.4)
       ast (~> 2.4.0)
     percy-capybara (4.2.0)
     pg (1.2.2)
@@ -277,7 +277,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (2.6.6)
+    scout_apm (2.6.7)
       parser
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
