@@ -3,7 +3,7 @@
   "private": true,
   "dependencies": {
     "@percy/agent": "^0.20.2",
-    "@rails/webpacker": "3.6.0",
+    "@rails/webpacker": "5.0.0",
     "babel-preset-react": "6.24.1",
     "prop-types": "15.7.2",
     "react": "16.13.0",
