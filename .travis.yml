@@ -1,7 +1,12 @@
 sudo: required
-language: ruby
+language:
+  - ruby
+  - node_js
+node_js: 
+  - "10"
 cache:
   bundler: true
+  directories: "node_modules"
 services:
   - postgresql
 
