@@ -277,7 +277,7 @@ GEM
       sprockets (> 3.0)
       sprockets-rails
       tilt
-    scout_apm (2.6.6)
+    scout_apm (2.6.7)
       parser
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
