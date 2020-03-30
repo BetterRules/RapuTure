@@ -1,9 +1,5 @@
 sudo: required
-language:
-  - ruby
-  - node_js
-node_js:
-  - "10"
+language: ruby
 cache:
   bundler: true
 services:
