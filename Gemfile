@@ -80,7 +80,7 @@ end
 
 group :test do
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 3.9'
+  gem 'rspec-rails', '~> 4.0'
 
   gem 'poltergeist'
   # Adds support for Capybara system testing and selenium driver
