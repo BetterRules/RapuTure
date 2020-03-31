@@ -2,7 +2,7 @@ sudo: required
 language:
   - ruby
   - node_js
-node_js: 
+node_js:
   - "10"
 cache:
   bundler: true
