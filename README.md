@@ -67,7 +67,7 @@ Choose one of these tools, to change the ruby version
 * You will need to setup the app's environment variables
 
 ```sh
-mv example.env .env
+cp example.env .env
 ```
 
 ### Docker
