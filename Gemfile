@@ -72,7 +72,7 @@ group :development do
   gem 'listen', '>= 3.0.5', '< 3.3'
   gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'i18n-tasks', '~> 0.9.30'
+  gem 'i18n-tasks', '~> 0.9.31'
   gem 'rubocop'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -80,7 +80,7 @@ end
 
 group :test do
   gem 'rails-controller-testing'
-  gem 'rspec-rails', '~> 3.9'
+  gem 'rspec-rails', '~> 4.0'
 
   gem 'poltergeist'
   # Adds support for Capybara system testing and selenium driver

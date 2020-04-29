@@ -1,8 +1,10 @@
 sudo: required
-language: ruby
+language:
+  - ruby
 cache:
   bundler: true
-services:
+  yarn: true
+  services:
   - postgresql
 
 # Note: we will build pull requests, and these branches
@@ -34,12 +36,14 @@ before_install:
 - export PATH=$PWD/geckodriver:$PATH
 
 install:
+  - nvm install 10
+  - npm i -g yarn
   - bundle install
   - gem install bundler
   - bundle update
+  - yarn install
 
 before_script:
-- yarn install
 - ./scripts/install_phantomjs.sh
 - RAILS_ENV=test bundle exec rake db:create db:migrate
 - RAILS_ENV=test bundle exec rake assets:precompile
