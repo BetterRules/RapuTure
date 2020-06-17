@@ -47,7 +47,7 @@ gem 'forty_facets'
 gem 'globalize'
 
 # css
-gem 'bootstrap', '~> 4.4.1'
+gem 'bootstrap', '~> 4.5.0'
 gem 'font-awesome-rails'
 gem 'jquery-rails'
 
