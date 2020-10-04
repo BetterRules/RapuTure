@@ -15,7 +15,7 @@ jobs:
         image: postgres:11
         env:
           POSTGRES_USER: myapp
-          POSTGRES_DB: myapp_test
+          POSTGRES_DB: raputure_test
           POSTGRES_PASSWORD: ""
         ports: ["5432:5432"]
 
@@ -60,9 +60,8 @@ jobs:
 
       - name: Setup test database
         env:
+          DATABASE_URL: postgresql://myapp@localhost:5432/
           RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: myapp
         run: bundle exec rails db:create db:migrate
 
       - name: Run tests
