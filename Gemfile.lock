@@ -243,7 +243,7 @@ GEM
     regexp_parser (1.7.0)
     request_store (1.4.1)
       rack (>= 1.4)
-    rexml (3.2.4)
+    rexml (3.2.5)
     rspec-core (3.9.2)
       rspec-support (~> 3.9.3)
     rspec-expectations (3.9.2)
