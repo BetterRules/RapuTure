@@ -15,7 +15,7 @@
   - if variable.orphaned?
     %span.badge.badge-warning{ 'data-toggle': 'tooltip',
       'data-placement': 'bottom', title: 'Not used by any formula, and has no formula itself' }
-      Orphaned
+      Unused
   - else
     %span.badge.badge-dark used #{pluralize variable.inbound_links.size, 'time'}
 
