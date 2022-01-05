@@ -3,13 +3,13 @@
 require 'rails_helper'
 
 describe 'index' do
-  context 'Variable is orphaned' do
+  context 'Variable is not used' do
     before { FactoryBot.create :variable, name: 'likes_to_eat_chocolate' }
     describe 'view all variables' do
       before { visit variables_path }
       it { expect(page).to have_text 'Available filters for Namespace' }
       it { expect(page).to have_link 'likes_to_eat_chocolate' }
-      it { expect(page).to have_text 'Orphaned' }
+      it { expect(page).to have_text 'Not used' }
     end
   end
 
@@ -24,7 +24,7 @@ describe 'index' do
       it { expect(page).to have_link 'likes_to_eat_chocolate' }
       it { expect(page).to have_link 'likes_to_eat' }
       it { expect(page).to have_text 'used 1 time' }
-      it { expect(page).not_to have_text 'Orphaned' }
+      it { expect(page).not_to have_text 'Not used' }
     end
   end
 end

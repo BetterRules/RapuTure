@@ -3,12 +3,12 @@
 require 'rails_helper'
 
 describe 'show' do
-  context 'Variable is orphaned' do
+  context 'Variable is not used' do
     let(:variable) { FactoryBot.create :variable, name: 'likes_to_eat_chocolate' }
     describe 'view all variables' do
       before { visit variable_path(variable) }
       it { expect(page).to have_content variable.name }
-      it { expect(page).to have_text 'Orphaned' }
+      it { expect(page).to have_text 'Not used' }
     end
   end
 
@@ -20,7 +20,7 @@ describe 'show' do
       it { expect(page).to have_link parent.name }
       it { expect(page).to have_content child.name }
       it { expect(page).to have_text 'used 1 time' }
-      it { expect(page).not_to have_text 'Orphaned' }
+      it { expect(page).not_to have_text 'Not used' }
     end
   end
 end

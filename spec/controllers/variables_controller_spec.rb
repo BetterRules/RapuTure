@@ -4,13 +4,13 @@ require 'rails_helper'
 
 RSpec.describe VariablesController, type: :controller do
   describe '#index' do
-    context 'one orphaned variable' do
+    context 'one unused variable' do
       let!(:variable) { FactoryBot.create :variable }
       before { get :index }
       it { expect(assigns(:variables)).to eq [variable] }
     end
 
-    context 'three orphaned variables' do
+    context 'three unused variables' do
       let!(:variable) { FactoryBot.create :variable }
       let!(:variable_two) { FactoryBot.create :variable }
       let!(:variable_three) { FactoryBot.create :variable }

@@ -57,7 +57,7 @@ class Variable < ApplicationRecord
     variables
   end
 
-  def orphaned?
+  def notused?
     inbound_links.empty? && outbound_links.empty?
   end
 end
